@@ -1,0 +1,2926 @@
+{
+  "category": "service_levels",
+  "retrieved_on": "2026-08-18",
+  "scope_note": "Support, uptime SLA, backups and money-back guarantee for 21 hosting providers. Every figure was read on 2026-08-18 from a provider-operated URL and is recorded with that URL. Where a figure sits behind a login, a configurator, a quote form or a document that would not render, the field is null and the reason is stated in a note.",
+  "method_note": "Three reading methods were used and are distinguished in the notes where it matters: direct page fetch, server-side HTML extraction for pages whose text is server-rendered, and a headless browser for pages that render their content in JavaScript. No figure in this file comes from a third-party comparison site, a search snippet alone, or memory. Where a search engine surfaced a claim that could not be confirmed on the provider's own page, the claim was dropped rather than recorded.",
+  "vocabulary_note": "A contractual SLA is a published document that states an availability percentage, a remedy, and a claim procedure. A marketing uptime claim is a percentage printed on a product or pricing page with no remedy attached. The two are recorded in separate fields and are not merged.",
+  "remedy_note": "Every SLA in this file that has a remedy pays it in service credits against future invoices. Not one of the 21 pays money back for downtime. Several state expressly that credits have no cash value. This is the norm, not an outlier, and it is recorded per provider rather than editorialised.",
+  "price_note": "All prices carry the capture date 2026-08-18, a currency, and the URL they were read from. Support-plan prices are list prices, not introductory offers, so is_promotional is false on each of them. Where a provider quotes both a fixed fee and a percentage of spend, both are recorded along with which one applies.",
+  "providers": [
+    {
+      "name": "Hetzner",
+      "support": {
+        "channels": [
+          "email ticket",
+          "telephone"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "partial",
+        "free_support_hours": "Cloud support by email is described as 24/7 on the Cloud product page. General customer service by telephone is +49 (0)9831 505-0, Monday to Friday 08:00-18:00 CET. Three data centre telephone lines are staffed 24/7 (Nuremberg +49 (0)911 234226-100, Falkenstein +49 (0)3745 74447-100, Helsinki +358 753259-100) and the support page ties those to dedicated servers and colocation, with an activated telephone password or one-time password required to use them.",
+        "free_first_response_target": null,
+        "free_first_response_target_note": "No first-response time target is published for the free support channels on the pages read.",
+        "paid_support_tiers": [],
+        "paid_support_note": "No paid support tier was found on hetzner.com/support or hetzner.com/cloud on 2026-08-18. Meaningful technical support appears to be included in the service price.",
+        "support_quote": "The new 24/7 support by email ensures that you receive rapid assistance at any time in exceptional cases.",
+        "support_urls": [
+          "https://www.hetzner.com/cloud/",
+          "https://www.hetzner.com/support/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.9,
+        "measurement_period": "calendar month, per individual Cloud Server",
+        "commitment_wording": "commercially reasonable efforts to ensure a monthly availability of 99.9%",
+        "remedy_type": "service credits",
+        "remedy_detail": "Non-refundable Cloud Credits applied to future Hetzner Cloud usage fees. Cash payment is expressly excluded. The credit is the affected server's hourly rate multiplied by the eligible unavailable hours, where eligible downtime is actual downtime minus the 99.9% threshold. The docs page works an example: 142 eligible minutes at EUR 0.3671 per hour produces EUR 0.87.",
+        "credit_schedule": "No banded table. Pro-rata on the hourly rate of the affected server.",
+        "cap": "Not stated on the docs page read; the docs page defers to the full agreement at hetzner.com/legal/cloud-server/.",
+        "claim_window": "Request within 14 calendar days after the end of the relevant month, via the Hetzner support system, specifying affected server IDs.",
+        "exclusions": "Force majeure under the Terms and Conditions, and scheduled maintenance announced at least 24 hours in advance.",
+        "marketing_claim": "99.9% uptime, stated on the Cloud product page as 'An SLA with 99.9% guaranteed uptime and clearly defined credits in the event of a malfunction'.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://docs.hetzner.com/general/company-and-policy/slas-cloud/",
+        "sla_document_last_updated": "2026-03-16 (stated on the docs page)",
+        "notes": "The 99.9% figure applies to Cloud Servers. For data centres generally Hetzner commits to an annual average network availability of 99.9%, which is a weaker, non-credit-bearing statement and should not be conflated with the per-month Cloud Server SLA."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "daily, automatic, when the Backups option is enabled",
+        "retention": "up to seven backup slots per server; the oldest backup is deleted automatically when a new one is created at the limit",
+        "price": {
+          "model": "percentage surcharge on the server price",
+          "amount_percent": 20,
+          "currency": "EUR",
+          "worked_example_from_source": "a server at EUR 3.29 per month costs EUR 3.29 x 0.2 = EUR 0.658 per month extra",
+          "vat_treatment": null,
+          "vat_note": "The billing FAQ does not state whether the figures are net or VAT-inclusive.",
+          "is_promotional": false,
+          "commitment": "none; billed with the server",
+          "url": "https://docs.hetzner.com/cloud/billing/faq/",
+          "captured_on": "2026-08-18"
+        },
+        "snapshots_billed_as_storage": true,
+        "snapshot_rate": null,
+        "snapshot_rate_note": "The docs state snapshots are billed 'per gigabyte per month' on the compressed size and direct the reader to the price box at hetzner.com/cloud for the rate. That box did not render a per-GB figure in either a direct fetch or a headless browser read on 2026-08-18, so no rate is recorded.",
+        "restore_cost": "No restore charge is stated. Restore is either a rebuild of the existing server or creation of a new server from the backup or snapshot.",
+        "coverage_gap": "Backups and snapshots do not include Volumes attached to the server. Hetzner does not provide backups or snapshots for Volumes.",
+        "urls": [
+          "https://docs.hetzner.com/cloud/servers/backups-snapshots/overview/",
+          "https://docs.hetzner.com/cloud/billing/faq/"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee was found on the pages read. Cloud servers are billed hourly, which limits exposure, but that is a billing model rather than a refund promise.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://www.hetzner.com/cloud/",
+          "read_on": "2026-08-18",
+          "what": "24/7 email support statement, 99.9% SLA marketing statement"
+        },
+        {
+          "url": "https://www.hetzner.com/support/",
+          "read_on": "2026-08-18",
+          "what": "support channels, telephone numbers and hours"
+        },
+        {
+          "url": "https://docs.hetzner.com/general/company-and-policy/slas-cloud/",
+          "read_on": "2026-08-18",
+          "what": "SLA percentage, credit calculation, worked example, page last-change date"
+        },
+        {
+          "url": "https://docs.hetzner.com/cloud/servers/backups-snapshots/overview/",
+          "read_on": "2026-08-18",
+          "what": "backup frequency, seven slots, volume exclusion, restore paths"
+        },
+        {
+          "url": "https://docs.hetzner.com/cloud/billing/faq/",
+          "read_on": "2026-08-18",
+          "what": "backups at 20% of server price, snapshots billed per GB per month"
+        }
+      ]
+    },
+    {
+      "name": "OVHcloud",
+      "support": {
+        "channels": [
+          "ticket",
+          "telephone",
+          "live chat"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "partial",
+        "free_support_hours": "Standard level: technical support Monday to Friday 08:00-18:00, with 24/7 live chat for incidents and 24/7 hardware monitoring.",
+        "free_first_response_target": "8 business hours for critical incidents on the Standard level",
+        "paid_support_tiers": [
+          {
+            "name": "Premium",
+            "price": {
+              "amount": 50,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": "ex_vat",
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": null,
+            "minimum": null,
+            "first_response_target": "2 business hours (critical incidents)",
+            "hours": "Monday to Friday 08:00-18:00, 24/7 chat for incidents",
+            "channels": [
+              "ticket",
+              "telephone",
+              "live chat"
+            ]
+          },
+          {
+            "name": "Business",
+            "price": {
+              "amount": 250,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": "ex_vat",
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+              "captured_on": "2026-08-18",
+              "note": "stated as 'From EUR 250 ex. VAT/month': 10% of services billing with a EUR 250 minimum"
+            },
+            "percentage_of_spend": 10,
+            "minimum": {
+              "amount": 250,
+              "currency": "EUR",
+              "period": "month",
+              "is_promotional": false,
+              "vat_treatment": "ex_vat",
+              "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "30 minutes (critical incidents)",
+            "hours": "24/7",
+            "channels": [
+              "ticket",
+              "telephone (dedicated number)"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": {
+              "amount": 5000,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": "ex_vat",
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+              "captured_on": "2026-08-18",
+              "note": "stated as 'From EUR 5000 ex. VAT/month': 30% of services billing with a EUR 5,000 minimum"
+            },
+            "percentage_of_spend": 30,
+            "minimum": {
+              "amount": 5000,
+              "currency": "EUR",
+              "period": "month",
+              "is_promotional": false,
+              "vat_treatment": "ex_vat",
+              "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "15 minutes (critical incidents)",
+            "hours": "24/7",
+            "channels": [
+              "ticket",
+              "telephone (dedicated number)"
+            ],
+            "extras": "Technical Account Manager, monthly reviews with KPI tracking, 4 hours per year of security audit, optional European-based support staffing"
+          }
+        ],
+        "paid_support_note": "24/7 technical support with a committed response time starts at the Business level, which is 10% of the monthly bill with a EUR 250 per month floor. The prices above are the EUR figures on the Irish site. OVHcloud publishes different figures per region and currency: the worldwide USD site quotes Premium at USD 56 per month on a 12-month subscription, Business at 10% with a USD 300 minimum and Enterprise at 30% with a USD 5,850 minimum.",
+        "support_urls": [
+          "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+          "https://www.ovhcloud.com/en-ie/support-levels/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.9,
+        "committed_percentage_detail": "EU contract (Ireland), Specific Terms of Service for VPS: credits begin below 99.9% monthly availability for VPS ranges other than Starter, and below 99.5% for the VPS Starter range.",
+        "measurement_period": "calendar month",
+        "remedy_type": "service credits",
+        "credit_schedule": [
+          {
+            "scope": "VPS STARTER range (EU contract)",
+            "band": ">99.0% and <99.5%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "VPS STARTER range (EU contract)",
+            "band": "<99.0%",
+            "credit_percent": 50
+          },
+          {
+            "scope": "Other VPS ranges (EU contract)",
+            "band": ">99.5% and <99.9%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "Other VPS ranges (EU contract)",
+            "band": "<99.5%",
+            "credit_percent": 50
+          },
+          {
+            "scope": "US entity SLA for comparison",
+            "band": ">=99.0% and <99.9%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "US entity SLA for comparison",
+            "band": ">=95.0% and <99.0%",
+            "credit_percent": 30
+          },
+          {
+            "scope": "US entity SLA for comparison",
+            "band": "<95.0%",
+            "credit_percent": 100
+          }
+        ],
+        "downtime_definition": "EU contract: 'the loss of access to and inability to reboot the VPS, for more than three (3) consecutive minutes from the moment an Incident ticket has been opened by the Client'. US SLA: no external connectivity, with unavailability deemed to commence when the customer opens a support case.",
+        "clock_starts_on_ticket": true,
+        "clock_starts_on_ticket_note": "In both the EU and US documents the outage clock starts when the customer opens a ticket, not when the outage starts. Downtime before the ticket does not count.",
+        "claim_window": "US SLA: within 60 calendar days of the suspected incident, via the Control Panel, with credit issued within 45 calendar days of confirmation. The EU VPS contract does not state a claim window in the SLA section read.",
+        "cap": "US SLA: credits for all incidents in a month cannot exceed 100% of the monthly invoiced amount for the service, and are the sole and exclusive remedy.",
+        "marketing_claim": "99.9% SLA is used on OVHcloud VPS product pages.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://contract.eu.ovhapis.com/1.0/pdf/Conditions_Particulieres_VPS-ie.pdf",
+        "sla_url_secondary": "https://us.ovhcloud.com/legal/sla/vps/",
+        "sla_document_last_updated": null,
+        "notes": "OVHcloud publishes SLAs per entity and per product. The EU contract is a PDF appendix to the VPS Specific Terms (version marked VPS-IE-4.1 in the storage filename); the US entity publishes an HTML SLA with a different band table. A reader in the EU is on the EU document. Other OVHcloud products carry different numbers, for example VMware on OVHcloud at 99.95% and Key Management Service at 99.50%."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "price_note": "The Automated Backup Service is a paid option for VPS, described in Appendix 1 to the EU VPS contract. Its price is set per VPS range in the order configurator and no figure was captured from a public page on 2026-08-18, so it is recorded as null rather than estimated.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": "Not stated. The contract says the client can retrieve all or part of its data via the Control Panel.",
+        "contract_language": "OVHcloud reminds the Client that the storage space allocated to the Backup Service does not under any circumstances constitute a guarantee against the loss of Client data. As such, it is the Client's responsibility to implement a business continuity plan (BCP) and/or a disaster recovery plan (DRP).",
+        "coverage_gap": "The Backup Service covers the VPS excluding additional disks.",
+        "urls": [
+          "https://contract.eu.ovhapis.com/1.0/pdf/Conditions_Particulieres_VPS-ie.pdf"
+        ]
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "No money-back guarantee was found in the EU VPS contract or on the support-levels pages read on 2026-08-18. The contract states that any VPS service created is invoiced regardless of actual use, and that services disabled but not deleted continue to be billed. Statutory EU consumer withdrawal rights are a separate matter and are not a provider guarantee.",
+        "url": "https://contract.eu.ovhapis.com/1.0/pdf/Conditions_Particulieres_VPS-ie.pdf"
+      },
+      "sources": [
+        {
+          "url": "https://www.ovhcloud.com/en-ie/support-levels/plans/",
+          "read_on": "2026-08-18",
+          "what": "four support levels, EUR prices ex VAT, percentages, minimums, channels, hours, response targets"
+        },
+        {
+          "url": "https://www.ovhcloud.com/en-ie/support-levels/",
+          "read_on": "2026-08-18",
+          "what": "support level descriptions, 15 minutes to 8 business hours response range"
+        },
+        {
+          "url": "https://www.ovhcloud.com/en-ie/terms-and-conditions/contracts/",
+          "read_on": "2026-08-18",
+          "what": "index of EU contract PDFs, used to locate the VPS contract"
+        },
+        {
+          "url": "https://contract.eu.ovhapis.com/1.0/pdf/Conditions_Particulieres_VPS-ie.pdf",
+          "read_on": "2026-08-18",
+          "what": "EU VPS SLA bands and credits, unavailability definition, Automated Backup Service appendix, billing and cancellation"
+        },
+        {
+          "url": "https://us.ovhcloud.com/legal/sla/vps/",
+          "read_on": "2026-08-18",
+          "what": "US entity VPS SLA: 99.9%, credit table, 60-day claim window, 100% cap"
+        }
+      ]
+    },
+    {
+      "name": "Scaleway",
+      "support": {
+        "channels": [
+          "ticket",
+          "hotline (telephone)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "BASIC plan: ticketing available 24/7. No hotline.",
+        "free_first_response_target": "8 hours (Initial Response Time on the BASIC plan)",
+        "paid_support_tiers": [
+          {
+            "name": "ADVANCED",
+            "price": {
+              "amount": 50,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": null,
+              "vat_note": "The page expresses the alternative as a percentage of 'net spend' but does not state VAT treatment of the fixed fee.",
+              "is_promotional": false,
+              "commitment": "plans can be switched once a month; upgrades take effect immediately pro rata",
+              "url": "https://www.scaleway.com/en/docs/account/reference-content/understanding-support-plans/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": 5,
+            "billing_rule": "you pay whichever is greater, the fixed monthly fee or the percentage of net monthly spend",
+            "first_response_target": "2 hours",
+            "hours": "ticket 24/7; hotline 7 days a week 09:00-18:00 CET"
+          },
+          {
+            "name": "BUSINESS",
+            "price": {
+              "amount": 250,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://www.scaleway.com/en/docs/account/reference-content/understanding-support-plans/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": 10,
+            "billing_rule": "greater of fixed fee or percentage of net spend",
+            "first_response_target": "30 minutes",
+            "hours": "ticket 24/7; hotline 24/7",
+            "extras": "dedicated premium team, one Scaleway certification included"
+          },
+          {
+            "name": "ENTERPRISE",
+            "price": {
+              "amount": 990,
+              "currency": "EUR",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://www.scaleway.com/en/docs/account/reference-content/understanding-support-plans/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": 20,
+            "billing_rule": "greater of fixed fee or percentage of net spend",
+            "first_response_target": "15 minutes",
+            "hours": "ticket 24/7; hotline 24/7",
+            "extras": "Technical Account Manager, quarterly technical review, one architecture audit every six months, one Scaleway certification included"
+          }
+        ],
+        "paid_support_note": "Free ticketing is genuinely 24/7 but carries an 8-hour target. Telephone contact requires ADVANCED at EUR 50 per month or 5% of net spend, whichever is greater.",
+        "support_urls": [
+          "https://www.scaleway.com/en/docs/account/reference-content/understanding-support-plans/"
+        ],
+        "page_reviewed_date": "Reviewed on May 26, 2025 (stated on the page)"
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.5,
+        "committed_percentage_detail": "Instances SLA is tiered by instance family and is lower than the industry-standard 99.9%: covered shared instances (BASIC2-A, BASIC3-X) 99%; covered dedicated instances (POP2, STANDARD2-A, STANDARD3-X) 99.5%; covered specialised instances (POP2-HC, POP2-HM, POP2-HN, POP2-WIN, COMPUTE3-X, MEMORY3-X) 99.5%; GPU instances 99.5%. DEV1, GP1, PLAY2, PRO2, COPARM1, ENT1 and DEV instances have no SLO at all.",
+        "measurement_period": "Monthly Availability Rate per resource per calendar month",
+        "remedy_type": "service credits (vouchers)",
+        "credit_schedule": [
+          {
+            "scope": "shared instances",
+            "band": "99.0% to 99.5%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "shared instances",
+            "band": "95.0% to 99.0%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "shared instances",
+            "band": "below 90%",
+            "credit_percent": 100
+          },
+          {
+            "scope": "dedicated, specialised and GPU instances",
+            "band": "below the 99.5% threshold",
+            "credit_percent": 10
+          },
+          {
+            "scope": "dedicated, specialised and GPU instances",
+            "band": "95.0% to 99.0%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "dedicated, specialised and GPU instances",
+            "band": "below 95%",
+            "credit_percent": 100
+          }
+        ],
+        "downtime_definition": "Loss of external connectivity to a covered Instance for at least four continuous minutes. Shorter interruptions, performance degradation and transient errors do not count.",
+        "claim_window": "Within 30 days following the month in which the resources did not comply with the SLO, with log files evidencing the unavailability periods.",
+        "cap": "100% of the monthly amount invoiced for the resources that failed the SLO. Credits are vouchers, not cash.",
+        "exclusions": "Force majeure, third-party acts, client fault or misuse, maintenance windows, beta or non-GA services, internet connectivity problems, and outages covered by a separate product SLA.",
+        "marketing_claim": "Scaleway publishes per-product SLA pages rather than a single headline percentage. Block Storage and File Storage commit to 99.9% per volume or file system, which is higher than the instance commitment.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.scaleway.com/en/virtual-instances/sla/",
+        "notes": "This is the one provider in the set whose compute SLA is materially below 99.9%, and the entry-level DEV and PLAY2 instances carry no SLO. A buyer comparing a Scaleway DEV1 against a 99.9% VPS elsewhere is comparing a resource with no availability commitment against one with a commitment."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "price_note": "Instance snapshots and backups are billed per GB and configured per instance. No per-GB rate was captured from a Scaleway-operated page on 2026-08-18, so the figure is null rather than estimated.",
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "urls": []
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "No money-back guarantee was found on the pages read on 2026-08-18.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://www.scaleway.com/en/docs/account/reference-content/understanding-support-plans/",
+          "read_on": "2026-08-18",
+          "what": "four support plans, response times, ticket and hotline hours, EUR fixed fees and percentages, greater-of billing rule, worked examples"
+        },
+        {
+          "url": "https://www.scaleway.com/en/virtual-instances/sla/",
+          "read_on": "2026-08-18",
+          "what": "instance availability commitments by family, credit bands, four-minute unavailability definition, 30-day claim window, 100% cap, exclusions"
+        }
+      ]
+    },
+    {
+      "name": "IONOS",
+      "support": {
+        "channels": [
+          "telephone",
+          "email",
+          "chat",
+          "personal consultant"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "The web hosting plan comparison lists '24/7 support' as an included feature on every plan. IONOS states the technical support hotline is free of charge and available 24 hours a day, 7 days a week. The personal consultant is a named contact reachable by direct telephone extension, chat or email, free of charge, during business hours.",
+        "free_first_response_target": "IONOS Cloud SLA states response times for cloud customers: disruption (service unavailable or limited) under 1 hour for standard cloud products and under 6 hours for Cubes; service or information requests under 72 hours. The SLA states support is available 24/7/365 at no additional charge.",
+        "paid_support_tiers": [],
+        "paid_support_note": "No paid support tier was found. IONOS Cloud's own SLA states that support is provided 24/7/365 at no additional charge, which makes IONOS one of the few providers here where a committed incident response time is not paywalled.",
+        "support_urls": [
+          "https://www.ionos.com/hosting/web-hosting",
+          "https://www.ionos.com/consultant",
+          "https://cloud.ionos.com/terms-gtc/terms-enterprise-cloud/enterprise-agreement/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.95,
+        "committed_percentage_detail": "IONOS Cloud SLA by service: Compute Engine 99.95%, Confidential VM 99.95%, Cubes 99.9%, Block Storage 99.95%, Object Storage 99.5%, DBaaS PostgreSQL/In-Memory/MariaDB 99.95%, DBaaS MongoDB 99.95% in a high-availability setup of at least three nodes otherwise 99.9%, Managed Kubernetes control plane API 99.95%, DNS name servers 99.995%, Logging Service 99.5%, Event Streams for Apache Kafka 99.95%, AI Model Hub 99.9%, Nextcloud Workspace 99.9%, unlisted or new services 99%.",
+        "measurement_period": "monthly average",
+        "remedy_type": "service credits against future payments; no cash reimbursement",
+        "credit_schedule": [
+          {
+            "scope": "Compute Engine, Block Storage, Confidential VM",
+            "band": "<99.95% and >=99.90%",
+            "credit_percent": 5
+          },
+          {
+            "scope": "Compute Engine, Block Storage, Confidential VM",
+            "band": "<99.90% and >=99.80%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "Compute Engine, Block Storage, Confidential VM",
+            "band": "<99.80% and >=99.70%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "Compute Engine, Block Storage, Confidential VM",
+            "band": "<99.70%",
+            "credit_percent": 40
+          },
+          {
+            "scope": "Cubes and Managed Kubernetes",
+            "band": "<99.90% and >=99.00%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "Cubes and Managed Kubernetes",
+            "band": "<99.00% and >=95.00%",
+            "credit_percent": 50
+          },
+          {
+            "scope": "Cubes and Managed Kubernetes",
+            "band": "<95.00%",
+            "credit_percent": 100
+          },
+          {
+            "scope": "Object Storage",
+            "band": "<99.50% and >=99.00%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "Object Storage",
+            "band": "<99.00%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "DNS",
+            "band": "<99.995% and >=99.99%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "DNS",
+            "band": "<99.99% and >=99.95%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "DNS",
+            "band": "<99.95%",
+            "credit_percent": 100
+          }
+        ],
+        "claim_window": "In writing to IONOS Cloud Support within two weeks after the end of the billing month claimed for, with UIDs of affected instances, volumes or buckets and timestamps of each unavailability period. IONOS responds within six weeks of a complete request.",
+        "cap": null,
+        "exclusions": "The SLA does not apply to the Cloud GPU VM product in any variant, configuration, plan or tariff, or to add-ons intended solely for it. The DCD and IONOS Cloud API carry a 99.5% target with no credit regulation because they are free. DBaaS MongoDB Playground Edition has no SLA. General exclusions include hacker attacks, customer-caused failures, improperly installed software, scheduled maintenance with notice, manufacturer software or hardware errors, emergency maintenance and force majeure.",
+        "marketing_claim": "The web hosting page is titled 'Web Hosting | Fast Hosting Services | 99.99% Uptime' and lists 99.99% in the plan comparison.",
+        "marketing_backed_by_contract": "partially",
+        "marketing_vs_contract_note": "The 99.99% figure sits on the shared web hosting page, in the page title and in the plan comparison table. The contractual IONOS Cloud commitment for compute is 99.95%, and the credit-bearing cloud SLA has an explicit hole in it: Cloud GPU VM is excluded from the SLA entirely, in any variant, configuration, plan or tariff. No clause attaching a remedy to the 99.99% web hosting figure was located on the pages read on 2026-08-18, so whether that number is contractual is recorded as unresolved. A reader who sees 99.99% on the hosting page and assumes it applies to IONOS Cloud compute is reading the wrong number.",
+        "sla_url": "https://cloud.ionos.com/terms-gtc/terms-enterprise-cloud/enterprise-agreement/",
+        "notes": "IONOS Cloud Ltd. reserves the right to make reasonable changes to the SLA at any time without reason, informing the customer ten working days before they take effect."
+      },
+      "backups": {
+        "included_in_base_price": true,
+        "included_scope": "Web hosting plan comparison lists 'Daily backup' covering storage and databases, plus 'Data recovery', on the plans compared.",
+        "frequency": "daily (web hosting)",
+        "retention": null,
+        "price": null,
+        "price_note": "Retention length and any charge for restoring are not stated in the plan comparison read. IONOS also sells separate paid products for backup (MyDefender, HiDrive) whose prices were not captured here.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": [
+          "https://www.ionos.com/hosting/web-hosting"
+        ]
+      },
+      "money_back": {
+        "offered": true,
+        "window_days": 30,
+        "quote": "30-day money-back guarantee",
+        "exclusions": null,
+        "exclusions_note": "The plan comparison row states the guarantee without listing exclusions. Exclusions, if any, sit in the general terms and were not captured.",
+        "url": "https://www.ionos.com/hosting/web-hosting"
+      },
+      "sources": [
+        {
+          "url": "https://www.ionos.com/hosting/web-hosting",
+          "read_on": "2026-08-18",
+          "what": "99.99% uptime marketing claim in the page title and plan table, 24/7 support row, daily backup and data recovery rows, 30-day money-back guarantee row"
+        },
+        {
+          "url": "https://cloud.ionos.com/terms-gtc/terms-enterprise-cloud/enterprise-agreement/",
+          "read_on": "2026-08-18",
+          "what": "IONOS Cloud SLA availability targets per service, credit tables, two-week claim window, six-week response, incident response times, 24/7/365 support at no additional charge, Cloud GPU VM exclusion"
+        },
+        {
+          "url": "https://www.ionos.com/consultant",
+          "read_on": "2026-08-18",
+          "what": "page title 'Your personal consultant: Expert advice, free of charge'"
+        }
+      ]
+    },
+    {
+      "name": "Infomaniak",
+      "support": {
+        "channels": [
+          "telephone",
+          "email",
+          "chat"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_hours": "Included support: telephone 5 days a week 09:00-18:00; email 7 days a week 06:00-23:00.",
+        "free_first_response_target": "24h (as soon as possible), stated in the comparison table",
+        "paid_support_tiers": [
+          {
+            "name": "Support Plus",
+            "price": {
+              "amount": 50,
+              "currency": "EUR",
+              "period": "month",
+              "amount_qualifier": "From",
+              "vat_treatment": "ex_vat",
+              "vat_quote": "Prices do not include VAT",
+              "is_promotional": false,
+              "commitment": "initial minimum commitment of 6 months; a 10% discount applies for an annual commitment",
+              "url": "https://www.infomaniak.com/en/support/support-premium/prices",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": null,
+            "first_response_target": "4 hours during business hours",
+            "hours": "telephone 7 days a week 06:00-21:00 (09:00-18:00 at weekends); email 7 days a week 06:00-23:00",
+            "emergency_24_7": false
+          },
+          {
+            "name": "Pro Support",
+            "price": {
+              "amount": 250,
+              "currency": "EUR",
+              "period": "month",
+              "amount_qualifier": "From",
+              "alternative": "or 10% of the monthly value of your products, whichever is higher",
+              "vat_treatment": "ex_vat",
+              "is_promotional": false,
+              "commitment": "initial minimum commitment of 6 months",
+              "url": "https://www.infomaniak.com/en/support/support-premium/prices",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": 10,
+            "first_response_target": "2 hours during business hours",
+            "hours": "telephone 7 days a week 06:00-21:00; email 7 days a week 06:00-23:00",
+            "emergency_24_7": true,
+            "emergency_detail": "24/7 emergency call with immediate response for infrastructure problems requiring Infomaniak intervention; 1 hour of technical operation and 1 hour of consulting per month"
+          },
+          {
+            "name": "Support Enterprise (shown as Corporate Support in the full comparison table)",
+            "price": {
+              "amount": 1000,
+              "currency": "EUR",
+              "period": "month",
+              "amount_qualifier": "From",
+              "alternative": "or 10% of the monthly value of your products, whichever is higher",
+              "vat_treatment": "ex_vat",
+              "is_promotional": false,
+              "commitment": "initial minimum commitment of 6 months",
+              "url": "https://www.infomaniak.com/en/support/support-premium/prices",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": 10,
+            "first_response_target": "1 working hour",
+            "hours": "telephone 7 days a week 06:00-21:00; email 7 days a week 06:00-23:00",
+            "emergency_24_7": true,
+            "emergency_detail": "24/7 emergency call with immediate response; 3 hours of technical operation and 3 hours of consulting per month; account manager and technical account manager"
+          }
+        ],
+        "paid_support_note": "Included support is free and human but not 24/7. Round-the-clock reachability, and then only for infrastructure emergencies requiring Infomaniak's intervention, starts at Pro Support: EUR 250 per month or 10% of monthly product value, whichever is higher, on a six-month minimum commitment.",
+        "support_urls": [
+          "https://www.infomaniak.com/en/support/support-premium/prices"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": null,
+        "committed_percentage": null,
+        "remedy_type": null,
+        "marketing_claim": "Infomaniak advertises 99.99% uptime on hosting product pages and describes a customised SLA contract for its Very High Availability hosting.",
+        "marketing_backed_by_contract": null,
+        "marketing_vs_contract_note": "No published SLA document with an availability percentage, a credit schedule and a claim procedure was located on infomaniak.com on 2026-08-18. The percentage appears on product and pricing pages; the terms that would make it contractual, including any compensation, were not found in a public document. Recorded as unresolved rather than assumed either way.",
+        "sla_url": null,
+        "notes": "Infomaniak's Very High Availability product is described as governed by a bespoke SLA contract negotiated per client, which by definition is not published."
+      },
+      "backups": {
+        "included_in_base_price": null,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "price_note": "Backup terms were not captured from an Infomaniak-operated page on 2026-08-18.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": []
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "Not captured. The premium support terms state that a 6 or 12 month commitment is non-refundable, which is a statement about support subscriptions rather than about hosting.",
+        "url": "https://www.infomaniak.com/en/support/support-premium/prices"
+      },
+      "sources": [
+        {
+          "url": "https://www.infomaniak.com/en/support/support-premium/prices",
+          "read_on": "2026-08-18",
+          "what": "four support levels with EUR prices, percentage alternative, 6-month minimum, response targets, telephone and email hours, 24/7 emergency scope, 'Prices do not include VAT'"
+        },
+        {
+          "url": "https://news.infomaniak.com/en/support-premium-en/",
+          "read_on": "2026-08-18",
+          "what": "premium support tier descriptions, 15-minute emergency response, monthly technical and consulting allowances, 6-month minimum"
+        }
+      ]
+    },
+    {
+      "name": "Exoscale",
+      "support": {
+        "channels": [
+          "ticket",
+          "telephone (paid tiers only)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_hours": "Built-In plan: ticket only, office hours, best-effort response, limited audit trail.",
+        "free_first_response_target": "best-effort, no committed target",
+        "paid_support_tiers": [
+          {
+            "name": "Starter",
+            "price": {
+              "amount": 50.0,
+              "currency": "EUR",
+              "period": "month",
+              "basis": "per organization",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://calculator.exoscale.com/support/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": null,
+            "first_response_target": "2 hours",
+            "hours": "office hours",
+            "channels": [
+              "ticket"
+            ]
+          },
+          {
+            "name": "Pro",
+            "price": {
+              "amount": 500.0,
+              "currency": "EUR",
+              "period": "month",
+              "basis": "per organization",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://calculator.exoscale.com/support/",
+              "captured_on": "2026-08-18"
+            },
+            "percentage_of_spend": null,
+            "first_response_target": "1 hour",
+            "hours": "extended hours",
+            "channels": [
+              "ticket",
+              "telephone"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "price": {
+              "amount": 1500.0,
+              "currency": "EUR",
+              "period": "month",
+              "basis": "account-wide minimum",
+              "percentage_of_spend": 5,
+              "quote": "5% of usage (min 1500.00 EUR/mo)",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://calculator.exoscale.com/support/",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "30 minutes",
+            "hours": "24/7",
+            "channels": [
+              "ticket",
+              "telephone"
+            ],
+            "extras": "dedicated Customer Success Manager"
+          }
+        ],
+        "paid_support_note": "24/7 support requires the Enterprise plan at 5% of usage with a EUR 1,500 per month floor. The free Built-In tier is office hours and best-effort.",
+        "support_urls": [
+          "https://calculator.exoscale.com/support/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.95,
+        "committed_percentage_detail": "Compute Instances 99.95%, SKS 99.95%, Object Storage 99.95%, Block Storage 99.95%, DNS 99.95%, CDN 99.95%, NLB 99.95%, Elastic IP 99.95%, Private Connect 99.95%, Dedicated Inference 99.95%, DBaaS 99.99%. The API and the Portal carry a 99.95% Service Level Objective, explicitly not an SLA.",
+        "measurement_period": "monthly",
+        "remedy_type": "service credits, described as automated and proportional to downtime",
+        "credit_schedule": null,
+        "credit_schedule_note": "The SLA page does not publish credit percentages; it refers the reader to the 'Service Unavailability Credit' section of the Terms and Conditions, which was not captured on 2026-08-18.",
+        "downtime_definition": "A Downtime Period means a period of five or more consecutive minutes of Downtime. Intermittent downtime shorter than five minutes does not count.",
+        "claim_window": null,
+        "cap": null,
+        "exclusions": "Pre-announced scheduled maintenance, force majeure, third-party or client-side infrastructure issues, terms-of-service violations, and unavailability resulting from client software, equipment or network failures.",
+        "marketing_claim": "99.95% to 99.99% depending on service, stated on the SLA page itself rather than only in marketing copy.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.exoscale.com/sla/",
+        "notes": "Exoscale draws an explicit line between SLA-covered services and SLO-only platform components (Portal and API). That distinction is unusually clear and is worth reading before assuming the control plane is covered."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "manual, user-initiated instance snapshots",
+        "retention": "until deleted",
+        "price": {
+          "model": "billed per GiB.hour on the size of the source instance volume, not on used data",
+          "amount": null,
+          "currency": "EUR",
+          "quote": "Instance Snapshots are billed per GiB.hour according to the size of their source Instance volume size: a snapshot of a 100GB Instance's volume counts for 100GB.",
+          "vat_treatment": null,
+          "is_promotional": false,
+          "url": "https://www.exoscale.com/pricing/",
+          "captured_on": "2026-08-18",
+          "note": "The per-GiB.hour rate itself is rendered by a JavaScript price widget on the pricing page and did not resolve to a number in the read, so the rate is null."
+        },
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "coverage_gap": "Snapshots are not available on storage-optimised instances.",
+        "urls": [
+          "https://www.exoscale.com/pricing/"
+        ]
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "No money-back guarantee was found on the pages read on 2026-08-18.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://calculator.exoscale.com/support/",
+          "read_on": "2026-08-18",
+          "what": "four support plans, EUR prices, per-organization basis, 5% of usage with EUR 1,500 minimum for Enterprise, response targets, hours"
+        },
+        {
+          "url": "https://www.exoscale.com/sla/",
+          "read_on": "2026-08-18",
+          "what": "per-service uptime commitments, SLA versus SLO distinction, five-minute downtime definition, exclusions, credit pointer to the Terms and Conditions"
+        },
+        {
+          "url": "https://www.exoscale.com/pricing/",
+          "read_on": "2026-08-18",
+          "what": "instance snapshot billing basis per GiB.hour on source volume size, snapshot unavailability on storage-optimised instances"
+        }
+      ]
+    },
+    {
+      "name": "DigitalOcean",
+      "support": {
+        "channels": [
+          "ticket",
+          "live chat (paid plans)",
+          "Slack and video (Premium)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "All plans have ticket access 24 hours a day, 7 days a week.",
+        "free_first_response_target": "< 24 hours on the free Starter plan",
+        "paid_support_tiers": [
+          {
+            "name": "Developer",
+            "price": {
+              "amount": 24.0,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://docs.digitalocean.com/platform/support-plans/index.html.md",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "< 8 hours",
+            "channels": [
+              "ticket"
+            ],
+            "hours": "24/7 ticket access"
+          },
+          {
+            "name": "Standard",
+            "price": {
+              "amount": 99.0,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://docs.digitalocean.com/platform/support-plans/index.html.md",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "< 2 hours",
+            "channels": [
+              "ticket",
+              "live chat"
+            ],
+            "hours": "24/7"
+          },
+          {
+            "name": "Premium",
+            "price": {
+              "amount": 999.0,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://docs.digitalocean.com/platform/support-plans/index.html.md",
+              "captured_on": "2026-08-18"
+            },
+            "first_response_target": "< 30 minutes",
+            "channels": [
+              "ticket",
+              "live chat",
+              "Slack",
+              "video"
+            ],
+            "hours": "24/7 for tickets and chat; the Slack channel staffed by a Solution Architect is business hours only"
+          }
+        ],
+        "paid_support_note": "Response targets are set by subscription level, not by issue severity: the documentation states response times are based solely on the plan. There is no telephone support at any tier.",
+        "support_urls": [
+          "https://docs.digitalocean.com/platform/support-plans/index.html.md",
+          "https://docs.digitalocean.com/support/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.99,
+        "committed_percentage_detail": "CPU Droplets: 99.99% Monthly Uptime Percentage for each individual Droplet instance. Other products have their own SLAs with different numbers, including GPU Droplets at 99%, DOKS control plane at 99.95% with high availability enabled, App Platform at 99.95% on commercially reasonable efforts, Regional Load Balancers at 99.9% and Global Load Balancers at 99.99%.",
+        "measurement_period": "monthly billing cycle, per Droplet",
+        "remedy_type": "service credits",
+        "credit_schedule": [
+          {
+            "scope": "CPU Droplets",
+            "band": "below 99.99%",
+            "credit_percent": 100,
+            "basis": "100% of the affected Droplet's charges, credited against future Droplet charges"
+          }
+        ],
+        "claim_window": "Email success@digitalocean.com within two billing cycles of the month in which the downtime occurred, with the account email, affected Droplet details and outage dates and times.",
+        "cap": "Credits apply only to the affected Droplet and only against future charges. They are non-refundable and cannot be exchanged for cash. Credits are issued only if the amount exceeds USD 1 and expire 90 days after issue.",
+        "exclusions": "Scheduled or customer-initiated downtime, force majeure and third-party outages, customer equipment or network issues, account misuse, and application code or configuration errors. The Droplet SLA does not cover the DOKS control plane or DBaaS clusters, which have separate SLAs.",
+        "marketing_claim": "99.99% uptime SLA on product pages.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.digitalocean.com/sla/cpu-droplets",
+        "notes": "All Monthly Uptime Percentages and applicable Service Credits are calculated by DigitalOcean in its sole discretion. GPU Droplets carry a much harsher notice rule than CPU Droplets: written notice within 24 hours of the downtime."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "weekly or daily on the basic plans; usage-based plans offer weekly, daily, every 12 hours, every 6 hours and every 4 hours",
+        "retention": null,
+        "retention_note": "Retention periods are not stated on the backups pricing page read.",
+        "price": {
+          "model": "percentage of Droplet cost, or per GiB of restorable backup size",
+          "basic_weekly_percent": 20.0,
+          "basic_daily_percent": 30.0,
+          "usage_based_per_gib_month": [
+            {
+              "frequency": "weekly",
+              "amount": 0.04,
+              "currency": "USD",
+              "unit": "per GiB of restorable backup size, per month",
+              "is_promotional": false,
+              "vat_treatment": null,
+              "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            {
+              "frequency": "daily",
+              "amount": 0.03,
+              "currency": "USD",
+              "unit": "per GiB of restorable backup size, per month",
+              "is_promotional": false,
+              "vat_treatment": null,
+              "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            {
+              "frequency": "every 12 hours",
+              "amount": 0.02,
+              "currency": "USD",
+              "unit": "per GiB of restorable backup size, per month",
+              "is_promotional": false,
+              "vat_treatment": null,
+              "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            {
+              "frequency": "every 6 hours",
+              "amount": 0.015,
+              "currency": "USD",
+              "unit": "per GiB of restorable backup size, per month",
+              "is_promotional": false,
+              "vat_treatment": null,
+              "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            {
+              "frequency": "every 4 hours",
+              "amount": 0.01,
+              "currency": "USD",
+              "unit": "per GiB of restorable backup size, per month",
+              "is_promotional": false,
+              "vat_treatment": null,
+              "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+              "captured_on": "2026-08-18"
+            }
+          ],
+          "vat_treatment": null,
+          "is_promotional": false,
+          "commitment": null,
+          "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+          "captured_on": "2026-08-18"
+        },
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "urls": [
+          "https://docs.digitalocean.com/products/backups/details/pricing/"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "quote": "any and all fees paid to us are non-refundable",
+        "notes": "The Terms of Service state that except as otherwise set out or expressly agreed, all fees paid are non-refundable.",
+        "url": "https://www.digitalocean.com/legal/terms-of-service-agreement"
+      },
+      "sources": [
+        {
+          "url": "https://docs.digitalocean.com/platform/support-plans/index.html.md",
+          "read_on": "2026-08-18",
+          "what": "four support plans with USD prices, response targets, channels, 24/7 ticket access, no per-severity tiers, no phone support"
+        },
+        {
+          "url": "https://www.digitalocean.com/sla/cpu-droplets",
+          "read_on": "2026-08-18",
+          "what": "99.99% per-Droplet commitment, 100% credit band, two-billing-cycle claim window, exclusions"
+        },
+        {
+          "url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+          "read_on": "2026-08-18",
+          "what": "20% weekly and 30% daily basic backup pricing, usage-based per-GiB rates"
+        },
+        {
+          "url": "https://www.digitalocean.com/legal/terms-of-service-agreement",
+          "read_on": "2026-08-18",
+          "what": "fees non-refundable clause"
+        }
+      ]
+    },
+    {
+      "name": "Vultr",
+      "support": {
+        "channels": [
+          "ticket",
+          "email"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": null,
+        "free_support_hours": null,
+        "free_support_note": "The Terms of Service direct customer service and support questions to support@vultr.com and the SLA requires a support ticket to claim credits, which establishes that ticket support exists for all customers. No page read on 2026-08-18 stated support hours or a first-response target, so those fields are null rather than assumed to be 24/7.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [],
+        "paid_support_note": "No published paid support tier with a price was found on the pages read.",
+        "support_urls": [
+          "https://www.vultr.com/legal/tos/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 100.0,
+        "committed_percentage_detail": "A 100% uptime guarantee based on network and host node availability, applied per service item rather than per invoice.",
+        "measurement_period": "per outage event",
+        "remedy_type": "service credits denominated in hours of service",
+        "credit_schedule": [
+          {
+            "band": "less than 9 minutes",
+            "credit": "12 hours of service"
+          },
+          {
+            "band": "10 to 59 minutes",
+            "credit": "24 hours"
+          },
+          {
+            "band": "60 to 119 minutes",
+            "credit": "48 hours"
+          },
+          {
+            "band": "120 to 239 minutes",
+            "credit": "120 hours"
+          },
+          {
+            "band": "240 to 419 minutes",
+            "credit": "240 hours"
+          },
+          {
+            "band": "420+ minutes",
+            "credit": "672 hours (1 month)"
+          }
+        ],
+        "claim_window": "You must open a support ticket about the outage and expressly request a credit. The ticket timestamp marks the start of the outage. Even if Vultr notified you first, you must still open a ticket. A ticket number is mandatory to receive any credit.",
+        "cap": "Guarantees cannot be combined: a hardware outage that also disrupts network activity counts as one event, not two.",
+        "exclusions": "Server-side software, operating systems, improper configuration, denial-of-service attacks against your instance, suspension, paused or halted instances, and any other non-network or non-host-node outage, whether or not caused by Vultr during upgrading or troubleshooting. Scheduled maintenance with at least 24 hours' notice is excluded, as are time-critical patches provided the outage or packet loss does not exceed ten minutes. Cloud GPU instances are excluded from the SLA entirely; Vultr states it will refund GPU downtime on request instead. The uptime guarantee does not apply to Vultr's web property, DNS servers, API or control panel.",
+        "marketing_claim": "100% uptime guarantee.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.vultr.com/legal/sla/",
+        "sla_document_last_updated": "Last Modified: June 27, 2022 (stated on the page)",
+        "notes": "A 100% guarantee sounds absolute and is not. It covers network and host node availability only, it excludes the control plane and API, and the outage clock starts at the timestamp of a ticket that must itself request a credit. The credit is denominated in hours of free service rather than a percentage of the bill, which makes it read generously: nine minutes of downtime returns twelve hours of service."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "automatic backups of the active file system",
+        "retention": null,
+        "price": {
+          "model": "percentage surcharge on the instance price",
+          "amount_percent": 20,
+          "currency": "USD",
+          "quote": "Enabling Automatic Backups on a Vultr instance incurs an additional 20% charge based on the instance's base hourly or monthly price.",
+          "vat_treatment": null,
+          "is_promotional": false,
+          "commitment": null,
+          "url": "https://docs.vultr.com/support/platform/billing/how-much-does-it-cost-to-enable-automatic-backups",
+          "captured_on": "2026-08-18",
+          "proration": "Backup fees are prorated based on the instance's uptime."
+        },
+        "snapshots_billed_as_storage": true,
+        "snapshot_rate": {
+          "amount": 0.05,
+          "currency": "USD",
+          "unit": "per GB per month on the compressed snapshot size",
+          "url": "https://docs.vultr.com/support/platform/billing/does-vultr-charge-for-stored-snapshots",
+          "captured_on": "2026-08-18",
+          "quote": "Vultr charges $0.05 per GB per month for each stored snapshot.",
+          "document_updated": "16 December, 2025",
+          "is_promotional": false,
+          "vat_treatment": null
+        },
+        "restore_cost": null,
+        "coverage_gap": "Backups do not include attached block storage volumes. Because the server is not stopped when the snapshot is taken, booting from a backup is comparable to rebooting after a non-graceful restart.",
+        "urls": [
+          "https://docs.vultr.com/support/platform/billing/how-much-does-it-cost-to-enable-automatic-backups",
+          "https://docs.vultr.com/support/platform/billing/does-vultr-charge-for-stored-snapshots"
+        ],
+        "note": "Both figures were read directly from Vultr's billing documentation on 2026-08-18. Both pages state 'Updated on 16 December, 2025'. The pages render their body in JavaScript, so they were read in a headless browser."
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "quote": "Vultr does not guarantee refunds.",
+        "additional_quote": "SUBSCRIPTION FEES WILL NOT BE REFUNDED, IN WHOLE OR IN PART, SUBJECT TO APPLICABLE LAW. You will not be eligible for a pro-rated refund of any portion of the Subscription fees paid for any unused days of the then-current Subscription Term.",
+        "notes": "Set-up fees and special programming fees are stated as non-refundable. SLA credits expire and are not redeemable for cash.",
+        "url": "https://www.vultr.com/legal/tos/"
+      },
+      "sources": [
+        {
+          "url": "https://www.vultr.com/legal/sla/",
+          "read_on": "2026-08-18",
+          "what": "100% uptime guarantee wording, per-service-item scope, control plane and API exclusion, GPU exclusion, credit table in hours, ticket requirement, last-modified date"
+        },
+        {
+          "url": "https://www.vultr.com/legal/tos/",
+          "read_on": "2026-08-18",
+          "what": "no refund guarantee, cancellation and non-refund clauses, support contact"
+        },
+        {
+          "url": "https://docs.vultr.com/support/platform/billing/how-much-does-it-cost-to-enable-automatic-backups",
+          "read_on": "2026-08-18",
+          "what": "automatic backups at 20% higher base fee"
+        },
+        {
+          "url": "https://docs.vultr.com/support/platform/billing/does-vultr-charge-for-stored-snapshots",
+          "read_on": "2026-08-18",
+          "what": "snapshot storage at USD 0.05 per GB per month on compressed size"
+        },
+        {
+          "url": "https://docs.vultr.com/support/platform/billing/how-much-does-it-cost-to-enable-automatic-backups",
+          "read_on": "2026-08-18",
+          "what": "20% surcharge wording, proration, page updated 16 December 2025"
+        }
+      ]
+    },
+    {
+      "name": "Akamai Connected Cloud (formerly Linode)",
+      "support": {
+        "channels": [
+          "ticket",
+          "email",
+          "telephone"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "partial",
+        "free_support_hours": "The contact-support page lists telephone numbers for the US (855-454-6633), Brazil, China, Japan, India and a global line, and describes the team as available 'day and night, in English'. It does not use the words 24/7 and does not state hours in a table.",
+        "free_first_response_target": null,
+        "free_support_quote": "no tiers, no bots, no handoffs, just highly trained professionals",
+        "paid_support_tiers": [
+          {
+            "name": "Enhanced Compute Support (and Advanced Support / Advocacy at the Akamai account level)",
+            "price": null,
+            "price_note": "Akamai does not publish a price for its paid compute support tiers. They are quoted through an order form or transaction document. Recorded as null.",
+            "first_response_target": null,
+            "hours": null
+          }
+        ],
+        "paid_support_note": "The public contact-support page presents support as untiered and included. Akamai's professional services documentation refers to a paid Enhanced Compute Support tier for Linode products; the PDF that describes it returned an HTML block page when fetched on 2026-08-18, so no tier detail or price is recorded from a primary read.",
+        "support_urls": [
+          "https://www.akamai.com/cloud/support/contact-support"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.99,
+        "committed_percentage_detail": "99.99% monthly uptime for Covered Services in general availability; 99% monthly uptime for covered instances in limited availability. Covered Services are Dedicated Compute, GPU Cloud Compute, High Memory Cloud Compute, Nanode Cloud Compute and Standard Cloud Compute.",
+        "measurement_period": "monthly",
+        "remedy_type": "service credits",
+        "credit_schedule": "Pro-rata credit for the affected monthly billing period. No banded percentage table is published.",
+        "claim_window": "Contact support by ticket within 30 days from the end of the month in which the uptime guarantee was not satisfied, listing the date, time and duration of the downtime. Incomplete submissions may be delayed or denied.",
+        "cap": null,
+        "exclusions": "Scheduled maintenance with 24 hours' notice, factors outside Akamai's control, terms-of-service violations, force majeure, customer-side software or equipment, and third-party technology interactions.",
+        "marketing_claim": "99.99% uptime.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.akamai.com/legal/sla-compute",
+        "notes": "The SLA document read contains no statement that a paid support tier is required for the compute uptime guarantee."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "automatic: one daily, one weekly and one biweekly, plus one manual snapshot slot",
+        "retention": "Four backups are stored in total: daily (under 24 hours old), weekly (under 7 days old), biweekly (8 to 14 days old) and one manual snapshot retained until replaced. Automated backups are not retained beyond 14 days.",
+        "price": {
+          "model": "per-plan monthly fee",
+          "amount": 2,
+          "currency": "USD",
+          "period": "month",
+          "amount_qualifier": "starts at, for a 1 GB Shared CPU instance; other plans are priced separately",
+          "vat_treatment": null,
+          "is_promotional": false,
+          "commitment": null,
+          "url": "https://techdocs.akamai.com/cloud-computing/docs/backup-service",
+          "captured_on": "2026-08-18"
+        },
+        "snapshots_billed_as_storage": false,
+        "snapshots_note": "The Backup Service is priced per plan rather than per GB. The manual snapshot slot is part of that service.",
+        "restore_cost": "No restore charge is stated. Restores can target a new or an existing instance; disks are restored as ext4 with new UUIDs.",
+        "coverage_gap": "Volumes attached to an instance are not backed up. If an instance is deleted, its backups are deleted with it.",
+        "urls": [
+          "https://techdocs.akamai.com/cloud-computing/docs/backup-service"
+        ]
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "No money-back guarantee was found on the pages read on 2026-08-18.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://www.akamai.com/legal/sla-compute",
+          "read_on": "2026-08-18",
+          "what": "99.99% and 99% uptime commitments, covered services, pro-rata credit, 30-day claim window, exclusions"
+        },
+        {
+          "url": "https://www.akamai.com/cloud/support/contact-support",
+          "read_on": "2026-08-18",
+          "what": "support channels, telephone numbers, 'day and night' wording, no tiers stated"
+        },
+        {
+          "url": "https://techdocs.akamai.com/cloud-computing/docs/backup-service",
+          "read_on": "2026-08-18",
+          "what": "backup schedule and slots, 14-day automated retention, USD 2 per month entry price, restore paths, volume exclusion"
+        }
+      ]
+    },
+    {
+      "name": "Amazon Web Services (AWS)",
+      "support": {
+        "channels": [
+          "web",
+          "chat",
+          "email",
+          "telephone (paid plans)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "billing and account only",
+        "free_support_scope": "Basic Support is included for all AWS customers and provides 24/7 access to customer service, documentation, whitepapers and AWS re:Post, plus core Trusted Advisor checks and the AWS Health Dashboard. It does not include technical support cases with an engineer.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Business Support+",
+            "price": {
+              "minimum_amount": 29,
+              "currency": "USD",
+              "period": "month",
+              "basis": "per account",
+              "percentage_tiers": [
+                {
+                  "band": "up to USD 10K of monthly AWS charges",
+                  "percent": 9
+                },
+                {
+                  "band": "USD 10K to USD 80K",
+                  "percent": 7
+                },
+                {
+                  "band": "USD 80K to USD 250K",
+                  "percent": 5
+                },
+                {
+                  "band": "over USD 250K",
+                  "percent": 3
+                }
+              ],
+              "billing_rule": "the greater of the minimum or the calculated percentage",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://aws.amazon.com/premiumsupport/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "business_critical_down": "< 30 minutes",
+              "production_system_down": "< 1 hour",
+              "production_impaired": "< 4 hours",
+              "system_impaired": "< 12 hours",
+              "general_guidance": "< 24 hours"
+            },
+            "hours": "24/7",
+            "channels": [
+              "phone",
+              "web",
+              "chat",
+              "email"
+            ]
+          },
+          {
+            "name": "Enterprise Support",
+            "price": {
+              "minimum_amount": 5000,
+              "currency": "USD",
+              "period": "month",
+              "percentage_tiers": [
+                {
+                  "band": "up to USD 150K",
+                  "percent": 10
+                },
+                {
+                  "band": "USD 150K to USD 500K",
+                  "percent": 7
+                },
+                {
+                  "band": "USD 500K to USD 1M",
+                  "percent": 5
+                },
+                {
+                  "band": "over USD 1M",
+                  "percent": 3
+                }
+              ],
+              "billing_rule": "the greater of the minimum or the calculated percentage",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://aws.amazon.com/premiumsupport/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "business_critical_down": "< 15 minutes",
+              "production_system_down": "< 1 hour",
+              "production_impaired": "< 4 hours",
+              "system_impaired": "< 12 hours",
+              "general_guidance": "< 24 hours"
+            },
+            "hours": "24/7",
+            "channels": [
+              "phone",
+              "web",
+              "chat",
+              "email"
+            ]
+          },
+          {
+            "name": "Unified Operations",
+            "price": {
+              "minimum_amount": 50000,
+              "currency": "USD",
+              "period": "month",
+              "percentage_tiers": [
+                {
+                  "band": "up to USD 1M",
+                  "percent": 10
+                },
+                {
+                  "band": "USD 1M to USD 5M",
+                  "percent": 6
+                },
+                {
+                  "band": "over USD 5M",
+                  "percent": 5
+                }
+              ],
+              "billing_rule": "the greater of the minimum or the calculated percentage",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://aws.amazon.com/premiumsupport/pricing/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "mission_critical_down": "< 5 minutes with an Incident Management Engineer",
+              "production_system_down": "< 1 hour",
+              "production_impaired": "< 4 hours",
+              "system_impaired": "< 12 hours",
+              "general_guidance": "< 24 hours"
+            },
+            "hours": "24/7",
+            "channels": [
+              "phone",
+              "web",
+              "chat",
+              "email"
+            ]
+          }
+        ],
+        "paid_support_note": "On the capture date the AWS Support pricing page listed three paid plans only: Business Support+, Enterprise Support and Unified Operations. The page states 'AWS Support offers three comprehensive plans'. The Developer and Enterprise On-Ramp tiers that AWS previously sold were not present on the page read. Technical support with a response-time commitment therefore starts at USD 29 per month or 9% of AWS charges, whichever is greater. AWS notes it 'will make every reasonable effort' to meet the response targets, which is an effort statement, not a guarantee.",
+        "support_urls": [
+          "https://aws.amazon.com/premiumsupport/pricing/",
+          "https://aws.amazon.com/premiumsupport/plans/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.99,
+        "committed_percentage_detail": "Amazon EC2: at least 99.99% Monthly Uptime Percentage at region level when instances run across two or more Availability Zones, and at least 99.5% at the level of an individual instance. Each AWS service publishes its own SLA.",
+        "measurement_period": "monthly billing cycle",
+        "remedy_type": "service credits",
+        "credit_schedule": [
+          {
+            "scope": "EC2 region-level",
+            "band": "<99.99% and >=99.0%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "EC2 region-level",
+            "band": "<99.0% and >=95.0%",
+            "credit_percent": 30
+          },
+          {
+            "scope": "EC2 region-level",
+            "band": "<95.0%",
+            "credit_percent": 100
+          },
+          {
+            "scope": "EC2 instance-level",
+            "band": "<99.5% and >=99.0%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "EC2 instance-level",
+            "band": "<99.0% and >=95.0%",
+            "credit_percent": 30
+          },
+          {
+            "scope": "EC2 instance-level",
+            "band": "<95.0%",
+            "credit_percent": 100
+          }
+        ],
+        "claim_window": "A support case with specified subject lines, affected dates and regions, resource IDs and request logs, received by the end of the second billing cycle after the incident.",
+        "cap": "Credits are the sole and exclusive remedy.",
+        "marketing_claim": "99.99% for multi-AZ EC2.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://aws.amazon.com/compute/sla/",
+        "notes": "The single-instance commitment is 99.5%, not 99.99%. The 99.99% number requires the customer to run across two or more Availability Zones, which is an architecture obligation on the customer's side and a cost the headline figure does not mention."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "customer-defined, via EBS snapshots or AWS Backup policies",
+        "retention": "customer-defined",
+        "price": null,
+        "price_note": "Backups on AWS are separately metered services. EBS snapshots are billed per GB-month of stored data and AWS Backup adds its own per-GB storage and restore charges. No per-GB rate was captured from an AWS pricing page on 2026-08-18, so no figure is recorded.",
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "restore_cost_note": "AWS Backup meters restore jobs separately for some resource types. Not captured.",
+        "urls": []
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee. AWS offers a free tier and promotional credits instead.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://aws.amazon.com/premiumsupport/pricing/",
+          "read_on": "2026-08-18",
+          "what": "three paid support plans with USD minimums and percentage-of-charges tiers, greater-of rule"
+        },
+        {
+          "url": "https://aws.amazon.com/premiumsupport/plans/",
+          "read_on": "2026-08-18",
+          "what": "response-time targets per case severity, 24/7 coverage, channels, contents of free Basic Support"
+        },
+        {
+          "url": "https://aws.amazon.com/compute/sla/",
+          "read_on": "2026-08-18",
+          "what": "EC2 region-level and instance-level uptime commitments, credit tables, claim deadline, sole-remedy clause"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft Azure",
+      "support": {
+        "channels": [
+          "email",
+          "telephone",
+          "chat"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "billing and account only",
+        "free_support_scope": "Basic is included with all Azure subscriptions and covers billing and subscription management, 24/7 self-help resources, Azure Advisor, Health Status and notifications, and unlimited billing and Microsoft Q&A tickets. It does not include technical support tickets or engineer access.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Developer",
+            "price": {
+              "amount": 29,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://azure.microsoft.com/en-us/support/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "severity_c": "within 8 business hours"
+            },
+            "hours": "business hours",
+            "note": "trial and non-production environments; no Severity A or B coverage"
+          },
+          {
+            "name": "Standard",
+            "price": {
+              "amount": 100,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://azure.microsoft.com/en-us/support/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "severity_a": "1 hour",
+              "severity_b": "4 hours",
+              "severity_c": "8 business hours"
+            },
+            "hours": "24/7",
+            "channels": [
+              "email",
+              "phone",
+              "chat"
+            ]
+          },
+          {
+            "name": "Professional Direct",
+            "price": {
+              "amount": 1000,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://azure.microsoft.com/en-us/support/plans/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "severity_a": "1 hour",
+              "severity_b": "2 hours",
+              "severity_c": "4 business hours"
+            },
+            "hours": "24/7 plus escalation management",
+            "channels": [
+              "email",
+              "phone",
+              "chat"
+            ]
+          },
+          {
+            "name": "Unified Enterprise",
+            "price": null,
+            "price_note": "Custom pricing; the page links to a separate Microsoft Unified plan-details page rather than publishing a figure. Recorded as null.",
+            "response_targets": {
+              "severity_1_azure": "15 minutes",
+              "severity_1_other_products": "1 hour",
+              "severity_a": "1 hour",
+              "severity_b": "2 hours",
+              "severity_c": "4 business hours"
+            },
+            "hours": "24/7"
+          }
+        ],
+        "paid_support_note": "Technical support with a 24/7 Severity A response commitment starts at Standard, USD 100 per month.",
+        "support_urls": [
+          "https://azure.microsoft.com/en-us/support/plans/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.99,
+        "committed_percentage_detail": "Virtual Machines: 99.9% monthly uptime for a single VM using premium SSDs for the OS disk and all data disks; 99.95% for two or more VMs in the same availability set; 99.99% for two or more VMs across two or more Availability Zones.",
+        "measurement_period": "monthly",
+        "remedy_type": "service credits",
+        "credit_schedule": null,
+        "credit_schedule_note": "The credit percentages sit in the consolidated SLA document, which Microsoft distributes only as a downloadable Word file from the licensing document viewer. The index page carries no SLA text. The file was not downloaded and parsed on 2026-08-18, so the credit table is recorded as null rather than reproduced from memory.",
+        "claim_window": null,
+        "cap": null,
+        "marketing_claim": "99.99% VM uptime.",
+        "marketing_backed_by_contract": true,
+        "marketing_vs_contract_note": "The 99.99% figure requires two or more VMs across two or more Availability Zones. A single VM, which is what most small buyers actually run, is 99.9% and only if every disk is a premium SSD.",
+        "sla_url": "https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services",
+        "sla_url_note": "This URL is an index page listing downloadable SLA documents. The current file at the time of reading was named OnlineSvcsConsolidatedSLA(WW)(English)(August_10_2026)CR.docx. Azure is the only provider in this set whose SLA text is not readable as a web page.",
+        "sla_secondary_url": "https://learn.microsoft.com/azure/reliability/reliability-virtual-machines",
+        "notes": "The three VM uptime figures were read from Microsoft Learn documentation, which cites the SLA. They are recorded as documentation-sourced rather than read from the SLA document itself."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "customer-defined via Azure Backup policies",
+        "retention": "customer-defined",
+        "price": null,
+        "price_note": "Azure Backup is a separately metered service with its own per-instance and per-GB storage charges. No figure was captured on 2026-08-18.",
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "urls": [
+          "https://learn.microsoft.com/azure/reliability/reliability-virtual-machines"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee. Azure offers a free account with credits instead.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://azure.microsoft.com/en-us/support/plans/",
+          "read_on": "2026-08-18",
+          "what": "support plans with USD prices, per-severity response targets, coverage hours, contents of free Basic"
+        },
+        {
+          "url": "https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services",
+          "read_on": "2026-08-18",
+          "what": "confirmation that the SLA is published only as a downloadable document, and the filename of the current consolidated SLA"
+        },
+        {
+          "url": "https://learn.microsoft.com/azure/reliability/reliability-virtual-machines",
+          "read_on": "2026-08-18",
+          "what": "VM SLA structure: single VM, availability set, availability zones"
+        },
+        {
+          "url": "https://learn.microsoft.com/azure/sap/workloads/sap-hana-availability-overview",
+          "read_on": "2026-08-18",
+          "what": "explicit 99.9% / 99.95% / 99.99% VM uptime figures for the three configurations"
+        }
+      ]
+    },
+    {
+      "name": "Google Cloud",
+      "support": {
+        "channels": [
+          "console cases",
+          "live chat",
+          "telephone (Enhanced and above)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": "billing and account only",
+        "free_support_scope": "Basic is included at no cost with all accounts and covers documentation, community forums, billing support and Active Assist recommendations. It does not include technical support cases and has no response-time targets.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Standard",
+            "price": {
+              "minimum_amount": 29.0,
+              "currency": "USD",
+              "period": "month",
+              "billing_rule": "at least the USD 29.00 minimum charge or the calculated percentage of eligible Google Cloud charges, whichever is higher",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://cloud.google.com/support",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "p1": "4 business hours",
+              "p2": "8 business hours",
+              "p3": "8 business hours",
+              "p4": "8 business hours"
+            },
+            "hours": "business hours",
+            "channels": [
+              "email",
+              "console cases"
+            ]
+          },
+          {
+            "name": "Enhanced",
+            "price": {
+              "minimum_amount": 100.0,
+              "currency": "USD",
+              "period": "month",
+              "percentage_tiers": [
+                {
+                  "band": "first USD 0 to 10,000 of monthly Google Cloud charges",
+                  "percent": 10
+                },
+                {
+                  "band": "USD 10,000 to 80,000",
+                  "percent": 7
+                },
+                {
+                  "band": "USD 80,000 to 250,000",
+                  "percent": 5
+                },
+                {
+                  "band": "over USD 250,000",
+                  "percent": 3
+                }
+              ],
+              "billing_rule": "the greater of the USD 100.00 minimum or the tiered variable fee, calculated on gross list prices before discounts and credits",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://docs.cloud.google.com/support/docs/enhanced",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "p1": "first meaningful response within 1 hour"
+            },
+            "response_targets_note": "The Enhanced documentation page states the P1 target explicitly; P2 to P4 targets were not stated on the page read.",
+            "hours": "24 hours a day, 7 days a week for cases of certain priority and language",
+            "channels": [
+              "console cases",
+              "live chat",
+              "telephone"
+            ]
+          },
+          {
+            "name": "Premium",
+            "price": {
+              "minimum_amount": 15000.0,
+              "currency": "USD",
+              "period": "month",
+              "percentage_tiers": [
+                {
+                  "band": "USD 0 to 150K",
+                  "percent": 10
+                },
+                {
+                  "band": "USD 150K to 500K",
+                  "percent": 7
+                },
+                {
+                  "band": "USD 500K to 1M",
+                  "percent": 5
+                },
+                {
+                  "band": "over USD 1M",
+                  "percent": 3
+                }
+              ],
+              "billing_rule": "the greater of the USD 15,000.00 minimum or the tiered calculation; a 12-month minimum subscription applies",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": "12 months",
+              "url": "https://docs.cloud.google.com/support/docs/premium",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "p1": "15 minutes",
+              "p0_mission_critical_addon": "5 minutes"
+            },
+            "hours": "24/7",
+            "channels": [
+              "console cases",
+              "live chat",
+              "telephone"
+            ],
+            "extras": "Technical Account Manager"
+          }
+        ],
+        "paid_support_note": "Two figures circulate for the Premium minimum: the Customer Care overview page shows USD 12,500 per month, while the Premium Support documentation states a minimum charge of USD 15,000.00. Both were read on 2026-08-18 and both are recorded, with the documentation figure treated as the more specific. Support fees are calculated on list prices before any discounts or credits, so a negotiated discount does not reduce the support bill.",
+        "support_urls": [
+          "https://cloud.google.com/support",
+          "https://docs.cloud.google.com/support/docs/enhanced",
+          "https://docs.cloud.google.com/support/docs/premium"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.99,
+        "committed_percentage_detail": "Compute Engine, Premium Tier, cloud regions excluding Mexico and Stockholm: instances in multiple zones >= 99.99%, a single instance of the memory-optimized family >= 99.95%, a single instance of all other families >= 99.9%, load balancing >= 99.99%. Mexico and Stockholm: multiple zones >= 99.95%, single instance >= 99.9%, load balancing >= 99.95%. Standard Tier networking: multiple zones >= 99.9%, load balancing >= 99.9%.",
+        "measurement_period": "calendar month, per project per region, or per instance for a single instance",
+        "remedy_type": "financial credits against future monthly bills",
+        "credit_schedule": [
+          {
+            "scope": "instances in multiple zones and load balancing, regions excluding Mexico and Stockholm",
+            "band": "99.00% to <99.99% (Premium Tier) or 99.00% to <99.9% (Standard Tier)",
+            "credit_percent": 10
+          },
+          {
+            "scope": "instances in multiple zones and load balancing",
+            "band": "95.00% to <99.00%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "instances in multiple zones and load balancing",
+            "band": "<95.00%",
+            "credit_percent": 100
+          },
+          {
+            "scope": "single instance of memory-optimized family",
+            "band": "95.00% to <99.95%",
+            "credit_percent": 10
+          },
+          {
+            "scope": "single instance of memory-optimized family",
+            "band": "90.00% to <95.00%",
+            "credit_percent": 25
+          },
+          {
+            "scope": "single instance of memory-optimized family",
+            "band": "<90.00%",
+            "credit_percent": 100
+          }
+        ],
+        "downtime_definition": "For VM instances, loss of external connectivity or persistent disk access. A Downtime Period is one or more consecutive minutes of downtime; partial minutes and intermittent downtime under one minute do not count.",
+        "claim_window": null,
+        "claim_window_note": "The claim procedure is in the SLA section that was not fully captured; the credit tables and definitions were. Recorded as null.",
+        "cap": "The SLA states the customer's sole and exclusive remedy for any failure by Google to meet the SLO.",
+        "marketing_claim": "99.99% Compute Engine uptime.",
+        "marketing_backed_by_contract": true,
+        "marketing_vs_contract_note": "As with AWS, the 99.99% number is for instances spread across multiple zones. A single instance of a standard family is 99.9%, and Google labels the whole thing an SLO within an SLA document.",
+        "sla_url": "https://cloud.google.com/compute/sla",
+        "notes": "Google's Compute Engine SLA varies by network service tier and by region, which is unusual: the same instance carries a different commitment on Standard Tier networking and in the Mexico and Stockholm regions."
+      },
+      "backups": {
+        "included_in_base_price": false,
+        "frequency": "customer-defined via snapshot schedules or Backup and DR Service",
+        "retention": "customer-defined",
+        "price": null,
+        "price_note": "Persistent disk snapshots are billed per GB-month of stored data and Backup and DR Service is metered separately. No per-GB rate was captured on 2026-08-18.",
+        "snapshots_billed_as_storage": true,
+        "restore_cost": null,
+        "urls": []
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee. Google Cloud offers a free trial credit instead, and refunds unused committed funds rather than issuing refunds of consumed spend.",
+        "url": null
+      },
+      "sources": [
+        {
+          "url": "https://cloud.google.com/support",
+          "read_on": "2026-08-18",
+          "what": "Customer Care tiers, Basic contents, Standard USD 29 per month, Enhanced and Premium overview figures, response targets per priority"
+        },
+        {
+          "url": "https://docs.cloud.google.com/support/docs/enhanced",
+          "read_on": "2026-08-18",
+          "what": "Enhanced minimum USD 100.00 per month, four percentage bands, 24/7 statement, channels, languages"
+        },
+        {
+          "url": "https://docs.cloud.google.com/support/docs/premium",
+          "read_on": "2026-08-18",
+          "what": "Premium minimum USD 15,000.00 per month, four percentage bands, 12-month minimum, 15-minute P1 target"
+        },
+        {
+          "url": "https://cloud.google.com/compute/sla",
+          "read_on": "2026-08-18",
+          "what": "Compute Engine uptime commitments by network tier and region, financial credit tables, downtime definition, sole-remedy statement"
+        }
+      ]
+    },
+    {
+      "name": "WP Engine",
+      "support": {
+        "channels": [
+          "live chat",
+          "telephone (Professional plans and above)",
+          "tickets (Premium Plus plans can open their own)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "24/7, described as 24 hours a day, 7 days a week including holidays and weekends. Live chat is on all plans. Telephone support is not available on the Startup plan.",
+        "free_first_response_target": null,
+        "support_by_plan": [
+          {
+            "plan": "Startup",
+            "price_context": "Starting at USD 30 per month",
+            "support": "Chat only"
+          },
+          {
+            "plan": "Professional",
+            "price_context": "Starting at USD 55 per month",
+            "support": "Chat and phone"
+          },
+          {
+            "plan": "Growth",
+            "price_context": "Starting at USD 109 per month",
+            "support": "Chat and phone"
+          },
+          {
+            "plan": "Scale",
+            "price_context": "Starting at USD 276 per month",
+            "support": "Chat and phone"
+          },
+          {
+            "plan": "Core Hosting",
+            "price_context": "Starting at USD 400 per month",
+            "support": "Chat and phone"
+          }
+        ],
+        "plan_price_note": "The plan prices are the asterisked figures on the plans page and reflect annual billing. They are recorded here only as context for which support channels a plan buys, not as a plan-price capture.",
+        "paid_support_tiers": [],
+        "paid_support_note": "Support is bundled into the plan rather than sold separately. The paywall is on the channel, not the clock: telephone requires Professional or above.",
+        "support_urls": [
+          "https://wpengine.com/plans/",
+          "https://wpengine.com/faq/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.95,
+        "committed_percentage_detail": "Standard Service Availability is 99.95%. Services described as subject to the Enhanced SLA carry 99.99%. The plans page attaches the 99.99% SLA to Core Hosting, described as isolated premium servers; the shared-infrastructure plans quote no percentage.",
+        "measurement_period": "monthly: (total minutes the services are available x 100) / (total minutes in the month minus Excused Downtime)",
+        "remedy_type": "service credits",
+        "credit_schedule": [
+          {
+            "scope": "Standard SLA",
+            "rule": "5% of the applicable monthly Fees for each full hour of downtime in excess of the Service Availability targets"
+          },
+          {
+            "scope": "Enhanced SLA",
+            "rule": "3% of the applicable monthly Fees for each half hour of downtime in excess of those targets"
+          }
+        ],
+        "claim_window": "Contact Support within 30 days of the event giving rise to the credit.",
+        "cap": "Credits shall not exceed 100% of the applicable monthly Fees. Credits are based on WP Engine's own monitoring, cannot be carried over or aggregated, are forfeited at termination and are not paid as refunds.",
+        "exclusions": "Excused Downtime covers scheduled maintenance, emergency maintenance, beta services, force majeure, and actions or omissions of the customer or its users, including breach of the acceptable use policy or any use or configuration that exceeds WP Engine's recommendations or advertised limits.",
+        "marketing_claim": "99.99% SLA on Core Hosting and eCommerce plans; the FAQ states 99.95% as the general figure.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://wpengine.com/legal/sla/",
+        "sla_document_last_updated": "May 12, 2021 (stated on the page)",
+        "notes": "The SLA document is five years old at the capture date while the plans page markets a 99.99% Enhanced SLA tier. WP Engine reserves the right to update the SLA at its sole discretion."
+      },
+      "backups": {
+        "included_in_base_price": true,
+        "frequency": "daily backup checkpoints, created automatically",
+        "retention": "30 days of backups",
+        "price": {
+          "amount": 0,
+          "currency": "USD",
+          "note": "included in the plan; no separate charge stated",
+          "is_promotional": false,
+          "url": "https://wpengine.com/support/restore/",
+          "captured_on": "2026-08-18"
+        },
+        "snapshots_billed_as_storage": false,
+        "restore_cost": "No restore charge is stated.",
+        "coverage": "Backups exist for all environments by default: production, staging and development. They are stored offsite on Amazon S3 in the same region as the site and encrypted in transit and at rest.",
+        "urls": [
+          "https://wpengine.com/support/restore/"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee was found. The Terms of Service state that fees are not refundable except as expressly stated, with one exception: if WP Engine terminates for convenience it provides a prorated refund of unused fees paid annually in advance. The FAQ states that account cancellations require 30 days' notice via the cancellation form. A reader who has seen a 60-day guarantee advertised elsewhere should note that no such term appears on the pages read on 2026-08-18.",
+        "url": "https://wpengine.com/legal/terms-of-service/"
+      },
+      "sources": [
+        {
+          "url": "https://wpengine.com/legal/sla/",
+          "read_on": "2026-08-18",
+          "what": "99.95% standard and 99.99% Enhanced availability, credit rules, 30-day claim window, 100% cap, Excused Downtime definition, last-updated date"
+        },
+        {
+          "url": "https://wpengine.com/plans/",
+          "read_on": "2026-08-18",
+          "what": "support channel by plan, 24/7 statement, 99.99% SLA attached to Core Hosting, plan price context"
+        },
+        {
+          "url": "https://wpengine.com/faq/",
+          "read_on": "2026-08-18",
+          "what": "99.95% uptime answer, 24-hour support team reference, 30-day cancellation notice requirement"
+        },
+        {
+          "url": "https://wpengine.com/legal/terms-of-service/",
+          "read_on": "2026-08-18",
+          "what": "fees not refundable clause, prorated refund only on termination for convenience, support described as standard means"
+        },
+        {
+          "url": "https://wpengine.com/support/restore/",
+          "read_on": "2026-08-18",
+          "what": "daily automatic backup checkpoints, 30 days of backups, all environments, offsite S3 storage"
+        }
+      ]
+    },
+    {
+      "name": "Kinsta",
+      "support": {
+        "channels": [
+          "live chat"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "Chat support 24/7/365, available in 8 languages, quoted with a response time of under 2 minutes and a 98% satisfaction rate.",
+        "free_first_response_target": "< 2 min (marketing figure on the product page, not a contractual target)",
+        "paid_support_tiers": [],
+        "paid_support_note": "Support is stated as 'Included in all plan levels'. No paid support tier was found. There is no telephone support.",
+        "support_urls": [
+          "https://kinsta.com/wordpress-hosting/"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.9,
+        "committed_percentage_detail": "The Uptime Guarantee is 99.9% unless a higher percentage is specified in the customer's Order Form. Custom and agency plans are marketed with up to 99.99%.",
+        "measurement_period": "monthly billing period, based on Kinsta's own monitoring, which checks sites every three minutes",
+        "remedy_type": "SLA credits",
+        "credit_schedule": [
+          {
+            "band": "43 to 59 minutes of downtime at 99.9%, or 4 to 59 minutes at 99.99%",
+            "credit": "5% of Monthly Subscription Value scaled by impacted apps over live apps"
+          },
+          {
+            "band": "60 to 119 minutes",
+            "credit": "10%"
+          },
+          {
+            "band": "120 to 179 minutes",
+            "credit": "15%"
+          },
+          {
+            "band": "180 to 239 minutes",
+            "credit": "20%"
+          }
+        ],
+        "downtime_threshold": "At a 99.9% guarantee, downtime must exceed 43 minutes in the month before any credit is due. At 99.99%, it must exceed 4 minutes.",
+        "claim_window": "Written request within 30 days of the downtime, submitted via the platform's chat system, or the right to a credit is forfeited.",
+        "cap": "Credits cannot exceed the Monthly Subscription Value for the month in which Kinsta missed the guarantee. Credits have no cash value, are non-refundable, expire on termination and are the sole and exclusive remedy.",
+        "exclusions": "Maintenance windows, emergencies, force majeure and customer-side misconfiguration. The daily maintenance window is 02:00 to 05:00 local time in the data centre's time zone, during which monitoring notifications are not sent.",
+        "marketing_claim": "99.9% uptime guarantee, up to 99.99% on custom plans.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://kinsta.com/legal/service-level-agreement/",
+        "sla_document_last_updated": "September 25, 2025 (stated on the page)"
+      },
+      "backups": {
+        "included_in_base_price": true,
+        "frequency": "automatic daily backups covering files, database, redirects, Nginx configuration and MyKinsta settings",
+        "retention": "14 days on entry tiers (WP 2, 5, 10), 30 days on higher tiers (WP 20, 40, WP 60 to 150 and agency plans). Backups of a deleted site are kept for 14 days regardless of plan. Manual backups: up to 5 stored, retained at least 14 days. Downloadable backups can be generated once per week and remain available for 48 hours.",
+        "price": {
+          "amount": 0,
+          "currency": "USD",
+          "note": "daily backups are included; higher frequencies are paid add-ons",
+          "is_promotional": false,
+          "url": "https://kinsta.com/docs/wordpress-hosting/backups/",
+          "captured_on": "2026-08-18"
+        },
+        "paid_addons": [
+          {
+            "name": "6-hour backups",
+            "amount": 20,
+            "currency": "USD",
+            "period": "month",
+            "basis": "per site",
+            "vat_treatment": null,
+            "is_promotional": false,
+            "url": "https://kinsta.com/docs/wordpress-hosting/backups/",
+            "captured_on": "2026-08-18"
+          },
+          {
+            "name": "Hourly backups",
+            "amount": 100,
+            "currency": "USD",
+            "period": "month",
+            "basis": "per site",
+            "vat_treatment": null,
+            "is_promotional": false,
+            "url": "https://kinsta.com/docs/wordpress-hosting/backups/",
+            "captured_on": "2026-08-18"
+          },
+          {
+            "name": "External backups to Google Cloud Storage or Amazon S3",
+            "amount": 2,
+            "currency": "USD",
+            "period": "month",
+            "basis": "per site backup, plus USD 1 per GB per month for bandwidth; the destination storage is billed by Google or AWS separately",
+            "vat_treatment": null,
+            "is_promotional": false,
+            "url": "https://kinsta.com/docs/wordpress-hosting/backups/",
+            "captured_on": "2026-08-18"
+          }
+        ],
+        "snapshots_billed_as_storage": false,
+        "restore_cost": "No restore fee is stated.",
+        "urls": [
+          "https://kinsta.com/docs/wordpress-hosting/backups/"
+        ]
+      },
+      "money_back": {
+        "offered": true,
+        "window_days": 30,
+        "eligibility": "First-time customers only. Cancel within 30 days after activating the plan and Kinsta refunds the fees of the managed WordPress hosting plan.",
+        "exclusions": "Dedicated server fees, one-time fees such as an infrastructure upgrade for a large traffic event, and overages are excluded. Any fees incurred during the first 30 days are deducted from the refund, and if they exceed the refund you owe the remainder.",
+        "interaction_note": "On plans with a free first month the guarantee starts when the free period ends. Upgrading or downgrading within the window does not restart the 30 days. The product page states the 30-day money-back guarantee applies to all plans except those taking the first-month-free offer.",
+        "url": "https://kinsta.com/docs/service-information/money-back-guarantee/"
+      },
+      "sources": [
+        {
+          "url": "https://kinsta.com/legal/service-level-agreement/",
+          "read_on": "2026-08-18",
+          "what": "99.9% Uptime Guarantee, downtime thresholds, credit bands, 30-day claim window via chat, cap, sole remedy, last-updated date"
+        },
+        {
+          "url": "https://kinsta.com/wordpress-hosting/",
+          "read_on": "2026-08-18",
+          "what": "24/7/365 chat support in 8 languages included in all plan levels, under 2 minute response claim, 14-day backup retention, 30-day money-back guarantee"
+        },
+        {
+          "url": "https://kinsta.com/docs/wordpress-hosting/backups/",
+          "read_on": "2026-08-18",
+          "what": "daily automatic backups, retention by tier, manual and downloadable backup limits, add-on prices"
+        },
+        {
+          "url": "https://kinsta.com/docs/service-information/money-back-guarantee/",
+          "read_on": "2026-08-18",
+          "what": "30-day window, first-time-customer eligibility, excluded fees, free-month interaction"
+        }
+      ]
+    },
+    {
+      "name": "SiteGround",
+      "support": {
+        "channels": [
+          "chat",
+          "ticket",
+          "telephone"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "The web hosting page carries 'Live chat 24/7' and '24/7 expert human support', and lists a telephone number (+44 800 862 0280 on the EU site). The cloud hosting page lists '24/7 Priority Support'.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [],
+        "paid_support_note": "No general paid support tier was captured. The refund policy does refer to 'Paid Support' as a category of service that is excluded from refunds, which indicates chargeable support services exist; no price was captured.",
+        "support_urls": [
+          "https://eu.siteground.com/web-hosting.htm",
+          "https://eu.siteground.com/cloud-hosting.htm",
+          "https://eu.siteground.com/viewtos/siteground_terms_of_service?scid=3&lang=en"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.9,
+        "committed_percentage_detail": "Section 5 of the Terms of Service, headed Hosting Service Uptime Guarantee: 'We guarantee a hosting Service uptime of 99.9% on a monthly basis.'",
+        "measurement_period": "monthly",
+        "remedy_type": "compensation usable only to extend the service term",
+        "credit_schedule": [
+          {
+            "band": "below 99.9% in a month",
+            "credit_percent": 5,
+            "basis": "5% of hosting Service fees paid for the respective month, requested via the Client Area"
+          }
+        ],
+        "remedy_quote": "Any such compensation may be used solely for extension of the term of the respective hosting Service.",
+        "claim_window": null,
+        "cap": null,
+        "sole_remedy": "To the maximum extent applicable under national law and without affecting your rights as a consumer, this Hosting Service Uptime Guarantee is your sole and exclusive remedy for downtime.",
+        "exclusions": "Scheduled maintenance; emergency maintenance and infrastructure or software failure remedied under 1 hour; downtime caused by DNS or IP address changes you were notified of but did not configure; DDoS and hacker attacks; downtime caused by your actions, configuration or third-party applications; downtime caused when you reach the maximum resource allocation for your plan; downtime caused by your violation of the terms. Email captured by the spam filtering system is also outside the guarantee.",
+        "marketing_claim": "The cloud hosting page states 'Premium tier network. Global CDN. 99.99% uptime.' The web hosting pages use 99.9%.",
+        "marketing_backed_by_contract": "partially",
+        "marketing_vs_contract_note": "The contractual guarantee in Section 5 of the Terms of Service is a single figure, 99.9%, for hosting services, with a 5% compensation usable only to extend the term. The 99.99% figure on the cloud hosting page has no matching clause in the Terms of Service read on 2026-08-18. Both pages were read on the same day.",
+        "sla_url": "https://eu.siteground.com/viewtos/siteground_terms_of_service?scid=3&lang=en",
+        "notes": "The remedy is unusually weak even by the standards of this set: 5% of one month's fee, and it cannot be taken as a credit against anything except an extension of the same service."
+      },
+      "backups": {
+        "included_in_base_price": true,
+        "frequency": "Daily backups. The cloud hosting page advertises 'Geo-Distributed Daily Backups'.",
+        "retention": "restore points up to 30 days",
+        "price": null,
+        "price_note": "SiteGround publishes separate Premium Backup Service Terms, which indicates a paid backup product exists alongside the included daily backups. No price for it was captured on 2026-08-18.",
+        "snapshots_billed_as_storage": false,
+        "restore_cost": null,
+        "urls": [
+          "https://eu.siteground.com/terms.htm"
+        ]
+      },
+      "money_back": {
+        "offered": true,
+        "window_days": 30,
+        "detail": "30 days from activation for Shared Hosting accounts and services; 14 days for Cloud Hosting accounts. For renewals of refundable services, a full refund if cancellation is requested within 30 days of the renewal payment and the renewal term has not started; if it has started, the renewal fees less the fees due for the first month.",
+        "exclusions": "Domain name fees are not refundable, even if waived initially as part of a promotion. Paid Support and Third Party Services are not covered. Termination requests must be posted through the Client Area.",
+        "sole_remedy_note": "SiteGround frames the money-back guarantee as the sole and exclusive remedy should its services fail to meet the expectations set out in the terms, to the maximum extent applicable under national law and without affecting consumer rights.",
+        "url": "https://www.siteground.com/kb/do_i_get_a_refund"
+      },
+      "sources": [
+        {
+          "url": "https://eu.siteground.com/viewtos/siteground_terms_of_service?scid=3&lang=en",
+          "read_on": "2026-08-18",
+          "what": "Section 5 Hosting Service Uptime Guarantee: 99.9%, 5% compensation usable only for term extension, sole-remedy wording, exclusion list"
+        },
+        {
+          "url": "https://www.siteground.com/kb/do_i_get_a_refund",
+          "read_on": "2026-08-18",
+          "what": "30-day shared and 14-day cloud refund windows, renewal rules, domain and paid-support exclusions, Client Area process"
+        },
+        {
+          "url": "https://eu.siteground.com/terms.htm",
+          "read_on": "2026-08-18",
+          "what": "legal document index, including the existence of separate Premium Backup Service Terms"
+        },
+        {
+          "url": "https://eu.siteground.com/web-hosting.htm",
+          "read_on": "2026-08-18",
+          "what": "Live chat 24/7, 24/7 expert human support, telephone number, 'Risk-Free: 30 days money back guarantee'"
+        },
+        {
+          "url": "https://eu.siteground.com/cloud-hosting.htm",
+          "read_on": "2026-08-18",
+          "what": "'99.99% uptime' marketing claim, 24/7 Priority Support, geo-distributed daily backups"
+        }
+      ]
+    },
+    {
+      "name": "Hostinger",
+      "support": {
+        "channels": [
+          "chat",
+          "email"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": true,
+        "free_support_hours": "Hostinger markets 24/7 support on its hosting pages. The Hosting Agreement itself states no support hours or availability commitment.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [],
+        "paid_support_note": "No paid support tier was captured. No telephone support was found.",
+        "support_urls": [
+          "https://www.hostinger.com/legal/hosting-agreement"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "committed_percentage": 99.9,
+        "committed_percentage_detail": "Section 7 of the Hosting Agreement, Service Uptime Guarantee: 99.9% monthly availability.",
+        "measurement_period": "monthly",
+        "remedy_type": "service credit",
+        "credit_schedule": [
+          {
+            "band": "below 99.9% in a month",
+            "credit_percent": 5,
+            "basis": "5% of your monthly hosting fee for that month, on request"
+          }
+        ],
+        "determination": "Failure is determined 'as solely determined by us'.",
+        "claim_window": "Claims must be filed within 30 days of the interruption. No specific channel is named.",
+        "cap": null,
+        "exclusions": "Scheduled maintenance; custom scripting, coding or third-party application installs; FTP or email access issues that do not affect the site's appearance; events beyond Hostinger's control including DDoS attacks and IP blacklists; certain programming environment reliability issues; customer ISP interference; connectivity path interference; browser caching or DNS issues; customer fault or negligence; third-party interference; violation of the terms.",
+        "marketing_claim": "99.9% uptime guarantee with 24/7 monitoring.",
+        "marketing_backed_by_contract": true,
+        "sla_url": "https://www.hostinger.com/legal/hosting-agreement",
+        "notes": "A full month of total outage returns 5% of one month's fee, the customer must ask for it, and Hostinger decides in its sole discretion whether the guarantee was missed."
+      },
+      "backups": {
+        "included_in_base_price": true,
+        "frequency": "weekly, overwriting previous backups. Daily backups on plans that include them.",
+        "retention": "only two weeks of backups are stored. Where daily backups are included, the last week of daily backups is stored in addition.",
+        "price": {
+          "amount": 0,
+          "currency": "USD",
+          "note": "provided as a courtesy on shared, VPS and reseller accounts and may be modified at any time at Hostinger's sole discretion",
+          "is_promotional": false,
+          "url": "https://www.hostinger.com/legal/hosting-agreement",
+          "captured_on": "2026-08-18"
+        },
+        "snapshots_billed_as_storage": false,
+        "restore_cost": null,
+        "coverage_gap": "Any cPanel shared hosting account using more than 30 GB of disk space is removed from the offsite weekly backup.",
+        "disclaimer": "Hostinger is not responsible for files and/or data residing on your account.",
+        "urls": [
+          "https://www.hostinger.com/legal/hosting-agreement"
+        ]
+      },
+      "money_back": {
+        "offered": true,
+        "window_days": 30,
+        "quote": "canceled within 30 days of the date of the transaction",
+        "detail": "Refundable products listed include hosting plans (excluding the Free Trial first payment and VPS as listed separately), SSL certificates, Daily Backups, CloudFlare, Hostinger Email, Titan Email, Priority Support, Minecraft VPS, KVM VPS, WordPress add-ons and Dark Web Monitor.",
+        "exclusions": "Products purchased using cryptocurrencies, tokens or digital assets will not be refunded. Non-refundable items include domain renewals, successful transfers, Privacy Protection, Google Workspace Email, SEO tools, VPS License and Website Cleanup. New domain registrations are refundable only within 96 hours and with a 24-hour cooldown since any prior domain refund; many ccTLDs are excluded entirely. A VPS plan is refundable only if more than 180 days have passed since the last VPS refund. Payments are not refunded where the terms of service were violated, and Hostinger may unilaterally decline refunds showing signs of abuse such as repetitive purchase and refund cycles.",
+        "url": "https://www.hostinger.com/legal/refund-policy"
+      },
+      "sources": [
+        {
+          "url": "https://www.hostinger.com/legal/hosting-agreement",
+          "read_on": "2026-08-18",
+          "what": "Section 7 uptime guarantee 99.9% and 5% credit, sole-determination wording, eleven exclusions, 30-day claim window, Section 4 backup frequency, two-week retention, 30 GB cutoff, responsibility disclaimer"
+        },
+        {
+          "url": "https://www.hostinger.com/legal/refund-policy",
+          "read_on": "2026-08-18",
+          "what": "30-day refund window, covered products, crypto and domain exclusions, VPS 180-day cooldown"
+        },
+        {
+          "url": "https://www.hostinger.com/legal/refund-policy",
+          "read_on": "2026-08-18",
+          "what": "30-day window, refundable product list, crypto exclusion, domain 96-hour rule, VPS 180-day cooldown, abuse clause"
+        }
+      ]
+    },
+    {
+      "name": "Vercel",
+      "support": {
+        "channels": [
+          "community forum",
+          "support tickets via /help",
+          "Slack for some Enterprise customers (not SLA-covered)"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_scope": "Hobby: only billing or login and registration issues. Vercel states it only commits to respond to customers with an Enterprise subscription. Pro: ticket access with no committed SLA. Tickets are processed in the order received, behind every request from customers on the same plan.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Enterprise Standard support",
+            "price": null,
+            "price_note": "Not published. The support tier is set on the Enterprise order form and negotiated. Recorded as null.",
+            "response_targets": {
+              "sev_1": "< 4 business hours",
+              "sev_2": "< 8 business hours",
+              "sev_3": "< 16 business hours",
+              "sev_4": "< 16 business hours"
+            },
+            "hours": "business hours, defined as 08:00 to 18:00 Monday to Friday for UTC+0 through UTC-8, excluding Vercel holidays"
+          },
+          {
+            "name": "Enterprise Premium support",
+            "price": null,
+            "price_note": "Not published; set on the order form.",
+            "response_targets": {
+              "sev_1": "< 2 hours, 24/7",
+              "sev_2": "< 4 business hours",
+              "sev_3": "< 6 business hours",
+              "sev_4": "< 8 business hours"
+            },
+            "hours": "24/7 for Severity 1 only; other severities are business hours"
+          }
+        ],
+        "paid_support_note": "Any committed response time requires an Enterprise subscription. Pro at USD 20 per month buys ticket access with no commitment. Support given through Slack or the forums is expressly not subject to the SLA.",
+        "support_urls": [
+          "https://vercel.com/legal/support-terms"
+        ],
+        "support_terms_last_updated": "June 12, 2026 (stated on the page)"
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "applies_to": "Enterprise customers only",
+        "committed_percentage": 99.99,
+        "measurement_period": "monthly: Uptime Percentage = Uptime / (total minutes in month minus Excused Downtime) x 100",
+        "remedy_type": "credits against future use of the services",
+        "credit_schedule": [
+          {
+            "band": "99.1% to 99.98%",
+            "credit_percent": 10
+          },
+          {
+            "band": "95% to 99%",
+            "credit_percent": 25
+          },
+          {
+            "band": "below 95%",
+            "credit_percent": 50
+          }
+        ],
+        "claim_window": "Written notice within 30 days from becoming eligible, with log files evidencing the unscheduled downtime and its dates and times. Non-compliance forfeits the credit.",
+        "cap": "Aggregate credits in a single billing month cannot exceed 50% of the amount due for that month. Credits are issued within 60 days of the request and are the sole and exclusive remedy.",
+        "exclusions": "Excused Downtime covers third-party vendor failure, the internet in general, factors outside Vercel's reasonable control, the customer's own or third-party software or hardware, and force majeure. Components that do not serve customer content, the API and CLI being the stated examples, are outside the SLA scope.",
+        "marketing_claim": "The pricing page describes the Enterprise plan as including 'Critical security, performance, observability, platform SLAs, and support' and attaches no SLA to Hobby or Pro. The SLA document itself is titled 'Enterprise Service Level Agreement'.",
+        "marketing_backed_by_contract": true,
+        "marketing_vs_contract_note": "The 99.99% figure is real but Enterprise-only. Hobby and Pro have no uptime commitment of any kind, and the pricing page confirms platform SLAs sit only in the Enterprise column.",
+        "sla_url": "https://vercel.com/legal/sla",
+        "sla_document_last_updated": "July 18, 2024 (stated on the page)",
+        "dispute_resolution": "If a dispute arises, Vercel makes the determination in good faith based on its own system logs and monitoring reports."
+      },
+      "backups": {
+        "included_in_base_price": null,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "not_applicable_note": "Vercel is a deployment platform rather than a server host. It has no backup product in the sense used elsewhere in this file: deployments are immutable and rollback is to a previous deployment, with source of truth in the customer's Git repository. No backup or restore terms were found on the pages read, so all backup fields are null.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": []
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee was found. The Hobby plan at USD 0 serves as the trial.",
+        "url": "https://vercel.com/pricing"
+      },
+      "sources": [
+        {
+          "url": "https://vercel.com/legal/support-terms",
+          "read_on": "2026-08-18",
+          "what": "who gets support by plan, Standard and Premium Enterprise response-time table by severity, business-hours definition, Slack not SLA-covered, last-updated date"
+        },
+        {
+          "url": "https://vercel.com/legal/sla",
+          "read_on": "2026-08-18",
+          "what": "99.99% commitment, credit bands, 50% cap, 30-day claim window, Excused Downtime, API and CLI scope exclusion, last-updated date"
+        },
+        {
+          "url": "https://vercel.com/pricing",
+          "read_on": "2026-08-18",
+          "what": "Hobby USD 0, Pro USD 20 per month, Enterprise custom; platform SLAs listed only under Enterprise"
+        }
+      ]
+    },
+    {
+      "name": "Netlify",
+      "support": {
+        "channels": [
+          "community support forums",
+          "private email support"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_scope": "All customers on all plans have access to the free Netlify Support Forums and to private email support. The Personal plan lists priority email support. No response-time targets are published for any self-serve plan.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Business Day Support",
+            "price": null,
+            "price_note": "Purchasable by Enterprise customers. No price is published; terms sit in the Order Form. Recorded as null.",
+            "response_targets": null,
+            "hours": null
+          },
+          {
+            "name": "Premium Support",
+            "price": null,
+            "price_note": "Purchasable by Enterprise customers. No price is published. Advanced debugging and consultation is available for Enterprise customers with Premium Support through custom contracts.",
+            "response_targets": null,
+            "hours": null
+          }
+        ],
+        "paid_support_note": "Guaranteed response times exist only as purchasable Enterprise packages, and neither their prices nor their response targets are published. The pricing page lists '24/7 dedicated support' and '99.99% SLA' in the Enterprise column only.",
+        "support_urls": [
+          "https://www.netlify.com/support-scope/",
+          "https://www.netlify.com/pricing/"
+        ],
+        "scope_limits": "Netlify primarily supports its own platform products. Load and security testing, troubleshooting custom code and API-level debugging require a custom contract at additional cost."
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "applies_to": "Enterprise plans only",
+        "committed_percentage": 99.99,
+        "measurement_period": null,
+        "remedy_type": null,
+        "credit_schedule": null,
+        "credit_schedule_note": "Not published. The Enterprise Master Subscription Agreement defines the SLA as a document attached to the Order Form, and states that where applicable the Order Form includes the SLA and the support plan terms. In a conflict the Order Form controls. The concrete uptime remedy is therefore negotiated per contract and is not publicly readable.",
+        "claim_window": null,
+        "cap": null,
+        "marketing_claim": "99.99% uptime SLA, advertised on the pricing, platform and enterprise pages. The High-Performance Build product is advertised separately at 99.9% for Enterprise customers.",
+        "marketing_backed_by_contract": "enterprise_only",
+        "marketing_vs_contract_note": "Free, Personal and Pro plans carry no uptime commitment. The 99.99% figure is an Enterprise line item whose remedy is not published anywhere Netlify makes public. A prospective buyer cannot read the SLA before signing.",
+        "sla_url": "https://www.netlify.com/legal/enterprise-master-subscription-agreement/",
+        "sla_url_note": "There is no public standalone SLA document. A URL at /legal/service-level-agreement/ returns 404. The Enterprise Master Subscription Agreement is the document that defines the SLA by reference to the Order Form; it was not fetched on 2026-08-18, so its wording is not quoted here."
+      },
+      "backups": {
+        "included_in_base_price": null,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "not_applicable_note": "As with Vercel, Netlify hosts immutable deploys rather than servers. No backup or restore product terms were found; deploy retention is a plan feature rather than a backup service. All backup fields are null.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": []
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee was found. Netlify's free plan serves as the trial. Note that on credit-based plans, when the credit balance is used up all web projects are paused and visitors see a site-not-available page.",
+        "url": "https://www.netlify.com/pricing/"
+      },
+      "sources": [
+        {
+          "url": "https://www.netlify.com/pricing/",
+          "read_on": "2026-08-18",
+          "what": "plan prices Free USD 0, Personal USD 9, Pro USD 20, Enterprise custom; priority email support on Personal; 99.99% SLA and 24/7 dedicated support listed only for Enterprise"
+        },
+        {
+          "url": "https://www.netlify.com/support-scope/",
+          "read_on": "2026-08-18",
+          "what": "forums and private email support on all plans, Business Day and Premium Support as Enterprise purchases with guaranteed response times, scope limits"
+        }
+      ]
+    },
+    {
+      "name": "Fly.io",
+      "support": {
+        "channels": [
+          "community forum",
+          "email",
+          "support portal",
+          "dedicated Slack channel on Premium and Enterprise"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_scope": "Community support is included for all customers regardless of usage. Billing and account issues go to billing@fly.io. No technical one-to-one support is included.",
+        "free_first_response_target": null,
+        "paid_support_tiers": [
+          {
+            "name": "Standard",
+            "price": {
+              "amount": 29,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://fly.io/support/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "first_response": "36 hours"
+            },
+            "hours": "not stated as 24/7",
+            "extras": "technical architecture support"
+          },
+          {
+            "name": "Premium",
+            "price": {
+              "amount": 199,
+              "currency": "USD",
+              "period": "month",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://fly.io/support/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "first_response": "24 hours",
+              "urgent": "1 hour"
+            },
+            "hours": "not stated as 24/7",
+            "extras": "dedicated Slack support channel, quarterly solutions architecture sessions"
+          },
+          {
+            "name": "Enterprise",
+            "price": {
+              "amount": 2500,
+              "currency": "USD",
+              "period": "month",
+              "amount_qualifier": "from",
+              "vat_treatment": null,
+              "is_promotional": false,
+              "commitment": null,
+              "url": "https://fly.io/support/",
+              "captured_on": "2026-08-18"
+            },
+            "response_targets": {
+              "first_response": "4 hours, 24x7",
+              "emergency": "15 minutes, 24x7"
+            },
+            "hours": "24x7",
+            "extras": "dedicated Slack support channel, quarterly solutions architecture sessions, 99.9% uptime SLA"
+          }
+        ],
+        "paid_support_note": "Free support is the community forum. The lowest-priced paid tier, USD 29 per month, targets a 36-hour first response. 24x7 coverage and the SLA both start at Enterprise, from USD 2,500 per month. A separate HIPAA compliance add-on is listed at USD 99 per month.",
+        "support_urls": [
+          "https://fly.io/support/",
+          "https://fly.io/plans",
+          "https://fly.io/docs/about/support/"
+        ],
+        "billing_note": "Fly.io states it will waive or refund unintended charges for paid support customers."
+      },
+      "sla": {
+        "has_contractual_sla": true,
+        "applies_to": "Enterprise plan customers during their subscription term",
+        "committed_percentage": 99.9,
+        "commitment_quote": "ninety-nine and nine tenths percent (99.9%) of the total time in each calendar month",
+        "measurement_period": "calendar month, as measured by Fly.io",
+        "remedy_type": "service credits",
+        "credit_schedule": [
+          {
+            "band": ">=99.0% and <99.9%",
+            "credit_percent": 10
+          },
+          {
+            "band": ">=98.0% and <99.0%",
+            "credit_percent": 15
+          },
+          {
+            "band": ">=96.0% and <98.0%",
+            "credit_percent": 20
+          },
+          {
+            "band": "<96.0%",
+            "credit_percent": 30
+          }
+        ],
+        "claim_window": "Email support@fly.io within 30 days after the end of the month, including the organisation name or registered support email plus the previously reported dates and times of unavailability. The outage must have been reported when it happened. Confirmed credits post within 30 days and apply only to future charges.",
+        "cap": "Credits are not refunds, cannot be exchanged for cash, and are the sole and exclusive remedy.",
+        "exclusions": "Customer or user caused outages, force majeure, scheduled maintenance with at least 24 hours' email notice, hacking or virus attacks, and reasonable emergency maintenance.",
+        "marketing_claim": "99.9% uptime SLA, shown on the support page next to a Contact Sales call to action.",
+        "marketing_backed_by_contract": "enterprise_only",
+        "sla_url": "https://fly.io/legal/sla-uptime/"
+      },
+      "backups": {
+        "included_in_base_price": null,
+        "frequency": "Fly Volumes are snapshotted; the snapshot documentation page did not render its body text in the read on 2026-08-18.",
+        "retention": null,
+        "price": null,
+        "price_note": "Volume snapshot retention and any per-GB charge were not captured from a Fly.io page on 2026-08-18. Recorded as null rather than estimated.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": [
+          "https://fly.io/docs/volumes/snapshots/"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee. Fly.io does state it will waive or refund unintended charges for paid support customers, and invites discussion of refunds for resources created by mistake or unexpected bills from traffic attacks, but that is discretionary goodwill rather than a guarantee.",
+        "url": "https://fly.io/plans"
+      },
+      "sources": [
+        {
+          "url": "https://fly.io/support/",
+          "read_on": "2026-08-18",
+          "what": "Standard USD 29, Premium USD 199, Enterprise from USD 2,500 per month, response targets, 24x7 on Enterprise, 99.9% SLA on Enterprise only"
+        },
+        {
+          "url": "https://fly.io/plans",
+          "read_on": "2026-08-18",
+          "what": "support starting at USD 29 per month, HIPAA compliance at USD 99 per month, enterprise SLA framing, charge waiver for paid support customers"
+        },
+        {
+          "url": "https://fly.io/legal/sla-uptime/",
+          "read_on": "2026-08-18",
+          "what": "99.9% uptime commitment, four credit bands, 30-day claim process, exclusions, Enterprise scope"
+        },
+        {
+          "url": "https://fly.io/docs/about/support/",
+          "read_on": "2026-08-18",
+          "what": "community support for everyone, org-specific support email, support portal, named paid tiers"
+        }
+      ]
+    },
+    {
+      "name": "Render",
+      "support": {
+        "channels": [
+          "community",
+          "email",
+          "chat",
+          "premium support",
+          "private Slack channel and technical account manager on the top tier"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_scope": "The plan comparison lists support by workspace plan in this order: Hobby community, Pro email, Scale chat, Enterprise premium support. Private Slack channel, dedicated technical account manager, support response SLAs, and migration assistance and architecture review are shown as unavailable on the lower plans.",
+        "free_first_response_target": null,
+        "plan_prices": [
+          {
+            "plan": "Hobby",
+            "amount": 0,
+            "currency": "USD",
+            "period": "month",
+            "note": "plus compute",
+            "is_promotional": false,
+            "url": "https://render.com/pricing",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Pro",
+            "amount": 25,
+            "currency": "USD",
+            "period": "month",
+            "note": "plus compute",
+            "is_promotional": false,
+            "url": "https://render.com/pricing",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Scale",
+            "amount": 499,
+            "currency": "USD",
+            "period": "month",
+            "note": "plus compute",
+            "is_promotional": false,
+            "url": "https://render.com/pricing",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Enterprise",
+            "amount": null,
+            "currency": "USD",
+            "note": "custom pricing, described as 'For teams that need dedicated support and uptime SLAs'",
+            "is_promotional": false,
+            "url": "https://render.com/pricing",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          }
+        ],
+        "paid_support_tiers": [],
+        "paid_support_note": "Support response SLAs are not sold as a standalone tier with a published price. They appear as a row in the plan comparison available on the Enterprise plan, whose price is custom.",
+        "support_urls": [
+          "https://render.com/pricing"
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": "enterprise_only",
+        "committed_percentage": null,
+        "committed_percentage_note": "No uptime percentage is published for any Render plan. The Enterprise plan is described as being 'For teams that need dedicated support and uptime SLAs', which states that an SLA exists without stating its number.",
+        "remedy_type": null,
+        "credit_schedule": null,
+        "claim_window": null,
+        "cap": null,
+        "marketing_claim": "None found. Render does not print an uptime percentage on its pricing page; it publishes live and 90-day historical uptime at status.render.com instead.",
+        "marketing_backed_by_contract": "not_applicable",
+        "marketing_vs_contract_note": "Render is the cleanest case in this set of a provider with no published availability number at all for self-serve plans. That is more honest than an unbacked 99.9% claim, and it is also less useful: a self-serve customer has nothing to rely on.",
+        "sla_url": null,
+        "notes": "Render's public Terms of Service run the other way and disclaim availability. Any numeric commitment lives in a negotiated Enterprise agreement."
+      },
+      "backups": {
+        "included_in_base_price": "partial",
+        "frequency": "Render Postgres supports point-in-time recovery and user-triggered logical backups exported from the dashboard.",
+        "retention": "Render retains logical backups for seven days after creation, regardless of workspace plan. Render does not create logical backups for databases on the Free instance type.",
+        "price": null,
+        "price_note": "No separate charge for logical backups is stated. Long-term retention is the customer's job: the docs point to a guide for uploading pg_dump output to Amazon S3 on a cron job.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": [
+          "https://render.com/docs/postgresql-backups"
+        ]
+      },
+      "money_back": {
+        "offered": false,
+        "window_days": null,
+        "notes": "No money-back guarantee was found. The Hobby plan at USD 0 and free instance types serve as the trial.",
+        "url": "https://render.com/pricing"
+      },
+      "sources": [
+        {
+          "url": "https://render.com/pricing",
+          "read_on": "2026-08-18",
+          "what": "workspace plan prices, support row by plan, support response SLAs and premium support restricted to the top tiers, Enterprise described as the tier with uptime SLAs"
+        },
+        {
+          "url": "https://render.com/docs/postgresql-backups",
+          "read_on": "2026-08-18",
+          "what": "logical backups retained seven days regardless of plan, no logical backups on free instances, point-in-time recovery, S3 guide for longer retention"
+        }
+      ]
+    },
+    {
+      "name": "Railway",
+      "support": {
+        "channels": [
+          "Central Station community",
+          "private threads",
+          "dedicated support channel on Business Class",
+          "Slack Connect on Enterprise"
+        ],
+        "free_support_included": true,
+        "free_support_is_24_7": false,
+        "free_support_scope": "Free, Trial and Hobby: community support via Central Station, and 'responses are not guaranteed for these tiers'. Pro: direct help via Central Station, usually within 72 hours, excluding SLOs and application-level support; private threads are slower.",
+        "free_first_response_target": "Pro: usually within 72 hours. Free and Hobby: none.",
+        "paid_support_tiers": [
+          {
+            "name": "Business Class Support",
+            "price": null,
+            "price_note": "Sold as an add-on to the Pro plan and included with Enterprise. No price is published; Railway directs buyers to contact the team. Eligibility is stated as workspaces spending USD 5,000 or more per month.",
+            "response_targets": {
+              "p1_outages": "one hour acknowledgement, 24/7",
+              "p2_bugs": "same business day",
+              "p3_general": "two business days"
+            },
+            "hours": "Monday to Friday 09:00 to 21:00 Pacific, with 24/7 on-call for P1 outages only",
+            "note": "These are explicitly SLOs, not SLAs. Business Class also provides a monthly summary of component uptime and an RCA for routing-layer outages."
+          }
+        ],
+        "paid_support_note": "Railway is explicit that Business Class buys objectives and Enterprise buys an agreement. Slack Connect requires Enterprise with a minimum committed spend of USD 2,000 per month.",
+        "support_urls": [
+          "https://docs.railway.com/platform/support",
+          "https://docs.railway.com/pricing/plans"
+        ],
+        "plan_prices": [
+          {
+            "plan": "Free",
+            "amount": 0,
+            "currency": "USD",
+            "period": "month",
+            "is_promotional": false,
+            "url": "https://docs.railway.com/pricing/plans",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Hobby",
+            "amount": 5,
+            "currency": "USD",
+            "period": "month",
+            "note": "includes USD 5 of monthly usage credits",
+            "is_promotional": false,
+            "url": "https://docs.railway.com/pricing/plans",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Pro",
+            "amount": 20,
+            "currency": "USD",
+            "period": "month",
+            "note": "per workspace, includes USD 20 of monthly usage credits",
+            "is_promotional": false,
+            "url": "https://docs.railway.com/pricing/plans",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          },
+          {
+            "plan": "Enterprise",
+            "amount": null,
+            "currency": "USD",
+            "note": "custom pricing",
+            "is_promotional": false,
+            "url": "https://docs.railway.com/pricing/plans",
+            "captured_on": "2026-08-18",
+            "vat_treatment": null
+          }
+        ]
+      },
+      "sla": {
+        "has_contractual_sla": "enterprise_only",
+        "committed_percentage": null,
+        "committed_percentage_note": "No uptime percentage is published for any plan. Railway states it can enter into a contractual SLA under its negotiated pricing offering, which is the Enterprise tier.",
+        "remedy_type": null,
+        "credit_schedule": null,
+        "claim_window": null,
+        "cap": null,
+        "marketing_claim": "None. Railway's own documentation distinguishes SLOs from SLAs and offers only SLOs below Enterprise.",
+        "marketing_backed_by_contract": "not_applicable",
+        "marketing_vs_contract_note": "Along with Render, Railway publishes no availability percentage for self-serve plans. The Business Class SLOs are acknowledgement targets for support tickets, not availability commitments, and carry no service credits.",
+        "sla_url": null,
+        "notes": "The Enterprise page and Trust Center are the routes to contractual terms; neither publishes a number."
+      },
+      "backups": {
+        "included_in_base_price": null,
+        "frequency": null,
+        "retention": null,
+        "price": null,
+        "price_note": "Railway documents volume backups at docs.railway.com/reference/backups. The page renders its body client-side and did not yield text in the read on 2026-08-18, so frequency, retention and any charge are recorded as null.",
+        "snapshots_billed_as_storage": null,
+        "restore_cost": null,
+        "urls": [
+          "https://docs.railway.com/reference/backups"
+        ]
+      },
+      "money_back": {
+        "offered": null,
+        "window_days": null,
+        "notes": "Railway lists a Refunds page in its pricing documentation. That page was not fetched on 2026-08-18, so refund terms are recorded as unresolved rather than as an absence.",
+        "url": "https://docs.railway.com/pricing/faqs"
+      },
+      "sources": [
+        {
+          "url": "https://docs.railway.com/platform/support",
+          "read_on": "2026-08-18",
+          "what": "support by plan, no guaranteed response on Free and Hobby, 72 hours on Pro, Business Class SLOs and hours, USD 5,000 per month eligibility, SLO versus SLA distinction"
+        },
+        {
+          "url": "https://docs.railway.com/pricing/plans",
+          "read_on": "2026-08-18",
+          "what": "plan prices and included usage credits, Business Class as a Pro add-on with no published price"
+        },
+        {
+          "url": "https://railway.com/pricing",
+          "read_on": "2026-08-18",
+          "what": "plan prices, Enterprise described with contractual SLAs and support SLOs, no figures"
+        }
+      ]
+    }
+  ],
+  "cross_provider_observations": [
+    "Genuinely 24/7 human technical support at no extra cost, on the pages read: IONOS (the Cloud SLA states 24/7/365 support at no additional charge with a sub-1-hour disruption response), DigitalOcean (ticket access 24/7 on the free Starter plan, though the target is under 24 hours), Scaleway (BASIC ticketing 24/7 with an 8-hour target), WP Engine (24/7 chat on every plan, phone from the Professional plan up), Kinsta (24/7/365 chat included in all plan levels), SiteGround and Hostinger (24/7 marketed on hosting pages), Hetzner (24/7 by email for Cloud, with 24/7 phone limited to the data centre lines) and Akamai (phone described as available day and night, no tiers).",
+    "Support is paywalled, and the price is the interesting part: AWS from USD 29 per month or 9% of charges (whichever is greater) for Business Support+, rising to a USD 5,000 per month floor for Enterprise and USD 50,000 for Unified Operations; Google Cloud USD 29 for Standard, USD 100 minimum plus 10-3% tiers for Enhanced, USD 15,000 minimum for Premium; Azure USD 29 Developer, USD 100 Standard, USD 1,000 Professional Direct; OVHcloud EUR 50 Premium, then 10% of the bill with a EUR 250 floor for 24/7 Business and 30% with a EUR 5,000 floor for Enterprise; Scaleway EUR 50/5%, EUR 250/10%, EUR 990/20%; Exoscale EUR 50, EUR 500, then 5% of usage with a EUR 1,500 floor for 24/7; Infomaniak EUR 50, EUR 250 and EUR 1,000 (or 10% of monthly product value) on a six-month minimum; DigitalOcean USD 24, USD 99, USD 999; Fly.io USD 29, USD 199, from USD 2,500.",
+    "Percentage-of-spend pricing is the pattern to watch. AWS, Google Cloud, OVHcloud, Scaleway, Exoscale and Infomaniak all bill support as the greater of a floor or a percentage of the bill, and Google states the percentage is calculated on list prices before any discounts or credits. Support cost therefore scales with infrastructure spend and a negotiated infrastructure discount does not reduce it.",
+    "The three hyperscalers' free tier is billing support. AWS Basic, Azure Basic and Google Cloud Basic all provide account and billing help, documentation and dashboards, and none provides a technical support case with an engineer or a response-time target.",
+    "Marketing uptime claims without a matching contractual remedy, on the pages read: SiteGround advertises 99.99% on cloud hosting pages while its Terms of Service guarantee a single figure of 99.9% with a 5% compensation that can only extend the service term; IONOS titles its web hosting page 99.99% Uptime while the contractual IONOS Cloud compute commitment is 99.95% and Cloud GPU VM is excluded from the SLA entirely; Infomaniak advertises 99.99% on product pages and no published SLA document with a percentage, remedy and claim procedure was located.",
+    "Availability commitments that exist only above the paywall: Vercel 99.99% for Enterprise only, with Hobby and Pro carrying no commitment; Netlify 99.99% for Enterprise only, with the remedy living in an unpublished Order Form; Fly.io 99.9% for Enterprise plan customers, from USD 2,500 per month; Render and Railway publish no availability percentage at all for self-serve plans and offer an SLA only under a negotiated Enterprise contract.",
+    "Two providers publish an SLA whose scope excludes what a reader would assume it covers. Vultr guarantees 100% uptime but excludes its own web property, DNS servers, API and control panel, excludes GPU instances entirely, and starts the outage clock at the timestamp of a ticket that must itself request a credit. Vercel's SLA excludes components that do not serve customer content, naming the API and CLI.",
+    "The single-instance versus multi-zone gap runs through all three hyperscalers. AWS commits 99.99% only across two or more Availability Zones and 99.5% for one instance; Google commits 99.99% for instances in multiple zones and 99.9% for a single instance of a standard family; Azure commits 99.99% only across two or more Availability Zones, 99.95% in an availability set and 99.9% for a single VM with premium SSDs. The headline number requires an architecture the headline price does not include.",
+    "Scaleway is the outlier on the downside: covered shared instances commit to 99%, covered dedicated and GPU instances to 99.5%, and the DEV1, GP1, PLAY2, PRO2, COPARM1, ENT1 and DEV instance types have no service level objective at all.",
+    "Every remedy in this file is a credit, never money. Hetzner, Scaleway, OVHcloud, IONOS, Exoscale, DigitalOcean, Vultr, Akamai, AWS, Azure, Google Cloud, WP Engine, Kinsta, SiteGround, Hostinger, Vercel and Fly.io all pay in credits against future invoices, and several state expressly that credits have no cash value and expire. DigitalOcean credits expire after 90 days; Vultr credits expire after one year; Kinsta and WP Engine credits are forfeited on termination.",
+    "The claim is on the customer, and the windows are short. Hetzner 14 days after month end, IONOS two weeks after the billing month, Vultr three days from the triggering event, Fly.io 30 days after month end and only if the outage was reported when it happened, Kinsta 30 days via chat, WP Engine 30 days, Scaleway 30 days with log files, Vercel 30 days with log files, Akamai 30 days, AWS by the end of the second billing cycle, DigitalOcean within two billing cycles, OVHcloud US 60 days. No provider in this set pays credits automatically without a claim.",
+    "Backups are an extra almost everywhere in the VPS and cloud category and included almost everywhere in the managed WordPress and shared category. Extra: Hetzner 20% of the server price, DigitalOcean 20% weekly or 30% daily (or per-GiB rates from USD 0.01 to USD 0.04), Vultr 20% of the instance price, Akamai from USD 2 per month per plan, OVHcloud a paid VPS option, Exoscale snapshots billed per GiB.hour on the source volume size, and the hyperscalers metering snapshots and backup services separately. Included: WP Engine daily with 30 days retention, Kinsta daily with 14 to 30 days by tier, SiteGround daily with restore points up to 30 days, IONOS daily with data recovery, Hostinger weekly with two weeks stored.",
+    "Snapshots are billed as storage almost universally, which means the backup line on the invoice grows with the disk rather than staying with the plan: Hetzner per GB per month, Vultr USD 0.05 per GB per month on the compressed size, DigitalOcean per GiB of restorable size on usage-based plans, Exoscale per GiB.hour of the source volume size, and all three hyperscalers per GB-month.",
+    "Backup coverage gaps that a comparison tick would hide: Hetzner backups and snapshots exclude attached Volumes, Vultr backups exclude attached block storage, Akamai backups exclude attached Volumes and are deleted with the instance, OVHcloud's VPS backup service excludes additional disks, and Hostinger removes any cPanel shared account over 30 GB from the offsite weekly backup.",
+    "Money-back guarantees exist in the managed and shared category and essentially nowhere else. Kinsta 30 days for first-time customers, excluding dedicated server fees, one-time fees and overages; SiteGround 30 days shared and 14 days cloud, excluding domains and paid support; Hostinger 30 days, excluding crypto payments, with a 180-day cooldown after a VPS refund; IONOS 30 days. Against that: DigitalOcean states all fees are non-refundable, Vultr states it does not guarantee refunds, and no money-back guarantee was found for Hetzner, OVHcloud, Scaleway, Exoscale, Akamai, AWS, Azure, Google Cloud, WP Engine, Vercel, Netlify, Fly.io or Render."
+  ]
+}

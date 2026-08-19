@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <div class="chart-block">
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-swatch chart-swatch-1"></span>Base plan</span>
+      <span class="chart-legend-item"><span class="chart-swatch chart-swatch-2"></span>1 TB egress</span>
+    </div>
+    {{ chart_svg }}
+  </div>
+  <p class="chart-note">Base plan plus 1 TB of monthly outbound traffic, stacked, ascending by total. Same nine providers and representative plans as the VPS cost tab. Google e2-small is the second-cheapest instance but the most expensive line overall; the egress segment shows why.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>All-in cost (base plan + 1 TB egress), nine providers, captured {{ capture_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col">Plan</th>
+          <th scope="col" class="num">Instance</th>
+          <th scope="col" class="num">1 TB egress</th>
+          <th scope="col" class="num">Total</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.provider }}</th>
+          <td>{{ row.plan }}</td>
+          <td class="num">{{ row.instance_fmt }}</td>
+          <td class="num">{{ row.egress_fmt }}</td>
+          <td class="num">{{ row.total_fmt }}</td>
+          <td>{% if row.url %}<a href="{{ row.url }}">pricing</a>{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">All costs in EUR. USD prices converted using the FX rate in the dataset. Egress shown as EUR 0.00 means 1 TB is included in the plan at no extra charge.</p>
+</article>
+{% endblock %}

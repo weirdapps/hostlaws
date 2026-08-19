@@ -1,0 +1,44 @@
+name: prices
+
+on:
+  schedule:
+    # Daily at 06:00 UTC. Public APIs (Linode, Vultr, Azure, Scaleway)
+    # need no credentials. Hetzner and DigitalOcean are skipped when their
+    # secrets are absent; the run still succeeds and commits what it fetched.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - run: uv sync --frozen
+
+      - name: Fetch live prices
+        env:
+          HETZNER_API_TOKEN: ${{ secrets.HETZNER_API_TOKEN }}
+          DIGITALOCEAN_API_TOKEN: ${{ secrets.DIGITALOCEAN_API_TOKEN }}
+        run: uv run python pricing/fetch_live.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add research/live-prices.json
+          if git diff --cached --quiet; then
+            echo "No changes to live-prices.json"
+          else
+            git commit -m "chore: update live-prices.json [skip ci]"
+            git push
+          fi

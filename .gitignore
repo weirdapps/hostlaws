@@ -1,0 +1,37 @@
+# Build output
+/dist/
+/build/output/
+*.tar.gz
+
+# Python
+__pycache__/
+*.py[cod]
+.venv
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules
+.wrangler/
+
+# Local environment, never committed
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+
+# OS
+.DS_Store
+
+# SDD scratch workspace
+.superpowers/
+
+# Research data is the site's source; it is committed.
+
+# Impeccable scratch
+.impeccable/mocks/
+.impeccable/direction-payload.json
+
+# Build output
+site/dist/

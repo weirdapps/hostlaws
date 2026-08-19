@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <div class="chart-block">
+    {{ chart_svg }}
+  </div>
+  <p class="chart-note">Cost per GB of RAM per month, ascending. Rule: cheapest plan with at least 4 GB RAM per provider. AWS EC2 t4g.small and Google e2-small are 2 GB instances; they are the smallest always-on paid EU instances for those providers in this dataset.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>VPS cost per GB of RAM, nine providers, captured {{ capture_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col">Plan</th>
+          <th scope="col" class="num">RAM</th>
+          <th scope="col" class="num">vCPU</th>
+          <th scope="col" class="num">EUR / GB RAM / mo</th>
+          <th scope="col">Verified</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.provider }}</th>
+          <td>{{ row.plan }}</td>
+          <td class="num">{{ row.ram_gb }} GB</td>
+          <td class="num">{{ row.vcpu }}</td>
+          <td class="num">{{ row.eur_per_gb_fmt }}</td>
+          <td><time datetime="{{ row.last_verified }}">{{ row.last_verified }}</time></td>
+          <td>{% if row.url %}<a href="{{ row.url }}">pricing</a>{% else %}not linked{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

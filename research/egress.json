@@ -1,0 +1,706 @@
+{
+  "category": "egress-and-bandwidth",
+  "category_label": "Outbound transfer allowances, per-GB rates and the 1 TB EU scenario",
+  "retrieved_on": "2026-08-18",
+  "scenario": {
+    "name": "1 TB of monthly egress from an EU region",
+    "definition": "1 TB is read as 1,000 GB decimal, that is 1,000 x 10^9 bytes, of outbound internet traffic leaving one service in a European region over one calendar month. The figure recorded in cost_for_1tb_month is what the provider adds to the bill for that traffic on top of the base plan named in reference_plan. It excludes the base plan fee, compute, storage and IP charges.",
+    "binary_conversion": "Providers that meter in GiB are converted at 1,000 GB decimal = 1,000 x 10^9 / 2^30 = 931.3225746 GiB. This applies to Google Cloud, DigitalOcean and Exoscale. Azure states 'Note: 1 TB = 1,000 GB' on its own page, and AWS tier boundaries are expressed as 10240 GB for 10 TB. Where the distinction changes the answer it is shown in the arithmetic string.",
+    "plan_sensitivity": "For several providers the answer is set by which plan is called typical, not by the rate. DigitalOcean is USD 0.00 on the USD 6 Droplet and USD 4.31 on the USD 4 Droplet. Akamai is USD 0.00 on a Nanode and USD 5.00 on a G8 Dedicated plan, which includes 0 TB. Render is USD 149.25 on Hobby and USD 0.00 on Scale, whose workspace fee is USD 499. Each reference plan is named so the reader can re-run the arithmetic on a different one."
+  },
+  "method_note": "Every figure was read from the provider's own page, or from a price endpoint served by the provider's own infrastructure and called by that page. No third-party comparison site, search snippet or cached summary was used as a price source. Four pages render prices client-side per region and were driven in a real browser so the region control could be set and its new value confirmed before reading: Google Cloud (set to Belgium europe-west1), Vercel (set to Frankfurt fra1, then to Sydney to prove the control re-renders), Vultr and Akamai, both of which return HTTP 403 to a plain client. Two pages were read from the endpoint their own markup names rather than from the rendered table: AWS via the meteredUnitMaps datatransfer file named in the page's data-token-prefix attribute, and Exoscale via portal.exoscale.com/api/pricing/opencompute, named in the page's data-api-url attribute. Where a figure sits behind a login, a quote form or a control that could not be pinned, the field is null and the note says why: Vultr per-location pricing (Control Panel, login), Vultr inbound and pooling (not stated anywhere public), OVHcloud Asia-Pacific per-GB rate (charged but not published), Infomaniak object storage rate above 10 TB (JavaScript-rendered), Netlify Pro tier prices above the base 3,000 credits (selector shows no price), WP Engine bandwidth overage rate (no such rate exists).",
+  "vat_note": "VAT treatment is recorded as stated on the page that carries the price, not inferred from the provider's nationality. 'ex' means the page or its governing terms say prices exclude VAT or tax. null means the page is silent, which is the case for Hetzner's traffic doc, IONOS CLOUD, Azure, Google Cloud, DigitalOcean, Vultr, Akamai, Exoscale and WP Engine. Explicit statements found: AWS 'our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax'; Kinsta 'Prices exclude tax and are in USD'; Infomaniak 'Prices do not include VAT'; Scaleway 'Prices before tax'; SiteGround 'Ex. VAT'; Hostinger 'Preisangaben ohne Mehrwertsteuer'. For Vercel, Netlify, Fly.io, Render and Railway the pricing pages are silent and 'ex' rests on a tax clause in the terms of service, quoted in each note.",
+  "promotional_note": "No provider in this set sells egress at an introductory rate, so is_promotional is false on every egress rate and that has been checked rather than assumed. Two related findings are recorded anyway because they change what the reader actually pays. First, SiteGround and Hostinger sell the base plan the traffic sits on at a promotional rate with a published renewal: SiteGround StartUp 2.99 EUR/mo renewing at 15.99 EUR/mo, Hostinger Premium 2.99 EUR/mo renewing at 9.99 EUR/mo, both prepaid and ex-VAT. WP Engine is promotional with no published renewal at all: 'Product renewal pricing subject to change' is the only statement it makes. Second, OVHcloud's free outgoing traffic for Object Storage carries an expiry for one group of customers: 'Outgoing traffic is free for all our customers. However, for customers who have entered into a contract with our APAC entities (India, Singapore, Asia [USD], and Australia), this is free only until 31 December 2026.'",
+  "currency_note": "Currencies are recorded as served, not converted. EUR: Hetzner, OVHcloud, Scaleway, Exoscale, SiteGround, Hostinger. CHF: Infomaniak, whose prices page renders CHF server-side with no EUR figure available. USD: everyone else, including IONOS CLOUD, whose prices page serves USD figures with no currency selector found. Cross-currency comparison in the ranked table is therefore approximate at the margins, though it does not affect the ordering, since the EUR-quoted providers all sit at zero.",
+  "providers": [
+    {
+      "name": "Hetzner",
+      "legal_entity": "Hetzner Online GmbH",
+      "reference_plan": "Cloud server CX/CPX/CAX at an EU location (Falkenstein FSN1, Nuremberg NBG1, Helsinki HEL1)",
+      "included_transfer": "20 TB per month per cloud server at EU locations. CCX dedicated-vCPU plans scale 20-60 TB in the EU. US locations get 1-5 TB and Singapore 0.5-5 TB depending on plan.",
+      "included_transfer_gb": 20480,
+      "overage_rate": 1.0,
+      "currency": "EUR",
+      "unit": "per TB",
+      "unit_normalised_per_gb": 0.001,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Not used for cloud servers, which carry a numeric allowance. The same docs page does say dedicated root servers on a 1 GBit uplink have 'unlimited traffic', and Managed Server MA80/MA130/MA200 are listed as 'Unlimited'. Those are different products from Cloud.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "Allowance 20 TB = 20,480 GB on an EU cloud server. Usage 1,000 GB. Over-usage = max(0, 1000 - 20480) = 0 GB. 0 GB x EUR 1.00 per TB = EUR 0.00. 1 TB consumes 4.9 percent of the allowance. For reference, the first euro of traffic cost would arrive at 20 TB, and over-usage is billed in 100 MB blocks rounded up.",
+      "url": "https://docs.hetzner.com/robot/general/traffic/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "calendar month, no commitment",
+      "region_variation": "Yes on the allowance, not stated on the rate. EU 20 TB, US 1-5 TB, Singapore 0.5-5 TB. The docs page publishes one over-usage rate, EUR 1 (USD 1.20) per TB, and does not state a different per-location rate.",
+      "sources": [
+        {
+          "label": "Traffic (over-usage rate, per-product allowances, outbound-only rule)",
+          "url": "https://docs.hetzner.com/robot/general/traffic/"
+        },
+        {
+          "label": "Cloud billing FAQ (100 MB blocks, internal traffic free)",
+          "url": "https://docs.hetzner.com/cloud/billing/faq/"
+        },
+        {
+          "label": "Cloud locations (network zones, cross-zone traffic billed)",
+          "url": "https://docs.hetzner.com/cloud/general/locations/"
+        }
+      ],
+      "note": "Verbatim from the traffic doc: 'We will charge EUR 1 ($1.20)/TB for overusage.' and 'We calculate monthly traffic only using outgoing traffic. We do not count incoming and internal traffic.' The per-product table reads 'CX Cloud Server 20 TB for EU', 'CPX Cloud Server 20 TB for EU, 0.5-5 TB for SIN locations, depending on plan, 1-5 TB for US locations, depending on plan', 'CAX Cloud Server 20 TB for EU', 'CCX Cloud Server 20-60 TB for EU locations, depending on the plan'. The billing FAQ adds: 'If you exceed the traffic included in your package, we will bill you for the over-usage in blocks of 100MB.' Inter-zone: the locations doc states 'Traffic between two different network zones (such as Hetzner Cloud servers in Europe and USA) will be billed just as any other normal internet traffic', while traffic to other Hetzner Cloud servers in the same network zone, over Networks, or to Hetzner dedicated servers is free. VAT: null. The traffic doc states no VAT treatment. hetzner.com applies VAT client-side from a 'Country (VAT)' selector whose English default is 'all others' at 0 percent, so site prices display net, but that is the storefront convention rather than a statement on this page. The plan pages themselves do not print the included TB figure: the CX and CPX plan tables render client-side and no TB value appears in their served HTML, which is why the docs page is the source used here."
+    },
+    {
+      "name": "OVHcloud",
+      "legal_entity": "OVH Groupe SA",
+      "reference_plan": "Public Cloud instance in a European region, and VPS 2027 range",
+      "included_transfer": "Outbound public traffic is included with no volume cap in every region except Asia-Pacific. In Singapore, Sydney and Mumbai, 1 TB per month of outbound public traffic is included per Public Cloud project.",
+      "included_transfer_gb": null,
+      "overage_rate": 0.0,
+      "currency": "EUR",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.0,
+      "inbound_free": true,
+      "inter_region_charged": false,
+      "unlimited_language": "Yes, and it is qualified twice. The Public Cloud price page says: 'Usually, market players bill network traffic for instances, or API calls for Object Storage. These are free with OVHcloud (excluding the Asia-Pacific region).' The VPS page advertises 'Unlimited traffic' and 'Tap into unlimited network traffic*'; the asterisk resolves to: 'VPS in the Asia-Pacific region (Mumbai, Singapore, Sydney) come with a set monthly quota: 500 GB for VPS-1, 1 TB for VPS-2 and VPS-3, 3 TB for VPS-4. Beyond this, the bandwidth is capped at 10 Mbps.' So the EU 'unlimited' is a volume statement bounded by a port speed of 500 Mbps to 3 Gbps depending on plan, and the APAC 'unlimited' is a quota with throttling.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "European regions: outbound public traffic is priced 'Included' in the Instance Public Traffic table, so 1,000 GB x EUR 0.00 = EUR 0.00. The only volume-metered case is Asia-Pacific, where 1 TB per project per month is included and 'Beyond this quota, each additional GB of traffic is charged'; the per-GB figure for that case is not published on either the /en/ or the /en-sg/ price page, so it is recorded as null rather than guessed.",
+      "url": "https://www.ovhcloud.com/en/public-cloud/prices/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "hourly or monthly, no commitment",
+      "region_variation": "Yes. Europe, North America and Canada: included. Asia-Pacific (Singapore, Sydney, Mumbai): 1 TB per project per month then charged at an unpublished per-GB rate. A separate time limit applies to Object Storage traffic for APAC contracting entities: 'Outgoing traffic is free for all our customers. However, for customers who have entered into a contract with our APAC entities (India, Singapore, Asia [USD], and Australia), this is free only until 31 December 2026.'",
+      "sources": [
+        {
+          "label": "Public Cloud prices, Instance Public Traffic table",
+          "url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+        },
+        {
+          "label": "VPS page, unlimited traffic and the APAC footnote",
+          "url": "https://www.ovhcloud.com/en/vps/"
+        },
+        {
+          "label": "Singapore storefront, same Included rows",
+          "url": "https://www.ovhcloud.com/en-sg/public-cloud/prices/"
+        }
+      ],
+      "note": "Verbatim from the Instance Public Traffic table: 'Incoming public traffic: Included', 'Outgoing public traffic: Included', with the footnote 'Outbound public network traffic is included in the price of instances on all locations, except the Asia-Pacific region (Singapore, Sydney and Mumbai). In the tree regions, 1 TB/month of outbound public traffic is included for each Public Cloud project. Beyond this quota, each additional GB of traffic is charged. Inbound network traffic from the public network is included in all cases and in all regions.' ('tree' is the page's own typo for 'three'.) The Object Storage tables separately list 'Ingoing Internal Traffic: Included' and 'Outgoing Internal traffic: Included', which is the basis for recording inter-region traffic as not charged; the pages carry no inter-region per-GB line. VAT: null. Both traffic rows read 'Included', so there is no price to attach a tax treatment to; the /en/ storefront quotes other services in USD and the /en-sg/ storefront prints 'ex. GST' on storage retrieval rows. The instance traffic table also carries a 'Price on April 1, 2026' column alongside 'Current price', both showing Included."
+    },
+    {
+      "name": "Scaleway",
+      "legal_entity": "Scaleway SAS",
+      "reference_plan": "Instance (DEV1, BASIC2, BASIC3, COMPUTE3, GP1 ranges) in Paris (fr-par) or Amsterdam (nl-ams)",
+      "included_transfer": "No monthly volume allowance is published because there is no volume meter. Each Instance type carries an internet bandwidth rate cap instead, from 200 Mbit/s on DEV1-S and BASIC2-A2C-4G up to 16 Gbit/s on COMPUTE3-X96C-192G.",
+      "included_transfer_gb": null,
+      "overage_rate": 0.0,
+      "currency": "EUR",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.0,
+      "inbound_free": true,
+      "inter_region_charged": false,
+      "unlimited_language": "Used for adjacent products, not for instance egress. Load Balancer traffic is listed as 'Unlimited' at every tier, VPC Private Networks traffic is listed as 'Unlimited', and Edge Services lists 'Egress fees: Free'. For Instances the page instead makes a positive statement: 'List prices include egress and IPv6 addresses.'",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "There is no per-GB egress meter on Instances, so 1,000 GB x EUR 0.00 = EUR 0.00. The binding constraint is throughput, not volume: 1,000 GB spread evenly across a 30-day month is about 3.1 Mbit/s sustained, which is inside the 200 Mbit/s cap of the smallest listed Instance. The only per-GB network figure anywhere on the network price page is Edge Services additional cache at EUR 0.0135/GB, which is a caching charge and not instance egress.",
+      "url": "https://www.scaleway.com/en/pricing/virtual-instances/",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "per second, billed monthly, no commitment",
+      "region_variation": "None published. The pricing pages quote one set of EUR prices and make no per-region egress distinction.",
+      "sources": [
+        {
+          "label": "Virtual Instances pricing, 'List prices include egress and IPv6 addresses'",
+          "url": "https://www.scaleway.com/en/pricing/virtual-instances/"
+        },
+        {
+          "label": "Network pricing, Load Balancer Unlimited, VPC Unlimited, Edge Services egress Free",
+          "url": "https://www.scaleway.com/en/pricing/network/"
+        },
+        {
+          "label": "Instances internet and Block Storage bandwidth overview, per-type Mbit/s caps",
+          "url": "https://www.scaleway.com/en/docs/instances/reference-content/instances-bandwidth-overview/"
+        }
+      ],
+      "note": "Scaleway is the clearest case of rate-capped rather than volume-metered egress. The docs page lists an 'Internet Bandwidth (up to)' column per Instance type: BASIC2-A2C-4G 200 Mbit/s, BASIC3-X2C-4G 350 Mbit/s, DEV1-S 200 Mbit/s, GP1-XS 500 Mbit/s, COMPUTE3-X96C-192G 16 Gbit/s. It also warns that 'Bandwidth specifications listed here are for informational purposes' and points to the block_bandwidth field in the Instances API for the authoritative figure. VAT: the pricing pages state 'Prices before tax' and 'before taxes', so ex-VAT. Inbound is not separately priced anywhere on the network page, and no inbound line item exists; recorded as free on that basis rather than on an explicit sentence."
+    },
+    {
+      "name": "IONOS",
+      "legal_entity": "IONOS SE",
+      "reference_plan": "IONOS CLOUD Public Cloud compute in a German data centre. The separate IONOS VPS product is noted below.",
+      "included_transfer": "First 2 TB per month of outgoing public traffic is free, cumulated across all IONOS CLOUD Public Cloud services on the same contract. Local and national outgoing traffic is free without limit. The IONOS VPS product is sold instead as 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure.",
+      "included_transfer_gb": 2048,
+      "overage_rate": 0.036,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.036,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Yes, on the VPS product only: the German VPS page states 'Unbegrenzt Traffic bis zu 1 Gbit/s' and, in the feature table, 'Unbegrenzter Traffic' with 'Externe Anbindung des Servers mit bis zu 1 Gbit/s'. No volume figure and no fair-use clause is printed next to it on that page. The IONOS CLOUD product makes no unlimited claim at all: it publishes a tiered meter.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "IONOS CLOUD tier 1 is 'For the first 2 TB (<= 2 TB): Free', and the page states '1 TB equals 1,024 GB', so the free tier is 2,048 GB. Usage 1,000 GB sits inside it: max(0, 1000 - 2048) = 0 GB chargeable, 0 x USD 0.036 = USD 0.00. The first charged gigabyte arrives at 2,048 GB, after which the ladder is USD 0.036/GB to 10 TB, USD 0.030/GB to 50 TB, USD 0.024/GB to 150 TB and USD 0.018/GB above. On the IONOS VPS product the same 1 TB is EUR 0.00 because no meter exists.",
+      "url": "https://cloud.ionos.com/prices",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "per-minute metering, billed monthly, no commitment",
+      "region_variation": "Yes, by traffic class rather than by region price. 'IONOS CLOUD Public Cloud local traffic is exchanged between services via public networks that terminate in the same IONOS CLOUD Public Cloud data centre' and national traffic terminates in a data centre in the same country: both are Free. 'Outgoing data transfer between IONOS CLOUD Public Cloud data centres in different countries, to IONOS CLOUD Private Cloud, to IONOS CLOUD Bare Metal Cloud as well as with the public internet is charged as regular outgoing public traffic.'",
+      "sources": [
+        {
+          "label": "IONOS CLOUD prices, Data transfer table",
+          "url": "https://cloud.ionos.com/prices"
+        },
+        {
+          "label": "IONOS VPS (German storefront), 'Unbegrenzter Traffic'",
+          "url": "https://www.ionos.de/server/vps"
+        }
+      ],
+      "note": "Verbatim tier table: 'For the first 2 TB (<= 2 TB) Free | The next 8 TB (> 2 TB <= 10 TB) $0.036/GB | The next 40 TB (> 10 TB <= 50 TB) $0.030/GB | The next 100 TB (> 50 TB <= 150 TB) $0.024/GB | Over 150 TB (> 150 TB) $0.018/GB | IONOS CLOUD Public Cloud national and local Free'. Also 'Incoming public traffic Free' and 'Internal private traffic Free', and the header line 'Only the outgoing data transfer is charged in the IONOS CLOUD.' The page adds 'Tiered pricing applies to all outgoing traffic from all IONOS CLOUD Public Cloud services within the same contract, and the total cumulative amount is listed on the invoice', so the 2 TB is a contract-level pool, not per instance. Currency: the page serves USD figures and no currency selector was found; a German-language storefront may quote EUR, which was not pinned. VAT: null. The page carries no VAT, tax or net-price statement anywhere. Two IONOS products are in scope and they behave differently, which is why both are recorded: the metered IONOS CLOUD and the unmetered IONOS VPS."
+    },
+    {
+      "name": "Infomaniak",
+      "legal_entity": "Infomaniak Network SA",
+      "reference_plan": "Public Cloud (OpenStack) instance, Switzerland",
+      "included_transfer": "Not expressed as an allowance. Instance bandwidth is free with no published volume cap. Object Storage is the single exception: 10 TB per month per organisation of outgoing traffic is included, and traffic beyond that is invoiced.",
+      "included_transfer_gb": null,
+      "overage_rate": 0.0,
+      "currency": "CHF",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.0,
+      "inbound_free": true,
+      "inter_region_charged": null,
+      "unlimited_language": "The wording is 'free' rather than 'unlimited', and it carries one printed exception. The prices page states 'At Infomaniak, bandwidth is free*' with '*except for object storage which is invoiced above 10 TB of consumed bandwidth.' The FAQ on the same page states 'Generally speaking, the incoming and outgoing traffic is free. With regard to storage, 10 TB are included per month and per organisation for outgoing traffic (the rate indicated on this page then applies).' No fair-use clause, no throttling clause and no acceptable-use cross-reference appears next to either sentence.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "Instance bandwidth carries no meter, so 1,000 GB x CHF 0.00 = CHF 0.00. Infomaniak's own comparison block on the product page uses exactly this shape: a 4 vCPU, 8 GB, 50 GB, 1 TB bandwidth configuration at CHF 16.10 per month against CHF 190.30 for AWS and CHF 205.28 for Azure, which is the vendor's arithmetic and is reproduced here only as the vendor's own claim, not as an independent check. If the same 1 TB left Object Storage rather than an instance it would also be CHF 0.00, because 1 TB is inside the 10 TB per-organisation allowance.",
+      "url": "https://www.infomaniak.com/en/hosting/public-cloud/prices",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "metered, billed at the end of each month, no minimum and no set-up fee",
+      "region_variation": "Not applicable. Infomaniak operates only Swiss data centres for this product, so there is no second region to differ from.",
+      "sources": [
+        {
+          "label": "Public Cloud prices, 'At Infomaniak, bandwidth is free*' and the VAT statement",
+          "url": "https://www.infomaniak.com/en/hosting/public-cloud/prices"
+        },
+        {
+          "label": "Public Cloud overview, 'Bandwidth is free*' and the 1 TB comparison block",
+          "url": "https://www.infomaniak.com/en/hosting/public-cloud"
+        },
+        {
+          "label": "VPS Cloud, 'Unlimited traffic' and 'Infomaniak does not limit the bandwidth'",
+          "url": "https://www.infomaniak.com/en/hosting/vps-cloud"
+        }
+      ],
+      "note": "VAT: the prices page states 'Prices do not include VAT', so ex-VAT. Currency: CHF. Every price token rendered server-side on the prices page is CHF and no EUR figure could be pinned, so CHF is recorded rather than a converted EUR. The Object Storage per-GB rate that applies above 10 TB is null: the number sits in a JavaScript-rendered price table on the same page and no figure for it appears in the served HTML, so it was not read. Inter-region is null because the question does not arise for a single-country provider and the page says nothing about it. The separate VPS Cloud product uses stronger wording: 'Unlimited traffic with 350 Gb/s bandwidth' and 'You can look to the future in total peace of mind: Infomaniak does not limit the bandwidth. Transfer as much data as necessary to ensure the success of your online business.'"
+    },
+    {
+      "name": "Exoscale",
+      "legal_entity": "Akenes SA",
+      "reference_plan": "Compute instance in a European zone (Geneva, Zurich, Frankfurt, Munich, Vienna, Sofia)",
+      "included_transfer": "A free tier of 1.42 GiB per hour granted per running instance, which the pricing page equates to 1 TiB per month per instance. The free tier is pooled: unused allowance from one instance is credited to other running instances in the same organisation.",
+      "included_transfer_gb": 1024,
+      "overage_rate": 0.02,
+      "currency": "EUR",
+      "unit": "per GiB",
+      "unit_normalised_per_gb": 0.0186,
+      "inbound_free": true,
+      "inter_region_charged": false,
+      "unlimited_language": "Not used. Exoscale publishes a rate and a free tier and calls inbound, intra and inter-zone traffic 'FREE' by name rather than 'unlimited'.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "Exoscale meters in GiB, so 1 TB decimal = 1,000 x 10^9 bytes / 2^30 = 931.32 GiB. One instance running a full 730-hour month accrues 1.42 GiB/hr x 730 = 1,036.6 GiB of free tier; on the 720-hour convention the page uses for monthly prices it accrues 1.42 x 720 = 1,022.4 GiB. Either figure exceeds 931.32 GiB, so chargeable traffic is max(0, 931.32 - 1022.4) = 0 GiB and the cost is EUR 0.00. The first charged byte would arrive at about 1,022 GiB, and beyond it the rate is EUR 0.02 per GiB, which is EUR 0.0186 per decimal GB. A caution the page makes explicit: the allowance accrues by the hour against running instances, so an instance that is up for only half the month accrues only half the free tier.",
+      "url": "https://www.exoscale.com/pricing/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "hourly metering, billed monthly, no commitment",
+      "region_variation": "None. One traffic price is published and 'Traffic INTERNAL between all zones' is listed as FREE, so all European and non-European zones share the same rate.",
+      "sources": [
+        {
+          "label": "Pricing page, Network table and traffic billing FAQ",
+          "url": "https://www.exoscale.com/pricing/"
+        },
+        {
+          "label": "Price endpoint the page itself calls",
+          "url": "https://portal.exoscale.com/api/pricing/opencompute"
+        }
+      ],
+      "note": "The pricing page renders prices client-side from an AngularJS controller, so the traffic figure was read from the endpoint the page calls, https://portal.exoscale.com/api/pricing/opencompute, which returns traffic 0.02000000 for each of chf, eur and usd, and traffic_free 0E-8. Page text, verbatim: 'Traffic is billed per GiB with a free tier of up to 1.42 GiB / hr granted per-Instance (equivalent to 1 TiB / mo per-Instance)' and 'Inbound and internal traffic is always free: For all inbound traffic from Internet, Between all Exoscale Zones, Between all Exoscale instances, SOS and DBaaS'. The FAQ explains the pooling: 'Traffic is billed hourly and takes into account the number of virtual machines running during the last one-hour period. Effectively, there are 1.42 GiB of free output traffic per instance. If an instance doesn't use its free tier, it is reported on other running instances of the same organization. So, with 5 instances running during the last hour, there are 7.1 GiB of free output traffic. The exceeding traffic is billed.' Currency: the account is set to CHF, EUR or USD at signup and the same numeral 0.02 is used in all three, so the currency changes the bill without changing the digits. VAT: null, no tax statement appears on the pricing page."
+    },
+    {
+      "name": "DigitalOcean",
+      "legal_entity": "DigitalOcean LLC",
+      "reference_plan": "Basic Droplet, 1 GiB RAM / 1 vCPU / 25 GiB SSD at USD 6.00 per month, in Amsterdam (AMS3) or Frankfurt (FRA1)",
+      "included_transfer": "Per-plan, from 500 GiB on the USD 4.00 Basic Droplet to 6,000 GiB on the USD 96.00 Basic Droplet, and up to 11,000 GiB on the largest CPU-Optimized plans. Allowances are pooled across all Droplets at the team level, not enforced per Droplet.",
+      "included_transfer_gb": 1024,
+      "overage_rate": 0.01,
+      "currency": "USD",
+      "unit": "per GiB",
+      "unit_normalised_per_gb": 0.0093,
+      "inbound_free": true,
+      "inter_region_charged": false,
+      "unlimited_language": "Not used. The pricing page says 'Each Droplet includes a generous amount of free outbound data transfer. The specific amount depends on the Droplet plan you choose, starting from 500 GiB/month. Inbound bandwidth is always free.'",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "DigitalOcean meters in GiB, so 1 TB decimal = 931.32 GiB. On the USD 6.00 Basic Droplet the pooled allowance is 1,000 GiB: max(0, 931.32 - 1000) = 0 GiB chargeable, cost USD 0.00, with 68.7 GiB of headroom, which is 6.9 percent. The result flips on the cheaper plan: on the USD 4.00 Basic Droplet the allowance is 500 GiB and the bill is (931.32 - 500) x USD 0.01 = USD 4.31, more than doubling the effective monthly cost of that Droplet. This is the clearest example in the set of the answer depending on which plan is called typical.",
+      "url": "https://docs.digitalocean.com/platform/billing/bandwidth/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "per-second billing with a 60-second minimum and a monthly cap, no commitment",
+      "region_variation": "None published for Droplet transfer. One overage rate, USD 0.01 per GiB, applies across regions.",
+      "sources": [
+        {
+          "label": "Bandwidth Billing doc (rate, pooling, inbound free, VPC free)",
+          "url": "https://docs.digitalocean.com/platform/billing/bandwidth/"
+        },
+        {
+          "label": "Droplet pricing table (per-plan Transfer column)",
+          "url": "https://www.digitalocean.com/pricing/droplets"
+        }
+      ],
+      "note": "Verbatim: 'Each Droplet plan includes an amount of free outbound data transfer. Additional outbound transfer is billed at $0.01 per GiB. Inbound transfer to Droplets is free. Transfer allowance and usage is pooled cumulatively across all Droplets at the team level, not individually per Droplet. Accrued transfer does not roll over between months and cannot be transferred between teams.' Two structural details matter more than the rate. First, the allowance accrues by the second: 'if a Droplet plan includes 1,000 GB of transfer allowance, the Droplet accrues 1,000 GB / 2,419,200 seconds', so a Droplet created mid-month contributes a prorated share. Second, the private path is free but the public path is not: 'Data transfer between Droplets over the VPC network uses a private network interface' and does not count, while 'All IPv6 traffic uses the public interface' and does. Inter-region Droplet-to-Droplet traffic therefore travels over public interfaces and draws on the same pool rather than attracting a separate inter-region rate, which is why inter_region_charged is recorded as false with that caveat. Adjacent rates on the same doc: App Platform overage USD 0.02 per GiB, Spaces 1,024 GiB included then USD 0.01 per GiB. VAT: null, the pricing page carries no tax statement."
+    },
+    {
+      "name": "Vultr",
+      "legal_entity": "The Constant Company, LLC",
+      "reference_plan": "Cloud Compute Regular Performance, 1 vCPU / 1 GB / 25 GB at USD 5.00 per month, in Amsterdam, Frankfurt, Paris, London, Madrid, Stockholm or Warsaw",
+      "included_transfer": "Per-plan, from 0.50 TB on the USD 2.50 Regular Performance plan to 15 TB on the USD 640.00 plan. The USD 5.00 Regular Performance plan includes 1.00 TB; the USD 6.00 High Performance plan includes 2.00 TB.",
+      "included_transfer_gb": 1000,
+      "overage_rate": 0.01,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.01,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used for Cloud Compute. Every plan row prints a numeric Bandwidth figure in TB.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "The USD 5.00 Regular Performance plan lists 1.00 TB of bandwidth. Usage 1,000 GB. Over-quota = max(0, 1000 - 1000) = 0 GB, so 0 x USD 0.01 = USD 0.00, with zero headroom: the scenario lands exactly on the line, and the 1,000,001st megabyte is chargeable. One gigabyte more costs USD 0.01, one hundred more costs USD 1.00. On the USD 2.50 plan, whose quota is 0.50 TB, the same 1 TB would cost (1000 - 500) x USD 0.01 = USD 5.00, which is twice the plan price.",
+      "url": "https://www.vultr.com/pricing/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "hourly with a monthly cap, no commitment",
+      "region_variation": "Stated to exist but not published. The pricing FAQ says: 'At Vultr, we attempt to keep cloud pricing as consistent as possible globally. However, due to variation in regional costs (such as networking, hardware, labor, taxes, and fees), certain global data center locations may have different per hour and per month pricing for Vultr cloud services. Current data center location pricing is always available in the Control Panel.' The Control Panel is behind a login, so per-location EU figures could not be pinned and are recorded as null.",
+      "sources": [
+        {
+          "label": "Pricing page, Cloud Compute tables and the bandwidth overage FAQ",
+          "url": "https://www.vultr.com/pricing/"
+        }
+      ],
+      "note": "The overage rate is the answer to a collapsed FAQ item on the pricing page, verbatim: 'What is the bandwidth overage rate?' / 'We charge $0.01 per GB for bandwidth used in excess of your quota.' The page and the Vultr docs were both read for two further facts and neither states them: whether inbound transfer is free, and whether the quota is pooled across instances in an account. docs.vultr.com has a Billing section with pages for payments, account limits, bandwidth usage and an FAQ, and none of them addresses inbound or pooling; the bandwidth-usage page only explains where to read usage in the console and via GET https://api.vultr.com/v2/account/bandwidth. Both fields are therefore null rather than assumed, even though the industry norm is that inbound is free. Object Storage is metered separately and openly: 'USD 18.00/month, 1 TB of Storage, 1 TB of Bandwidth, $18 per additional TB stored, $10 per additional TB transferred'. VAT: null, no tax statement on the pricing page. Both the pricing page and the docs sitemap are behind Cloudflare and returned HTTP 403 to a plain client; the figures here were read in a real browser session."
+    },
+    {
+      "name": "Akamai (Linode)",
+      "legal_entity": "Akamai Technologies, Inc.",
+      "reference_plan": "Shared CPU Nanode 1 GB at USD 5.00 per month, in Amsterdam, Frankfurt, London, Madrid, Milan, Paris or Stockholm",
+      "included_transfer": "Per-plan on the older families: Nanode 1 GB includes 1 TB, Linode 2 GB includes 2 TB, rising to 20 TB. Newer families include nothing: G8 Dedicated CPU, GPU, Accelerated Compute and instances in distributed compute regions all show 0 TB and are billed purely by usage. Allowances pool account-wide.",
+      "included_transfer_gb": 1000,
+      "overage_rate": 0.005,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.005,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Used only for what is free, never for what is sold: 'Free unmetered network transfer: All inbound network transfer...' The plan tables print numeric TB figures, including 0 TB where nothing is included.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "Nanode 1 GB at USD 5.00 includes 1 TB. Usage 1,000 GB. Over-allowance = max(0, 1000 - 1000) = 0 GB, so USD 0.00, with zero headroom, the same knife-edge as Vultr. The plan choice swings this hard: on a G8 Dedicated plan, which lists 0 TB of included transfer, the same 1 TB costs 1,000 x USD 0.005 = USD 5.00, and in Jakarta it would be 1,000 x USD 0.015 = USD 15.00. Because pooling is account-wide, a second Nanode running all month adds another 1 TB to the same pool rather than a second separate cap.",
+      "url": "https://www.akamai.com/cloud/pricing/europe",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "hourly with a monthly cap, no commitment",
+      "region_variation": "Yes, and it is published as a table. 'All data core centers (except those listed below) $0.005/GB', 'Jakarta, Indonesia $0.015/GB', 'Sao Paulo, Brazil $0.007/GB', 'All distributed data centers $0.01/GB'. The seven European locations are core data centres, so EUR-region workloads take the USD 0.005 rate. The Europe pricing page repeats it at the top of the Compute section: 'Egress overage costs = US$0.005 per GB'.",
+      "sources": [
+        {
+          "label": "Europe pricing page, plan tables and the egress overage line",
+          "url": "https://www.akamai.com/cloud/pricing/europe"
+        },
+        {
+          "label": "Network transfer usage and costs (rate table, pooling, free and metered definitions)",
+          "url": "https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs"
+        }
+      ],
+      "note": "Verbatim on what is free: 'All inbound network transfer', plus outbound from instances and NodeBalancers 'to any service within the same data center, provided the traffic occurs over an IPv6 address, a private VLAN network, or on the private IPv4 address of those services. Public IPv4 addresses, due to the way traffic is routed, is not included in this.' and 'Traffic between [instances] and other services communicating within the same Virtual Private Cloud (VPC) doesn't count against your monthly network transfer usage.' Verbatim on what is metered: 'Outbound transfer sent from [instances] and NodeBalancers to destinations outside of the origin data center (over both IPv6 and IPv4) and within the same data center if a public IPv4 address is used', which is the basis for recording inter-region as charged. Pooling is account-wide with two exceptions: 'Most core data centers have their transfer allowance and usage tracked in a global network transfer pool', while Jakarta and Sao Paulo keep region-specific pools and 'Network transfer isn't pooled in distributed compute regions.' Prorating is explicit: 'If a service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service is active.' Object Storage adds 1 TB per month to the global pool. VAT: null, no tax statement on the pricing page. www.akamai.com/cloud/pricing returned HTTP 403 to a plain client and was read in a browser."
+    },
+    {
+      "name": "Amazon Web Services",
+      "legal_entity": "Amazon Web Services EMEA SARL",
+      "reference_plan": "EC2 instance in EU (Frankfurt), eu-central-1. EU (Ireland), EU (Paris) and the other EU regions carry identical figures.",
+      "included_transfer": "100 GB per month of data transfer out to the internet, free, and aggregated across all AWS services and all regions except China and GovCloud. There is no per-instance allowance.",
+      "included_transfer_gb": 100,
+      "overage_rate": 0.09,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.09,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Not used anywhere in the EC2 data transfer section.",
+      "cost_for_1tb_month": 81.0,
+      "arithmetic": "Free allowance 100 GB per account per month. Chargeable = 1,000 - 100 = 900 GB. The first tier runs from 0 to 10,240 GB at USD 0.09 per GB, so all 900 GB price at the first tier: 900 x USD 0.09 = USD 81.00. Two things make the real bill likely to be higher rather than lower. The 100 GB is one allowance for the whole account across every service and region, so a second workload consumes it. And the tier ladder is aggregated the same way: 'Rate tiers take into account your aggregate usage for Data Transfer Out to the Internet across Amazon EC2, Amazon S3, Amazon Glacier, Amazon RDS, Amazon Redshift, Amazon SageMaker, Amazon SES, Amazon SimpleDB, Amazon SQS, Amazon SNS, Amazon DynamoDB, AWS Storage Gateway, AWS CloudShell, and Amazon CloudWatch Logs.'",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "metered, billed monthly, no commitment",
+      "region_variation": "Yes across the world, no within the EU. EU (Frankfurt), EU (Ireland) and EU (Paris) all read USD 0.09 per GB for 0 to 10,240 GB, then USD 0.085 to 51,200 GB, USD 0.07 to 153,600 GB and USD 0.05 above. Inter-region outbound from EU (Frankfurt) to EU (Ireland), EU (London), EU (Milan) and the other EU regions is USD 0.02 per GB.",
+      "sources": [
+        {
+          "label": "EC2 On-Demand pricing, Data Transfer section and the 100 GB statement",
+          "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+        },
+        {
+          "label": "Price endpoint the pricing page itself calls",
+          "url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/datatransfer/USD/current/datatransfer.json"
+        }
+      ],
+      "note": "The Data Transfer table on the EC2 page is rendered client-side per region, so the per-region figures were read from the endpoint the page's own markup names in data-token-prefix. That file's manifest records currencyCode USD and hawkFilePublicationDate 2026-07-20T18:46:45Z. For EU (Frankfurt) it returns 'DataTransfer External Inbound' price 0.0000000000; 'DataTransfer External Outbound Next 10 TB' price 0.0900000000 with StartingRange 0 and EndingRange 10240; 'DataTransfer InterRegion Outbound to EU Ireland' 0.0200000000. Page text, verbatim: 'AWS customers receive 100 GB of free data transfer out to the internet free each month, aggregated across all AWS Services and Regions (except China and GovCloud).' Two escape hatches are published next to it and both require a conversation rather than a click: 'EU customers may request reduced data transfer rates for eligible use cases under the European Data Act. Please contact AWS Customer Support for more information.' and free egress for customers moving all of their data off AWS. VAT: the page states 'Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax.'"
+    },
+    {
+      "name": "Microsoft Azure",
+      "legal_entity": "Microsoft Ireland Operations Limited",
+      "reference_plan": "Virtual machine in a Zone 1 European region: West Europe, North Europe, France Central, Germany West Central, Sweden Central, Switzerland North, UK South and others",
+      "included_transfer": "First 100 GB per month free, per account, in all Azure regions worldwide. No per-VM allowance.",
+      "included_transfer_gb": 100,
+      "overage_rate": 0.087,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.087,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Not used.",
+      "cost_for_1tb_month": 78.3,
+      "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion is needed. Free allowance 100 GB. Chargeable = 1,000 - 100 = 900 GB, all inside the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30. Choosing the cheaper routing option changes the answer: on 'Routing preference transit ISP network' the same band is USD 0.08, giving 900 x USD 0.08 = USD 72.00, at a lower quality of service. Azure prices egress by source continent, not by destination, so 1 TB from West Europe costs the same whether it lands in Frankfurt or in Tokyo.",
+      "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "metered, billed monthly, no commitment",
+      "region_variation": "Yes, by source continent. Internet egress routed via the Microsoft premium global network: 'From North America, Europe to any destination' First 100 GB/Month Free, then USD 0.087, USD 0.083, USD 0.07 and USD 0.05 per GB across the next 10 TB, 40 TB, 100 TB and 350 TB. 'From Asia (China excluded), Australia, MEA to any destination' starts at USD 0.12. 'From South America to any destination' starts at USD 0.181. Inter-region: 'Between regions within Europe' USD 0.02 per GB, and 'From Europe to other continents' USD 0.05 per GB. Data transfer within the same Availability Zone is Free, and the FAQ confirms 'Is data transfer between Azure services located within the same region charged? No.'",
+      "sources": [
+        {
+          "label": "Bandwidth pricing, Internet Egress and Inter Region tables and FAQ",
+          "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/"
+        }
+      ],
+      "note": "Verbatim: 'Data Transfer In: Free', 'Data transfer within same Availability Zone: Free', 'Is data transfer between Azure services located in two regions charged? Yes. Outbound data transfer is charged at the normal rate and inbound data transfer is free.' Zone membership is spelled out: 'Zone 1 - North America and Europe - Canada Central, Canada East, Central US, East US, East US 2, France Central, France South, Germany North, Germany West Central, Italy North, Mexico Central, North Central US, North Europe, Norway East, Norway West, Poland Central, Spain Central, South Central US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UK South, UK West, West Central US, West Europe, West US, West US 2, West US 3.' One published exit route: 'Azure offers free egress for customers leaving Azure when taking their data out of the Azure infrastructure via the internet to switch to another cloud provider or an on-premises data center', which must be claimed through a credit process rather than applied automatically. Academic customers meeting Enrollment for Education Solutions criteria are not charged for internet egress where it is under 15 percent of the monthly bill. VAT: null. The page states no VAT or tax treatment. It does warn that 'Prices are estimates only and are not intended as actual price quotes' and that non-USD figures are converted at London closing spot rates captured two business days before the previous month end, so a EUR figure taken from a currency selector would be a conversion rather than a quoted price."
+    },
+    {
+      "name": "Google Cloud",
+      "legal_entity": "Google Cloud EMEA Limited",
+      "reference_plan": "Compute Engine VM in Belgium (europe-west1), Premium Tier networking, which is the default tier",
+      "included_transfer": "None from a European source region. The Premium Tier table for europe-west1 begins at '0 gibibyte to 1,024 gibibyte' and charges from the first GiB. This is not universal: the same table for Iowa (us-central1) begins with a '0 gibibyte to 1 gibibyte, $0.00 (Free)' row. Standard Tier, which must be selected explicitly, has a separate 'First 200 GiB per month free (per account, across all regions)' allowance.",
+      "included_transfer_gb": 0,
+      "overage_rate": 0.12,
+      "currency": "USD",
+      "unit": "per GiB",
+      "unit_normalised_per_gb": 0.1118,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Not used.",
+      "cost_for_1tb_month": 111.76,
+      "arithmetic": "Google meters in GiB, so 1 TB decimal = 1,000 x 10^9 / 2^30 = 931.32 GiB. From europe-west1 there is no free row, so all 931.32 GiB price in the first band: 931.32 x USD 0.12 = USD 111.76 for traffic to European or North American destinations. Read as 1 TiB instead of 1 TB the figure is 1,024 x 0.12 = USD 122.88. This is the single most consequential regional trap in the set: run the identical workload in us-central1 and the published table hands back a free first GiB; run it in europe-west1 and it does not. Destination matters too, and the ladder is per destination bucket rather than global: to Australia, Indonesia, Korea, South America or Saudi Arabia the first band is USD 0.19 per GiB, giving 931.32 x 0.19 = USD 176.95, and to mainland China USD 0.23, giving USD 214.20.",
+      "url": "https://cloud.google.com/vpc/network-pricing",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "metered, billed monthly, no commitment",
+      "region_variation": "Yes, and it is a region selector rather than a printed table, which is why it is easy to misread. With the selector set to Belgium (europe-west1), Premium Tier data transfer out reads: TO North America 0-1,024 GiB USD 0.12, 1,024-10,240 GiB USD 0.11, above USD 0.085. TO Europe 0-1,024 GiB USD 0.12, 1,024-10,240 GiB USD 0.11, above USD 0.08. TO Asia excluding Korea and Indonesia USD 0.12 / 0.11 / 0.085. TO Australia, Indonesia, Korea, South America, Saudi Arabia USD 0.19 / 0.18 / 0.15. TO Middle East excluding Saudi Arabia, and Africa USD 0.15 / 0.13 / 0.11. TO China excluding Hong Kong USD 0.23 / 0.22 / 0.20. Inter-region VM-to-VM: Europe to Europe USD 0.02 per GiB, Europe to North America USD 0.05, Europe to Asia USD 0.08.",
+      "sources": [
+        {
+          "label": "VPC network pricing, Premium Tier internet data transfer table with the region selector set to Belgium (europe-west1)",
+          "url": "https://cloud.google.com/vpc/network-pricing"
+        }
+      ],
+      "note": "The tables on this page are region-selectable and default to Iowa (us-central1); the served HTML carries the us-central1 variant. The europe-west1 figures recorded here were read after driving the region control in a browser and confirming the control's label had changed to 'Belgium (europe-west1)'. The difference is real and was verified in both directions: the us-central1 view shows a '0 gibibyte to 1 gibibyte $0.00 (Free)' first row for every destination bucket, and the europe-west1 view does not. Also verbatim: 'Network (data transfer in) Free' and 'Premium Tier is the default tier for all Google Cloud data transfer. To use Standard Tier, you must specify it explicitly.' Standard Tier from the same page: '200 gibibyte to 10,240 gibibyte $0.085 / 1 gibibyte', '10,240 to 153,600 gibibyte $0.065', '153,600 gibibyte and above $0.045', with 'Free Tier: First 200 GiB per month free (per account, across all regions)'. VAT: null. The page states only 'If you pay in a currency other than USD, the prices listed in your currency on Cloud Platform SKUs apply', with no tax treatment."
+    },
+    {
+      "name": "WP Engine",
+      "legal_entity": "WPEngine, Inc.",
+      "reference_plan": "Essential plans: Startup, Professional, Growth and Scale, quoted from the Ireland storefront",
+      "included_transfer": "Bandwidth per month by plan: Startup 75 GB, Professional 150 GB, Growth 240 GB, Scale 550 GB.",
+      "included_transfer_gb": 240,
+      "overage_rate": null,
+      "currency": "USD",
+      "unit": "not applicable, bandwidth is not metered for billing",
+      "unit_normalised_per_gb": null,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "WP Engine explicitly refuses the word, and says so: 'The pricing plans at WP Engine all have a certain number of visits that they can receive every month. At WP Engine, we don't ever claim that an account will be able to receive unlimited visitors, but instead we set clear expectations about the service you will receive as a WP Engine customer.' What it does instead is publish a bandwidth number it does not bill against.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "There is no published per-GB bandwidth rate, so the metered add-on for 1 TB is USD 0.00. That figure should be read narrowly: it means WP Engine will not invoice you per gigabyte, not that 1 TB is within what the plan allows. 1,000 GB is 13.3 times the Startup allowance of 75 GB, 4.2 times Growth at 240 GB and 1.8 times Scale at 550 GB, and the published remedy is contractual rather than financial: 'Shared plans are not charged overages for bandwidth. If you exceed your bandwidth limit we'll have someone reach out to help you comply with our Acceptable use policy and to discuss options to help you reduce your usage or switch to another plan.' What WP Engine does bill is visits, at USD 2 per 1,000 visits over the plan limit, so a 1 TB month priced through the visits meter depends entirely on page weight: at 1 MB per page view, 1 TB is roughly 1,000,000 visits, which against a Startup limit of 25,000 visits would be (1,000,000 - 25,000) / 1,000 x USD 2 = USD 1,950. That last figure is an illustration built on an assumed page weight, not a WP Engine price, and is shown only because the visits meter is the one that actually bills.",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "retrieved_on": "2026-08-18",
+      "vat": null,
+      "is_promotional": false,
+      "billing_period": "annual prepayment for the headline rate, monthly available at a higher rate",
+      "region_variation": "None published. Bandwidth allowances and the visits overage rate are the same on the Ireland, United States and other locale storefronts.",
+      "sources": [
+        {
+          "label": "Reduce Bandwidth and Storage Usage, the no-bandwidth-overage statement",
+          "url": "https://wpengine.com/support/bandwidth-cause-effects/"
+        },
+        {
+          "label": "Overage pricing and plan limits, the visits overage rate",
+          "url": "https://wpengine.com/overage-pricing/"
+        },
+        {
+          "label": "Plans page (Ireland storefront), per-plan bandwidth figures",
+          "url": "https://wpengine.com/ie/plans/"
+        }
+      ],
+      "note": "Verbatim on bandwidth: 'Shared plans are not charged overages for bandwidth... Premium plans are also not charged for bandwidth overages. If you exceed your bandwidth limit we may have someone reach out to make sure your account has the resources it needs to meet your performance goals.' Verbatim on visits: 'When your number of visits exceeds your plan limit... we charge you a small overage for each 1,000 visitors over your limit. Customers on Startup, Professional, Growth, Scale, Agency Essentials, Agency Plus, or Agency Pro plans will incur an overage cost of $2 per 1,000 extra monthly visitors.' The plan table also prints, next to the visit figures, 'Visits/mo are estimates only. If you have traffic spikes, or a dynamic website, contact us before purchasing.' overage_rate is null and that null is the finding: WP Engine publishes a bandwidth allowance with no price attached to exceeding it. inbound_free and inter_region_charged are null because no WP Engine page addresses either. VAT: null; the plans page never uses the words VAT, ex-VAT or inc-VAT. The plan prices themselves are promotional, first-year only, and no renewal figure is published: 'First year pricing... is not valid for upgrades, renewals or any other product purchase... Product renewal pricing subject to change.'"
+    },
+    {
+      "name": "Kinsta",
+      "legal_entity": "Kinsta Inc.",
+      "reference_plan": "Managed WordPress Hosting, entry Single tier at USD 35 per month, sold either as 35,000 visits or as 20 GB of server bandwidth",
+      "included_transfer": "Two separate meters per plan. Entry Single tier: 20 GB server bandwidth and 125 GB CDN bandwidth. WP 2: 40 GB server bandwidth and 250 GB CDN bandwidth. WP 5: 65 GB server bandwidth. Plans are sold on visits or on server bandwidth, at the same price, and the two are alternatives rather than both.",
+      "included_transfer_gb": 20,
+      "overage_rate": 0.5,
+      "currency": "USD",
+      "unit": "per GB of server bandwidth",
+      "unit_normalised_per_gb": 0.5,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used. Every meter carries a number and a published overage rate.",
+      "cost_for_1tb_month": 43.75,
+      "arithmetic": "Kinsta is the one provider here where 1 TB has two legitimate answers, three orders of magnitude apart, depending on where the bytes leave from, and the honest presentation is the range. Lower bound, everything served from the CDN: (1,000 - 125) x USD 0.05 = USD 43.75. Upper bound, everything served from the origin: (1,000 - 20) x USD 0.50 = USD 490.00. A real WordPress site sits somewhere between: static assets tend to be CDN bytes at USD 0.05, uncached HTML and any dynamic response are origin bytes at USD 0.50, and the split is a property of the site, not of the price list. The ranked figure used here is the USD 43.75 lower bound and it should be read as the best case, not the expected case. A worked example at a 90 percent CDN hit rate: 900 GB CDN and 100 GB origin gives (900 - 125) x 0.05 + (100 - 20) x 0.50 = 38.75 + 40.00 = USD 78.75. If the same traffic is priced through the visits meter instead, the rate is USD 0.50 per 1,000 visits over the plan limit.",
+      "url": "https://kinsta.com/docs/billing/wordpress-hosting-plans/overages/",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "monthly, with an annual option at roughly two months' discount",
+      "region_variation": "None published. Kinsta prices one global rate for each meter.",
+      "sources": [
+        {
+          "label": "Overages doc, server bandwidth, CDN bandwidth, visits and disk rates",
+          "url": "https://kinsta.com/docs/billing/wordpress-hosting-plans/overages/"
+        },
+        {
+          "label": "Pricing page, per-plan server and CDN bandwidth figures and the tax statement",
+          "url": "https://kinsta.com/pricing/"
+        }
+      ],
+      "note": "Verbatim, server bandwidth: 'If you choose a Kinsta WordPress Hosting plan where pricing is based on bandwidth, it will be determined by the total monthly server bandwidth used by your sites. We allow you to exceed that limitation by paying $0.50/GB.' Verbatim, CDN: 'If you hit your CDN bandwidth limit, we'll keep your sites running, but we'll charge you a fee after each additional GB ($0.05 / GB).' Verbatim, visits: 'we'll keep your sites running but charge you an overage fee ($0.50/1,000 visits)'. Two acceleration clauses are worth reading before assuming overages settle at month end. Server bandwidth: 'If you exceed your current plan's server bandwidth by over 250 GB and haven't upgraded your plan, you will automatically be charged at the end of the first week following the overage.' And in general: 'An extreme overage occurs when the amount of your overage is as large or larger than the cost of your hosting plan, or $500, whichever is less', in which case Kinsta may act before the renewal date. On the 1 TB scenario both clauses would fire. VAT: the pricing page footer states 'Prices exclude tax and are in USD', four times, once under each plan table, and offers no currency selector."
+    },
+    {
+      "name": "SiteGround",
+      "legal_entity": "SiteGround Spain S.L.",
+      "reference_plan": "StartUp, GrowBig and GoGeek shared and WordPress hosting, EU storefront",
+      "included_transfer": "No figure is published. Every plan is sold as unlimited traffic.",
+      "included_transfer_gb": null,
+      "overage_rate": null,
+      "currency": "EUR",
+      "unit": "not applicable, traffic is not metered",
+      "unit_normalised_per_gb": null,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Yes, unqualified on the plan card and constrained only in the policies. The cards read 'Host 1 website with unlimited traffic' (StartUp) and 'Unlimited websites, unlimited traffic' (GrowBig and GoGeek). No asterisk, no fair-use footnote and no numeric cap appears next to either phrase. The constraint lives in two other documents and it is categorical rather than numeric. The Acceptable Use Policy forbids the use cases that would generate the traffic: you may not 'Store, Host or operate within your Customer Account(s) an audio and/or video streaming service', nor host 'torrent trackers, torrent portals or similar software', nor 'operate and contain peer-to-peer network systems and file sharing systems', nor 'any kind of proxy server or other traffic relaying programs'. The Terms of Service then carve out from the uptime guarantee any 'Downtime caused when you reach the maximum resources allocation for your plan', which confirms a per-plan resource ceiling exists even though no traffic number is printed.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "No traffic meter and no per-GB rate exist, so 1,000 GB x EUR 0.00 = EUR 0.00 in metered terms. The exposure is not a bill, it is the plan's unpublished resource ceiling: SiteGround publishes no CPU-seconds, no execution and no traffic figure on the plan page, so a reader cannot compute in advance whether 1 TB per month is inside or outside what the account is allowed. That is the finding. The recoverable cost is the base plan itself, which is promotional: StartUp is 2.99 EUR/mo now and 'Renews at 15.99 EUR /mo. Prepaid for 12 months. Ex. VAT', a 5.3-fold step-up in year two.",
+      "url": "https://eu.siteground.com/wordpress-hosting.htm",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": true,
+      "billing_period": "prepaid for 12 months to obtain the quoted rate",
+      "region_variation": "None published.",
+      "sources": [
+        {
+          "label": "WordPress hosting plans, unlimited traffic claims and renewal prices",
+          "url": "https://eu.siteground.com/wordpress-hosting.htm"
+        },
+        {
+          "label": "Acceptable Use Policy, prohibited traffic-heavy use cases",
+          "url": "https://eu.siteground.com/viewtos/acceptable_use_policy"
+        },
+        {
+          "label": "Terms of Service, resource-allocation carve-out from the uptime guarantee",
+          "url": "https://eu.siteground.com/viewtos/siteground_terms_of_service"
+        }
+      ],
+      "note": "is_promotional is true and refers to the base plan the traffic sits on, not to a traffic rate, since no traffic rate exists. Renewal figures are printed in plain text on every card, which is unusual in this category and worth crediting: 'Renews at 15.99 EUR /mo' (StartUp), 'Renews at 27.99 EUR /mo' (GrowBig), 'Renews at 39.99 EUR /mo' (GoGeek), each followed by 'Prepaid for 12 months. Ex. VAT'. VAT: ex, on the strength of that printed 'Ex. VAT'. Currency EUR, from the EU storefront, which declares currencyCode EUR in its own settings object. overage_rate, inbound_free and inter_region_charged are all null because SiteGround publishes no traffic meter of any kind, so none of the three questions has a published answer."
+    },
+    {
+      "name": "Hostinger",
+      "legal_entity": "Hostinger International Ltd",
+      "reference_plan": "Premium, Unlimited and Cloud Startup shared web hosting, German storefront",
+      "included_transfer": "No figure is published. Bandwidth is sold as unlimited on every plan.",
+      "included_transfer_gb": null,
+      "overage_rate": null,
+      "currency": "EUR",
+      "unit": "not applicable, bandwidth is not metered",
+      "unit_normalised_per_gb": null,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Yes, and unlike SiteGround the qualifier is on the same page as the claim. The marketing line is 'Traffic-Spitzen mit unbegrenzter Bandbreite bewaeltigen', handle traffic spikes with unlimited bandwidth, and the plan block carries the footnote 'Unbegrenzte Funktionen unterliegen unserer Fair Use Policy', unlimited features are subject to our Fair Use Policy, linking to the hosting agreement. That agreement is where the word unlimited is actually defined, verbatim: 'Unlimited services. We offer certain services that contain unlimited features, meaning there are no predefined caps on the resources of that particular feature you can utilize. However, we maintain a fair usage policy across all accounts to prevent violations and uphold service stability. In practical terms, this entails that our unlimited services are intended for the typical operation of a small business website.' The enforcement clause follows: 'In cases where your usage or content surpasses these limits, potentially posing a risk to the stability, performance, or uptime of our servers, data storage, networking, or other infrastructure, we may request a reduction in usage, recommend upgrading your current plan, or take necessary measures to restrict the resources your website is utilizing.' Note what the agreement does and does not quantify: it gives hard numbers for databases (3 GB and 300 databases on shared, 6 GB and 800 on cloud), FTP accounts (300) and cron jobs (400), and gives no number at all for bandwidth.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "No bandwidth meter and no per-GB rate, so 1,000 GB x EUR 0.00 = EUR 0.00 in metered terms. The governing test is not arithmetic but the phrase 'intended for the typical operation of a small business website', and the remedy for exceeding it is a reduction request, an upgrade recommendation or resource restriction, none of which is priced. As with SiteGround, the calculable cost is the base plan at renewal: Premium is 2.99 EUR/mo on a 48-month prepayment with 'Verlaengerungspreis: 9,99 EUR/Mon.', a 3.3-fold step-up, and Cloud Startup goes from 7.99 EUR/mo to a 23.99 EUR/mo renewal.",
+      "url": "https://www.hostinger.com/de/webhosting",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": true,
+      "billing_period": "prepaid, 1, 12, 24 or 48 months; the headline rate requires the 48-month term",
+      "region_variation": "None published.",
+      "sources": [
+        {
+          "label": "Web hosting plans (German storefront), unlimited bandwidth claim, Fair Use footnote, renewal prices and the VAT statement",
+          "url": "https://www.hostinger.com/de/webhosting"
+        },
+        {
+          "label": "Hosting agreement, the Unlimited services clause",
+          "url": "https://www.hostinger.com/de/legal/hosting-vertrag"
+        }
+      ],
+      "note": "is_promotional is true and refers to the base plan, not to a bandwidth rate, since none exists. Renewal figures are published in the card small print, verbatim: 'Erhalten Sie 48 Monate fuer 143,52 EUR (regulaerer Preis 575,52 EUR). Verlaengerungspreis: 9,99 EUR/Mon.' for Premium, '191,52 EUR ... Verlaengerungspreis: 16,99 EUR/Mon.' for Unlimited and '383,52 EUR ... Verlaengerungspreis: 23,99 EUR/Mon.' for Cloud Startup. The renewal figure does not change with the chosen term. Note also that the struck-through regular price on the card is not the renewal price: Premium shows 11,99 EUR struck through but renews at 9,99 EUR. VAT: the German storefront footer states 'Preisangaben ohne Mehrwertsteuer', prices excluding VAT. All three of overage_rate, inbound_free and inter_region_charged are null because no bandwidth meter is published."
+    },
+    {
+      "name": "Vercel",
+      "legal_entity": "Vercel Inc.",
+      "reference_plan": "Pro plan at USD 20 per month per seat, traffic served from Frankfurt (fra1)",
+      "included_transfer": "Fast Data Transfer: Hobby includes the first 100 GB per month, Pro includes the first 1 TB. Fast Origin Transfer, which is CDN-to-function traffic, is separate: Hobby includes the first 10 GB and Pro includes none.",
+      "included_transfer_gb": 1000,
+      "overage_rate": 0.15,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.15,
+      "inbound_free": false,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used. Every resource has a printed allowance and an on-demand rate.",
+      "cost_for_1tb_month": 0.0,
+      "arithmetic": "Pro includes the first 1 TB of Fast Data Transfer, so 1,000 GB lands exactly on the allowance: max(0, 1000 - 1000) = 0 GB chargeable, USD 0.00 on top of the USD 20 per month platform fee, with zero headroom. The 1,001st gigabyte costs USD 0.15 in Frankfurt. Three qualifications matter more than that clean zero. First, inbound counts: 'Fast Data Transfer is calculated based on the full size of each HTTP request and response transmitted to or from Vercel's CDN. This includes the body, all headers, the full URL and any compression. Incoming data transfer corresponds to the request, and outgoing corresponds to the response.' So a 1 TB month of responses plus request overhead consumes more than 1 TB of meter. Second, Fast Origin Transfer is a second meter with no Pro allowance at all, at USD 0.06 per GB, and any function, middleware, Blob or ISR response passes through it. Third, on Hobby the same 1 TB is not a bill at all: Hobby cannot purchase on-demand usage, so the project stops rather than overspends.",
+      "url": "https://vercel.com/docs/manage-cdn-usage",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "monthly per seat, no commitment",
+      "region_variation": "Yes, and it is a selector on the doc page. With the region control set to Frankfurt, Germany (fra1) the Fast Data Transfer on-demand rate reads USD 0.15 per GB, the same as the page default of Washington, D.C. (iad1). The selector was exercised against a third region to confirm it re-renders: Sydney, Australia (syd1) reads USD 0.16 per GB. Allowances do not vary by region, only the on-demand rate does.",
+      "sources": [
+        {
+          "label": "CDN pricing and usage, Fast Data Transfer and Fast Origin Transfer tables with the region selector set to fra1",
+          "url": "https://vercel.com/docs/manage-cdn-usage"
+        },
+        {
+          "label": "Pro plan documentation",
+          "url": "https://vercel.com/docs/plans/pro-plan"
+        }
+      ],
+      "note": "The doc URL /docs/pricing/networking redirects to /docs/manage-cdn-usage, which is the page recorded. Rates are rendered per region from a select control and default to iad1; the fra1 figures here were read after setting that control and confirming its value. inbound_free is recorded as false, which is unusual in this table and is the finding: most providers in this comparison state that ingress is free, and Vercel's Fast Data Transfer meter explicitly counts the request as well as the response. inter_region_charged is null because Vercel sells a CDN, not regions you move data between, so the question does not map onto the product. VAT: ex. https://vercel.com/docs/pricing/taxes states that Vercel is 'rolling out collection of VAT, GST, or equivalent for international customers starting on April 1, 2026' and that invoices show tax as a separate line item, which places list prices before tax. Currency: USD only, no EUR list and no currency selector."
+    },
+    {
+      "name": "Netlify",
+      "legal_entity": "Netlify, Inc.",
+      "reference_plan": "Pro at USD 20 per month, base 3,000-credit tier, on the credit-based pricing that applies to accounts created on or after 4 September 2025",
+      "included_transfer": "Not expressed in gigabytes at all. Plans include credits and bandwidth spends them at 20 credits per GB. Free carries a 300-credit limit, Personal at USD 9 includes 1,000 credits and Pro at USD 20 starts at 3,000 credits with selectable tiers up to 20,000. At 20 credits per GB those convert to 15 GB, 50 GB and 150 GB of bandwidth respectively if credits were spent on nothing else.",
+      "included_transfer_gb": 150,
+      "overage_rate": 0.1333,
+      "currency": "USD",
+      "unit": "per GB, derived: 20 credits per GB at the Pro add-on rate of USD 10 per 1,500 credits",
+      "unit_normalised_per_gb": 0.1333,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used for bandwidth. The word that does the work here is 'credits', and the effect of exhausting them is stated plainly: 'When a site reaches its monthly usage limits, it enters a paused state until the start of the next billing cycle... Please note that if one project exceeds its limits, all projects on your account will be paused.'",
+      "cost_for_1tb_month": 113.33,
+      "arithmetic": "Convert the traffic to credits: 1,000 GB x 20 credits per GB = 20,000 credits. The Pro base tier includes 3,000, so 20,000 - 3,000 = 17,000 credits must be bought. Add-on credits on Pro are sold at USD 10 per 1,500: 17,000 / 1,500 = 11.333 packs x USD 10 = USD 113.33. Expressed per gigabyte that is 20 x (10 / 1500) = USD 0.1333 per GB, which is the figure recorded as the rate. Two caveats. Add-on credits only apply if auto recharge is switched on, and the page says it is 'disabled by default', so the default behaviour at 20,000 credits of bandwidth is a paused account rather than a USD 113.33 line item. And the credit spend is shared: bandwidth at 20 credits per GB competes with compute at 10 credits per GB-hour, production deploys at 15 credits each and web requests at 2 credits per 10,000, so the 3,000 included credits are not all available to traffic.",
+      "url": "https://www.netlify.com/pricing/",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "monthly, no commitment",
+      "region_variation": "None published. Credits per GB do not vary by region.",
+      "sources": [
+        {
+          "label": "Pricing page, usage credit rates, plan credit allowances and add-on credit prices",
+          "url": "https://www.netlify.com/pricing/"
+        }
+      ],
+      "note": "Verbatim rate: 'Bandwidth: 20 credits per GB', defined as 'Web bandwidth is the amount of data traffic your project sends out to the internet. This includes: Assets and web content served, Image CDN usage, file downloads, function responses, and Large Media (Deprecated). Database bandwidth is the amount of data transferred out of your Netlify Database.' That definition is outbound-only in wording, but Netlify does not state anywhere on the page that inbound is free, so inbound_free is recorded as null rather than inferred. Add-on credits, verbatim: 'Additional credits are available when you enable auto recharge (disabled by default)', priced at '$5 / 500 additional credits' on Personal and '$10 / 1,500 additional credits' on Pro. The prices of the Pro tiers above the base 3,000 credits are null: the page lists 3,000, 5,000, 10,000, 15,000 and 20,000 credits per month as selectable tiers but prints only the USD 20 base figure, and selecting the 20,000-credit tier in a browser did not surface a price, so no figure is recorded for them. This matters because a 20,000-credit tier would cover the 1 TB scenario exactly and might well cost less than USD 113.33 in add-on credits, but that cannot be checked from published information. Rollover applies only above the base tier: 'Tiers above 3,000 credits also roll over unused monthly credits... The base 3,000-credit tier doesn't support rollovers.' VAT: ex, on the Self-Serve Subscription Agreement, which states 'Customer is responsible for all sales, use, value added and similar taxes of any nature associated with Services'. The pricing page itself carries no tax statement. Accounts created before 4 September 2025 remain on legacy plans with GB-denominated allowances; migration to credits is irreversible."
+    },
+    {
+      "name": "Fly.io",
+      "legal_entity": "Fly.io, Inc.",
+      "reference_plan": "Pay as you go, Machines in a European region such as Frankfurt (fra) or Amsterdam (ams)",
+      "included_transfer": "None. There is no allowance at any tier and no free bundle; every outbound gigabyte to the public internet is billed from the first one.",
+      "included_transfer_gb": 0,
+      "overage_rate": 0.02,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.02,
+      "inbound_free": true,
+      "inter_region_charged": true,
+      "unlimited_language": "Not used.",
+      "cost_for_1tb_month": 20.0,
+      "arithmetic": "No allowance, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group. The same 1 TB from Asia Pacific, Oceania or South America is 1,000 x USD 0.04 = USD 40.00, and from Africa or India 1,000 x USD 0.12 = USD 120.00, a six-fold spread on identical traffic. For scale, USD 20.00 of egress is roughly nine times the USD 2.24 per month cost of the smallest always-on machine in Frankfurt, so at 1 TB the traffic is the bill and the compute is a rounding error.",
+      "url": "https://fly.io/docs/about/pricing/",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "metered per second, billed monthly, no commitment and no plan fee",
+      "region_variation": "Yes, published as a three-row table by region group. 'North America, Europe: $0.02 per GB egress to public internet, $0.006 per GB private network cross-region transfer'. 'Asia Pacific, Oceania, South America: $0.04 per GB, $0.015 per GB'. 'Africa, India: $0.12 per GB, $0.050 per GB'.",
+      "sources": [
+        {
+          "label": "Pricing, Data transfer pricing section and region-group table",
+          "url": "https://fly.io/docs/about/pricing/"
+        }
+      ],
+      "note": "Verbatim on what is billed: 'We bill for data leaving your app destined for the public internet or for apps or Machines in other regions, including: Data egress to the Internet, from Machine to edge server to Internet; Data transfer over private network between regions, from Machine to edge server and edge server to Machine; Data transfer to some extensions like Upstash Redis.' Verbatim on what is free: 'All inbound data transfer; Data transfer between apps or Machines in the same region (for organizations using granular data transfer rates); Data transfer from apps without an assigned IP address (for organizations not using granular data transfer rates).' One irreversible billing choice is documented: 'Organizations created after July 18 2024 are automatically opted-in to use the granular data transfer rates and are billed at a different rate for private network data transfer between regions... Organizations not using granular data transfer rates are billed for all data transfer (excluding that listed as free above) at the Egress to public internet rate', and switching to granular rates cannot be undone: 'You won't be able to return to using the non-granular data transfer rates once you opt in.' So an older organisation pays USD 0.02 rather than USD 0.006 for cross-region private traffic. VAT: ex, on the Terms of Service, which state 'The fees are exclusive of, and Customer will pay, all sales, use, excise and other taxes'. The pricing page carries no tax statement. Currency USD only."
+    },
+    {
+      "name": "Render",
+      "legal_entity": "Render Services, Inc.",
+      "reference_plan": "Hobby workspace at USD 0 per month plus compute, running a service in Frankfurt",
+      "included_transfer": "Per workspace plan: Hobby 5 GB per month, Pro 25 GB, Scale 1 TB. The allowance belongs to the workspace subscription, not to the instance, and the workspace fee buys no compute at all.",
+      "included_transfer_gb": 5,
+      "overage_rate": 0.15,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.15,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used for bandwidth.",
+      "cost_for_1tb_month": 149.25,
+      "arithmetic": "On the Hobby workspace, which is the USD 0 base: (1,000 - 5) x USD 0.15 = USD 149.25. On Pro at USD 25 per month: (1,000 - 25) x USD 0.15 = USD 146.25, so the USD 25 plan fee buys USD 3.00 of bandwidth relief, a losing trade at this volume. On Scale, 1 TB is included and the egress add-on is USD 0.00, but the workspace fee is USD 499 per month, so the all-in cost of the same traffic is USD 499 against USD 149.25 on Hobby. Render is therefore the most expensive provider in this comparison at 1 TB on its entry plan, and stays the most expensive on its mid plan, and the only route to zero egress cost is a plan that costs more than the egress it removes. The rate itself does not tier: the comparison table prints 'then $0.15 per GB' against all three plans.",
+      "url": "https://render.com/pricing",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "monthly workspace fee plus per-second compute, no commitment",
+      "region_variation": "None published. One bandwidth rate is quoted for all regions.",
+      "sources": [
+        {
+          "label": "Pricing page, workspace plans and the Networking / Bandwidth row of the comparison table",
+          "url": "https://render.com/pricing"
+        }
+      ],
+      "note": "Verbatim from the comparison table's Bandwidth row: '5 GB included per month then $0.15 per GB | 25 GB included per month then $0.15 per GB | 1 TB included per month then $0.15 per GB | Custom'. Plan cards, verbatim: Hobby '$0 /mo + compute' with '5 GB of bandwidth included', Pro '$25 /mo + compute' with '25 GB bandwidth included', Scale '$499 /mo + compute' with '1 TB of bandwidth included'. A separate and much cheaper rate exists for a private path: 'Private link outbound bandwidth $0.03 per GB' on Pro and Scale. Render restructured on 23 April 2026, moving Pro and Scale from per-seat to flat workspace fees and cutting included bandwidth to compensate, with legacy workspaces auto-migrated on 1 August 2026, so these are the live figures rather than a transitional set. inbound_free and inter_region_charged are null: the pricing page addresses neither. VAT: ex, on the Terms of Service clause 'You will pay any applicable taxes, if any, relating to any such purchases'. Render does not name VAT specifically, so 'ex' rests on that general clause rather than a VAT-specific statement. Currency USD only; the compute tables are labelled 'USD per month'."
+    },
+    {
+      "name": "Railway",
+      "legal_entity": "Railway Corp.",
+      "reference_plan": "Hobby at USD 5 per month, or Pro at USD 20 per month, running a service in the EU West (Amsterdam) region",
+      "included_transfer": "None at any tier. Egress bills from the first gigabyte on Free, Hobby, Pro and Enterprise alike. The one exception is object storage: 'Bucket egress: Free' on all four plans.",
+      "included_transfer_gb": 0,
+      "overage_rate": 0.05,
+      "currency": "USD",
+      "unit": "per GB",
+      "unit_normalised_per_gb": 0.05,
+      "inbound_free": null,
+      "inter_region_charged": null,
+      "unlimited_language": "Not used for egress. 'Unlimited' appears on the plan matrix only for seats, projects, domains and storage on the higher tiers.",
+      "cost_for_1tb_month": 50.0,
+      "arithmetic": "No allowance at any tier, so 1,000 GB x USD 0.05 = USD 50.00. On Hobby that is ten times the USD 5 plan fee, and the plan fee is a spend floor rather than an addition: the USD 5 comes with USD 5 of usage credit, so the total for a month whose only cost is this traffic is about USD 50 rather than USD 55. The rate is 2.5 times Fly.io's European rate for the same product shape and five times the Akamai core-data-centre rate, and unlike either it never tiers down.",
+      "url": "https://railway.com/pricing",
+      "retrieved_on": "2026-08-18",
+      "vat": "ex",
+      "is_promotional": false,
+      "billing_period": "monthly plan fee that doubles as a usage credit, plus per-second metering",
+      "region_variation": "None published. One egress rate is quoted and the plan matrix lists 'Concurrent global regions' as a feature without differential pricing.",
+      "sources": [
+        {
+          "label": "Pricing page, usage rate list and plan comparison matrix",
+          "url": "https://railway.com/pricing"
+        }
+      ],
+      "note": "Verbatim from the usage rate list: 'Memory $0.00000386 per GB / sec | CPU $0.00000772 per vCPU / sec | Volumes $0.00000006 per GB / sec | Egress $0.05 per GB for services | Object Storage $0.015 per GB-month free egress'. The plan matrix confirms the storage exception across every tier: 'Class A operations Free | Class B operations Free | Bucket egress Free'. inbound_free and inter_region_charged are null: neither the pricing page nor the plan matrix addresses ingress or cross-region traffic, and the only adjacent figures are throughput ceilings, 'Up to 100 Gbps private transfer' and 'Up to 10 Gbps public transfer'. VAT: ex, with a caveat. Neither the pricing page nor the pricing docs mention VAT; the Terms state 'You will be responsible for paying, withholding, filing, and reporting all taxes, duties, and other governmental assessments associated with your activity in connection with the Services', which is a customer-bears-tax clause rather than a VAT-exclusive price statement. Currency USD only."
+    }
+  ]
+}

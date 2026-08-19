@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <div class="chart-block">
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-swatch chart-swatch-2"></span>Paid egress cost</span>
+      <span class="chart-legend-item"><span class="chart-swatch chart-swatch-1" style="opacity:0.35"></span>Included in plan</span>
+    </div>
+    {{ chart_svg }}
+  </div>
+  <p class="chart-note">What 1 TB of monthly outbound traffic costs, descending. Same nine providers, same representative plans as the VPS cost tab. EU-based and independent VPS providers include transfer in the plan at no extra charge; hyperscalers charge per GB.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>1 TB egress cost, nine providers, captured {{ capture_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col" class="num">1 TB cost</th>
+          <th scope="col">Transfer included</th>
+          <th scope="col">Captured</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.provider }}</th>
+          <td class="num">{{ row.cost_display }}</td>
+          <td>{{ row.included if row.included else "none stated" }}</td>
+          <td><time datetime="{{ row.capture_date }}">{{ row.capture_date }}</time></td>
+          <td>{% if row.url %}<a href="{{ row.url }}">pricing</a>{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

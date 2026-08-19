@@ -1,0 +1,174 @@
+{# Shared field renderings. Every one of these is a record of a field in the
+   dataset, printed at its natural length. Nothing here truncates, scores or
+   ranks, and no mark carries a hue. #}
+
+{% macro arrow() %}<span class="ext" aria-hidden="true">&#8599;</span>{% endmacro %}
+
+{# Signature unit: the site's thesis as one typographic object.
+   adv  = advertised (promo) price string, e.g. "EUR 3.81"
+   ren  = renewal price string, or none if not published
+   mult = multiple string, e.g. "4.2", or none
+   lg   = true for large hero treatment #}
+{% macro signature_unit(adv, ren, mult, lg=false) %}
+<span class="signature-unit{{ ' signature-unit-lg' if lg else '' }}"><span class="sig-adv">{{ adv }}</span><span class="sig-arrow" aria-hidden="true"> &rarr; </span>{% if ren %}<span class="sig-ren">{{ ren }}</span>{% if mult %}<span class="sig-mult">&times;{{ mult | replace('x', '') | replace('X', '') }}</span>{% endif %}{% else %}<span class="sig-np">not published</span>{% endif %}</span>
+{% endmacro %}
+
+{# Provenance stamp: source and age beside every figure.
+   source = "api" or "snapshot"
+   days   = integer age in days (or None to use fallback_date)
+   fallback_date = string capture date shown when days is None #}
+{% macro prov_stamp(source, days, fallback_date=none) %}
+{% if days is not none %}
+<span class="prov-stamp{{ ' prov-aged' if days|int > 90 else '' }}" title="Data age: {{ days }} days">{{ source }} {{ days }}d</span>
+{% elif fallback_date %}
+<span class="prov-stamp" title="Captured {{ fallback_date }}">snapshot {{ fallback_date }}</span>
+{% endif %}
+{% endmacro %}
+
+{% macro paid_tag() %}<span class="paid-tag">paid link</span>{% endmacro %}
+
+{# An outbound commercial link. Marked at the point of the link when the
+   provider operates a programme, plain when no programme was located. #}
+{% macro commercial_link(p, url, text) %}
+  {% if p.paid_link %}
+<a href="{{ url }}" rel="sponsored nofollow">{{ text }}</a>{{ arrow() }} {{ paid_tag() }}
+  {% else %}
+<a href="{{ url }}">{{ text }}</a>{{ arrow() }}
+  {% endif %}
+{% endmacro %}
+
+{# Axis A. The structure is printed, the reader draws the conclusion. #}
+{% macro chain(p) %}
+<span class="chain">
+  <span class="chain-line">
+    <span class="iso">{{ p.incorporation_country }}</span>
+    <span class="entity">{{ p.legal_entity }}</span>
+  </span>
+  {% if p.parent_company %}
+  <span class="chain-line chain-parent">
+    <span class="iso">{{ p.parent_country }}</span>
+    <span class="entity"><span aria-hidden="true">&#9492; </span>{{ p.parent_company }}</span>
+  </span>
+  {% if p.get('parent_control_note') %}
+  <span class="chain-line chain-caveat">
+    <span class="iso" aria-hidden="true"></span>
+    <span class="entity">{{ p.parent_control_note }}</span>
+  </span>
+  {% endif %}
+  {% else %}
+  <span class="chain-line chain-parent">
+    <span class="iso" aria-hidden="true"></span>
+    <span class="entity none">no parent identified</span>
+  </span>
+  {% endif %}
+</span>
+{% endmacro %}
+
+{# Axis B. One ink, two forms. The word carries the meaning. #}
+{% macro doc_mark(found) %}
+<span class="mark {{ 'mark-filled' if found else 'mark-hollow' }}" aria-hidden="true"></span>
+{% endmacro %}
+
+{% macro documentation(p, rel) %}
+<span class="doc">
+  {% if p.sovereignty.disclosure_found %}
+  <span class="doc-verb">{{ doc_mark(true) }}located</span>
+  <span class="doc-detail"><a href="{{ p.sovereignty.disclosure_url }}">{{ p.disclosure_host }}</a>{{ arrow() }}</span>
+  {% else %}
+  <span class="doc-verb">{{ doc_mark(false) }}none at {{ p.urls_checked_count }} URLs</span>
+  <span class="doc-detail"><a href="{{ rel }}providers/{{ p.slug }}.html#urls-checked">list of {{ p.urls_checked_count }} checked<span class="sr-only"> for {{ p.display_name }}</span></a></span>
+  {% endif %}
+</span>
+{% endmacro %}
+
+{# A price is never a bare number. Amount, plan, capture date, source. #}
+{% macro price(p, show_date=true) %}
+<span class="price">
+  {% if p.price.has_price %}
+  <span class="price-amount">{{ p.price.text }} <span class="price-period">{{ p.price.period }}</span></span>
+  <span class="price-qualifier">
+    {{- p.price.plan_name }}
+    {%- if show_date %} &middot;
+    <span class="{{ 'age' if p.price.stale else '' }}">{% if p.price.stale %}not re-checked since {% else %}captured {% endif %}<time datetime="{{ p.price.captured_on }}">{{ p.price.captured_on }}</time></span>
+    {%- endif %}
+    {%- if p.price.url %} &middot; {{ commercial_link(p, p.price.url, p.price.url_host) }}{% endif %}
+  </span>
+  {% if p.price.period_caveat %}
+  <span class="price-qualifier">{{ p.price.period_caveat }}</span>
+  {% endif %}
+  {% if p.price.rate_caveat %}
+  <span class="price-qualifier">{{ p.price.rate_caveat }}</span>
+  {% endif %}
+  {% else %}
+  <span class="price-none">No entry-level plan price published</span>
+  {% if p.price.url or show_date %}
+  <span class="price-qualifier">
+    {% if p.price.url %}{{ commercial_link(p, p.price.url, p.price.url_host) }}{% endif %}
+    {% if p.price.url and show_date %}&middot;{% endif %}
+    {% if show_date %}checked <time datetime="{{ p.price.captured_on }}">{{ p.price.captured_on }}</time>{% endif %}
+  </span>
+  {% endif %}
+  {% endif %}
+</span>
+{% endmacro %}
+
+{# Google Cloud runs a programme and publishes no entry plan page, so its rows
+   carry a programme but no link to mark. Say that rather than badging a link
+   that is not there. #}
+{% macro link_type(p) %}
+{% if p.has_commercial_link %}<span class="paid-tag">paid link</span>{% elif p.paid_link %}<span class="unpaid-tag">programme, no link here</span>{% else %}<span class="unpaid-tag">unpaid</span>{% endif %}
+{% endmacro %}
+
+{# The legend. Stated in full wherever a mark appears. #}
+{% macro mark_legend(dataset_date) %}
+<dl class="legend">
+  <dt>{{ doc_mark(true) }}<span>located</span></dt>
+  <dd>A statement of the jurisdiction the infrastructure is subject to, together with the
+  measures taken against international governmental access, was located at a URL we checked
+  on {{ dataset_date }}.</dd>
+  <dt>{{ doc_mark(false) }}<span>none at N URLs</span></dt>
+  <dd>No such statement was located at the URLs we checked on {{ dataset_date }}. This is a
+  record of our search, not a statement about the provider. The URL list for each provider is
+  published in full on its page.</dd>
+</dl>
+{% endmacro %}
+
+{# The 2x2. Printed before the first row so the reader meets it first. #}
+{% macro cross_tab(stats, dataset_date) %}
+<section class="cross-tab" aria-labelledby="cross-tab-heading">
+  <div class="cross-tab-head">
+    <h2 id="cross-tab-heading">The two fields are independent</h2>
+    <p class="counts-date">counts as at <time datetime="{{ dataset_date }}">{{ dataset_date }}</time></p>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table crosstab-table">
+      <caption class="sr-only">Providers by corporate chain and by whether a jurisdiction and measures statement was located, {{ dataset_date }}</caption>
+      <thead>
+        <tr>
+          <td></td>
+          <th scope="col">Statement located at the URLs checked</th>
+          <th scope="col">No statement located at the URLs checked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">US entity in the corporate chain ({{ stats.us_incorporated }})</th>
+          <td class="num">{{ stats.direct_located }}</td>
+          <td class="num">{{ stats.direct_not_located }}</td>
+        </tr>
+        <tr>
+          <th scope="row">No US entity identified ({{ stats.non_us_incorporated }})</th>
+          <td class="num">{{ stats.none_located }}</td>
+          <td class="num">{{ stats.none_not_located }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    All four cells are occupied. Knowing one field does not tell you the other. Neither field
+    is a rating and no cell is preferred. Publishing a statement is not the same as being
+    outside US jurisdiction, and having no US parent is not the same as having published
+    anything.
+  </p>
+</section>
+{% endmacro %}

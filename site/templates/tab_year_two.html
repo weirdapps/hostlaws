@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <div class="chart-block">
+    <div class="chart-legend">
+      <span class="chart-legend-item"><span class="chart-swatch chart-swatch-1"></span>Promotional rate (left dot) / Renewal rate (right dot)</span>
+    </div>
+    {{ chart_svg }}
+  </div>
+  <p class="chart-note">Advertised price versus renewal price, worst eight by monthly multiple. Left dot is the promotional monthly rate; right dot is what the plan costs when the promotional period ends. Multiple printed for the worst five.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>Promotional-to-renewal gaps, worst eight by multiple, captured {{ capture_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col">Plan</th>
+          <th scope="col" class="num">Year 1 (total)</th>
+          <th scope="col" class="num">Year 2 (total)</th>
+          <th scope="col" class="num">Multiple</th>
+          <th scope="col">Cliff at</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.provider }}</th>
+          <td>{{ row.plan }}</td>
+          <td class="num">{{ row.year_one }}</td>
+          <td class="num">{{ row.year_two }}</td>
+          <td class="num">{{ row.multiple }}</td>
+          <td>month {{ row.when_it_bites }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">WP Engine publishes no renewal price: Startup, Professional, and Growth plans are promoted as "renewal pricing subject to change". Three plans are managed WordPress hosts; IONOS plans are VPS. All prices as captured; "Year 1 (total)" and "Year 2 (total)" are the full annual amounts at each rate.</p>
+</article>
+{% endblock %}

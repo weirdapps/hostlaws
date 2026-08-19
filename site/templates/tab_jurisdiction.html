@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <h1>Jurisdiction</h1>
+  <p>The site is called hostlaws because two questions govern which law a provider answers to.</p>
+  <p><strong>Exposure</strong> is whether a US entity sits in the contracting or ownership chain, making the provider reachable under US extraterritorial statutes such as the Cloud Act. <strong>Disclosure</strong> is whether the provider has published a document that explains what it does with data and under which law. These are independent axes: a provider can have direct US exposure and a thorough disclosure, or no identified US exposure and no disclosure at all.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>Cloud-jurisdiction exposure and disclosure, 21 providers, checked {{ capture_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col">Legal entity</th>
+          <th scope="col">Contracting country</th>
+          <th scope="col">Ultimate owner</th>
+          <th scope="col">US exposure</th>
+          <th scope="col" class="num">EU regions</th>
+          <th scope="col">Disclosure</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.provider }}</th>
+          <td>{{ row.legal_entity if row.legal_entity else "not established" }}</td>
+          <td>{{ row.contracting_country }}</td>
+          <td>{{ row.ultimate_owner }}</td>
+          <td>{{ row.us_exposure_label }}</td>
+          <td class="num">{{ row.eu_regions }}</td>
+          <td>{% if row.disclosure_url %}<a href="{{ row.disclosure_url }}">disclosure</a>{% else %}not located{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">Checked {{ capture_date }}. "direct" means a US entity was identified in the contracting or ownership chain. "none identified" means no such entity was found in the research; it is not a guarantee that one does not exist. Disclosure column: whether the provider has published a data-processing or sovereignty disclosure document at a locatable URL. Colour carries no evaluative meaning here: exposure and disclosure are independent facts, not grades.</p>
+</article>
+{% endblock %}

@@ -1,0 +1,2108 @@
+{
+  "providers": [
+    {
+      "name": "Hetzner",
+      "legal_entity": "Hetzner Online GmbH",
+      "incorporation_country": "DE",
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company could be established from a primary public source on 2026-08-18. Hetzner's own legal notice names only Hetzner Online GmbH (Ansbach commercial register HRB 6089) and its managing directors; it does not name a shareholder. The German Handelsregister shareholder list (Gesellschafterliste) is not freely readable online and was not purchased. Hetzner's own documentation names Hetzner US LLC and Hetzner Singapore Pte. Ltd. as entities within its own group, i.e. subsidiaries rather than parents. Recorded as null rather than guessed.",
+      "eu_regions": [
+        "Falkenstein, Germany",
+        "Nuremberg, Germany",
+        "Helsinki, Finland"
+      ],
+      "non_eu_regions": [
+        "Hillsboro, Oregon, United States",
+        "Ashburn, Virginia, United States",
+        "Singapore"
+      ],
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.hetzner.com/legal/",
+          "https://www.hetzner.com/legal/legal-notice/",
+          "https://www.hetzner.com/legal/privacy-policy/",
+          "https://www.hetzner.com/legal/terms-and-conditions/",
+          "https://www.hetzner.com/legal/cloud-server/",
+          "https://www.hetzner.com/legal/digital-services-act/",
+          "https://www.hetzner.com/sitemap-pages-en.xml",
+          "https://www.hetzner.com/sitemap-pages-de.xml",
+          "https://docs.hetzner.com/general/company-and-policy/data-protection-at-hetzner/",
+          "https://docs.hetzner.com/general/others/data-protection/",
+          "https://docs.hetzner.com/general/company-and-policy/information-security-at-hetzner/"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://docs.hetzner.com/general/company-and-policy/data-protection-at-hetzner/",
+        "self_identifies_as_data_act_disclosure": false,
+        "jurisdiction_stated": "Under the heading 'Requests from authorities': 'For our data centres in Falkenstein and Nuremberg: We only accept requests and court orders from German authorities/courts. Requests and/or court orders from foreign authorities/courts will not be accepted. Only German authorities with a valid German court order will be granted access to our data centre.' And: 'For our data centre in Helsinki: We take a similar approach ... We only accept requests and court orders from Finnish authorities/courts.' And: 'For our locations in the USA and Singapore: Authorities from the USA or Singapore do not have direct access to the contents of your server data in the EU.'",
+        "measures_described": true,
+        "measures_summary": "Refusal to accept requests or court orders from foreign authorities or courts at the German and Finnish datacentres; data localisation commitments (customer master data processed only within the EU; backups remain in the EU if an EU product location is chosen); anonymisation of logged IP addresses. The same page states two express limits: 'we cannot guarantee that German authorities will not pass on data obtained under German law to foreign authorities on the basis of international agreements', and 'If you want to choose a company that has no connection whatsoever to the USA or Singapore, we unfortunately have to decline at this time. Hetzner US LLC and Hetzner Singapore Pte. Ltd. do have a certain connection.'",
+        "page_last_change_stated": "2026-07-20 (page states 'Last change on 2026-07-20 \u2022 Created on 2020-03-18 \u2022 ID: GE-FBBCD')",
+        "notes": "The disclosure sits in a documentation FAQ, not on a page labelled as a Data Act or Article 28 publication. A full enumeration of https://www.hetzner.com/legal/ from both the English and German sitemaps on 2026-08-18 returned 14 legal pages and none was a Data Act page. Note that hetzner.com returns HTTP 200 and renders the Legal Notice page for any unknown /legal/<slug>/ path, so a 200 status on a guessed URL is not evidence a page exists; this was verified with a control URL.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "The contracting entity is Hetzner Online GmbH, a German GmbH registered at Ansbach HRB 6089; no US-incorporated parent was identified, though Hetzner's own docs confirm US and Singapore subsidiaries (Hetzner US LLC, Hetzner Singapore Pte. Ltd.) exist within the group.",
+      "entry_pricing": {
+        "plan_name": "CX23 (Cloud Server, Cost-Optimized line)",
+        "amount": 5.99,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://www.hetzner.com/cloud/cost-optimized/",
+        "note": "Price is the monthly cap for the FSN1, NBG1 and HEL1 locations; the same plan is also billed hourly at EUR 0.0096. Read on 2026-08-18. The visible price cell on the product page is rendered client-side by a <ho-price-container product-key=\"CLOUD_132+CLOUD_21\"> web component that did not populate in a headless browser with a non-EU locale; the figure was read from the same endpoint the page itself calls, https://website-price-api.hetzner.com/api/v1/products/CLOUD_132%2BCLOUD_21, with the site localisation cookie set to {vat: {code: 'ot', tax: 0}, currency: 'EUR'}, i.e. net of VAT. Cheapest of the eight rows in the Cost-Optimized table; the Regular-Performance line starts higher at CPX12 EUR 11.99/month."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "shared",
+        "object_storage"
+      ],
+      "categories_note": "Grounded in the product navigation on hetzner.com on 2026-08-18: Dedicated (EX/AX/RX/SX/GPU lines, Server Auction), Cloud (cloud servers, load balancer), Web & Managed (Web Hosting, Managed Server), Storage (Object Storage, Storage Box, Storage Share), plus domains, DNS and SSL. No managed Kubernetes service, no CDN product and no separately marketed managed-WordPress product was found in that navigation.",
+      "notable": "The cheapest row in its own Cost-Optimized table is the CX23 at EUR 5.99 per month, read 2026-08-18; specifications are recorded for some providers in this set and not others, so no per-unit comparison can be computed from this dataset. Run from its own datacentre parks in Germany and Finland, with unusually blunt published caveats about the limits of its own jurisdictional protection.",
+      "sources": [
+        {
+          "claim": "Legal entity, address, register (Ansbach HRB 6089), VAT number and managing directors",
+          "url": "https://www.hetzner.com/legal/legal-notice/"
+        },
+        {
+          "claim": "German law and Gunzenhausen as exclusive place of jurisdiction for the contract",
+          "url": "https://www.hetzner.com/legal/terms-and-conditions/"
+        },
+        {
+          "claim": "Per-datacentre statements on which authorities' requests are accepted; measures; caveats; existence of Hetzner US LLC and Hetzner Singapore Pte. Ltd.",
+          "url": "https://docs.hetzner.com/general/company-and-policy/data-protection-at-hetzner/"
+        },
+        {
+          "claim": "Datacentre locations: Germany (Falkenstein, Nuremberg), Finland (Helsinki), USA (Hillsboro OR, Ashburn VA), Singapore",
+          "url": "https://www.hetzner.com/cloud/"
+        },
+        {
+          "claim": "Entry cloud plan name CX23 and its specification (2 vCPU, 4 GB RAM, 40 GB SSD); FSN/NBG/HEL availability",
+          "url": "https://www.hetzner.com/cloud/cost-optimized/"
+        },
+        {
+          "claim": "CX23 monthly cap EUR 5.99 and hourly EUR 0.0096 for de/FSN1, de/NBG1, fi/HEL1",
+          "url": "https://website-price-api.hetzner.com/api/v1/products/CLOUD_132%2BCLOUD_21"
+        },
+        {
+          "claim": "Complete list of pages under /legal/ (no Data Act page)",
+          "url": "https://www.hetzner.com/sitemap-pages-en.xml"
+        },
+        {
+          "claim": "ISO/IEC 27001:2022, BSI C5 Type 2, KRITIS/\u00a78a BSIG, PCI DSS certifications",
+          "url": "https://docs.hetzner.com/general/company-and-policy/information-security-at-hetzner/"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "OVHcloud",
+      "legal_entity": "OVH SAS (contracting and operating entity, 2 rue Kellermann, 59100 Roubaix, France, Lille Trade and Companies Register 424 761 419); listed group holding company is OVH Groupe S.A.",
+      "incorporation_country": "FR",
+      "parent_company": "OVH Groupe S.A. (listed on Euronext Paris; 79.0% of share capital and 79.6% of voting rights held by the Klaba family as at 5 December 2025)",
+      "parent_country": "FR",
+      "ownership_note": "Independently owned within France. Not a subsidiary of any non-EU group. Shareholder table at 5 December 2025: Klaba family 119,735,721 shares / 79.0% capital / 79.6% voting rights; employees, executives and directors 1.8%; treasury shares 0.8%; free float 18.4%; total 151,651,536 shares. OVHcloud's own sovereignty page describes the controlling entity as 'OVH Groupe SAS'; the investor-relations shareholder table and the site's legal notices use 'OVH Groupe' / 'OVH SAS'. Recorded as published; the SA/SAS discrepancy between OVHcloud's own pages is noted rather than resolved.",
+      "eu_regions": [
+        "Gravelines, France",
+        "Paris, France",
+        "Roubaix, France",
+        "Strasbourg, France",
+        "Marseille, France",
+        "Limburg, Germany",
+        "Milan, Italy",
+        "Warsaw, Poland",
+        "Vienna, Austria",
+        "Brussels, Belgium",
+        "Sofia, Bulgaria",
+        "Prague, Czech Republic",
+        "Copenhagen, Denmark",
+        "Helsinki, Finland",
+        "Dublin, Ireland",
+        "Luxembourg, Luxembourg",
+        "Amsterdam, Netherlands",
+        "Lisbon, Portugal",
+        "Bucharest, Romania",
+        "Madrid, Spain",
+        "Stockholm, Sweden",
+        "Oslo, Norway (EEA)"
+      ],
+      "eu_regions_note": "Taken verbatim from OVHcloud's own region table on 2026-08-18. Only Gravelines, Paris, Roubaix, Strasbourg, Limburg, Milan and Warsaw are full availability-zone regions with named datacentres; the other EU/EEA entries are marked '(lz)' LOCAL-ZONE in that table, which is a different and smaller class of site. Non-EU/EEA European locations on the same table, excluded from this list: Zurich (Switzerland, lz), Erith (United Kingdom), Manchester (United Kingdom, lz).",
+      "non_eu_regions": [
+        "Erith, United Kingdom",
+        "Manchester, United Kingdom",
+        "Zurich, Switzerland",
+        "Beauharnois and other North American, Asia-Pacific and African locations listed on the same region page"
+      ],
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.ovhcloud.com/en/about-us/data-sovereignty/",
+          "https://www.ovhcloud.com/fr/about-us/data-sovereignty/",
+          "https://www.ovhcloud.com/en/personal-data-protection/legal-privacy-security/",
+          "https://www.ovhcloud.com/en/compliance/informations-legales/",
+          "https://www.ovhcloud.com/en/terms-and-conditions/contracts/",
+          "https://www.ovhcloud.com/en/terms-and-conditions/",
+          "https://www.ovhcloud.com/en/personal-data-protection/",
+          "https://www.ovhcloud.com/en/www.ovhcloud.com_en_sitemap.xml",
+          "https://www.ovhcloud.com/fr/www.ovhcloud.com_fr_sitemap.xml"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://www.ovhcloud.com/en/about-us/data-sovereignty/",
+        "self_identifies_as_data_act_disclosure": false,
+        "jurisdiction_stated": "'Organisationally, the OVHcloud Group is a European group in which European commercial entities - as well as entities that may intervene on OVHcloud's hosting infrastructures located within the EU and used by its European customers - fall under the exclusive jurisdiction of European Union member states, or states that have been subject to a European Commission adequacy decision. These entities are controlled by OVH Groupe SAS, a company governed by French law, with no dependency links to any entity or organisation subject to the jurisdiction of states that do not provide an adequate level of data protection.'",
+        "measures_described": true,
+        "measures_summary": "Technical: US entities of OVHcloud are stated not to be involved in providing services to European customers and to have no technical ability to access data hosted in OVHcloud's European datacentres, so 'these US entities do not have control over the data stored in these datacentres, and cannot respond favourably to requests from US authorities to disclose the data'. Contractual: only entities in the EU or in adequacy-decision countries may, under the terms of service, take part in delivering services to European customers. Procedural: on requests from non-EU authorities, 'OVHcloud is fully able to oppose such requests, in accordance with its policy for handling requests from authorities, and the provisions of Article 48 of the GDPR, if they are not carried out in accordance with an international agreement - such as a treaty on mutual legal assistance'. Optional: a service option in which only European entities are involved, excluding entities in adequacy-decision non-EU countries.",
+        "page_last_change_stated": null,
+        "notes": "The page does not cite Regulation (EU) 2023/2854, Article 28 or Chapter VII, and it is a corporate 'about us' page rather than a labelled disclosure. The jurisdiction statement is made at group level rather than per individual service, which is the granularity Article 28(1)(a) is written at. No page containing the string 'data-act' was found in either the English or French sitemap on 2026-08-18. Separately, the general terms PDF linked from the English contracts page (contract.eu.ovhapis.com/1.0/pdf/contrat_genServices-we.pdf) contained no occurrence of 'Data Act', '2023/2854' or 'Article 28' and is governed by the laws of Quebec and Canada, i.e. it is not the EU-entity contract.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "The group holding company is OVH Groupe S.A., a French company listed on Euronext Paris and 79.0%-owned by the Klaba family; no US-incorporated entity sits above it in the corporate chain, although OVHcloud operates US subsidiaries below it.",
+      "entry_pricing": {
+        "plan_name": "VPS-1",
+        "amount": 3.81,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://www.ovhcloud.com/en-ie/vps/",
+        "note": "Displayed as 'From EUR 3.81 ex. VAT/month' on the Ireland (EUR) storefront, read 2026-08-18. Labelled 'From', so the figure is the floor of a configurable range and the checkout price may be higher. Regional storefronts show different currencies and figures for the same plan."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "shared",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "Grounded in the product navigation and pricing pages on ovhcloud.com on 2026-08-18: Public Cloud compute, VPS, Bare Metal / dedicated servers, Web Hosting, Object Storage and cold archive, Managed Kubernetes Service and Managed Rancher Service, CDN, Web PaaS, Hosted Private Cloud (VMware/Nutanix/SAP HANA), plus domains and Exchange. 'managed_wordpress' not asserted: WordPress is offered inside the general Web Hosting range and no separately branded managed-WordPress product was confirmed.",
+      "notable": "Builds and runs its own datacentres, with its own liquid cooling. In this set it is one of two providers with no US entity identified in the corporate chain where a jurisdiction and measures statement was located, the other being Hetzner.",
+      "sources": [
+        {
+          "claim": "Shareholder table at 5 December 2025: Klaba family 79.0% capital / 79.6% voting rights, free float 18.4%, total 151,651,536 shares",
+          "url": "https://corporate.ovhcloud.com/en/investor-relations/shareholders-and-governance/"
+        },
+        {
+          "claim": "Jurisdiction statement, technical/contractual/procedural measures against non-EU authority access, Article 48 GDPR position, European-entities-only option",
+          "url": "https://www.ovhcloud.com/en/about-us/data-sovereignty/"
+        },
+        {
+          "claim": "OVH SAS entity details: capital EUR 50,000,000, 2 rue Kellerman 59100 Roubaix, Lille Trade and Companies Register 424 761 419, DPO contact",
+          "url": "https://www.ovhcloud.com/en/compliance/informations-legales/"
+        },
+        {
+          "claim": "Full region table with region codes, AZ counts, opening years and datacentre names per location",
+          "url": "https://www.ovhcloud.com/en/about-us/global-infrastructure/regions/"
+        },
+        {
+          "claim": "VPS-1 entry price EUR 3.81 ex. VAT per month",
+          "url": "https://www.ovhcloud.com/en-ie/vps/"
+        },
+        {
+          "claim": "List of contractual documents offered, including the general terms PDF",
+          "url": "https://www.ovhcloud.com/en/terms-and-conditions/contracts/"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "Scaleway",
+      "legal_entity": "SCALEWAY SAS",
+      "incorporation_country": "FR",
+      "parent_company": "iliad Group",
+      "parent_country": "FR",
+      "ownership_note": "Scaleway's own About Us page states 'A subsidiary of the iliad Group'. The precise intermediate holding chain and percentages were not established from a primary source and are not asserted here. Scaleway's legal notice does not name its shareholder. Registered details from that notice: simplified joint stock company, capital EUR 142,050.00, SIREN 433 115 904, RCS Paris, registered office 8 rue de la Ville-l'Eveque, 75008 Paris, VAT FR 35 433115904.",
+      "eu_regions": [
+        "Paris, France (PAR)",
+        "Amsterdam, Netherlands (AMS)",
+        "Warsaw, Poland (WAW)",
+        "Milan, Italy (MIL)"
+      ],
+      "eu_regions_note": "Scaleway's About Us page states it 'currently operates in France, Poland, Italy, and the Netherlands, with upcoming deployments in Sweden and Germany' and cites '4 Multi-AZ cloud regions in Europe'. Region codes PAR1, AMS1, WAW1 and MIL1 appear in the product-availability documentation. Sweden and Germany are described by Scaleway as upcoming and are therefore not listed as operating regions.",
+      "non_eu_regions": [],
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.scaleway.com/en/contracts/",
+          "https://www.scaleway.com/en/security-and-compliance/",
+          "https://www.scaleway.com/en/security-and-resilience/",
+          "https://www.scaleway.com/en/legal-notice/",
+          "https://www.scaleway.com/en/privacy-policy/",
+          "https://www.scaleway.com/en/terms/",
+          "https://www-uploads.scaleway.com/Conditions_Generales_de_Services_v2026_a0028de41c.pdf",
+          "https://www-uploads.scaleway.com/General_Terms_of_Services_v17072024_45d4879c08.pdf",
+          "https://www-uploads.scaleway.com/DPA_2024_ENG_b0abb5cc26.pdf",
+          "https://www.scaleway.com/sitemaps/sitemap-pages-en.xml"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "self_identifies_as_data_act_disclosure": false,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "closest_related_content": "The Security and Compliance page carries general sovereignty claims rather than a jurisdiction-and-measures statement: 'our 100% European infrastructure ensures high availability and full GDPR compliance. Free from the US CLOUD Act, your data remains resilient, secure, and strictly under your control', and 'Unlike providers subject to foreign extraterritorial laws, Scaleway guarantees that your data and data processing remain entirely within European jurisdiction.' The Privacy Policy (last updated June 2026) has a 'Requests from authorities' section, but it concerns personal data and commits only to advance customer notification where legally permitted: 'Scaleway may receive direct (administrative or judicial authorities) or indirect (lawyers, bailiffs, notaries, etc.) requests from competent authorities to transmit certain data relating to its customers. In this case, and to the extent that Scaleway is legally entitled to do so, Scaleway may inform its customers in advance in order to enable them to assert their rights'.",
+        "notes": "No disclosure meeting both limbs of the test was found at the URLs checked on 2026-08-18. The 104-page General Terms of Services dated 09/06/26 (French) contains no occurrence of 'Data Act', '2023/2854', 'article 28' or 'non personnelles'; it does define EU Blocking Regulation 2271/96 and French Penal Code arts. 225-1/225-2 as 'Lois et Reglements de Blocage'. The 2024 English General Terms and the 2024 English DPA likewise contain no Data Act reference. No page containing 'data-act' appears in the English sitemap. This records what was published at those URLs on that date and is not a statement about compliance.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "SCALEWAY SAS is a French simplified joint stock company (SIREN 433 115 904, RCS Paris) and, per its own About Us page, a subsidiary of the French iliad Group; no US entity was identified in the corporate chain.",
+      "entry_pricing": {
+        "plan_name": "STARDUST1-S (Development Instance)",
+        "amount": 0.43,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://www.scaleway.com/en/pricing/virtual-instances/",
+        "note": "Scaleway prices instances hourly and publishes an approximate monthly figure alongside. The table row reads: STARDUST1-S, 1 vCPU, 1 GB, 100 Mbps, EUR 0.0006 /HOUR, ~EUR 0.43 /MONTH, under the heading 'Compute - instance - Development'. The monthly figure is Scaleway's own approximation, not a plan price. Cheapest row in the Development table; the next cheapest is DEV1-S at EUR 0.00898/hour (~EUR 6.55/month) and the cheapest PLAY2 instance is PLAY2-PICO at ~EUR 10.42/month. Read 2026-08-18."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "shared",
+        "object_storage",
+        "paas",
+        "kubernetes"
+      ],
+      "categories_note": "Grounded in the scaleway.com product navigation and the list of specific contractual conditions on the Contracts page on 2026-08-18, which names: Web Hosting Services, Dedirack, Instance, Dedibox VPS, Bare Metal, Containers, AI Services, Storage, Transactional Email and Interlink. Navigation also lists Elastic Metal, GPU, Object Storage, Block Storage, Managed Databases, Serverless and Kubernetes solutions. 'cdn' not asserted: an Edge/CDN product was not confirmed from the pages read. 'managed_wordpress' not asserted separately: WordPress sits inside 'Managed Web Hosting'.",
+      "notable": "A French cloud with a real managed-Kubernetes and serverless stack alongside cheap bare metal, and the widest published range of tiny development instances in this set.",
+      "sources": [
+        {
+          "claim": "Legal entity, capital EUR 142,050, SIREN 433 115 904 RCS Paris, registered office, VAT number",
+          "url": "https://www.scaleway.com/en/legal-notice/"
+        },
+        {
+          "claim": "'A subsidiary of the iliad Group'; operates in France, Poland, Italy and the Netherlands; Sweden and Germany upcoming; 4 multi-AZ European regions",
+          "url": "https://www.scaleway.com/en/about-us/"
+        },
+        {
+          "claim": "Sovereignty claims: 100% European infrastructure, 'Free from the US CLOUD Act', 'entirely within European jurisdiction'",
+          "url": "https://www.scaleway.com/en/security-and-compliance/"
+        },
+        {
+          "claim": "'Requests from authorities' handling; policy last updated June 2026",
+          "url": "https://www.scaleway.com/en/privacy-policy/"
+        },
+        {
+          "claim": "STARDUST1-S at EUR 0.0006/hour, ~EUR 0.43/month",
+          "url": "https://www.scaleway.com/en/pricing/virtual-instances/"
+        },
+        {
+          "claim": "Full list of contractual documents including the 09/06/26 General Terms of Services",
+          "url": "https://www.scaleway.com/en/contracts/"
+        },
+        {
+          "claim": "Region codes PAR1, AMS1, WAW1, MIL1",
+          "url": "https://www.scaleway.com/en/docs/account/reference-content/products-availability/"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "IONOS",
+      "legal_entity": "IONOS SE (Elgendorfer Str. 57, 56410 Montabaur, Germany; Amtsgericht Montabaur HRB 24498; VAT DE815563912)",
+      "incorporation_country": "DE",
+      "parent_company": "IONOS Group SE (Frankfurt Prime Standard, MDAX/TecDAX), whose largest shareholder is United Internet AG at 63.8%",
+      "parent_country": "DE",
+      "ownership_note": "Shareholder structure published by IONOS Group SE and stated as of 28 May 2026: United Internet 63.8%, Helikon 6.1%, Wellington 3.0%, own shares 3.0%, free float 24.1% (free float per DAX methodology 36.2%). United Internet AG is a German company. Warburg Pincus, a US private equity firm, held 24.9% before the February 2023 IPO and 21.2% after it, reduced in stages and fully exited in March 2025; it does not appear in the current structure. Wellington is a US-headquartered asset manager holding a 3.0% portfolio stake, which is not corporate control. Regional IONOS storefronts contract through different entities: ionos.com pages are footed 'IONOS Inc.' (US), ionos.co.uk 'IONOS Cloud Ltd.', ionos.de 'IONOS SE'.",
+      "eu_regions": [
+        "Frankfurt am Main, Germany (two datacentres)",
+        "Berlin, Germany",
+        "Paris, France",
+        "Logrono, Spain"
+      ],
+      "eu_regions_note": "This is the IONOS CLOUD datacentre list as published on cloud.ionos.com on 2026-08-18. Non-EU locations on the same list: London and Worcester (United Kingdom), Las Vegas NV, Newark NJ and Lenexa KS (United States). IONOS also operates further facilities for its shared web hosting business that are not enumerated on that page; those were not verified and are not listed. IONOS's own page names Equinix, Inc. as the operator of its Frankfurt datacentre 1, i.e. the building is leased from a US-incorporated colocation provider.",
+      "non_eu_regions": [
+        "London, United Kingdom",
+        "Worcester, United Kingdom",
+        "Las Vegas, Nevada, United States",
+        "Newark, New Jersey, United States",
+        "Lenexa, Kansas, United States"
+      ],
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.ionos.de/terms-gtc/data-act/",
+          "https://www.ionos.com/terms-gtc/data-act/",
+          "https://www.ionos.co.uk/terms-gtc/data-act/",
+          "https://docs.ionos.com/cloud/data-export/eu-data-act",
+          "https://www.ionos.com/terms-gtc/general-terms-and-conditions/",
+          "https://www.ionos.com/terms-gtc/terms-policy-subpoena/",
+          "https://cloud.ionos.com/protection",
+          "https://cloud.ionos.com/data-centers",
+          "https://www.ionos.de/impressum",
+          "https://www.ionos.com/terms-gtc/"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "self_identifies_as_data_act_disclosure": true,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "closest_related_content": "IONOS does publish a dedicated Data Act page at /terms-gtc/data-act/ on each regional site, headed 'Additional Terms and Conditions For Data Processing Services under the Directive (EU) 2020/1828 (Data Act)' with three parts: 'A. General', 'B. Switching and Exit' and 'C. Termination'. Its definitions section correctly cites 'Data Act means Regulation (EU) 2023/2854' and pulls definitions from Articles 2(1), 2(2), 2(8), 2(30), 2(32), 2(33), 2(34), 2(35), 2(37), 2(38), 2(40), 25(2)(a) and 25(2)(d), and it references Article 27 for dispute handling. Every one of those provisions is in Chapter VI (switching between data processing services). Nothing on the page addresses Chapter VII, Article 28 or Article 32: there is no statement of the jurisdiction to which the ICT infrastructure is subject and no description of measures against international governmental access. The separate Subpoena and Copyright Policy at /terms-gtc/terms-policy-subpoena/ describes how IONOS handles subpoenas and legal process served on it, framed around US practice.",
+        "notes": "Recorded as not found because the test requires both Article 28(1)(a) and (b), and the published Data Act page addresses neither. Note that the page's own heading mis-cites the instrument as 'Directive (EU) 2020/1828', which is the Representative Actions Directive, not the Data Act; the body text cites Regulation (EU) 2023/2854 correctly. That is an observation about the published wording on 2026-08-18, not a legal conclusion. AWS, Google Cloud and Akamai Connected Cloud also publish pages explicitly titled for the Data Act, and all three are recorded as located. IONOS is the only provider in the set that publishes an explicitly titled Data Act page and is still recorded as not located.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "IONOS SE is a German SE (Amtsgericht Montabaur HRB 24498) under IONOS Group SE, whose largest shareholder is the German company United Internet AG at 63.8%; the former US private-equity holder Warburg Pincus exited fully in March 2025 and no US entity controls the group, although IONOS Inc. is a US subsidiary serving the US market and IONOS leases at least one German datacentre from Equinix, Inc.",
+      "entry_pricing": {
+        "plan_name": "VPS M+",
+        "amount": 3.0,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://www.ionos.de/server/vps",
+        "note": "PROMOTIONAL. The page shows 'VPS M+ ... 9 EUR / 3 EUR /Monat fuer 3 Monate' plus 'Einrichtung 10 EUR', i.e. EUR 3.00/month for the first 3 months, EUR 9.00/month thereafter, with a EUR 10 setup fee. The footer states 'Preise inkl. MwSt.' so the German consumer storefront figures include VAT, unlike the ex-VAT figures elsewhere in this file. The page title on 2026-08-18 was 'vServer Guenstig Mieten - VPS ab 3 EUR / M. | IONOS'. Regular (non-promotional) monthly price: 9.00 EUR. Other IONOS storefronts show different currencies and offers for the same product."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "shared",
+        "managed_wordpress",
+        "object_storage",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "Grounded in the ionos.de and cloud.ionos.com navigation on 2026-08-18: Domains, E-Mail & Office, Website/Onlineshop, WordPress Hosting, Hosting, Server (vServer/VPS, dedicated), Cloud (compute, Managed Kubernetes, Database as a Service, Object Storage, CDN, Cloud DNS, load balancers, VPN gateway, observability), plus Nextcloud 'Sovereign Workplace' and an AI Model Hub. 'paas' not asserted separately: the Kubernetes and container services are counted under kubernetes.",
+      "notable": "The broadest catalogue in this set, spanning EUR 1-class shared hosting and managed WordPress at one end and a full OpenStack-style IaaS with managed Kubernetes at the other, run by a listed German company.",
+      "sources": [
+        {
+          "claim": "IONOS SE registered address, Amtsgericht Montabaur HRB 24498, VAT DE815563912, management board",
+          "url": "https://www.ionos.de/impressum"
+        },
+        {
+          "claim": "Shareholder structure: United Internet 63.8%, Helikon 6.1%, Wellington 3.0%, own shares 3.0%, free float 24.1%, as of 28 May 2026; 140,000,000 shares; listed Prime Standard, MDAX/TecDAX",
+          "url": "https://www.ionos-group.com/investor-relations/share/details-on-the-share.html"
+        },
+        {
+          "claim": "Content of the published Data Act terms (Chapter VI switching, exit and termination only)",
+          "url": "https://www.ionos.de/terms-gtc/data-act/"
+        },
+        {
+          "claim": "Data Act framed as a data-export/switching right in IONOS Cloud documentation",
+          "url": "https://docs.ionos.com/cloud/data-export/eu-data-act"
+        },
+        {
+          "claim": "IONOS CLOUD datacentre locations and the fact that Frankfurt datacentre 1 is operated by Equinix, Inc.",
+          "url": "https://cloud.ionos.com/data-centers"
+        },
+        {
+          "claim": "VPS M+ promotional EUR 3/month for 3 months, EUR 9/month thereafter, EUR 10 setup, prices incl. VAT",
+          "url": "https://www.ionos.de/server/vps"
+        },
+        {
+          "claim": "Subpoena and Copyright Policy exists and is US-framed",
+          "url": "https://www.ionos.com/terms-gtc/terms-policy-subpoena/"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "Infomaniak",
+      "legal_entity": "Infomaniak Network SA (Rue Eugene Marziano 25, 1227 Les Acacias, Geneva, Switzerland; Commercial Register of the Canton of Geneva CH-660.0.059.996-1; IDE/VAT CHE-103.167.648)",
+      "incorporation_country": "CH",
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "Independently owned, per Infomaniak's own investor page: 'Developed without external equity capital for more than 30 years, Infomaniak relies on a controlled organic growth model'. Founder Boris Siegenthaler sits on the board; the board is chaired by Frank Guemara. Infomaniak has announced a planned listing on the Swiss stock exchange (news.infomaniak.com), so this position may change. No holding company or external shareholder was identified. Switzerland is not an EU or EEA member state.",
+      "eu_regions": [],
+      "eu_regions_note": "EMPTY BY FINDING, NOT BY OMISSION. Infomaniak's investor page states '100% of staff and infrastructure in Switzerland' and its trust centre states 'The infrastructure is 100% controlled in Switzerland, with regional geographic redundancy'. Its sovereignty page uses the phrase 'Data is hosted in the heart of Europe in our data centers', which refers to Switzerland, a country that is geographically in Europe but is not in the EU or the EEA. No datacentre inside the EU or EEA was found. For EU customers Switzerland is a third country reached via a European Commission adequacy decision.",
+      "non_eu_regions": [
+        "Switzerland (all datacentres; Geneva head office)"
+      ],
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.infomaniak.com/en/trust-center",
+          "https://www.infomaniak.com/en/sovereign-cloud",
+          "https://www.infomaniak.com/en/legal/general-terms-and-conditions",
+          "https://www.infomaniak.com/en/legal/general-data-protection-regulation",
+          "https://www.infomaniak.com/en/legal/confidentiality-policy",
+          "https://www.infomaniak.com/en/legal/data-protection-act",
+          "https://www.infomaniak.com/en/legal/legal-notice",
+          "https://welcome.infomaniak.com/api/web-components/1/cgu/latest?id=1&locale=en_GB",
+          "https://news.infomaniak.com/en/understanding-sovereign-cloud/"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "self_identifies_as_data_act_disclosure": false,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "closest_related_content": "The general Terms and Conditions of Use (PDF, revision dated 24/04/2026) state at Article 22: '22.1 The Customer undertakes to comply with the Swiss and international laws in force during the entire life of the Contract. 22.2 Infomaniak will endeavour to respect the judgements of the competent authorities of the OECD member countries. 22.3 Any dispute relating to this contract ... shall be governed exclusively by Swiss law, the exclusive place of jurisdiction being Geneva, subject to recourse to the Federal Court in Lausanne.' That is a contractual governing-law clause, not a statement of the jurisdiction to which the ICT infrastructure is subject. The GDPR page contains the undertaking to 'Store your data in our data centers based exclusively in Switzerland, and never transfer your data outside our own infrastructure'. The sovereign cloud page describes 'A Swiss legal framework in line with European law, guaranteeing you compliance with the GDPR without depending on intermediaries subject to extraterritorial laws' and 'Strictly controlled access to data: No access to customer data is permitted unless explicitly requested, even for maintenance purposes, unless this is essential to prevent fraud or abuse'.",
+        "notes": "No page combining a stated infrastructure jurisdiction with a described set of measures against international governmental access was found at the URLs checked on 2026-08-18. No occurrence of 'Data Act', '2023/2854', 'Article 28' or 'Chapter VII' was found in any of the pages or the 19-page terms PDF. Infomaniak publishes substantial sovereignty argumentation, including a long editorial on the CLOUD Act, but it is directed at explaining why a Swiss provider is preferable rather than at making the two-limb disclosure. Note that Article 28 attaches to providers of data processing services offering services in the Union irrespective of place of establishment; whether it does so here is a legal question this dataset does not answer.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "Infomaniak Network SA is a Swiss company registered in Geneva with no identified parent and, on its own account, no external equity capital in over 30 years; no US entity was identified anywhere in its ownership.",
+      "entry_pricing": {
+        "plan_name": "VPS Lite",
+        "amount": 2.7,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://www.infomaniak.com/en/hosting/vps-lite",
+        "note": "Displayed as 'From 2,70 EUR / month'; the page title itself read 'Linux & Windows VPS Lite from EUR 2,70 / month' on 2026-08-18. Site footer states 'Prices do not include VAT'. 'From' price, so the configured price may be higher. Infomaniak is a Swiss company that also quotes in CHF; the currency shown varies with the visitor's locale, and this figure was read from the English (EUR) rendering. The heavier VPS Cloud line starts at EUR 24.92/month for 4 vCPU / 12 GB."
+      },
+      "categories": [
+        "vps",
+        "shared",
+        "managed_wordpress",
+        "object_storage",
+        "paas",
+        "kubernetes"
+      ],
+      "categories_note": "Grounded in the infomaniak.com navigation on 2026-08-18: Web & Domains (web hosting, WordPress, Node.js hosting, domains), Cloud Computing (Public Cloud IaaS, VPS Cloud, VPS Lite, Kubernetes Service, Database Service, Jelastic Cloud PaaS), Swiss Backup, NAS Synology, Very High Availability, Housing, plus a large non-hosting suite (kDrive, kSuite, Mail, kMeet, streaming, ticketing). 'dedicated' not asserted: Housing is colocation rather than a rented dedicated server. 'cdn' not asserted: no CDN product was confirmed on the pages read. Object storage is asserted on the basis of the Public Cloud (OpenStack) offering and Swiss Backup.",
+      "notable": "Builds and operates its own datacentres, writes its own software and keeps every employee and every server in one jurisdiction, which is a genuinely unusual degree of vertical control; the trade-off is that the jurisdiction is Switzerland, outside the EU and EEA.",
+      "sources": [
+        {
+          "claim": "Legal entity, Geneva registered office, Commercial Register CH-660.0.059.996-1, IDE/VAT CHE-103.167.648",
+          "url": "https://www.infomaniak.com/en/legal/legal-notice"
+        },
+        {
+          "claim": "'Developed without external equity capital for more than 30 years'; '100% of staff and infrastructure in Switzerland'; 2025 turnover CHF 54.2M; 300+ employees",
+          "url": "https://www.infomaniak.com/en/about/investors"
+        },
+        {
+          "claim": "Board composition including founder Boris Siegenthaler and chairman Frank Guemara",
+          "url": "https://www.infomaniak.com/en/about/governance"
+        },
+        {
+          "claim": "'The infrastructure is 100% controlled in Switzerland'; 'Total sovereignty' claims",
+          "url": "https://www.infomaniak.com/en/trust-center"
+        },
+        {
+          "claim": "Swiss legal framework claim; controlled-access commitment; extraterritorial-law positioning",
+          "url": "https://www.infomaniak.com/en/sovereign-cloud"
+        },
+        {
+          "claim": "Article 22 governing law: Swiss law, exclusive jurisdiction Geneva, recourse to the Federal Court in Lausanne; revision 24/04/2026",
+          "url": "https://welcome.infomaniak.com/api/web-components/1/cgu/latest?id=1&locale=en_GB"
+        },
+        {
+          "claim": "Undertaking to store data exclusively in Swiss datacentres",
+          "url": "https://www.infomaniak.com/en/legal/general-data-protection-regulation"
+        },
+        {
+          "claim": "VPS Lite from EUR 2.70/month",
+          "url": "https://www.infomaniak.com/en/hosting/vps-lite"
+        },
+        {
+          "claim": "VPS Cloud from EUR 24.92/month (4 vCPU, 12 GB RAM)",
+          "url": "https://www.infomaniak.com/en/hosting/vps-cloud"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "Exoscale",
+      "legal_entity": "Akenes SA, trading as Exoscale (Boulevard de Grancy 19A, 1006 Lausanne, Switzerland; Reg/VAT CHE-423.524.322)",
+      "incorporation_country": "CH",
+      "parent_company": "A1 Digital International GmbH, itself part of A1 Telekom Austria Group (Telekom Austria AG, Vienna, listed on the Vienna Stock Exchange). The largest shareholder of A1 Telekom Austria Group is America Movil, S.A.B. de C.V. of Mexico, with the Austrian state holding company OeBAG the second core shareholder.",
+      "parent_country": "AT",
+      "ownership_note": "Exoscale's own site footer reads 'Exoscale is a registered trademark of Akenes SA - Reg/VAT CHE-423.524.322 (c) 2026 Exoscale Member of A1 Digital', and its privacy page routes data protection contact through A1 Digital International GmbH. A1 Telekom Austria Group's investor page names America Movil (listed on the Mexican Stock Exchange and the NYSE) and OeBAG (Osterreichische Beteiligungs AG, the Austrian state holding company) as its two core shareholders. The precise current percentages were NOT confirmed from A1's own investor page on 2026-08-18: the page names the two core shareholders and describes them but the percentage table did not resolve in the fetched text. Secondary reporting puts America Movil at approximately 60.8% and OeBAG at 28.42% as of late 2025; those figures are not asserted here because they were not confirmed from a primary source. The ultimate controlling shareholder is therefore Mexican, not EU and not US. parent_country is recorded as AT for the immediate corporate parent chain (A1 Digital International GmbH and Telekom Austria AG are both Austrian); the Mexican ultimate shareholder is recorded here in prose rather than being collapsed into that single field.",
+      "eu_regions": [
+        "Frankfurt, Germany (DE-FRA-1)",
+        "Munich, Germany (DE-MUC-1)",
+        "Vienna, Austria (AT-VIE-1)",
+        "Vienna, Austria (AT-VIE-2)",
+        "Sofia, Bulgaria (BG-SOF-1)",
+        "Zagreb, Croatia (HR-ZAG-1)"
+      ],
+      "non_eu_regions": [
+        "Geneva, Switzerland (CH-GVA-2)",
+        "Zurich, Switzerland (CH-DK-2)"
+      ],
+      "eu_regions_note": "From Exoscale's own datacentres page on 2026-08-18. Exoscale names third-party operators for several sites: Frankfurt, Geneva and Zurich are described as hosted in Equinix facilities; AT-VIE-2 is in the A1 Next Generation Data Center and HR-ZAG-1 is in the A1 Hrvatska Data Center, i.e. facilities of its own corporate group.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.exoscale.com/security/",
+          "https://www.exoscale.com/compliance/",
+          "https://www.exoscale.com/compliance/fdpa/",
+          "https://www.exoscale.com/dpa/",
+          "https://www.exoscale.com/privacy/",
+          "https://www.exoscale.com/terms/",
+          "https://www.exoscale.com/data-portability/",
+          "https://www.exoscale.com/datacenters/",
+          "https://community.exoscale.com/platform/compliance/",
+          "https://www.exoscale.com/sitemap.xml"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "self_identifies_as_data_act_disclosure": false,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "closest_related_content": "Two pages come close but neither covers EU-held data with both limbs. (1) The Security page has a 'Laws and Regulation' section, but it is scoped only to Switzerland: 'At general level, concerning data and activities conducted in our Swiss datacenters, we are mainly subject to the Swiss Code of Obligations' and 'Concerning data and activities conducted in our Swiss datacenters, we are mainly subject to the Swiss Federal Data Protection Act ('DPA') and the Swiss Federal Data Protection Ordinance ('DPO')'. It adds a data-localisation commitment, 'Please note that we do NOT transfer data outside of the country where it was initially uploaded. For example, data uploaded in one of our Swiss zones is stored in Switzerland only', and a 'Disclosure Procedures and Policies' section describing that responses to governmental data requests depend on treaties with the requesting country and proceed by mutual legal assistance. It says nothing about the jurisdiction applying to the German, Austrian, Bulgarian or Croatian zones. The same page discloses that 'Some of our locations are hosted in datacenters operated by Equinix, a US-based multinational company' and points to Equinix's own statement on the non-applicability of the US CLOUD Act to datacentre services. (2) The Terms and Conditions incorporate the Data Act extensively but only for switching: 'Data Act means Regulation (EU) 2023/2854 ('DA')', with definitions drawn from Articles 2(1), 2(2), 2(32), 2(33), 2(34), 2(35), 2(37), 2(38) and 2(40) - all Chapter VI. Governing law is Switzerland with exclusive jurisdiction in the courts of the canton of Vaud, district of Lausanne. The Data Portability page states 'We fully comply with data portability requirements including GDPR and the EU Data Act Regulation (2023/2854), effective September 12, 2025', which again is Chapter VI.",
+        "notes": "Recorded as not found because the jurisdiction statement that exists is limited to the Swiss zones and no description of measures against international governmental access to non-personal data held in the Union was located at the URLs checked on 2026-08-18. Note also that the Security page's data-protection discussion cites the older Swiss DPA/DPO rather than the revised Federal Act on Data Protection, which suggests that section has not been refreshed recently; no 'last updated' date is shown on it.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "Akenes SA is Swiss, its parent A1 Digital International GmbH and the group holding Telekom Austria AG are Austrian, and the largest shareholder above them is America Movil, S.A.B. de C.V. of Mexico; no US-incorporated entity was identified in the ownership chain, though America Movil is NYSE-listed and several Exoscale zones sit in datacentres operated by Equinix, Inc., a US company acting as landlord rather than as a controller of the data.",
+      "entry_pricing": {
+        "plan_name": "Micro (Standard Instance)",
+        "amount": 0.00729,
+        "currency": "EUR",
+        "period": "hour",
+        "url": "https://www.exoscale.com/pricing/",
+        "note": "PERIOD IS HOUR, NOT MONTH. Exoscale publishes only per-second/pay-as-you-go pricing and does not publish a monthly plan price, so no monthly figure is recorded rather than one being computed. Read from the rendered Standard Instances table with the currency selector on EUR on 2026-08-18: Micro, 512 MB RAM, 1 core, 10 GB min local storage, EUR 0.00729 per hour. Exoscale states 'Local Storage is not included in the displayed Instances price' and is billed separately per GiB-hour, so this is not the full cost of a running instance. Prices exclude applicable tax and are stated to be flat across all zones. The figures are injected client-side into an AngularJS template and are not present in the static HTML."
+      },
+      "categories": [
+        "vps",
+        "object_storage",
+        "kubernetes",
+        "cdn"
+      ],
+      "categories_note": "Grounded in the exoscale.com product navigation and footer on 2026-08-18: Compute Instances, Managed Kubernetes (SKS), DBaaS, Object Storage, Block Storage, GPU Servers, Cloud DNS, CDN, Virtual Private Cloud, plus a marketplace. No shared hosting, no managed WordPress and no rented dedicated/bare-metal server product was found. 'paas' not asserted: Exoscale has blogged about a Swiss PaaS launch but no PaaS product appeared in the navigation read.",
+      "notable": "An IaaS-only European cloud with a clean OpenStack-style API and eight zones across Switzerland, Germany, Austria, Bulgaria and Croatia, sold on Swiss data protection while being owned through an Austrian telecoms group.",
+      "sources": [
+        {
+          "claim": "Akenes SA, Lausanne address, CHE-423.524.322, 'Member of A1 Digital'",
+          "url": "https://www.exoscale.com/datacenters/"
+        },
+        {
+          "claim": "Full zone list with codes and the named operators of each facility (Equinix; A1 Next Generation Data Center; A1 Hrvatska Data Center)",
+          "url": "https://www.exoscale.com/datacenters/"
+        },
+        {
+          "claim": "Data protection contact routed through A1 Digital International GmbH; CNIL named as lead supervisory authority",
+          "url": "https://www.exoscale.com/privacy/"
+        },
+        {
+          "claim": "Swiss-scoped 'Laws and Regulation' section, data-localisation commitment, disclosure procedures via mutual legal assistance, Equinix CLOUD Act statement reference",
+          "url": "https://www.exoscale.com/security/"
+        },
+        {
+          "claim": "Data Act (Regulation (EU) 2023/2854) definitions incorporated for switching; governing law Switzerland, courts of Vaud/Lausanne",
+          "url": "https://www.exoscale.com/terms/"
+        },
+        {
+          "claim": "Claim of compliance with GDPR and EU Data Act portability requirements effective 12 September 2025",
+          "url": "https://www.exoscale.com/data-portability/"
+        },
+        {
+          "claim": "Micro standard instance at EUR 0.00729 per hour; local storage billed separately; flat rate across zones",
+          "url": "https://www.exoscale.com/pricing/"
+        },
+        {
+          "claim": "America Movil and OeBAG named as the two core shareholders of A1 Telekom Austria Group",
+          "url": "https://a1.group/investor-relations/share/"
+        },
+        {
+          "claim": "Certifications: ISO 27001, 27017, 27018, SOC 2, BSI C5, CSA STAR, TISAX, HDS",
+          "url": "https://www.exoscale.com/compliance/"
+        }
+      ],
+      "_category": "eu-sovereign"
+    },
+    {
+      "name": "Amazon Web Services (AWS), including the AWS European Sovereign Cloud",
+      "legal_entity": "Amazon Web Services, Inc.",
+      "incorporation_country": "US",
+      "eu_contracting_entity": "Amazon Web Services EMEA SARL ('AWS Europe'), Luxembourg, 38 Avenue John F. Kennedy, L-1855 Luxembourg. This is the AWS Contracting Party for any account whose Account Country is in Europe, the Middle East or Africa (excluding South Africa).",
+      "sovereign_offering_entities": [
+        "AWS European Sovereign Cloud GmbH (Germany) - parent of the three entities below",
+        "AWS European Sovereign Cloud Development Centre GmbH (Germany)",
+        "Amazon Data Services European Sovereign Cloud GmbH (Germany)",
+        "Amazon European Sovereign Cloud Trust Services GmbH (Germany)"
+      ],
+      "parent_company": "Amazon.com, Inc.",
+      "parent_country": "US",
+      "parent_note": "AWS's own EMEA legal FAQ states verbatim: 'Both AWS and AWS Europe are wholly owned subsidiaries of Amazon.com, Inc.' Amazon.com, Inc. is registered with the US SEC under CIK 0001018724 with state of incorporation DE (Delaware) and state location WA. The four AWS European Sovereign Cloud GmbHs are incorporated in Germany but sit under the same US corporate chain; no AWS-published page located on 2026-08-18 states that AWS European Sovereign Cloud GmbH is owned by anyone other than the AWS/Amazon group.",
+      "eu_regions": [
+        "Frankfurt, Germany (eu-central-1)",
+        "Dublin/Ireland (eu-west-1)",
+        "Milan, Italy (eu-south-1)",
+        "Paris, France (eu-west-3)",
+        "Spain (eu-south-2)",
+        "Stockholm, Sweden (eu-north-1)",
+        "Brandenburg, Germany (eu-isolated AWS European Sovereign Cloud partition aws-eusc, region eusc-de-east-1)"
+      ],
+      "eu_regions_note": "AWS also operates Europe (London) eu-west-2 in the United Kingdom and Europe (Zurich) eu-central-2 in Switzerland. Neither the UK nor Switzerland is in the EU or the EEA, so they are excluded from eu_regions above. AWS has announced but, as read on 2026-08-18, not listed as generally available sovereign AWS Local Zones in Belgium, the Netherlands and Portugal.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://aws.amazon.com/service-terms/",
+          "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/legal/approved/eu-data-act-addendum.pdf",
+          "https://aws.amazon.com/compliance/europe-digital-sovereignty/faq/",
+          "https://aws.eu/faq/",
+          "https://aws.eu/esca/",
+          "https://aws.amazon.com/agreement/",
+          "https://aws.amazon.com/legal/aws-emea/",
+          "https://aws.amazon.com/legal/"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/legal/approved/eu-data-act-addendum.pdf",
+        "disclosure_location_description": "Section 3 ('International Data Access and Transfer') of the AWS EU Data Act Addendum. The Addendum is incorporated into the AWS Service Terms at Section 1.28, which reads verbatim: 'These Service Terms incorporate the AWS EU Data Act Addendum, if the EU Data Act (Regulation (EU) 2023/2854) applies to your use of the Services.' The hyperlink target in the Service Terms HTML is the d1.awsstatic.com PDF URL above.",
+        "jurisdiction_stated": "Verbatim from Section 3: 'You may specify the AWS regions in which Your Content will be stored. The jurisdiction applicable to AWS infrastructure where Your Content will be stored depends on a number of factors including the AWS region(s) where they are located. More information on AWS regions is available on the AWS Site at https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html.' OBSERVATION: this text does not name any specific jurisdiction; it states that the applicable jurisdiction depends on factors including region and refers the reader to a list of region locations.",
+        "measures_described": true,
+        "measures_stated": "Verbatim from Section 3: 'AWS implements technical measures, contractual measures and operational controls to prevent unlawful access to or transfer of Your Content as provided under Section 1.4 of the Agreement. Additional information can be found at the respective AWS Documentation for the Services, on the AWS Site at AWS Nitro System and Operator Access at AWS, Section 1 of the Supplementary Addendum to AWS Data Processing Addendum, Amazon Law Enforcement Guidelines and Amazon Information Requests Report.'",
+        "additional_sovereign_offering_commitments": "The AWS European Sovereign Cloud Addendum (ESCA) at https://aws.eu/esca/, Last Updated Date 14 May 2026, contains stronger and more specific commitments for the sovereign partition only, including verbatim: 'AWS will not move or copy Your Content and Customer-Created Metadata to outside the EU, except as instructed by Customer or as necessary to comply with a valid and binding order of a governmental body'; a definition of 'AWS European Sovereign Cloud Staff' as persons '(a) employed by an AWS entity registered in the EU, and (b) EU residents or EU citizens, and in each case located in the EU when performing their role'; and Annex 3 'Additional German-Specific Provisions' stating 'German law, without reference to conflict of law rules, governs the Agreement, this ESCA... Any dispute relating in any way to the Agreement or this ESCA will only be adjudicated in the courts of Munich, Germany.'",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Amazon Web Services, Inc. is a US company headquartered at 410 Terry Avenue North, Seattle, WA, whose agreements are governed by the laws of the State of Washington, and the ultimate parent Amazon.com, Inc. is a Delaware-incorporated US public company (SEC CIK 0001018724); the EU-facing entities (Amazon Web Services EMEA SARL in Luxembourg and the four German AWS European Sovereign Cloud GmbHs) are EU-incorporated but sit wholly within that US chain, so exposure arises both directly and via the parent.",
+      "entry_pricing": {
+        "plan_name": "Amazon Lightsail, Linux/Unix General Purpose bundle (0.5 GB memory, 2 vCPUs, 20 GB SSD disk, 1 TB transfer, with public IPv4 address)",
+        "amount": 5,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://aws.amazon.com/lightsail/pricing/",
+        "note": "AWS's core services (EC2, S3, etc.) are metered per second/hour/GB and have no monthly plan, so no 'entry-level plan' price exists for AWS as a whole. Amazon Lightsail is the one AWS product sold as fixed monthly bundles, and the figure above is the cheapest bundle listed on the default (USD) view of the Lightsail pricing page as read on 2026-08-18. The same page states that Lightsail data-transfer overage rates vary by AWS Region, so the total cost of an equivalent EU deployment may differ. The page also states 'As part of the AWS Free Tier, you can get started with Amazon Lightsail for free.' Attempts to read a published EC2 on-demand rate for eu-central-1 from AWS's static pricing JSON endpoint on 2026-08-18 returned no response (connection failure); EC2 rate cards are rendered by a JavaScript pricing calculator and were therefore not captured."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "'shared' hosting is not sold. 'managed_wordpress' is not claimed here: Amazon Lightsail offers a preconfigured WordPress blueprint instance (the Lightsail pricing page gives a worked example 'WordPress instance = $5 USD / month'), but no AWS page read on 2026-08-18 described it as a managed WordPress service in the sense of managed updates and patching. 'dedicated' is asserted on the basis of EC2 Dedicated Hosts and EC2 bare-metal instance types, which are AWS product lines; the specific product pages for these were not fetched on 2026-08-18.",
+      "notable": "AWS runs the largest catalogue of services of the three and, uniquely among them, has stood up a legally and operationally separate EU partition with its own German holding company, German governing law, Munich venue and EU-resident-only operations staff.",
+      "sources": [
+        {
+          "claim": "AWS Service Terms Section 1.28 incorporates the AWS EU Data Act Addendum and links to the PDF; Section 1.29 subjects the AWS European Sovereign Cloud to the AWS European Sovereign Cloud Addendum at https://aws.eu/esca",
+          "url": "https://aws.amazon.com/service-terms/"
+        },
+        {
+          "claim": "Section 3 'International Data Access and Transfer' text quoted in jurisdiction_stated and measures_stated",
+          "url": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/legal/approved/eu-data-act-addendum.pdf"
+        },
+        {
+          "claim": "'On 1 July 2018, AWS began selling our services from our Luxembourg-based AWS entity, Amazon Web Services EMEA SARL, (\"AWS Europe\"). Both AWS and AWS Europe are wholly owned subsidiaries of Amazon.com, Inc.'",
+          "url": "https://aws.amazon.com/legal/aws-emea/"
+        },
+        {
+          "claim": "AWS Contracting Party table: for 'Any country within Europe, the Middle East, or Africa (excluding South Africa) (\"EMEA\")' the AWS Contracting Party is Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855, Luxembourg; for any country not listed it is Amazon Web Services, Inc., 410 Terry Avenue North, Seattle, WA 98109-5210 U.S.A., governed by the laws of the State of Washington",
+          "url": "https://aws.amazon.com/agreement/"
+        },
+        {
+          "claim": "Amazon.com, Inc. conformed name AMAZON COM INC, CIK 0001018724, state-of-incorporation DE, state-location WA",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-K&count=1&output=atom"
+        },
+        {
+          "claim": "The four German legal entities: 'AWS European Sovereign Cloud Development Centre GmbH', 'Amazon Data Services European Sovereign Cloud GmbH', 'Amazon European Sovereign Cloud Trust Services GmbH' and 'AWS European Sovereign Cloud GmbH, the parent company for the above three entities'; infrastructure 'entirely located within the EU, physically and logically separate from other AWS Regions'; announced expansion to AWS Local Zones in Belgium, the Netherlands and Portugal",
+          "url": "https://aws.eu/faq/"
+        },
+        {
+          "claim": "AWS European Sovereign Cloud Addendum, Last Updated Date 14 May 2026; Section 2 data localization commitments; definition of AWS European Sovereign Cloud Staff; Annex 3 German law and Munich courts",
+          "url": "https://aws.eu/esca/"
+        },
+        {
+          "claim": "AWS European Sovereign Cloud opened with region eusc-de-east-1 in the partition aws-eusc, located in the state of Brandenburg, Germany; blog dated 14 JAN 2026",
+          "url": "https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/"
+        },
+        {
+          "claim": "Amazon press release states general availability of the AWS European Sovereign Cloud on 15 January 2026, first Region in Brandenburg, Germany, with a new parent company and three local subsidiaries incorporated in Germany (GmbH), and planned sovereign AWS Local Zones in Belgium, the Netherlands and Portugal",
+          "url": "https://press.aboutamazon.com/aws/2026/1/aws-launches-aws-european-sovereign-cloud-and-announces-expansion-across-europe"
+        },
+        {
+          "claim": "AWS region-to-country mapping: eu-central-1 Europe (Frankfurt) Germany; eu-west-1 Europe (Ireland) Ireland; eu-west-2 Europe (London) United Kingdom; eu-south-1 Europe (Milan) Italy; eu-west-3 Europe (Paris) France; eu-south-2 Europe (Spain) Spain; eu-north-1 Europe (Stockholm) Sweden; eu-central-2 Europe (Zurich) Switzerland",
+          "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html"
+        },
+        {
+          "claim": "Amazon Lightsail Linux/Unix General Purpose bundle at $5 USD/mo with 0.5 GB memory, 2 vCPUs, 20 GB SSD disk, 1 TB transfer; Lightsail available on the AWS Free Tier",
+          "url": "https://aws.amazon.com/lightsail/pricing/"
+        },
+        {
+          "claim": "AWS European Digital Sovereignty FAQ contains no reference to the EU Data Act, Chapter VII or Article 32, and no named legal entity or country of incorporation for the European Sovereign Cloud, as read on 2026-08-18",
+          "url": "https://aws.amazon.com/compliance/europe-digital-sovereignty/faq/"
+        }
+      ],
+      "_category": "hyperscalers"
+    },
+    {
+      "name": "Microsoft Azure, including the EU Data Boundary",
+      "legal_entity": "Microsoft Corporation",
+      "incorporation_country": "US",
+      "eu_contracting_entity": "Microsoft Ireland Operations Limited (MIOL), incorporated in Ireland. Microsoft's own government-requests report states that services in the European Union are provided by MIOL and that all European datacentres are owned or leased by MIOL and its subsidiaries.",
+      "sovereign_offering_entities": [
+        "Microsoft Ireland Operations Limited (Ireland) - named provider of the services in the EU and owner/lessee of the European datacentres"
+      ],
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "Microsoft Corporation is the ultimate parent and has no corporate parent above it; it is registered with the US SEC under CIK 0000789019 as MICROSOFT CORP with state-of-incorporation WA (Washington). Microsoft Ireland Operations Limited is a subsidiary within the Microsoft Corporation group, so the Irish incorporation of the EU-facing entity sits underneath a US-incorporated ultimate parent.",
+      "eu_regions": [
+        "Vienna, Austria (Austria East)",
+        "Brussels, Belgium (Belgium Central)",
+        "Copenhagen, Denmark (Denmark East)",
+        "Paris, France (France Central)",
+        "Marseille, France (France South, access-restricted)",
+        "Frankfurt, Germany (Germany West Central)",
+        "Berlin, Germany (Germany North, access-restricted)",
+        "Milan, Italy (Italy North)",
+        "Ireland (North Europe)",
+        "Netherlands (West Europe)",
+        "Norway (Norway East; Norway West, access-restricted) - EEA, not EU",
+        "Warsaw, Poland (Poland Central)",
+        "Madrid, Spain (Spain Central)",
+        "Gavle, Sweden (Sweden Central)"
+      ],
+      "eu_regions_note": "Azure also operates Switzerland North (Zurich) and Switzerland West (Geneva), and UK South (London) and UK West (Cardiff). Neither Switzerland nor the UK is in the EU or the EEA, so they are excluded from eu_regions above. Regions marked access-restricted are shown in Microsoft's own regions list with the restricted-access icon ('Access to this region is restricted to support specific customer scenarios, such as disaster recovery within a specific geographic area'). Separately, Microsoft's EU Data Boundary documentation states the boundary 'uses or may use Microsoft datacenters announced or currently operating in Austria, Belgium, Denmark, Finland, France, Germany, Greece, Ireland, Italy, Netherlands, Norway, Poland, Spain, Sweden, and Switzerland' - that list includes Finland and Greece, which do not appear as named regions in the Azure regions list read on 2026-08-18. Sweden South appears in the regions list only as the access-restricted paired region of Sweden Central and does not have its own row.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.microsoft.com/licensing/terms/product/PrivacyandSecurityTerms/all",
+          "https://www.microsoft.com/licensing/terms/product/ForallOnlineServices/all",
+          "https://www.microsoft.com/en-us/corporate-responsibility/reports/government-requests/customer-data",
+          "https://www.microsoft.com/en-us/trust-center/privacy/european-data-boundary-eudb",
+          "https://learn.microsoft.com/en-us/privacy/eudb/eu-data-boundary-learn",
+          "https://learn.microsoft.com/en-us/azure/reliability/regions-list"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://www.microsoft.com/en-us/corporate-responsibility/reports/government-requests/customer-data",
+        "disclosure_location_description": "The Microsoft Product Terms, under Privacy and Security Terms, contains a section headed 'EU Data Act' which reads verbatim: 'The terms \"EU Data Act,\" \"EU Customer,\" and \"EU Data Act Service\" are defined in the DPA. Supporting materials on exporting Customer Data from Online Services, including EU Data Act Services, are available on Microsoft Learn (https://learn.microsoft.com/); visit aka.ms/customerdataexport to learn more. EU Customer's agreement, including the security practices and policies in the DPA, describes security measures Microsoft takes to protect Customer Data. Information related to how Microsoft responds to government data access requests and Microsoft ICT infrastructure used to provide EU Data Act Services can be found at: aka.ms/governmentaccessrequests.' The shortlink aka.ms/governmentaccessrequests resolves (301) to https://www.microsoft.com/corporate-responsibility/reports/government-requests/customer-data and then (301) to the en-us URL above. The jurisdiction limb is answered in an FAQ item on that page. This satisfies the Article 28(2) requirement that the website be listed in the contract, because the Product Terms are contractual.",
+        "jurisdiction_stated": "Verbatim from the FAQ item headed 'In which jurisdictions is Microsoft infrastructure used to provide online services in the European Union?': 'Services in the European Union are provided by Microsoft Ireland Operations Limited (MIOL), which is incorporated in Ireland. All of our European datacenters are owned or leased by MIOL and its subsidiaries. Information about Microsoft datacenter locations is available at Azure global infrastructure. Information about services available within the European Union Data Boundary (EUDB) is available in the Product Terms, and information about M365 Advanced Data Residency (ADR) is available at Overview of Advanced Data Residency.'",
+        "measures_described": true,
+        "measures_stated": "The same page sets out, verbatim, four principles: 'Microsoft reviews every legal demand to ensure it is valid and complies with applicable laws.'; 'Microsoft discloses customer data only when legally compelled to do so.'; 'Microsoft does not provide any government with direct or unfettered access to customer data.'; 'Microsoft does not provide any government with our encryption keys or the ability to break our encryption.' It also states that for enterprise data 'we always attempt to redirect law enforcement authorities to obtain the information directly from our customer', that 'If appropriate, we may also file a formal legal challenge in court seeking to modify or quash a legal order', and that Microsoft gives prior notice to enterprise customers except where prohibited by law. The Product Terms 'EU Data Act' section additionally points to the security practices and policies in the DPA.",
+        "provider_acknowledgement_of_us_reach": "The same page states verbatim: 'The CLOUD Act amended U.S. law to make clear that law enforcement may compel service providers with minimum contacts with the U.S. to disclose data that is in their \"possession, custody, or control\" regardless of where the data is located.' It reports for July-December 2025 that of 190 global enterprise requests, 'Microsoft provided content data to U.S. law enforcement related to 3 non-U.S. enterprise customers whose data was stored outside the U.S. One of the 3 customers was located in the EU/EFTA.'",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Microsoft Corporation, the provider named in the Product Terms and the ultimate parent, is a US-incorporated public company (SEC CIK 0000789019, state-of-incorporation WA); the EU-facing subsidiary Microsoft Ireland Operations Limited is Irish-incorporated but wholly within that US chain, so exposure arises both directly and via the parent. Microsoft's own report states the CLOUD Act reaches data 'in their possession, custody, or control regardless of where the data is located', and reports that in H2 2025 it provided content data to US law enforcement for one EU/EFTA enterprise customer.",
+      "entry_pricing": {
+        "plan_name": null,
+        "amount": null,
+        "currency": null,
+        "period": null,
+        "url": null,
+        "note": "Azure has no fixed-price monthly plan for compute; all Azure compute, storage and networking is metered per hour/second/GB, and the human-readable rate cards on azure.microsoft.com are rendered by a JavaScript pricing configurator, so no monthly or annual plan price could be recorded. The nearest verifiable published figure, read from Microsoft's own public Azure Retail Prices API on 2026-08-18, is the smallest general-purpose Linux VM: armSkuName Standard_B1ls, product 'Virtual Machines BS Series', meter B1ls, in armRegionName westeurope, priceType Consumption, at 0.0053 EUR per 1 Hour, effectiveStartDate 2025-10-01T00:00:00Z. API query URL recorded in sources. That is a metered rate, not a plan, and is therefore not recorded in the amount field."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "managed_wordpress",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "'shared' hosting is not sold. 'managed_wordpress' is asserted on the strength of Microsoft's own documentation: 'WordPress on Azure App Service provides a fully managed hosting solution' and 'Microsoft provides a fully managed solution for running WordPress on App Service on Linux VMs... Performs automatic updates, backups, and monitoring'. 'dedicated' is asserted on the basis of the Azure Dedicated Host product line; that product page was not fetched on 2026-08-18.",
+      "notable": "Microsoft is the only one of the three to answer the jurisdiction question with a named legal entity and its country of incorporation, and it publishes a twice-yearly count of how many enterprise disclosures actually happened, including a cross-border breakdown.",
+      "sources": [
+        {
+          "claim": "Microsoft Product Terms, Privacy and Security Terms, section headed 'EU Data Act' pointing to aka.ms/governmentaccessrequests for 'how Microsoft responds to government data access requests and Microsoft ICT infrastructure used to provide EU Data Act Services'",
+          "url": "https://www.microsoft.com/licensing/terms/product/PrivacyandSecurityTerms/all"
+        },
+        {
+          "claim": "aka.ms/governmentaccessrequests returns HTTP 301 to https://www.microsoft.com/corporate-responsibility/reports/government-requests/customer-data and then 301 to the /en-us/ path",
+          "url": "https://aka.ms/governmentaccessrequests"
+        },
+        {
+          "claim": "FAQ 'In which jurisdictions is Microsoft infrastructure used to provide online services in the European Union?' naming Microsoft Ireland Operations Limited (MIOL), incorporated in Ireland; the four disclosure principles; the CLOUD Act 'possession, custody, or control' statement; H2 2025 enterprise request figures including one EU/EFTA customer",
+          "url": "https://www.microsoft.com/en-us/corporate-responsibility/reports/government-requests/customer-data"
+        },
+        {
+          "claim": "Microsoft Corporation conformed name MICROSOFT CORP, CIK 0000789019, state-of-incorporation WA",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-K&count=1&output=atom"
+        },
+        {
+          "claim": "Azure Europe region list with physical locations: Austria East (Vienna), Belgium Central (Brussels), Denmark East (Copenhagen), France Central (Paris), France South (Marseille, restricted), Germany North (Berlin, restricted), Germany West Central (Frankfurt), Italy North (Milan), North Europe (Ireland), Norway East / Norway West (Norway), Poland Central (Warsaw), Spain Central (Madrid), Sweden Central (Gavle), Switzerland North (Zurich), Switzerland West (Geneva), UK South (London), UK West (Cardiff), West Europe (Netherlands)",
+          "url": "https://learn.microsoft.com/en-us/azure/reliability/regions-list"
+        },
+        {
+          "claim": "EU Data Boundary definition, the EU/EFTA country list, the datacentre country list, and the statement that commitments 'are subject to limited circumstances where Customer Data, personal data, and Professional Services Data will continue to be transferred outside the EU Data Boundary'; last updated February 26, 2025",
+          "url": "https://learn.microsoft.com/en-us/privacy/eudb/eu-data-boundary-learn"
+        },
+        {
+          "claim": "Standard_B1ls, Virtual Machines BS Series, westeurope, Consumption, 0.0053 EUR per 1 Hour, effectiveStartDate 2025-10-01",
+          "url": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName%20eq%20'Virtual%20Machines'%20and%20armRegionName%20eq%20'westeurope'%20and%20priceType%20eq%20'Consumption'%20and%20armSkuName%20eq%20'Standard_B1ls'"
+        },
+        {
+          "claim": "'WordPress on Azure App Service provides a fully managed hosting solution.'",
+          "url": "https://learn.microsoft.com/azure/app-service/overview-wordpress"
+        },
+        {
+          "claim": "Microsoft Trust Center EU Data Boundary overview page was checked and contains the EU Data Boundary commitment description but no Article 28 jurisdiction statement, as read on 2026-08-18",
+          "url": "https://www.microsoft.com/en-us/trust-center/privacy/european-data-boundary-eudb"
+        }
+      ],
+      "_category": "hyperscalers"
+    },
+    {
+      "name": "Google Cloud, including Google Sovereign Cloud / Sovereign Controls",
+      "legal_entity": "Google LLC",
+      "incorporation_country": "US",
+      "eu_contracting_entity": "Google Cloud EMEA Limited, Ireland, for customers whose billing address is in EMEA except France, Italy and Poland. Google Cloud France for France, Google Cloud Italy S.r.l. for Italy, and Google Cloud Poland Sp. z o.o for Poland. Google LLC is the contracting entity for the United States 'and any other location not covered above'.",
+      "sovereign_offering_entities": [
+        "Google Cloud EMEA Limited (Ireland)",
+        "Google Cloud France (France)",
+        "Google Cloud Italy S.r.l. (Italy)",
+        "Google Cloud Poland Sp. z o.o (Poland)"
+      ],
+      "parent_company": "Alphabet Inc.",
+      "parent_country": "US",
+      "parent_note": "Alphabet Inc. is registered with the US SEC under CIK 0001652044 with state-of-incorporation DE (Delaware) and business address 1600 Amphitheatre Parkway, Mountain View, CA. No Google-published page was located on 2026-08-18 that sets out the intermediate holding chain between Google Cloud EMEA Limited and Alphabet Inc., so only the ultimate parent is asserted here.",
+      "eu_regions": [
+        "St. Ghislain, Belgium (europe-west1)",
+        "Hamina, Finland (europe-north1)",
+        "Paris, France (europe-west9)",
+        "Frankfurt, Germany (europe-west3)",
+        "Berlin, Germany (europe-west10)",
+        "Milan, Italy (europe-west8)",
+        "Turin, Italy (europe-west12)",
+        "Eemshaven, Netherlands (europe-west4)",
+        "Warsaw, Poland (europe-central2)",
+        "Madrid, Spain (europe-southwest1)",
+        "Stockholm, Sweden (europe-north2)"
+      ],
+      "eu_regions_note": "Google Cloud also operates europe-west2 (London, England) and europe-west6 (Zurich, Switzerland). Neither the UK nor Switzerland is in the EU or the EEA, so they are excluded from eu_regions above. Locations are as listed in Google's own Compute Engine regions and zones documentation on 2026-08-18; edge, CDN and interconnect colocation sites are additional and are covered by three further URLs Google names in its Data Act disclosure.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://cloud.google.com/security/compliance/eudataact",
+          "https://cloud.google.com/terms/service-terms",
+          "https://cloud.google.com/terms/",
+          "https://cloud.google.com/terms/google-entity",
+          "https://cloud.google.com/about/locations",
+          "https://cloud.google.com/terms/eu-data-act"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://cloud.google.com/terms/service-terms",
+        "disclosure_location_description": "Section 16(j) ('Required Information'), subsections (iii) and (iv), of the General Service Terms within the Google Cloud Service Specific Terms. Google's EU Data Act mapping page at https://cloud.google.com/security/compliance/eudataact reproduces Article 28 verbatim and states that 'Section 16(j) (Required Information) sets out Google's commitment to provide the customer with the following information and to keep it up to date'. Note that the mapping page itself carries a scope caveat, verbatim: 'this document does not address requirements under Chapters VI and VIII of the Data Act that do not involve contract terms, and does not address any other Chapters of the Data Act.' https://cloud.google.com/terms/eu-data-act was also tried and returns HTTP 404.",
+        "jurisdiction_stated": "Verbatim from Section 16(j)(iii) of the General Service Terms: 'information about the jurisdictions to which the ICT infrastructure deployed for Data Processing of the Google DP Service(s) is or may be subject at https://cloud.google.com/about/locations, https://cloud.google.com/vpc/docs/edge-locations, https://cloud.google.com/cdn/docs/locations and https://cloud.google.com/network-connectivity/docs/interconnect/concepts/colocation-facilities'. OBSERVATION: Google answers the jurisdiction limb by pointing to four infrastructure-location pages. It does not name a jurisdiction in words, and the wording 'is or may be subject' is not narrowed to a specific legal system.",
+        "measures_described": true,
+        "measures_stated": "Verbatim from Section 16(j)(iv) of the General Service Terms: 'a general description of the technical, organisational, and contractual measures adopted by Google as provider of the Google DP Service(s) to prevent international governmental access to or the transfer of Non-Personal Data held in the European Union, where such access or transfer would conflict with EU or EU Member State law, in: (A) the Cloud Data Processing Addendum, including Sections 7 (Data Security) and 11 (Subprocessors) of the General Terms, Appendix 2 (Security Measures) and the Google Cloud Platform section of Appendix 4 (Specific Products); and (B) the remainder of the Agreement, including the sections entitled \"Confidential Information\" and \"Representations and Warranties\".' OBSERVATION: the measures limb is satisfied by cross-reference into other contract documents rather than by a self-contained description on a web page.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Google LLC is a US entity named on Google's own contracting-entity page as the counterparty for the United States 'and any other location not covered above', and the ultimate parent is Alphabet Inc., a Delaware-incorporated US public company (SEC CIK 0001652044); the EU-facing subsidiary Google Cloud EMEA Limited is Irish-incorporated but sits wholly within that US chain, so exposure arises both directly and via the parent.",
+      "entry_pricing": {
+        "plan_name": null,
+        "amount": null,
+        "currency": null,
+        "period": null,
+        "url": null,
+        "note": "Google Cloud has no fixed-price monthly plan; Compute Engine, Cloud Storage and the rest are metered per second/hour/GB. The rate tables on https://cloud.google.com/compute/vm-instance-pricing are rendered client-side by JavaScript and were not present in the fetched HTML on 2026-08-18, and the Cloud Billing Catalog API requires an API key, so no price could be captured without inventing one. Two verifiable free-tier facts were captured instead and are recorded because they bear on the EU angle: the Google Cloud Free Trial gives 'a $300 Welcome credit to spend over 90 days', and the always-free Compute Engine allowance is '1 non-preemptible e2-micro VM instance per month in one of the following US regions: Oregon: us-west1. Iowa: us-central1. South Carolina: us-east1.' - that is, the free VM is not available in any EU region."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "'shared' hosting is not sold. 'managed_wordpress' is not claimed: no Google first-party managed WordPress service was located on 2026-08-18; WordPress on Google Cloud is deployed via Marketplace images or self-managed on Compute Engine/GKE. 'dedicated' is asserted on the basis of Compute Engine sole-tenant nodes and Google Cloud Bare Metal Solution; those product pages were not fetched on 2026-08-18.",
+      "notable": "Google is the only one of the three whose sovereign tier is fronted by non-Google operators, notably S3NS (a Thales joint venture) in France and T-Systems in Germany, which puts a third-party company between the customer and Google for those deployments.",
+      "sources": [
+        {
+          "claim": "Google Cloud EU Data Act mapping page reproducing Article 28 and mapping it to Section 16(j) of the General Service Terms; scope caveat that the document covers only Chapters VI and VIII contract terms",
+          "url": "https://cloud.google.com/security/compliance/eudataact"
+        },
+        {
+          "claim": "General Service Terms Section 16(j)(iii) and (iv) verbatim text of the jurisdiction and measures disclosures, including the four location URLs",
+          "url": "https://cloud.google.com/terms/service-terms"
+        },
+        {
+          "claim": "Google contracting entity table: 'EMEA except France, Italy and Poland' maps to Google Cloud EMEA Limited; France to Google Cloud France; Italy to Google Cloud Italy S.r.l.; Poland to Google Cloud Poland Sp. z o.o; 'United States and any other location not covered above' to Google LLC",
+          "url": "https://cloud.google.com/terms/google-entity"
+        },
+        {
+          "claim": "Alphabet Inc. conformed name Alphabet Inc., CIK 0001652044, state-of-incorporation DE, business address 1600 Amphitheatre Parkway, Mountain View, CA",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-K&dateb=&owner=include&count=5&output=atom"
+        },
+        {
+          "claim": "Compute Engine region-to-city mapping for europe-west1 (St. Ghislain, Belgium), europe-west3 (Frankfurt, Germany), europe-west4 (Eemshaven, Netherlands), europe-west8 (Milan, Italy), europe-west9 (Paris, France), europe-west10 (Berlin, Germany), europe-west12 (Turin, Italy), europe-north1 (Hamina, Finland), europe-north2 (Stockholm, Sweden), europe-central2 (Warsaw, Poland), europe-southwest1 (Madrid, Spain), europe-west2 (London, England), europe-west6 (Zurich, Switzerland)",
+          "url": "https://cloud.google.com/compute/docs/regions-zones"
+        },
+        {
+          "claim": "Google Cloud Free Trial '$300 Welcome credit to spend over 90 days'; Compute Engine Free Tier '1 non-preemptible e2-micro VM instance per month' limited to us-west1, us-central1 and us-east1",
+          "url": "https://docs.cloud.google.com/free/docs/free-cloud-features"
+        },
+        {
+          "claim": "https://cloud.google.com/terms/eu-data-act returns HTTP 404 as read on 2026-08-18",
+          "url": "https://cloud.google.com/terms/eu-data-act"
+        },
+        {
+          "claim": "Google Cloud Terms of Service Section 14.3 refers to 'the Google contracting entity as defined at https://cloud.google.com/terms/google-entity'",
+          "url": "https://cloud.google.com/terms/"
+        }
+      ],
+      "_category": "hyperscalers"
+    },
+    {
+      "name": "WP Engine",
+      "legal_entity": "WPEngine, Inc.",
+      "incorporation_country": "US",
+      "incorporation_detail": "Stated in its own Terms of Service as 'WPEngine, Inc., a Delaware corporation located at 504 Lavaca St., Ste. 1000, Austin, Texas 78701'. Governing law is Texas; venue is Travis County, Texas.",
+      "parent_company": "Silver Lake",
+      "parent_country": "US",
+      "parent_control_note": "investor, stake size not stated by primary sources",
+      "parent_note": "Silver Lake, a US private equity firm, made a USD 250 million investment in January 2018. WP Engine's own announcement calls it a 'strategic growth investment' and does not state a majority stake; Silver Lake's own portfolio page likewise states no ownership percentage or control language. Third-party reporting (Bloomberg) describes it as a majority stake. Recorded here as the provider's own site does not characterise the stake size. This does not change the CLOUD Act analysis, which turns on WPEngine, Inc. being a Delaware corporation.",
+      "eu_regions": [
+        "Belgium",
+        "Frankfurt, Germany",
+        "Netherlands",
+        "Finland",
+        "Ireland"
+      ],
+      "eu_regions_note": "From WP Engine's own support documentation. London (UK) is also offered but is not EU/EEA and is excluded from this list. Underlying infrastructure is Google Cloud (all plans), plus AWS and Microsoft Azure (Premium plans only). Frankfurt on GCP is marked limited availability / possible added cost; Ireland is AWS and Premium-only.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://wpengine.com/legal/",
+          "https://wpengine.com/legal/dpa/",
+          "https://wpengine.com/legal/privacy/",
+          "https://wpengine.com/legal/terms-of-service/",
+          "https://wpengine.com/legal/dsa-transparency-report/",
+          "https://wpengine.com/legal/sub-processor-list/",
+          "https://wpengine.com/support/wp-engines-security-environment/",
+          "https://wpengine.com/secure-wordpress-hosting/",
+          "https://wpengine.com/legal/data-act/ (HTTP 404)",
+          "https://wpengine.com/legal/eu-data-act/ (HTTP 404)",
+          "https://wpengine.com/legal/law-enforcement/ (HTTP 404)",
+          "https://wpengine.com/trust/ (HTTP 404)"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure identifying the jurisdiction to which the ICT infrastructure is subject, and no general description of measures adopted to prevent international governmental access to or transfer of non-personal data held in the Union, was found at the URLs listed above, checked 2026-08-18. The /legal/ index does not link to a trust centre, a government-access page, an international-transfers page or a Data Act page. The DPA and privacy policy address personal data under GDPR/SCCs/Data Privacy Framework only. The transparency report that does exist is scoped to the Digital Services Act ('orders, notices, and complaints received, and actions taken, by WP Engine under the DSA's requirements') and does not cover government data requests. The privacy policy states: 'In certain situations, we may be required to disclose personal data in response to lawful requests by public authorities, including requests made to meet national security or law enforcement requirements.' That is a personal-data statement, not an Article 28(1) statement on jurisdiction and measures."
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "WPEngine, Inc. is a Delaware corporation headquartered in Austin, Texas, per its own Terms of Service, so data in its possession, custody or control is reachable under the CLOUD Act regardless of which data centre region a customer selects.",
+      "entry_pricing": {
+        "plan_name": "Startup",
+        "amount": 30,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://wpengine.com/plans/",
+        "note": "Displayed as '$30 USD /mo' with the page's billing-recurrence selector on its default setting of 'annually' and currency USD. The same card shows 'Pay $350 today', and the Buy Now link carries coupon=WPEyearone, so USD 350 is the first-year total under an introductory coupon rather than a steady-state annual price. Page small print: 'First year pricing and associated coupons are valid for new customers purchasing Essential plans only.' The monthly-billing price was not captured because the selector was not toggled; renewal pricing is not published on the page."
+      },
+      "categories": [
+        "managed_wordpress",
+        "paas",
+        "cdn"
+      ],
+      "categories_note": "Managed WordPress hosting is the core product. 'Headless Platform' (Atlas) is counted as paas. A CDN is bundled (Global Edge Security / included CDN) rather than sold standalone. No VPS, dedicated server, shared cPanel-style hosting, object storage or Kubernetes product appears in site navigation.",
+      "notable": "Managed WordPress hosting for agencies and larger sites, with a headless WordPress platform, SOC 2 Type II and ISO 27001:2022 certification, and a choice of GCP, AWS or Azure regions on higher plans.",
+      "sources": [
+        {
+          "claim": "Legal entity is WPEngine, Inc., a Delaware corporation at 504 Lavaca St., Ste. 1000, Austin, Texas 78701; governing law Texas; venue Travis County, Texas",
+          "url": "https://wpengine.com/legal/terms-of-service/"
+        },
+        {
+          "claim": "DPA names WPEngine, Inc., 504 Lavaca St #1000, Austin, TX 78701 as data importer; no EU or UK subsidiary is named; Ireland designated as governing law and competent supervisory authority for the SCCs",
+          "url": "https://wpengine.com/legal/dpa/"
+        },
+        {
+          "claim": "Privacy policy names only WPEngine, Inc.; relies on the EU-U.S., UK Extension and Swiss-U.S. Data Privacy Frameworks; states personal data may be disclosed in response to lawful requests by public authorities including national security or law enforcement requirements; no CLOUD Act or Data Act mention",
+          "url": "https://wpengine.com/legal/privacy/"
+        },
+        {
+          "claim": "Legal index lists privacy, DPA, sub-processor list, DSA transparency report, ToS, SLA, cookies, AUP, DMCA; no trust centre, government-access, international-transfers or Data Act page is linked",
+          "url": "https://wpengine.com/legal/"
+        },
+        {
+          "claim": "The only transparency report is DSA-scoped and does not cover government data requests, EU Data Act, infrastructure jurisdiction, or international governmental access to non-personal data",
+          "url": "https://wpengine.com/legal/dsa-transparency-report/"
+        },
+        {
+          "claim": "EU/EEA data centre locations Belgium, Frankfurt, Netherlands, Finland (Google Cloud) and Ireland (AWS, Premium only); London also available but not EU/EEA",
+          "url": "https://wpengine.com/support/servers/"
+        },
+        {
+          "claim": "Security environment page contains no mention of the EU Data Act, infrastructure jurisdiction, international governmental access or the CLOUD Act",
+          "url": "https://wpengine.com/support/wp-engines-security-environment/"
+        },
+        {
+          "claim": "Entry plan Startup displayed at $30 USD/mo with annual billing selected, 'Pay $350 today', coupon WPEyearone, first-year pricing small print",
+          "url": "https://wpengine.com/plans/"
+        },
+        {
+          "claim": "Products in navigation: Managed Hosting Platform, Headless Platform, eCommerce Solution; no VPS, dedicated, shared, object storage or Kubernetes",
+          "url": "https://wpengine.com/"
+        },
+        {
+          "claim": "Silver Lake made a $250 million strategic growth investment announced 4 January 2018; WP Engine's own announcement does not state a majority stake",
+          "url": "https://wpengine.com/blog/milestone-announcement/"
+        },
+        {
+          "claim": "Silver Lake lists WP Engine as a portfolio company with partner date 2018; no ownership percentage or control language stated",
+          "url": "https://www.silverlake.com/portfolio/wp-engine/"
+        }
+      ],
+      "_category": "managed-wp"
+    },
+    {
+      "name": "Kinsta",
+      "legal_entity": "Kinsta Inc.",
+      "incorporation_country": "US",
+      "incorporation_detail": "Contracting and controller entity is Kinsta Inc., 8605 Santa Monica Blvd #92581, West Hollywood, CA 90069, United States of America, per its own privacy policy. The Terms of Service place arbitration exclusively in Wilmington, Delaware and apply Delaware law. The specific state of incorporation is not stated on Kinsta's own site; recorded as US at country level. Affiliated contact entities named in the privacy policy are Kinsta Ltd. (UK contact), Blue Cloud Hosting Kft. (EU contact, a Hungarian Kft.) and Kinsta GmbH (Swiss contact).",
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "No corporate parent above Kinsta Inc. was established from primary sources. Kinsta is privately held and founder-led (founder Mark Gavalda). Third-party aggregators report a single small institutional investment; no filing or provider statement establishing a parent company was found. Kinsta Inc. is itself the top entity identified, and it is US-based, so the CLOUD Act analysis is 'direct' rather than 'via_parent'.",
+      "eu_regions": [
+        "Amsterdam, Netherlands",
+        "Frankfurt, Germany",
+        "Madrid, Spain",
+        "Milan, Italy",
+        "Paris, France",
+        "Stockholm, Sweden"
+      ],
+      "eu_regions_note": "From Kinsta's own docs page (last updated 2 February 2026), which lists 30 managed WordPress data centres. Zurich, Switzerland (eu-zurich-1) and London, United Kingdom (uk-london-1) are also offered but are not EU/EEA and are excluded. The docs page does not name the underlying cloud provider, but every region identifier listed follows Oracle Cloud Infrastructure naming (eu-frankfurt-1, us-ashburn-1, af-johannesburg-1), and Kinsta's trust centre lists both Oracle America, Inc. and Google Cloud Platform as hosting subprocessors marked \"Customer's choice\". Treat the specific provider-per-region mapping as unconfirmed.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://kinsta.com/legal/",
+          "https://kinsta.com/legal/terms-service/",
+          "https://kinsta.com/legal/privacy-policy/",
+          "https://kinsta.com/legal/data-processing-addendum/",
+          "https://kinsta.com/legal/subprocessors/",
+          "https://trust.kinsta.com/",
+          "https://trust.kinsta.com/faq",
+          "https://kinsta.com/legal/data-act/ (HTTP 404)",
+          "https://kinsta.com/legal/eu-data-act/ (HTTP 404)",
+          "https://kinsta.com/legal/government-access/ (HTTP 404)"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure identifying the jurisdiction to which the ICT infrastructure is subject, and no general description of measures adopted to prevent international governmental access to or transfer of non-personal data held in the Union, was found at the URLs listed above, checked 2026-08-18. Kinsta does operate a trust centre at trust.kinsta.com (built on Vanta). It was rendered in a browser and its overview, controls, subprocessors and FAQ tabs were searched: it presents ISO 27001:2022, ISO 27017, ISO 27018, SOC 2 Type II, CSA STAR Level 1, GDPR and CCPA compliance items, control lists and a subprocessor table, and contains no jurisdiction statement, no government-access section and no Data Act reference. A 'Transfer Impact Assessment' document is listed but is access-gated behind a request form, so its contents could not be reviewed; it is a GDPR Schrems II artefact rather than a published Article 28(1) statement in any case."
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "The contracting and controller entity is Kinsta Inc., a US company based in West Hollywood, California, contracting under Delaware law, so data in its possession, custody or control is reachable under the CLOUD Act regardless of the EU region selected; its named hosting subprocessors Oracle America, Inc. and Google Cloud are also US-controlled.",
+      "entry_pricing": {
+        "plan_name": "Single 20GB",
+        "amount": 350,
+        "currency": "USD",
+        "period": "year",
+        "url": "https://kinsta.com/pricing/",
+        "note": "Read with the page's plan-interval toggle on its default setting of 'Annual (2 months off)'. The card headline shows '$30' USD struck through against a '$0' first-month promotion, with the explicit small print '*Pay $0 today, $350 after the first month' and 'Save $70 by paying annually'. USD 350 per year is therefore the directly quoted annual charge. Kinsta's WordPress hosting page states the monthly-billed rate is $35/month, consistent with the $70 annual saving; that monthly figure was not verified on the pricing page itself because a cookie banner blocked the toggle."
+      },
+      "categories": [
+        "managed_wordpress",
+        "paas",
+        "object_storage",
+        "cdn",
+        "dedicated"
+      ],
+      "categories_note": "Kinsta's own privacy policy describes the company as providing 'website, static site, application, database, object storage, and other hosting services'. Application, database and static site hosting are delivered under the sibling brand Sevalla (sevalla.com) and are counted as paas. kinsta.com/object-storage/ resolves (HTTP 200). A CDN is included with plans. Dedicated servers appear on the pricing page as an add-on 'Starting at $300 / month'. No VPS or Kubernetes product was found in navigation.",
+      "notable": "Managed WordPress hosting with a wide choice of single-region data centres, strong published security certifications, and a sibling platform (Sevalla) for applications, databases and static sites.",
+      "sources": [
+        {
+          "claim": "Controller entity Kinsta Inc., 8605 Santa Monica Blvd #92581, West Hollywood, CA 90069, USA; UK contact Kinsta Ltd.; EU contact Blue Cloud Hosting Kft.; Swiss contact Kinsta GmbH; describes services as website, static site, application, database, object storage and other hosting",
+          "url": "https://kinsta.com/legal/privacy-policy/"
+        },
+        {
+          "claim": "Arbitration exclusively in the City of Wilmington, State of Delaware; Delaware law governs; no Data Act, CLOUD Act or infrastructure-jurisdiction language",
+          "url": "https://kinsta.com/legal/terms-service/"
+        },
+        {
+          "claim": "Legal index lists ToS, privacy policy, DPA, subprocessors, SLA, affiliate terms, referral terms, copyright policy, cookie settings and a Trust Center link; no Data Act, government-access or international-transfers page",
+          "url": "https://kinsta.com/legal/"
+        },
+        {
+          "claim": "DPA contains no Data Act, CLOUD Act, non-personal-data or governmental-access language; transfers handled via SCCs Module Two",
+          "url": "https://kinsta.com/legal/data-processing-addendum/"
+        },
+        {
+          "claim": "Trust centre (Vanta) shows ISO 27001:2022, ISO 27017, ISO 27018, SOC 2 Type II, CSA STAR Level 1, GDPR, CCPA; subprocessors Cloudflare (Regional), Google Cloud Platform (Customer's choice, hosting), Oracle America Inc. (Customer's choice, hosting), AWS (United States, DNS); no jurisdiction or government-access disclosure",
+          "url": "https://trust.kinsta.com/"
+        },
+        {
+          "claim": "Managed WordPress data centre list of 30 regions, last updated 2 February 2026, including eu-amsterdam-1, eu-frankfurt-1, eu-madrid-1, eu-milan-1, eu-paris-1, eu-stockholm-1, eu-zurich-1, uk-london-1",
+          "url": "https://kinsta.com/docs/service-information/data-center-locations/"
+        },
+        {
+          "claim": "Entry plan Single 20GB, '$30' USD with annual interval selected, 'Pay $0 today, $350 after the first month', 'Save $70 by paying annually'; dedicated servers add-on 'Starting at $300 / month'",
+          "url": "https://kinsta.com/pricing/"
+        },
+        {
+          "claim": "Kinsta sells object storage",
+          "url": "https://kinsta.com/object-storage/"
+        },
+        {
+          "claim": "Sevalla is presented as a distinct brand for application, database and static site hosting, linking to sevalla.com",
+          "url": "https://kinsta.com/"
+        }
+      ],
+      "_category": "managed-wp"
+    },
+    {
+      "name": "SiteGround",
+      "legal_entity": "SiteGround Spain S.L.",
+      "incorporation_country": "ES",
+      "incorporation_detail": "The EU-facing site (eu.siteground.com, which www.siteground.com redirects to from an EU IP) states: 'The following Terms of Service ... apply to your use of our website and all Services and/or content provided by SiteGround Spain S.L., a company registered and existing under the laws of the Kingdom of Spain, with CIF: B-87194171, with registered address at: Calle Prim 19, Madrid 28004, Spain'. Group affiliates named in the DPA are SiteGround Hosting Ltd. (England and Wales, company number 09348602, 7th Floor, 50 Broadway, London SW1H 0DB), SiteGround Hosting EOOD (Bulgaria, UIC 204181297, 6 Olimpiyska St., fl. 7, Sofia) and SiteGround Capital Ltd (Cyprus, Registration No. HE 414758, Nicosia). Customers routed to world.siteground.com contract with SiteGround Hosting Ltd. instead.",
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "Independently owned; no US corporate control found. UK Companies House records the sole active person with significant control of SITEGROUND HOSTING LTD as Ivo Latchezarov Tzenov, a Bulgarian national resident in Bulgaria, holding 75% or more of shares and voting rights plus the right to appoint or remove directors, notified 22 December 2020. The prior corporate PSC, It Web Capital Ltd. (England and Wales, 09285656), ceased 21 December 2020. No group organigram establishing which entity sits above SiteGround Spain S.L. was found in primary sources, so parent_company is recorded as null rather than guessed.",
+      "eu_regions": [
+        "Madrid, Spain",
+        "Eemshaven, Netherlands",
+        "Frankfurt, Germany",
+        "Paris, France"
+      ],
+      "eu_regions_note": "Full hosting data centres from SiteGround's own data centres page. London (UK) is also a full data centre but is not EU/EEA and is excluded. Hamina (Finland) and Warsaw (Poland) are listed as CDN-only edge locations, not hosting data centres, and are excluded from this list. The page states the infrastructure runs on Google Cloud ('our main data center partner - Google', 'Modern Google Cloud infrastructure').",
+      "sovereignty": {
+        "urls_checked": [
+          "https://eu.siteground.com/terms.htm",
+          "https://eu.siteground.com/viewtos/siteground_terms_of_service",
+          "https://eu.siteground.com/privacy.htm",
+          "https://eu.siteground.com/viewtos/data_processing_agreement",
+          "https://eu.siteground.com/viewtos/content_moderation_transparency_report_1",
+          "https://eu.siteground.com/data-act.htm (HTTP 404)",
+          "https://eu.siteground.com/eu-data-act (HTTP 404)",
+          "https://www.siteground.com/data-act (HTTP 404)"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure identifying the jurisdiction to which the ICT infrastructure is subject, and no general description of measures adopted to prevent international governmental access to or transfer of non-personal data held in the Union, was found at the URLs listed above, checked 2026-08-18. The full legal hub index at eu.siteground.com/terms.htm was enumerated (24 documents: acceptable use policy, affiliate program, AI Studio service terms, CCPA rights center, Coderick AI service terms and supplemental terms, content moderation transparency report, cookies policy, data processing agreement, digital materials terms, domain name agreement, ecommerce service terms, email marketing service terms, EU Regulation 784 notice, Google Workspace terms, policy for complaints and notices, premium backup service terms, privacy policy, responsible disclosure policy, accessibility assessment, plugins privacy notice, site builder terms, terms of service). No Data Act or Article 28 notice appears in that index. The DPA does state that once a customer selects an EU data centre SiteGround will not move data outside the EU except 'to comply with the law or a valid and binding order', and that disclosure to authorities occurs only for 'a valid and binding order of a law enforcement agency (such as a subpoena or a court order)', but neither is framed as, nor amounts to, an Article 28(1) statement on jurisdiction and measures."
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "The EU contracting entity is SiteGround Spain S.L., a Spanish company, and the group's identified affiliates are incorporated in Spain, England and Wales, Bulgaria and Cyprus with a Bulgarian individual as the controlling person; no US-incorporated entity or US parent was found in the corporate chain. Note separately that the underlying infrastructure is Google Cloud, a US-controlled subprocessor, which is an infrastructure-level exposure rather than corporate control of SiteGround itself.",
+      "entry_pricing": {
+        "plan_name": "StartUp",
+        "amount": 2.99,
+        "currency": "EUR",
+        "period": "month",
+        "url": "https://eu.siteground.com/wordpress-hosting.htm",
+        "note": "Promotional rate. Page small print: 'Renews at 15.99 \u20ac/mo. Prepaid for 12 months. Ex. VAT'. EUR pricing is what the EU-facing site (eu.siteground.com) shows; other regional sites quote other currencies."
+      },
+      "categories": [
+        "shared",
+        "managed_wordpress"
+      ],
+      "categories_note": "Navigation lists Web Hosting (shared), Hosting for WordPress, Hosting for WooCommerce, Cloud Hosting, Reseller Hosting and domains. 'Cloud Hosting' is a managed scalable-container product, not a self-managed VPS, and reseller hosting is not one of the listed category values, so neither is mapped. A CDN exists (SiteGround CDN) but is bundled with plans rather than sold as a standalone product; no standalone CDN product page was found (eu.siteground.com/cdn.htm returns HTTP 404). No dedicated servers, object storage or Kubernetes.",
+      "notable": "Shared and managed WordPress hosting on Google Cloud with an EU contracting entity, EU-region data centres, and a documented commitment in the DPA not to move data outside the EU once an EU data centre is chosen.",
+      "sources": [
+        {
+          "claim": "EU contracting entity is SiteGround Spain S.L., registered under the laws of the Kingdom of Spain, CIF B-87194171, Calle Prim 19, Madrid 28004, Spain",
+          "url": "https://eu.siteground.com/viewtos/siteground_terms_of_service"
+        },
+        {
+          "claim": "Privacy policy names SiteGround Spain S.L. (CIF B87194171, Calle de Prim 19, 28004 Madrid); transfers rely on adequacy decisions or European Commission SCCs; no Data Act mention",
+          "url": "https://eu.siteground.com/privacy.htm"
+        },
+        {
+          "claim": "DPA names group affiliates SiteGround Spain S.L., SiteGround Hosting Ltd. (England and Wales, 7th Floor 50 Broadway London SW1H 0DB), SiteGround Hosting EOOD (Bulgaria, UIC 204181297, 6 Olimpiyska St. fl. 7 Sofia) and SiteGround Capital Ltd (Cyprus, HE 414758, Nicosia); customer data stored in EU, US and Singapore; SCCs used; will not move data outside the EU once an EU data centre is selected except to comply with law or a valid and binding order",
+          "url": "https://eu.siteground.com/viewtos/data_processing_agreement"
+        },
+        {
+          "claim": "Complete legal hub index of 24 documents with no Data Act or Article 28 notice",
+          "url": "https://eu.siteground.com/terms.htm"
+        },
+        {
+          "claim": "Data centres: Madrid, London, Eemshaven, Frankfurt, Paris, Council Bluffs, Ashburn, Dallas, Los Angeles, Singapore, Sydney; CDN-only edge at Hamina and Warsaw; runs on Google Cloud",
+          "url": "https://eu.siteground.com/datacenters"
+        },
+        {
+          "claim": "Entry plan StartUp at 2.99 EUR/mo promotional, renews at 15.99 EUR/mo, prepaid for 12 months, ex. VAT",
+          "url": "https://eu.siteground.com/wordpress-hosting.htm"
+        },
+        {
+          "claim": "Sole active PSC of SITEGROUND HOSTING LTD (09348602) is Ivo Latchezarov Tzenov, Bulgarian, resident Bulgaria, 75%+ shares and voting rights, notified 22 December 2020; corporate PSC It Web Capital Ltd. ceased 21 December 2020",
+          "url": "https://find-and-update.company-information.service.gov.uk/company/09348602/persons-with-significant-control"
+        },
+        {
+          "claim": "Non-EU site world.siteground.com contracts with SiteGround Hosting Ltd., registered in England and Wales, company number 09348602, 7th Floor 50 Broadway London SW1H 0DB",
+          "url": "https://world.siteground.com/privacy.htm"
+        },
+        {
+          "claim": "Products in navigation: Web Hosting, Hosting for WordPress, Hosting for WooCommerce, Cloud Hosting, Reseller Hosting, domains",
+          "url": "https://eu.siteground.com/"
+        }
+      ],
+      "_category": "managed-wp"
+    },
+    {
+      "name": "Hostinger",
+      "legal_entity": "HOSTINGER INTERNATIONAL LIMITED",
+      "incorporation_country": "CY",
+      "incorporation_detail": "The Universal Terms of Service Agreement sets the contracting entity by customer country. Default for 'all other countries' is 'HOSTINGER INTERNATIONAL LIMITED, Cyprus private limited company, registered address 61 Lordou Vironos str., 6023 Larnaca, Cyprus'. Other named contracting entities are HOSTINGER Global S.a r.l (Luxembourg, 6 Avenue Pasteur, L-2310 Luxembourg, business permit No 10191883/0) for 'Group No. 2' countries, HOSTINGER PTE LTD (Singapore), Hostinger UK Limited (England), and PT WEB MEDIA TECHNOLOGY INDONESIA. The agreement is governed by the laws of Luxembourg. The privacy policy separately names the data controllers HOSTINGER, UAB (Lithuania, company code 302710386, Svitrigailos str. 34, LT-03230 Vilnius) and HOSTINGER operations, UAB (Lithuania, company code 306308157, same address). Which specific entity contracts with a given EU customer depends on the country grouping, which the ToS does not enumerate on the page.",
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "Independently owned; no US corporate control found. Hostinger is privately held and described as employee-owned, founded in Kaunas, Lithuania in 2004. Third-party reporting states that in April 2021 an investor group led by German entrepreneurs Jochen Berger and Thomas Strohe, operating as ConHostinger, acquired approximately 31 percent, leaving management and employees with the majority. No filing confirming that percentage was located, and no provider statement of a parent company exists, so parent_company is recorded as null rather than guessed. The ownership facts here rest on third-party sources, not Hostinger's own site.",
+      "eu_regions": [
+        "France",
+        "Frankfurt, Germany",
+        "Lithuania",
+        "Netherlands"
+      ],
+      "eu_regions_note": "From Hostinger's own support article. Cities are given only for Frankfurt; the others are stated at country level and no city is published. The Netherlands is web and cloud hosting only, not VPS; Frankfurt is noted in connection with Agency plans. The United Kingdom is also offered but is not EU/EEA and is excluded. Hostinger's trust centre states: 'As we don't own or operate any data centers ourselves, we choose our partners very carefully'; the colocation partners are not named on that page, but AWS, Google Cloud and Cloudflare appear on its subprocessor list.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.hostinger.com/legal/privacy-policy",
+          "https://www.hostinger.com/legal/universal-terms-of-service-agreement",
+          "https://www.hostinger.com/legal/dpa",
+          "https://www.hostinger.com/legal/hosting-agreement",
+          "https://www.hostinger.com/legal/security-policy",
+          "https://www.hostinger.com/legal/dsa-transparency-report",
+          "https://trust.hostinger.com/",
+          "https://www.hostinger.com/legal/data-act (HTTP 404)",
+          "https://www.hostinger.com/legal/eu-data-act (HTTP 404)"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure identifying the jurisdiction to which the ICT infrastructure is subject, and no general description of measures adopted to prevent international governmental access to or transfer of non-personal data held in the Union, was found at the URLs listed above, checked 2026-08-18. The complete legal index (visible in the sidebar of every /legal/ page) was enumerated and contains no Data Act or Article 28 document. Hostinger operates a trust centre at trust.hostinger.com (SafeBase by Drata); it was rendered in a browser and its overview, compliance, documents, FAQ, product security, app security, infrastructure, legal, data security, data privacy, endpoint security, network security, access control, asset management, risk management, incident response, continuous monitoring, policies, training, AI, ESG and subprocessor sections were searched. It presents GDPR and ISO/IEC 27001:2022 items and contains no jurisdiction statement, no government-access section and no Data Act reference. Its 'Data Center' item states only that Hostinger has data centres across North America, South America, Europe and Asia, does not own or operate them, and that all carry TIER3 certificates. The privacy policy does state that 'Hostinger may be asked to disclose personal data in response to lawful requests by public authorities, other competent authorities, including when it is required to meet national security or law enforcement requirements' and that it will reveal personal data to state and public authorities 'only when we are legally required to provide information'. Those are personal-data statements, not an Article 28(1) statement on jurisdiction and measures."
+      },
+      "cloud_act_exposure": "none_identified",
+      "cloud_act_reasoning": "Every named Hostinger contracting entity is incorporated in Cyprus, Luxembourg, Singapore, the United Kingdom or Indonesia, the data controllers are two Lithuanian UABs, and no US-incorporated entity or US parent was found in the corporate chain. Note separately that AWS, Google Cloud and Cloudflare appear on Hostinger's subprocessor list, which is an infrastructure-level exposure rather than corporate control of Hostinger itself.",
+      "entry_pricing": {
+        "plan_name": "Premium",
+        "amount": 2.99,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://www.hostinger.com/wordpress-hosting",
+        "note": "Promotional rate on the default 48-month term. Page small print: 'Get 48 months for $143.52 (regular price $575.52). Renews at $10.99/mo.' and 'All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.' The page quoted USD when loaded from a Greek IP address, so the currency shown is not reliably geo-localised to EUR for EU buyers; VAT is excluded."
+      },
+      "categories": [
+        "shared",
+        "managed_wordpress",
+        "vps"
+      ],
+      "categories_note": "Navigation lists Web hosting (shared), Hosting for WordPress, VPS hosting, Cloud hosting, business email, domains and website builder tools. 'Cloud hosting' is a higher-resource shared tier rather than a distinct category value. A CDN is included as a plan feature, not sold standalone. No dedicated servers, object storage, PaaS or Kubernetes product was found in navigation.",
+      "notable": "Low-cost shared and WordPress hosting from a Lithuanian-founded, EU-contracting group, with EU data centre options and an ISO/IEC 27001:2022 certification.",
+      "sources": [
+        {
+          "claim": "Contracting entities by country: HOSTINGER INTERNATIONAL LIMITED (Cyprus, 61 Lordou Vironos str., 6023 Larnaca) as default; HOSTINGER Global S.a r.l (Luxembourg, 6 Avenue Pasteur L-2310, permit 10191883/0); HOSTINGER PTE LTD (Singapore); Hostinger UK Limited (England); PT WEB MEDIA TECHNOLOGY INDONESIA. Governed by the laws of Luxembourg. No Data Act, switching, ICT-jurisdiction or government-access provisions",
+          "url": "https://www.hostinger.com/legal/universal-terms-of-service-agreement"
+        },
+        {
+          "claim": "Data controllers HOSTINGER, UAB (Lithuania, code 302710386) and HOSTINGER operations, UAB (Lithuania, code 306308157), both at Svitrigailos str. 34, LT-03230 Vilnius; Hostinger International Ltd based in Cyprus; disclosure to public authorities for national security or law enforcement; transfers via SCCs under Art. 46 GDPR; server locations include US, Brazil, Singapore, Indonesia plus UK, Netherlands, Lithuania, Cyprus; no EU Data Act mention",
+          "url": "https://www.hostinger.com/legal/privacy-policy"
+        },
+        {
+          "claim": "Trust centre presents GDPR and ISO/IEC 27001:2022; subprocessors AWS, Google Cloud, Cloudflare, MailChannels, Proofpoint, Anthropic, Nexos.ai; Data Center item states Hostinger does not own or operate its data centres and all carry TIER3 certificates; no jurisdiction, government-access or Data Act content",
+          "url": "https://trust.hostinger.com/"
+        },
+        {
+          "claim": "Data centre locations: France, Germany (Frankfurt, Agency plans), Lithuania, Netherlands (web/cloud only), United Kingdom, India (Mumbai, Agency plans), Indonesia, Malaysia, USA (Phoenix, Boston, Asheville), Brazil; colocation partners not named",
+          "url": "https://www.hostinger.com/support/1583267-where-are-hostinger-servers-located"
+        },
+        {
+          "claim": "Entry managed WordPress plan Premium at $2.99/mo on a 48-month term, 48 months for $143.52, regular price $575.52, renews at $10.99/mo, all plans paid upfront",
+          "url": "https://www.hostinger.com/wordpress-hosting"
+        },
+        {
+          "claim": "Products in navigation: Web hosting, Hosting for WordPress, VPS hosting, Cloud hosting, business email, domains; no dedicated servers, object storage, PaaS or Kubernetes",
+          "url": "https://www.hostinger.com/"
+        },
+        {
+          "claim": "Hostinger is employee-owned, founded 2004 in Kaunas, Lithuania; in April 2021 an investor group led by Jochen Berger and Thomas Strohe (ConHostinger) acquired approximately 31 percent",
+          "url": "https://en.wikipedia.org/wiki/Hostinger"
+        }
+      ],
+      "_category": "managed-wp"
+    },
+    {
+      "name": "Vercel",
+      "legal_entity": "Vercel Inc.",
+      "incorporation_country": "US",
+      "incorporation_subdivision": "Delaware",
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company identified. Independently owned, privately held and venture-backed; a USD 300M Series F at a USD 9.3B post-money valuation closed 30 September 2025, co-led by Accel and GIC, with no single controlling holder identified.",
+      "eu_regions": [
+        "Stockholm, Sweden",
+        "Paris, France",
+        "Dublin, Ireland",
+        "Frankfurt, Germany"
+      ],
+      "eu_regions_note": "Read from the region list at https://vercel.com/docs/regions on 2026-08-18: arn1 Stockholm, cdg1 Paris, dub1 Dublin, fra1 Frankfurt. lhr1 (London) is listed but the UK is outside the EU/EEA. A region code 'bru1' appears in the failover-priority table on the same page but is absent from the region list itself; not counted. The same page states Vercel Functions default to iad1 (Washington, D.C., USA).",
+      "sovereignty": {
+        "urls_checked": [
+          "https://vercel.com/legal",
+          "https://vercel.com/legal/dpa",
+          "https://assets.vercel.com/image/upload/q_auto/front/legal/dpa/Vercel_Inc_-_Data_Processing_Addendum.pdf",
+          "https://security.vercel.com",
+          "https://vercel.com/legal/privacy-notice",
+          "https://vercel.com/docs/security/compliance"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": true,
+        "measures_note": "The publicly published DPA PDF does describe contractual measures on government access, though it is scoped to GDPR 'Customer Data' rather than to non-personal data held in the Union, and it does not name the Data Act. Section 4 states: 'If a government body sends Vercel a demand for Customer Data, Vercel will attempt to redirect the government body to request that data directly from Customer... If compelled to disclose Customer Data to a government body, Vercel will give Customer reasonable notice of the demand to allow Customer to seek a protective order or other appropriate remedy unless Vercel is legally prohibited from doing so.' Section 12.2 (Government Requests) states: 'As of the date of Vercel's signature to this DPA, Vercel has not received any requests under Section 702 of the Foreign Intelligence Surveillance Act or Executive Order 12333.' Section 17 states the DPA 'shall be governed by the laws of Ireland'. A text search of the extracted PDF for 'Data Act', '2023/2854' and 'non-personal' returned zero matches on 2026-08-18.",
+        "jurisdiction_note": "No statement of the jurisdiction to which the ICT infrastructure deployed for the service is subject was found at the URLs checked. The closest related statements are at https://vercel.com/docs/security/compliance: 'The Vercel CDN and deployment platform primarily uses Amazon Web Services (AWS)' and 'Vercel may transfer data to and in the United States and anywhere else in the world where Vercel or its service providers maintain data processing operations.' The Ireland governing law in DPA s.17 is contract law, not a statement about infrastructure jurisdiction.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Vercel Inc. is a Delaware corporation (US-incorporated), so its data is in the possession, custody or control of a US person for CLOUD Act purposes regardless of the EU region selected.",
+      "entry_pricing": {
+        "plan_name": "Pro",
+        "amount": 20,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://vercel.com/pricing",
+        "note": "https://vercel.com/pricing lists Hobby at $0/mo and Pro at $20/month. https://vercel.com/docs/plans/pro-plan describes it as a '$20/month Pro platform fee' that includes 1 deploying team seat and $20/month in usage credit; additional Owner/Member seats are $20/month each and on-demand usage is billed beyond the credit. The $20 is therefore a floor, not a cap."
+      },
+      "categories": [
+        "paas",
+        "cdn",
+        "object_storage"
+      ],
+      "notable": "Deploying frontend framework applications, particularly Next.js, with preview deployments per Git branch and compute placed in the same region as the database.",
+      "sources": [
+        {
+          "claim": "Legal entity is Vercel Inc., a Delaware corporation, registration no. 5857312",
+          "url": "https://vercel.com/legal/dpa",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Registered mailing address Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, United States",
+          "url": "https://vercel.com/legal/privacy-notice",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "No parent company; Series F of USD 300M at USD 9.3B valuation closed 30 September 2025, co-led by Accel and GIC",
+          "url": "https://www.businesswire.com/news/home/20250930898216/en/Vercel-Closes-Series-F-at-$9.3B-Valuation-to-Scale-the-AI-Cloud",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "EU compute regions arn1 Stockholm, cdg1 Paris, dub1 Dublin, fra1 Frankfurt; default function region iad1 Washington D.C.",
+          "url": "https://vercel.com/docs/regions",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Index of all published legal documents; no Data Act, government access, law enforcement or transparency-report page listed",
+          "url": "https://vercel.com/legal",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "DPA s.4 government-body redirect and notice commitment; s.12.2 FISA 702 / EO 12333 statement; s.17 governed by the laws of Ireland; no occurrence of 'Data Act' or '2023/2854'",
+          "url": "https://assets.vercel.com/image/upload/q_auto/front/legal/dpa/Vercel_Inc_-_Data_Processing_Addendum.pdf",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Trust centre lists SOC 2, ISO/IEC 27001, PCI DSS, HIPAA, GDPR, EU-US DPF, DSA, NIS 2, DORA, TISAX; no EU Data Act, Chapter VII, international governmental access or law enforcement item found",
+          "url": "https://security.vercel.com",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Privacy Notice discloses to authorities where 'required by law to comply or respond to any court order, legal process, government and/or regulatory request'; processing occurs primarily in the United States",
+          "url": "https://vercel.com/legal/privacy-notice",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Platform primarily uses AWS; data may be transferred to the United States and anywhere else Vercel or its service providers maintain operations; no EU Data Act reference",
+          "url": "https://vercel.com/docs/security/compliance",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Entry paid plan Pro at $20/month platform fee including $20 usage credit and 1 deploying seat",
+          "url": "https://vercel.com/docs/plans/pro-plan",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Vercel Blob is described as 'an object storage service'",
+          "url": "https://vercel.com/docs/vercel-blob",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "paas"
+    },
+    {
+      "name": "Netlify",
+      "legal_entity": "Netlify, Inc.",
+      "incorporation_country": "US",
+      "incorporation_subdivision": "Delaware",
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company identified. Independently owned, privately held and venture-backed. Netlify's own Privacy Policy names affiliated entities Netlify EMEA Limited, Netlify UK Limited, Netlify Canada Limited, Stackbit, Inc. and Gatsby, Inc.; these are subsidiaries of Netlify, Inc., not parents. The registered jurisdiction of Netlify EMEA Limited is not stated on the Privacy Policy page.",
+      "eu_regions": [
+        "Dublin, Ireland",
+        "Frankfurt, Germany",
+        "Paris, France",
+        "Milan, Italy"
+      ],
+      "eu_regions_note": "These are Netlify Functions execution regions read from https://docs.netlify.com/build/functions/optional-configuration/ on 2026-08-18: dub (Ireland) and fra (Frankfurt) are self-serve; cdg (Paris) and mxp (Milan) are support-assisted only. lhr (London) is listed as 'EU (London)' on that page but the UK is outside the EU/EEA and is excluded here. Region selection is a Pro and Enterprise feature; the default region for sites created after 4 October 2023 is cmh (Ohio, USA). This pins function compute only. No statement of where static assets, build infrastructure, form submissions or account data are stored was found on the Netlify pages checked.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://trust-center.netlify-corp.com/",
+          "https://www.netlify.com/privacy/",
+          "https://www.netlify.com/gdpr-ccpa/",
+          "https://www.netlify.com/security/",
+          "https://www.netlify.com/pdf/netlify-dpa.pdf"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": true,
+        "measures_note": "The publicly published DPA PDF (last updated 9 June 2026) contains a substantive section 11 'Public Authority Access Requests' requiring Netlify to (a) immediately notify the customer unless legally prohibited, (b) inform the authority it is a Processor not authorised to disclose without consent, (c) redirect the authority to the customer, (d) 'pursue legal remedies prior to producing Customer Data up to an appellate court level' where the request 'raises a conflict of law', and (e) disclose only the minimum amount legally required. Section 11.3 adds four commitments including that Netlify 'has never turned over our encryption or authentication keys or its customers' encryption or authentication keys to any Public Authority' and 'has never installed any law enforcement software or equipment anywhere on its network'. The Security Measures annex states: 'Netlify has not built any backdoors into the Services which would allow government authorities to access Customer Data.' These are scoped to Personal Data / Customer Data under GDPR, not to non-personal data held in the Union. A text search of the extracted PDF for 'Data Act' and '2854' returned zero matches on 2026-08-18. Section 15.1 states the DPA is governed by the laws of Ireland.",
+        "jurisdiction_note": "No statement of the jurisdiction to which the ICT infrastructure deployed for the service is subject was found at the URLs checked. https://www.netlify.com/security/ refers only to 'globally-distributed data center partners' and that Netlify 'deploys only to major cloud providers' without naming providers, regions or countries. The trust centre lists Amazon Web Services under Infrastructure with no region or country stated.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Netlify, Inc. is a Delaware corporation (US-incorporated), so data it holds is within the possession, custody or control of a US person for CLOUD Act purposes even when function compute is pinned to dub or fra.",
+      "entry_pricing": {
+        "plan_name": "Personal",
+        "amount": 9,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://www.netlify.com/pricing/",
+        "note": "Plans read on 2026-08-18: Free $0 forever, Personal $9/month, Pro $20/month, Enterprise custom. Personal includes 1,000 credits/month; overage is billed via auto-recharge (500 credits for $5). Accounts created before 4 September 2025 may be on legacy plans."
+      },
+      "categories": [
+        "paas",
+        "cdn"
+      ],
+      "notable": "Git-driven deployment of static sites and serverless functions with atomic deploys and instant rollbacks.",
+      "sources": [
+        {
+          "claim": "Legal entity is Netlify, Inc., a Delaware corporation, principal place of business 101 2nd Street, San Francisco, CA 94105",
+          "url": "https://www.netlify.com/legal/enterprise-master-subscription-agreement/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Privacy Policy names Netlify, Inc. plus affiliates Netlify EMEA Limited, Netlify UK Limited, Netlify Canada Limited, Stackbit Inc., Gatsby Inc.; no addresses given for the non-US entities",
+          "url": "https://www.netlify.com/privacy/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "No parent company; independent private company, Series D, founded 2013, latest reported valuation USD 2B (Nov 2021)",
+          "url": "https://en.wikipedia.org/wiki/Netlify",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Function regions dub (EU Ireland), fra (EU Frankfurt) self-serve; cdg (EU Paris), mxp (EU Milan) support-assisted; default cmh (US East Ohio); Pro and Enterprise only",
+          "url": "https://docs.netlify.com/build/functions/optional-configuration/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "DPA section 11 'Public Authority Access Requests' and section 11.3 commitments; Security Measures annex 'No Backdoors into the Services'; governed by the laws of Ireland; no occurrence of 'Data Act' or '2854'",
+          "url": "https://www.netlify.com/pdf/netlify-dpa.pdf",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Trust centre lists CCPA, DORA, GDPR, HIPAA, ISO/IEC 27001, ISO/IEC 27018:2019, PCI DSS, SOC 2, EU-US DPF, Swiss-US DPF, VPAT; AWS listed under Infrastructure with no region stated; no EU Data Act or governmental access item found",
+          "url": "https://trust-center.netlify-corp.com/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Security page names no cloud provider, region or country; refers to 'globally-distributed data center partners'; no EU Data Act, government access or data residency text found",
+          "url": "https://www.netlify.com/security/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "GDPR/CCPA page contains no text on EU data residency, hosting location, government access, EU Data Act, international transfers or subprocessors",
+          "url": "https://www.netlify.com/gdpr-ccpa/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Plans: Free $0, Personal $9/month, Pro $20/month, Enterprise custom",
+          "url": "https://www.netlify.com/pricing/",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "paas"
+    },
+    {
+      "name": "Fly.io",
+      "legal_entity": "Fly.io, Inc.",
+      "incorporation_country": "US",
+      "incorporation_subdivision": null,
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company identified. Independently owned, privately held and venture-backed; a USD 25M Series D closed August 2026 co-led by Dell Technologies Capital and Intel Capital, with a16z, EQT, Geodesic and Y Combinator participating. Investor stakes are minority; no acquiring entity found. State of incorporation is not stated on the Fly.io legal pages checked, so it is recorded as null rather than assumed to be Delaware.",
+      "eu_regions": [
+        "Amsterdam, Netherlands",
+        "Stockholm, Sweden",
+        "Paris, France",
+        "Frankfurt, Germany"
+      ],
+      "eu_regions_note": "Read from the full region table at https://fly.io/docs/reference/regions/ on 2026-08-18: ams Amsterdam, arn Stockholm, cdg Paris, fra Frankfurt. lhr (London) is listed but the UK is outside the EU/EEA. Madrid, Bucharest and Warsaw do not appear in the current table. Eighteen regions in total.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://fly.io/legal/privacy-policy/",
+          "https://fly.io/legal/terms-of-service/",
+          "https://fly.io/documents/",
+          "https://fly.io/security/",
+          "https://fly.io/legal/supplemental-terms/"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "measures_note": "No description of technical, organisational or contractual measures adopted to prevent international governmental access to or transfer of non-personal data held in the Union was found at the URLs checked. The Privacy Statement describes disclosure practice rather than preventive measures: 'fly.io may disclose personally-identifying information... to law enforcement in response to a valid subpoena, court order, warrant, or similar government order' and 'When permitted, we will make a reasonable effort to notify users of any disclosure of their information, unless we are prohibited by law or court order from doing so.' The Terms of Service has no dedicated government-request section; its confidentiality clause provides that a party required by law to disclose 'will promptly notify the Disclosing Party of the order or request and permit the Disclosing Party... to seek an appropriate protective order.' Fly.io's DPA is not published at a public URL: https://fly.io/documents/ offers it on request for customers needing GDPR compliance, and the candidate paths /legal/dpa, /legal/gdpr and /legal/subprocessors all returned HTTP 404 on 2026-08-18. Its contents were therefore not reviewed.",
+        "jurisdiction_note": "No statement of the jurisdiction to which the ICT infrastructure deployed for the service is subject was found. The Privacy Statement states 'Information that we collect will be stored and processed in the United States' with the exception that 'marketing analytics data is stored in the European Union by our EU-based processor'. https://fly.io/security/ states 'our hardware runs in ISO 27001 datacenters' and refers to hardware 'around the world' without naming a jurisdiction. Terms of Service governing law is the State of California.",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Fly.io, Inc. is a US-incorporated company headquartered in San Francisco, California, so data it holds is within the possession, custody or control of a US person for CLOUD Act purposes regardless of whether the app runs in ams, arn, cdg or fra.",
+      "entry_pricing": {
+        "plan_name": null,
+        "amount": null,
+        "currency": null,
+        "period": null,
+        "url": "https://fly.io/pricing",
+        "note": "Recorded null deliberately: Fly.io publishes no named entry-level service plan. https://fly.io/pricing and https://fly.io/plans describe usage-based billing ('pay based on usage') with no Hobby/Launch/Scale tiers visible on 2026-08-18. The two published fixed figures that could be mistaken for an entry plan are add-ons, not the service itself: support tiers Standard $29/month, Premium $199/month, Enterprise from $2,500/month; and a Compliance (HIPAA/BAA) add-on at $99/month. The cheapest published compute preset is shared-cpu-1x with 256MB RAM, listed from USD 1.94/month in iad and ewr and up to USD 3.14/month in the most expensive region (https://fly.io/docs/about/pricing/), so any single figure would be region-dependent and would not represent a plan."
+      },
+      "categories": [
+        "paas"
+      ],
+      "notable": "Running the same application container as micro-VMs in many cities at once and routing each request to the nearest running instance.",
+      "sources": [
+        {
+          "claim": "Legal entity is Fly.io, Inc., based in San Francisco, CA; governing law is the State of California; no government-request section; no EU Data Act mention",
+          "url": "https://fly.io/legal/terms-of-service/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Entity name 'Fly.io, Inc.' appears in the Enterprise SLA",
+          "url": "https://fly.io/legal/sla-uptime/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "No parent company; USD 25M Series D August 2026 co-led by Dell Technologies Capital and Intel Capital; former Docker CEO Scott Johnston appointed CEO",
+          "url": "https://www.finsmes.com/2026/08/fly-io-raises-25m-in-series-d-funding.html",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Region table: ams Amsterdam NL, arn Stockholm SE, cdg Paris FR, fra Frankfurt DE are the EU/EEA regions of 18 total",
+          "url": "https://fly.io/docs/reference/regions/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Privacy Statement law-enforcement disclosure and notification text; 'Information that we collect will be stored and processed in the United States'; EU-US DPF, UK Extension and Swiss-US DPF certified; no CLOUD Act, EU Data Act or Regulation 2023/2854 mention",
+          "url": "https://fly.io/legal/privacy-policy/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Compliance page offers a DPA and HIPAA BAA on request; no EU Data Act, government access, CLOUD Act or ICT infrastructure jurisdiction content",
+          "url": "https://fly.io/documents/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Security page claims SOC 2 Type 2 and 'our hardware runs in ISO 27001 datacenters'; no government access, subpoena, CLOUD Act, EU Data Act or data residency text",
+          "url": "https://fly.io/security/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Usage-based pricing with no named entry plan; support from $29/month; compliance add-on $99/month",
+          "url": "https://fly.io/plans",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Cheapest compute preset shared-cpu-1x 256MB from USD 1.94/month (iad, ewr) to USD 3.14/month depending on region; support tiers Standard $29, Premium $199, Enterprise from $2,500 per month",
+          "url": "https://fly.io/docs/about/pricing/",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "paas"
+    },
+    {
+      "name": "Render",
+      "legal_entity": "Render Services, Inc.",
+      "incorporation_country": "US",
+      "incorporation_subdivision": null,
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company identified. Independently owned, privately held and venture-backed; a USD 100M Series C extension at a USD 1.5B valuation was announced 17 February 2026, led by Georgian with Addition, Bessemer Venture Partners, General Catalyst and 01 Advisors. State of incorporation is not stated in the Terms of Service, Privacy Policy or DPA read on 2026-08-18, so it is recorded as null; the Terms of Service governing law is California, which is a choice of law and not evidence of the state of incorporation.",
+      "eu_regions": [
+        "Frankfurt, Germany"
+      ],
+      "eu_regions_note": "Read from https://render.com/docs/regions on 2026-08-18. Five regions total: Oregon (USA), Ohio (USA), Virginia (USA), Frankfurt (Germany), Singapore. Frankfurt is the only EU/EEA region.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://render.com/dpa",
+          "https://render.com/privacy",
+          "https://render.com/terms",
+          "https://render.com/docs/certifications-compliance",
+          "https://render.com/security"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": true,
+        "measures_note": "The publicly published DPA at https://render.com/dpa describes contractual measures on government access, scoped to Personal Data rather than to non-personal data held in the Union. Section 6.6 states that as of the date of the DPA 'the Data Importer has not received any formal legal requests from any government intelligence or security service/agencies in the country to which the Personal Data is being exported', and that on receiving Government Agency Requests 'Company shall attempt to redirect the law enforcement or government agency to request that data directly from Customer', shall give the customer 'reasonable notice of the demand' to allow it to seek a protective order unless legally prohibited, and that 'Company shall not voluntarily disclose Personal Data to any law enforcement or government agency.' A text search of the extracted DPA, Terms and Privacy Policy for '2023/2854' returned zero matches on 2026-08-18; the single 'Data Act' string in the DPA is the 'Washington My Health My Data Act', not the EU Data Act.",
+        "jurisdiction_note": "No statement of the jurisdiction to which the ICT infrastructure deployed for the service is subject was found at the URLs checked. https://render.com/docs/certifications-compliance lists SOC 2 Type 2, ISO 27001, HIPAA and GDPR and contains no data residency, CLOUD Act, government access or infrastructure jurisdiction text. The Privacy Policy states Render is certified under the EU-U.S., UK-U.S. and Swiss-U.S. Data Privacy Frameworks and that 'in certain situations, we may be required to disclose Personal Data in response to lawful requests by public authorities, including to meet national security or law enforcement requirements.'",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Render Services, Inc. is a US-incorporated company at 525 Brannan Street Ste 300, San Francisco, CA 94107, so data it holds is within the possession, custody or control of a US person for CLOUD Act purposes even when the service runs in the Frankfurt region.",
+      "entry_pricing": {
+        "plan_name": "Pro",
+        "amount": 25,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://render.com/pricing",
+        "note": "Workspace plans read on 2026-08-18: Hobby $0/mo + compute, Pro $25/mo + compute, Scale $499/mo + compute, Enterprise custom. The $25 is a workspace fee on top of metered compute; the cheapest paid compute instance on the same page is Starter at $7/month (512 MB, 0.5 CPU), and free compute plans exist with usage limits."
+      },
+      "categories": [
+        "paas",
+        "cdn"
+      ],
+      "notable": "Running long-lived web services, background workers, cron jobs and managed Postgres from a Git repo without writing infrastructure configuration.",
+      "sources": [
+        {
+          "claim": "Legal entity is Render Services, Inc.; DMCA agent address 525 Brannan Street Ste 300, San Francisco CA 94107; governing law is California; Service 'deemed solely based in California'",
+          "url": "https://render.com/terms",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "No parent company; USD 100M Series C extension at USD 1.5B valuation announced 17 February 2026, led by Georgian",
+          "url": "https://render.com/blog/series-c-extension",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Regions: Oregon, Ohio, Virginia (USA), Frankfurt (Germany), Singapore",
+          "url": "https://render.com/docs/regions",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "DPA section 6.6 Government Agency Requests: redirect, reasonable notice, no voluntary disclosure; no EU Data Act or Regulation 2023/2854 reference",
+          "url": "https://render.com/dpa",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Privacy Policy: disclosure to public authorities including for national security or law enforcement; EU-U.S., UK-U.S. and Swiss-U.S. DPF certified; FTC has jurisdiction over DPF compliance",
+          "url": "https://render.com/privacy",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Certifications page lists SOC 2 Type 2, ISO 27001, HIPAA, GDPR; no EU Data Act, government access, CLOUD Act, data residency or infrastructure jurisdiction content",
+          "url": "https://render.com/docs/certifications-compliance",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Workspace plans Hobby $0/mo + compute, Pro $25/mo + compute, Scale $499/mo + compute, Enterprise custom; 'Global regions & CDN' and 'Zero-config CDN' listed as platform features",
+          "url": "https://render.com/pricing",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "paas"
+    },
+    {
+      "name": "Railway",
+      "legal_entity": "Railway Corporation",
+      "incorporation_country": "US",
+      "incorporation_subdivision": "Delaware",
+      "parent_company": null,
+      "parent_country": null,
+      "ownership_note": "No parent company identified. Independently owned, privately held and venture-backed; a USD 100M Series B was announced 22 January 2026, led by TQ Ventures with FPV Ventures, Redpoint and Unusual Ventures participating. Notable angel investors include Guillermo Rauch (CEO of Vercel), which is a cross-holding worth flagging on a comparison site but is not corporate control.",
+      "eu_regions": [
+        "Amsterdam, Netherlands"
+      ],
+      "eu_regions_note": "Read from https://docs.railway.com/reference/regions on 2026-08-18. Four regions: US West Metal (California, USA, us-west2), US East Metal (Virginia, USA, us-east4-eqdc4a), EU West Metal (Amsterdam, Netherlands, europe-west4-drams3a), Southeast Asia Metal (Singapore, asia-southeast1-eqsg3a). Amsterdam is the only EU/EEA region. The 'Metal' naming refers to Railway's own bare-metal fleet; the regions doc does not name an underlying cloud provider, while https://trust.railway.com/ lists Google Cloud Platform under Infrastructure. Recorded as a noted conflict, not resolved.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://railway.com/legal/dpa",
+          "https://railway.com/legal/privacy",
+          "https://railway.com/legal/terms",
+          "https://railway.com/legal/enterprise-agreement",
+          "https://trust.railway.com/"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": true,
+        "measures_note": "The publicly published DPA at https://railway.com/legal/dpa describes contractual measures on government access, scoped to Personal Data rather than to non-personal data held in the Union. It provides that on receiving Government Agency Requests 'Company shall attempt to redirect the law enforcement or government agency to request that data directly from Customer', that 'If compelled to disclose Personal Data to a law enforcement or government agency, Company shall give Customer reasonable notice of the demand and cooperate to allow Customer to seek a protective order' unless legally prohibited, and that 'Company shall not voluntarily disclose Personal Data to any law enforcement or government agency.' A text search of the extracted DPA, Terms of Service, Privacy Policy and Enterprise Customer Agreement for 'Data Act', '2854' and 'CLOUD Act' returned zero matches on 2026-08-18. The data importer in the DPA's SCC annex is 'Railway Corporation, 548 Market St PMB 68956, San Francisco, California 94104'.",
+        "jurisdiction_note": "No statement of the jurisdiction to which the ICT infrastructure deployed for the service is subject was found at the URLs checked. https://trust.railway.com/ lists SOC 2 Type 2, SOC 3, HIPAA, GDPR, EU-US DPF and Swiss-US DPF, names Google Cloud Platform under Infrastructure and lists subprocessors Fathom Analytics, Cloudflare, Causal, Customer.io and Stripe without stating any location; it contains no EU Data Act, Chapter VII, government access, CLOUD Act or data residency text. The Privacy Policy states Railway 'may be required to disclose Personal Data in response to lawful requests by public authorities, including to meet national security or law enforcement requirements.'",
+        "checked_on": "2026-08-18"
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Railway Corporation is expressly 'A DELAWARE CORPORATION' in its own Enterprise Customer Agreement, so data it holds is within the possession, custody or control of a US person for CLOUD Act purposes even when deployed to the Amsterdam region.",
+      "entry_pricing": {
+        "plan_name": "Hobby",
+        "amount": 5,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://railway.com/pricing",
+        "note": "Plans read on 2026-08-18: Free $0 per month (a 30-day trial with $5 of credits, then $1 per month), Hobby $5 minimum usage per month including $5 of monthly usage credits, Pro $20 minimum usage per month including $20 of credits, Enterprise custom. Hobby's $5 is a minimum-usage floor, not a cap: usage beyond the included credits is billed on top."
+      },
+      "categories": [
+        "paas",
+        "object_storage"
+      ],
+      "notable": "Spinning up an application plus its databases from a template or repo in one project graph, with usage-billed infrastructure and no per-service configuration.",
+      "sources": [
+        {
+          "claim": "Legal entity is Railway Corporation; Terms of Service governed by the laws of the State of Delaware; DMCA agent 548 Market St PMB 68956, San Francisco, CA 94104",
+          "url": "https://railway.com/legal/terms",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Enterprise Customer Agreement names 'RAILWAY CORPORATION, A DELAWARE CORPORATION'",
+          "url": "https://railway.com/legal/enterprise-agreement",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "No parent company; USD 100M Series B announced 22 January 2026 led by TQ Ventures with FPV Ventures, Redpoint and Unusual Ventures; Railway owns its bare-metal infrastructure via Railway Metal",
+          "url": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Regions: us-west2 California, us-east4-eqdc4a Virginia, europe-west4-drams3a Amsterdam, asia-southeast1-eqsg3a Singapore",
+          "url": "https://docs.railway.com/reference/regions",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "DPA Government Agency Requests clause: redirect, reasonable notice, no voluntary disclosure; data importer Railway Corporation, 548 Market St PMB 68956, San Francisco, California 94104; no EU Data Act or Regulation 2023/2854 reference",
+          "url": "https://railway.com/legal/dpa",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Privacy Policy: disclosure to public authorities including for national security or law enforcement; EU-U.S., UK-U.S. and Swiss-U.S. DPF; no EU Data Act, CLOUD Act or data residency text",
+          "url": "https://railway.com/legal/privacy",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Trust centre lists SOC 2 Type 2, SOC 3, HIPAA, GDPR, EU-US DPF, Swiss-US DPF; Google Cloud Platform under Infrastructure; subprocessors listed without locations; no EU Data Act, Chapter VII, government access, CLOUD Act or data residency content",
+          "url": "https://trust.railway.com/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Plans Free $0/month, Hobby $5 minimum usage, Pro $20 minimum usage, Enterprise custom; Object Storage sold at $0.015 per GB-month with free egress",
+          "url": "https://railway.com/pricing",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "paas"
+    },
+    {
+      "name": "DigitalOcean",
+      "legal_entity": "DigitalOcean, LLC",
+      "incorporation_country": "US",
+      "parent_company": "DigitalOcean Holdings, Inc.",
+      "parent_country": "US",
+      "eu_regions": [
+        "Amsterdam, Netherlands",
+        "Frankfurt, Germany"
+      ],
+      "eu_regions_note": "AMS3 (Amsterdam, Netherlands) and FRA1 (Frankfurt, Germany) are the only EU/EEA regions. LON1 (London, United Kingdom) is European but the UK is not in the EU or EEA, so it is excluded from this list.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.digitalocean.com/legal",
+          "https://www.digitalocean.com/legal/data-processing-agreement",
+          "https://www.digitalocean.com/legal/data-processing-agreement-january-2026",
+          "https://www.digitalocean.com/legal/terms-of-service-agreement",
+          "https://www.digitalocean.com/legal/tos-service-specific-terms",
+          "https://www.digitalocean.com/legal/law-enforcement-guidelines",
+          "https://www.digitalocean.com/legal/gdpr-faq",
+          "https://www.digitalocean.com/trust",
+          "https://www.digitalocean.com/trust/gdpr-at-do",
+          "https://www.digitalocean.com/trust/schrems-ii-faq"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure addressing either limb of Data Act Article 28(1) was found at the ten URLs listed, checked 2026-08-18. The legal index at https://www.digitalocean.com/legal enumerates 26 legal documents and none is titled or framed as a Data Act, EU Data Act, switching, or international-access document. The terms 'Data Act', 'Regulation 2023/2854', 'Article 28', 'Article 32', 'international governmental access', 'ICT infrastructure' and 'CLOUD Act' were not found in the Terms of Service, the Service Terms, either current Data Processing Agreement, the Law Enforcement Guidelines, the GDPR FAQ, the Trust Platform landing page, the GDPR-at-DO page or the Schrems II FAQ. The closest published material is a data-residency statement ('We support customers' data sovereignty rights by offering data centers in Amsterdam, Frankfurt, and London') and a general disclosure clause in ToS section 5.5 permitting disclosure in response to 'any applicable law, regulation, legal process or governmental request'. Neither states a jurisdiction for the ICT infrastructure nor describes measures against international governmental access to non-personal data. Absence at these URLs is not a statement about the whole site or about compliance."
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "DigitalOcean, LLC is itself a US entity and a wholly-listed subsidiary of DigitalOcean Holdings, Inc., a Delaware corporation (SEC state of incorporation 'DE', NYSE: DOCN), so data in its possession, custody or control is reachable under the CLOUD Act irrespective of the Amsterdam or Frankfurt server location.",
+      "entry_pricing": {
+        "plan_name": "Basic Droplet, Regular CPU (512 MiB memory, 1 vCPU, 10 GiB SSD, 500 GiB transfer)",
+        "amount": 4.0,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://www.digitalocean.com/pricing/droplets",
+        "note": "Listed on the public pricing page as '$4.00' per month alongside an hourly rate of $0.00595; no login or configurator required to read it. Prices are USD only on this page."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "managed_wordpress",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "'dedicated' is included only because DigitalOcean sells Bare Metal GPUs (single-tenant, GPU-only); there is no general-purpose bare-metal server line. 'managed_wordpress' is via DigitalOcean Cloudways, listed under Products on digitalocean.com. 'cdn' is a built-in feature of Spaces Object Storage rather than a separately sold product. DigitalOcean does not sell traditional shared hosting.",
+      "notable": "Flat-rate Linux virtual machines with a small, stable product surface and unusually thorough public documentation, which is why it is a common default for small teams that do not want to learn a hyperscaler console.",
+      "sources": [
+        {
+          "claim": "Contracting legal entity is 'DigitalOcean, LLC'; the Terms of Service are governed by Delaware law with venue in New Castle County, Delaware.",
+          "url": "https://www.digitalocean.com/legal/terms-of-service-agreement",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Registrant name 'DigitalOcean Holdings, Inc.', CIK 0001582961, stateOfIncorporation 'DE', ticker DOCN on NYSE.",
+          "url": "https://data.sec.gov/submissions/CIK0001582961.json",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Exhibit 21.1 to the FY2025 Form 10-K (filed 2026-02-24) lists 'SUBSIDIARIES OF DIGITALOCEAN HOLDINGS, INC.' including 'DigitalOcean, LLC \u2014 United States', 'DigitalOcean EU B.V. \u2014 Netherlands', 'Cloudways Ltd \u2014 Malta', 'Cloudways, LLC \u2014 United States' and 'Paperspace Co. \u2014 United States'.",
+          "url": "https://www.sec.gov/Archives/edgar/data/1582961/000158296126000019/exhibit211-2025xq4.htm",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Datacenter regions include AMS3 (Amsterdam, the Netherlands), FRA1 (Frankfurt, Germany) and LON1 (London, United Kingdom); no other European regions are listed.",
+          "url": "https://docs.digitalocean.com/platform/regional-availability/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Entry Basic Droplet is $4.00/month for 512 MiB, 1 vCPU, 10 GiB SSD, 500 GiB transfer.",
+          "url": "https://www.digitalocean.com/pricing/droplets",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The legal index lists 26 documents; none is a Data Act, EU Data Act, switching, transparency-report or international-access document.",
+          "url": "https://www.digitalocean.com/legal",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Law Enforcement Guidelines describe only US process (subpoena, ECPA court order, search warrant under 18 U.S.C. 2701 et seq.) and route non-US requests through 'a United States court, (2) an enforcement agency under the procedures of an applicable mutual legal assistance treaty (MLAT), or (3) an order from a foreign government' subject to an 18 U.S.C. 2523 executive agreement. No EU Data Act, non-personal data or ICT-infrastructure jurisdiction content.",
+          "url": "https://www.digitalocean.com/legal/law-enforcement-guidelines",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "'We support customers' data sovereignty rights by offering data centers in Amsterdam, Frankfurt, and London.' Page is undated; footer reads '\u00a9 2026 DigitalOcean, LLC'.",
+          "url": "https://www.digitalocean.com/trust/gdpr-at-do",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The January 2026 Data Processing Agreement names 'DigitalOcean, LLC' and contains no mention of the EU Data Act, Regulation 2023/2854, Article 32, international governmental access, or the jurisdiction of ICT infrastructure.",
+          "url": "https://www.digitalocean.com/legal/data-processing-agreement-january-2026",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The Trust Platform landing page cites SOC 2, SOC 3 and Global PRP certifications and HIPAA/DORA eligibility, with no mention of the EU Data Act, government access, infrastructure jurisdiction, sovereignty or the CLOUD Act.",
+          "url": "https://www.digitalocean.com/trust",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Spaces includes a built-in CDN: 'Yes, every Space includes a built-in CDN at no extra cost.'",
+          "url": "https://www.digitalocean.com/products/spaces",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Cloudways is presented on digitalocean.com under Products and referred to in its FAQ as 'DigitalOcean Cloudways', a fully managed cloud hosting platform for WordPress and PHP sites.",
+          "url": "https://www.digitalocean.com/products/cloudways",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Product line includes Droplets (VMs), Bare Metal GPUs, Spaces Object Storage, Managed Kubernetes and App Platform; no general-purpose bare metal and no traditional shared hosting.",
+          "url": "https://www.digitalocean.com/products",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "us-vps"
+    },
+    {
+      "name": "Vultr",
+      "legal_entity": "The Constant Company, LLC",
+      "incorporation_country": "US",
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "No corporate parent is disclosed on any Vultr page checked. The Constant Company, LLC appears as the top-level contracting entity ('a legal contract between The Constant Company, LLC, and its affiliates'). Vultr's own company timeline records 'December 2024 \u2014 Secured $3.5 billion valuation in financing from LuminArx and AMD Ventures' and 'June 2025 \u2014 Secured $329 million in credit financing'; these are described as financings, not as an acquisition or change of control, and no acquirer or holding company is named. Treated as no identified parent rather than as an affirmative statement of independence.",
+      "eu_regions": [
+        "Amsterdam, Netherlands",
+        "Paris, France",
+        "Frankfurt, Germany",
+        "Madrid, Spain",
+        "Milan, Italy",
+        "Stockholm, Sweden",
+        "Warsaw, Poland"
+      ],
+      "eu_regions_note": "Seven of Vultr's 36 regions are in the EU/EEA. London and Manchester are in the United Kingdom and are therefore excluded. Confirmed against the public region API as well as the marketing page.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.vultr.com/legal/tos/",
+          "https://www.vultr.com/legal/privacy/",
+          "https://www.vultr.com/legal/us-privacy/",
+          "https://www.vultr.com/legal/eea-gdpr-privacy/",
+          "https://www.vultr.com/legal/subprocessors/",
+          "https://www.vultr.com/legal/compliance/",
+          "https://www.vultr.com/trust-center/",
+          "https://docs.vultr.com/vultr-data-portability-guide",
+          "https://docs.vultr.com/support/platform/compliance/does-vultr-offer-a-data-processing-addendum",
+          "https://blogs.vultr.com/data-residency-with-Vultr"
+        ],
+        "disclosure_found": false,
+        "disclosure_url": null,
+        "jurisdiction_stated": null,
+        "measures_described": false,
+        "checked_on": "2026-08-18",
+        "observation": "No disclosure addressing either limb of Data Act Article 28(1) was found at the ten URLs listed, checked 2026-08-18. The strings 'Data Act', '2023/2854', 'Article 28', 'Article 32', 'Chapter VII', 'ICT infrastructure', 'international governmental access' and 'CLOUD Act' returned zero matches on every page checked. The nearest published statements are residency claims rather than jurisdiction statements: 'Vultr's data residency options ensure that data remains located within selected regions, and it is not processed in other locations or jurisdictions' (/legal/compliance/), and, on a blog page, 'Data sovereignty refers to who has legal authority over the data... By keeping data within its country of origin, we mitigate the risk of being subjected to other jurisdictions' laws.' The EEA/GDPR Privacy notice carries 'Last Modified: September 26, 2021' and the Terms of Service 'Last Modified: March 28, 2024', both predating the 12 September 2025 application date. Vultr's Trust Center is a public page but its rendered content contained no Data Act material. Absence at these URLs is not a statement about the whole site or about compliance. All Vultr pages return HTTP 403 to plain HTTP clients; these reads were performed with a real browser."
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "The Constant Company, LLC is a US limited liability company whose notice address is 319 Clematis Street Suite 900, West Palm Beach, FL 33401, USA and whose Terms of Service submit disputes to state or federal courts in Palm Beach County, Florida; no non-US parent or holding entity is identified, so the CLOUD Act reaches data in its possession, custody or control including in its seven EU regions.",
+      "entry_pricing": {
+        "plan_name": "Cloud Compute, Regular Performance (1 vCPU, 0.5 GB memory, 10 GB SSD, 0.50 TB bandwidth, IPv6 Only)",
+        "amount": 2.5,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://www.vultr.com/pricing/",
+        "note": "Read from the public pricing table as '$2.50 /mo' with hourly '$0.004 /hr'. The identical spec with an IPv4 address is $3.50/month and the cheapest 1 GB plan is $5.00/month. Prices are USD only. The pricing page is served behind bot protection and returns HTTP 403 to plain HTTP clients, so it was read in a browser."
+      },
+      "categories": [
+        "vps",
+        "dedicated",
+        "object_storage",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "Product list on the pricing page: VX1, Cloud Compute, Optimized Cloud Compute, Cloud GPU, Bare Metal ('Single-tenant dedicated servers'), Direct Connect, Kubernetes Engine, Databases, Block Storage, Object Storage ('S3-compatible asset storage'), File System (NVMe), Storage Gateways, Audit Logs, CDN ('Advanced CDN with push and pull zones'), NAT Gateways, Load Balancers, Serverless Inference. No managed WordPress and no shared hosting.",
+      "notable": "The widest EU footprint of the three (seven EU/EEA regions including Warsaw and Milan), general-purpose bare metal alongside VMs, and the lowest entry price in the group.",
+      "sources": [
+        {
+          "claim": "'These terms of use (the \"Terms\") are a legal contract between The Constant Company, LLC, and its affiliates (\"Vultr\", \"we\" or \"us\")...'; notice address 'The Constant Company, LLC, 319 Clematis Street Suite 900, West Palm Beach, FL 33401, USA'; disputes 'resolved exclusively by a state or federal court located in Palm Beach County, Florida'; 'Last Modified: March 28, 2024'.",
+          "url": "https://www.vultr.com/legal/tos/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "'VULTR is a registered trademark of The Constant Company, LLC' appears in the site footer; no parent or holding company is named anywhere on the legal or company pages checked.",
+          "url": "https://www.vultr.com/trust-center/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Company timeline records 'December 2024 \u2014 Secured $3.5 billion valuation in financing from LuminArx and AMD Ventures' and 'June 2025 \u2014 Secured $329 million in credit financing'; 'Vultr, founded in 2014'. No acquisition or parent company is stated.",
+          "url": "https://www.vultr.com/company/about-us/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Public region API returns 36 regions, of which seven are in EU/EEA member states: ams (Amsterdam, NL), cdg (Paris, FR), fra (Frankfurt, DE), mad (Madrid, ES), mxp (Milan, IT), sto (Stockholm, SE), waw (Warsaw, PL). London (lhr) and Manchester (man) are GB.",
+          "url": "https://api.vultr.com/v2/regions",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Marketing page states '36 cloud data center regions' and lists the same European cities.",
+          "url": "https://www.vultr.com/features/datacenter-regions/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Cheapest Cloud Compute Regular Performance row: 1 vCPU / 0.5 GB / 0.50 TB / 10 GB at '$2.50 /mo' (IPv6 Only); next tier same spec at '$3.50 /mo'; 1 GB tier at '$5.00 /mo'.",
+          "url": "https://www.vultr.com/pricing/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "'Vultr's data residency options ensure that data remains located within selected regions, and it is not processed in other locations or jurisdictions.' No Data Act, Article 28/32, ICT-infrastructure-jurisdiction or international-governmental-access content on this compliance page.",
+          "url": "https://www.vultr.com/legal/compliance/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "EEA/GDPR Privacy notice is stamped 'Last Modified: September 26, 2021' and contains no Data Act, Article 28/32, ICT infrastructure, CLOUD Act or international-governmental-access content.",
+          "url": "https://www.vultr.com/legal/eea-gdpr-privacy/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Subprocessors page ('Last Modified: February 19, 2026') lists MaxMind, Kount, ZoomInfo, Backblaze and Aiven, each with processing location 'Global (including EU/EEA/USA)'. No Data Act content.",
+          "url": "https://www.vultr.com/legal/subprocessors/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Blog page distinguishes residency from sovereignty and states 'For businesses seeking even greater control over their data, Vultr offers sovereign clouds on request.' This is a product statement, not an Article 28(1)(a) jurisdiction disclosure.",
+          "url": "https://blogs.vultr.com/data-residency-with-Vultr",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "us-vps"
+    },
+    {
+      "name": "Akamai Connected Cloud (formerly Linode)",
+      "legal_entity": "Akamai Technologies, Inc.",
+      "incorporation_country": "US",
+      "parent_company": null,
+      "parent_country": null,
+      "parent_note": "Akamai Technologies, Inc. is itself the ultimate listed parent (NASDAQ: AKAM), so there is no company above it. It is not independently owned in the sense relevant here: it is a US public company. Linode Limited Liability Company, the entity acquired in 2022 and the historic operator of the cloud service, is incorporated in New Jersey and is listed as a subsidiary of Akamai Technologies, Inc. in Exhibit 21.1 to Akamai's FY2025 Form 10-K.",
+      "eu_regions": [
+        "Amsterdam, Netherlands",
+        "Frankfurt, Germany",
+        "Madrid, Spain",
+        "Milan, Italy",
+        "Paris, France",
+        "Stockholm, Sweden"
+      ],
+      "eu_regions_note": "From the public Linode regions API: nl-ams (Amsterdam), eu-central and de-fra-2 (Frankfurt, two sites), es-mad (Madrid), it-mil (Milan), fr-par and fr-par-2 (Paris, two sites), se-sto (Stockholm). Eight EU/EEA sites across six countries. Two GB regions (London) are excluded as the UK is not in the EU or EEA. This covers Akamai Cloud compute regions only; Akamai's CDN edge network is far larger (the company advertises '130+ countries') and is a separate footprint.",
+      "sovereignty": {
+        "urls_checked": [
+          "https://www.akamai.com/legal",
+          "https://www.akamai.com/legal/eu-data-act",
+          "https://www.akamai.com/site/en/documents/corporate/2025/eu-data-act.pdf",
+          "https://www.akamai.com/legal/compliance",
+          "https://www.akamai.com/legal/compliance/privacy-trust-center",
+          "https://www.akamai.com/legal/compliance/privacy-trust-center/list-of-countries-with-server-points-of-presence",
+          "https://trust.akamai.com/",
+          "https://www.akamai.com/why-akamai/global-infrastructure",
+          "https://www.akamai.com/legal/lera",
+          "https://www.linode.com/legal/"
+        ],
+        "disclosure_found": true,
+        "disclosure_url": "https://www.akamai.com/site/en/documents/corporate/2025/eu-data-act.pdf",
+        "jurisdiction_stated": null,
+        "measures_described": true,
+        "checked_on": "2026-08-18",
+        "observation": "Akamai publishes an 'EU DATA ACT ADDENDUM', effective 12 September 2025, linked from the public page https://www.akamai.com/legal/eu-data-act. Section 8, headed 'Transparency obligations', reads verbatim: 'Details regarding Akamai's Point-of-Presence can be accessed here and details regarding infrastructure of Akamai can be accessed here. Akamai implements technical measures, contractual measures and operational controls to prevent unlawful access to or transfer of Customer Content as provided under this Addendum, details whereof can be accessed here. Details regarding Information Security Compliance of Akamai can be accessed here.' This is recorded as a disclosure found, because it is a published document expressly addressing the transparency obligation. Two qualifications are recorded as observations, not as findings of non-compliance. First, limb (a): no jurisdiction is named anywhere in the addendum or on the linked page. The two 'here' links relating to infrastructure point to a list of countries containing points of presence and to a marketing infrastructure page, i.e. to physical location rather than to the jurisdiction to which the ICT infrastructure is subject; jurisdiction_stated is therefore recorded as null. Second, limb (b): the measures sentence names three categories of measure but is framed as preventing 'unlawful access to or transfer of Customer Content', not specifically international governmental access to non-personal data held in the Union. Third, link rot: the hyperlink targets embedded in the addendum PDF are https://www.akamai.com/legal/compliance/privacy-trust-center/list-of-countries-with-server-points-of-presence, https://www.akamai.com/why-akamai/global-infrastructure, https://www.akamai.com/legal/compliance/privacy-trust-center and https://www.akamai.com/legal/compliance. On 2026-08-18 three of those four returned HTTP 301 to https://trust.akamai.com/, which renders as a gated 'Akamai Trust Center' portal with a 'Get Access' control and no publicly readable content. The narrative body of the addendum is switching-only: section 2 states 'This Addendum describes both the Customer's rights and Akamai's obligations as required by Chapter VI of the EU Data Act.'",
+        "measures_quote": "Akamai implements technical measures, contractual measures and operational controls to prevent unlawful access to or transfer of Customer Content as provided under this Addendum, details whereof can be accessed here."
+      },
+      "cloud_act_exposure": "direct",
+      "cloud_act_reasoning": "Akamai Technologies, Inc. is a Delaware corporation (SEC state of incorporation 'DE', NASDAQ: AKAM) headquartered at 145 Broadway, Cambridge, Massachusetts, and Linode Limited Liability Company (New Jersey) is its subsidiary, so the CLOUD Act reaches data in Akamai's possession, custody or control regardless of the Amsterdam, Frankfurt, Madrid, Milan, Paris or Stockholm server location.",
+      "entry_pricing": {
+        "plan_name": "Nanode 1 GB (shared CPU, 1 vCPU, 1 GB RAM, 25 GB storage, 1 TB transfer)",
+        "amount": 5.0,
+        "currency": "USD",
+        "period": "month",
+        "url": "https://www.akamai.com/cloud/pricing/europe",
+        "note": "Read verbatim from the Europe pricing page as 'Nanode 1 GB | $5.00 /mo | $0.0075 /hr | 1 GB | 1 CPU | 25 GB'. Prices are shown in USD even on the Europe page; no EUR price is published there. Cross-checked against the public API (plan id g6-nanode-1, monthly 5.0, hourly 0.0075), which shows region uplifts only for Jakarta ($6) and Sao Paulo ($7), so all EU regions are at the $5.00 base."
+      },
+      "categories": [
+        "vps",
+        "object_storage",
+        "paas",
+        "cdn",
+        "kubernetes"
+      ],
+      "categories_note": "Akamai Cloud sells shared-CPU and dedicated-CPU virtual machines, GPU and accelerated compute, Object Storage, Block Storage, Managed Databases, Kubernetes (LKE), App Platform and Akamai Functions; Akamai separately sells its CDN under Content Delivery. No bare-metal servers, no managed WordPress and no shared hosting appear in the product listing.",
+      "notable": "The only one of the three that has published a document expressly addressing the Data Act transparency obligation, and the one whose compute regions sit inside a CDN network that predates the cloud business by two decades.",
+      "sources": [
+        {
+          "claim": "Registrant 'AKAMAI TECHNOLOGIES INC', CIK 0001086222, stateOfIncorporation 'DE', ticker AKAM on Nasdaq, business address 145 Broadway, Cambridge MA.",
+          "url": "https://data.sec.gov/submissions/CIK0001086222.json",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Exhibit 21.1 to Akamai's FY2025 Form 10-K (filed 2026-02-20), 'SUBSIDIARIES OF THE REGISTRANT AS OF DECEMBER 31, 2025', lists 'LINODE LIMITED LIABILITY COMPANY Incorporated in New Jersey', alongside 'LINODE HOSTING INDIA PRIVATE LIMITED' and 'LINDIA LLC Incorporated in Pennsylvania'.",
+          "url": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000022/exhibit211_10k2025.htm",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Akamai completed its acquisition of Linode on 21 March 2022, having announced on 15 February an agreement 'for Akamai to acquire Linode in exchange for approximately $900 million'.",
+          "url": "https://www.akamai.com/newsroom/press-release/akamai-completes-acquisition-of-linode",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Public page describing the EU Data Act Addendum as supplementing customer Terms & Conditions 'solely with respect to the EU Data Act's requirements on switching', effective 'as of September 12, 2025', and linking the addendum PDF.",
+          "url": "https://www.akamai.com/legal/eu-data-act",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Section 8 'Transparency obligations' of the EU Data Act Addendum, quoted verbatim in the sovereignty observation; section 2 states the addendum covers Chapter VI switching; section 1.1 defines 'Akamai Website' as '(i) www.akamai.com; (ii) www.linode.com; or (iii) any other website as updated from time to time by Akamai'; section 1.10 defines 'EU Data Act' as 'Regulation (EU) 2023/2854'.",
+          "url": "https://www.akamai.com/site/en/documents/corporate/2025/eu-data-act.pdf",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The four hyperlink targets embedded in Section 8 of the addendum PDF are /legal/compliance/privacy-trust-center/list-of-countries-with-server-points-of-presence, /why-akamai/global-infrastructure, /legal/compliance/privacy-trust-center and /legal/compliance. On 2026-08-18 the three /legal/compliance* targets each returned HTTP 301 to https://trust.akamai.com/.",
+          "url": "https://www.akamai.com/legal/compliance/privacy-trust-center",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "https://trust.akamai.com/ renders as 'Akamai Trust Center' with 'Get Access' and 'Subscribe to updates' controls and no publicly readable documents; total rendered body text was 209 characters and contained none of 'Data Act', 'jurisdiction', 'governmental access' or 'CLOUD Act'.",
+          "url": "https://trust.akamai.com/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The global infrastructure page states '130+ countries' and references keeping data 'within specific geographic or sovereign boundaries' but names no jurisdiction, no EU Data Act and no governmental-access measures.",
+          "url": "https://www.akamai.com/why-akamai/global-infrastructure",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "The Law Enforcement & Regulatory Agencies page is a submission form (preservation requests, subpoenas, search and seizure warrants, non-disclosure orders, emergency disclosure requests) with no policy text on required jurisdiction, third-country requests, the EU Data Act or non-personal data. One field notes 'An IP address that belongs to Linode is required for this request to be satisfied.'",
+          "url": "https://www.akamai.com/legal/lera",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "https://www.linode.com/legal/ returns HTTP 301 to https://www.akamai.com/legal, i.e. Linode's legal hub is consolidated into Akamai's.",
+          "url": "https://www.linode.com/legal/",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Public regions API lists eight EU/EEA core sites across six countries: nl-ams, eu-central, de-fra-2, es-mad, it-mil, fr-par, fr-par-2, se-sto; two GB sites (London) are also listed.",
+          "url": "https://api.linode.com/v4/regions",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Entry shared-CPU plan on the Europe pricing page: 'Nanode 1 GB', $5.00/mo, $0.0075/hr, 1 GB RAM, 1 CPU, 25 GB storage, prices in USD.",
+          "url": "https://www.akamai.com/cloud/pricing/europe",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Plan id g6-nanode-1 'Nanode 1GB' priced at monthly 5.0 / hourly 0.0075 with region uplifts only for id-cgk and br-gru, confirming the $5.00 base applies in all EU regions.",
+          "url": "https://api.linode.com/v4/linode/types",
+          "retrieved": "2026-08-18"
+        },
+        {
+          "claim": "Akamai product categories are Cloud Computing, Cybersecurity and Content Delivery; cloud compute includes CPU, GPU, Accelerated Compute, Kubernetes, App Platform, Object Storage, Block Storage and Managed Databases. No bare metal, managed WordPress or shared hosting is listed.",
+          "url": "https://www.akamai.com/products",
+          "retrieved": "2026-08-18"
+        }
+      ],
+      "_category": "us-vps"
+    }
+  ]
+}

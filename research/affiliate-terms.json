@@ -1,0 +1,425 @@
+{
+  "_meta": {
+    "topic": "hosting provider affiliate and referral terms",
+    "retrieved_on": "2026-08-18",
+    "methodology_note": "Every value below was read from the URL recorded in source_url on 2026-08-18, or from one of the URLs in urls_checked on the same date. Provider-owned pages were preferred in all cases; where a secondary source was the only thing available the record says so in the field text and confidence is lowered. 'has_programme: false' means: no public affiliate or referral programme was located at the URLs listed in urls_checked on 2026-08-18. It is not an assertion that no such programme exists, and it is not a statement about any provider's conduct, compliance or good faith. Where a figure could not be established it is recorded as null with the reason stated in the adjacent text field; no figure has been estimated, averaged or carried over from a third-party affiliate directory. Third-party affiliate directories were treated as unreliable throughout: several were checked, none is used as the basis for any recorded number, and where a directory's claim conflicts with a provider page the conflict is written into the record and the directory figure is excluded.",
+    "field_notes": {
+      "recurring": "String, not boolean, because three states occur in the data: 'one_off', 'recurring', 'one_off_plus_recurring'. null means the provider does not state it.",
+      "cookie_days": "Integer or null. null means no cookie or attribution window is published at the URLs checked.",
+      "source_url": "The single provider URL from which the majority of the recorded values were read.",
+      "urls_checked": "Additive field, not in the requested schema. Included because rule 3 requires naming exactly which URLs were checked before recording an absence.",
+      "confidence": "high = all recorded values read from provider-owned pages with no internal conflict; medium = a load-bearing value is unpublished or two provider pages disagree; low = reliance on a secondary source."
+    },
+    "prices_note": "No price fields are recorded in this file. Entry-level plan pricing was not in scope for the requested schema and no price was captured, so none is asserted.",
+    "conflicts_recorded": [
+      "DigitalOcean: affiliate page says 10% monthly for 12 months; DigitalOcean's own Affiliate Program Agreement says one commission per customer transaction only.",
+      "DigitalOcean: affiliate page text names CJ (Commission Junction); the sign-up link on the same page points at an AWIN URL.",
+      "OVHcloud: Referral Advisory Path page prints Advanced EUR 10,000 MRR / Elite EUR 100,000 MRR; Partnership Levels page prints Advanced EUR 5,000 MRR / Elite EUR 50,000 MRR plus a fourth Strategic tier.",
+      "Hostinger: affiliates page says commission 'starts at 40%'; the affiliate programme agreement says 'up to 40%'.",
+      "Railway: railway.com page says cash payouts via Stripe Connect; docs.railway.com says withdrawals via GitHub Sponsors or Buy Me a Coffee."
+    ]
+  },
+  "programmes": [
+    {
+      "provider": "Hetzner",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no programme was found at the URLs checked on 2026-08-18. Hetzner's own Cloud FAQ states of the former Hetzner Cloud Referral Program that it 'has since been discontinued, and participation is no longer possible, even if you remember what your old referral link was'. https://www.hetzner.com/legal/referrals/ was resolved with curl on 2026-08-18 and 301-redirects to https://www.hetzner.com/legal/legal-notice/ (page title 'Legal notice'), so the former referral terms page no longer serves referral terms. https://www.hetzner.com/affiliate returned HTTP 404. The Hetzner Cloud product page mentions no affiliate, referral or partner commission. A 2020 Hetzner news post describing the original programme (EUR 20 credit to the referred user, EUR 10 credit to the referrer) returned HTTP 429 when fetched on 2026-08-18 and was not read; its terms are historical in any case.",
+      "source_url": "https://docs.hetzner.com/cloud/general/faq/",
+      "urls_checked": [
+        "https://docs.hetzner.com/cloud/general/faq/",
+        "https://www.hetzner.com/legal/referrals/",
+        "https://www.hetzner.com/de/legal/referrals",
+        "https://www.hetzner.com/legal/referrals?country=de",
+        "https://www.hetzner.com/affiliate",
+        "https://www.hetzner.com/cloud/",
+        "https://www.hetzner.com/news/07-20-referral-programm/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "OVHcloud",
+      "has_programme": true,
+      "url": "https://partner.ovhcloud.com/en/referral-advisory-path/",
+      "payout": "No rate is published. The Referral Advisory Path page lists 'Eligible for referral fee' as a benefit at all three tiers (Standard, Advanced, Elite) but prints no percentage, flat fee or rate card. The Partner Program FAQ prints no commission figures either; the only related wording found there is that the portal offers 'transaction registration assistance to help you seize larger and more complex sales opportunities'. No publisher-facing affiliate programme with a tracking link was found on any ovhcloud.com host.",
+      "recurring": null,
+      "cookie_days": null,
+      "network": "In-house. Applications and deal registration run through the OVHcloud Partner Portal (partner-portal.ovhcloud.com). No third-party affiliate network is named on any OVHcloud page checked on 2026-08-18.",
+      "restrictions": "The track is described as being for 'consulting companies and partners who regularly advise clients on infrastructure solutions' with 'established relationships with businesses'. Content publishers, review sites and comparison sites are not named as eligible anywhere on the pages checked. Joining requires reviewing and confirming 'the non-exclusive OVHcloud Partner Program contract' and meeting tier thresholds: the Referral Advisory Path page prints Standard 'minimum EUR 500 in monthly recurring revenue (MRR) with a minimum 12-month commitment', Advanced 'minimum EUR 10,000 in monthly recurring revenue (MRR)' plus 5 active certifications and 1 client referral per quarter, and Elite 'minimum EUR 100,000 in monthly recurring revenue (MRR)' plus 25 active certifications and 2 client referrals per quarter. CONFLICT between OVHcloud's own pages: the Partnership Levels page instead prints Standard 'minimum sales forecast of more than EUR 500', Advanced 'minimum monthly recurring revenue (MRR) EUR 5,000', Elite 'minimum monthly recurring revenue (MRR) EUR 50,000 for at least 3 months' and adds a fourth 'Strategic' tier at 'EUR 250,000'; that page prints no referral-fee language at all. The referral-specific page is recorded as primary. No coupon-site, comparison-site or brand-bidding clause was found on the public pages checked; the partner contract itself is not public. Third-party directories (getlasso.co, commissiondex.com, taprefer.com, trakaff.com, affiliateeye.com) assert an OVHcloud US affiliate programme on CJ Affiliate and FlexOffers with a 45-day cookie and roughly USD 3 to USD 137 per sale, and disagree with one another; no such programme page was found on any ovhcloud.com host and https://us.ovhcloud.com/affiliate/, https://www.ovhcloud.com/en/affiliate/, https://www.ovhcloud.com/en-gb/affiliate/ and https://www.ovhcloud.com/fr/affiliation/ all returned HTTP 404 on 2026-08-18. Those directory figures are deliberately not recorded here.",
+      "source_url": "https://partner.ovhcloud.com/en/referral-advisory-path/",
+      "urls_checked": [
+        "https://partner.ovhcloud.com/en/referral-advisory-path/",
+        "https://partner.ovhcloud.com/en/",
+        "https://partner.ovhcloud.com/en/faq-partner-program/",
+        "https://partner.ovhcloud.com/en/partner-benefits/",
+        "https://us.ovhcloud.com/partner-program/",
+        "https://us.ovhcloud.com/affiliate/",
+        "https://www.ovhcloud.com/en/affiliate/",
+        "https://www.ovhcloud.com/en-gb/affiliate/",
+        "https://www.ovhcloud.com/fr/affiliation/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "Scaleway",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no affiliate or referral programme was found at the URLs checked on 2026-08-18. Scaleway's own feature-request board carries an open post titled 'Affiliate program' (posted by 'Dmytro', March 2021, 14 votes) whose text reads in part 'There is a possibility to bring new customers with the help of affiliate links. Most of hosting providers create such programs.' It carries no status label such as planned or shipped, no Scaleway staff response, and the most recent comment is 'It would be good to make a referral program' (June 2025). Scaleway's Partner Program page describes a reseller/MSP/integrator track with an 'Ideal Partner Profile' and contains no commission, referral fee, payout or cookie terms. https://www.scaleway.com/en/affiliate/ and https://www.scaleway.com/en/referral-program/ both returned HTTP 404. The Scaleway Startup Program is a credits scheme, not a commission scheme. Third-party aggregators advertising Scaleway 'referral commissions' were seen in search results and are not recorded.",
+      "source_url": "https://feature-request.scaleway.com/posts/129/affiliate-program",
+      "urls_checked": [
+        "https://feature-request.scaleway.com/posts/129/affiliate-program",
+        "https://www.scaleway.com/en/partners-program/",
+        "https://www.scaleway.com/en/affiliate/",
+        "https://www.scaleway.com/en/referral-program/",
+        "https://community.scaleway.com/t/affiliates-program/706"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "IONOS",
+      "has_programme": true,
+      "url": "https://www.ionos.com/agency-partner/affiliate",
+      "payout": "'a single referral fee (\"Commission\") on the initial sale of IONOS Services to new customers'. Commission is paid 'only on the primary product in the cart for each transaction'. No rate card is published: the public programme page says offers are assigned 'after a discussion with your key account manager'. Minimum payout is '$50'; balances below that roll over monthly until reached.",
+      "recurring": "one_off",
+      "cookie_days": 30,
+      "network": "In-house. Sign-up and terms live at affiliate.ionos.com; no third-party network is named on the IONOS programme page or in the terms. (Third-party listings place a '1&1 IONOS' programme on FlexOffers; that is not recorded here as it was not confirmed on an IONOS page.)",
+      "restrictions": "Brand bidding banned: affiliates may not 'purchase or register any keywords ... related to the trademarks of IONOS', including 'ionos, 1&1, 1and1', or competitor names, on any search or sponsored advertising service. Coupon and cashback sites banned outright: affiliates may not 'promote IONOS ... using or in connection with any coupon, discount, cashback, refund, or other rewards site'. Attribution is last-click ('last affiliate wins'). A customer must complete the order 'no later than 30 days after the initial click-through of the Link'. No clause specific to comparison, price-comparison or review sites was found in the terms read on 2026-08-18. Onboarding is not self-serve: it requires a key-account-manager conversation before offers are assigned.",
+      "source_url": "https://affiliate.ionos.com/terms",
+      "urls_checked": [
+        "https://www.ionos.com/agency-partner/affiliate",
+        "https://affiliate.ionos.com/terms"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Infomaniak",
+      "has_programme": true,
+      "url": "https://www.infomaniak.com/en/membership",
+      "payout": "Progressive rate on orders and renewals: '25% commission on each order and renewal', rising to '30% as soon as your accumulated earnings reach CHF 50', '35% from CHF 1,000 in accumulated earnings' and '50% once the threshold of CHF 20,000 in accumulated earnings is reached'. Payout threshold 'CHF/EUR 50.-', paid automatically at the start of each month to an Infomaniak prepaid account, PayPal or IBAN.",
+      "recurring": "recurring",
+      "cookie_days": 30,
+      "network": "In-house. Affiliate platform is Infomaniak's own, reached from the account area at infomaniak.com/en/membership.",
+      "restrictions": "Commission runs for 'commission for 1 year from the date the customer account is created', covering both new orders and renewals inside that window; it is therefore recurring but capped at 365 days. Applies to new customer accounts only: 'it must be a new customer who has clicked on your affiliate link'. The referral cache is 'retained for 30 days' after a click. Earnings stay pending for '30 days after the order is created, due to the \"Satisfied or Refunded\" guarantee' and a refund inside that window cancels the commission. Excluded products: domain names, Domain Privacy, Renewal Warranty, Housing, and High Availability Hosting. Self-referrals, orders placed from an existing account and matching office/home IP addresses are disqualifying. No clause on coupon sites, comparison sites or paid-search brand bidding was found on the affiliate pages checked on 2026-08-18; a separate full contractual terms document was not located at those URLs, so this point is recorded as unknown rather than absent.",
+      "source_url": "https://www.infomaniak.com/en/support/faq/2247/discover-the-infomaniak-affiliate-program-commission-system",
+      "urls_checked": [
+        "https://www.infomaniak.com/en/membership",
+        "https://www.infomaniak.com/en/support/faq/2247/discover-the-infomaniak-affiliate-program-commission-system",
+        "https://www.infomaniak.com/en/support/faq/2247/getting-started-guide-infomaniak-affiliation"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Exoscale",
+      "has_programme": true,
+      "url": "https://www.exoscale.com/partner-programs/agents/",
+      "payout": "No figure published. The Agent (referral) track states only that partners 'receive a reward' covering 'the entire contract lifecycle' and that 'different reward and levels are available' depending on the chosen programme, directing prospects to 'Get in touch with our partner team for more details.' The separate customer-facing Mentor referral scheme, which paid '50 CHF credited to your account' to the referrer and doubled the referred friend's payment, carries a notice on Exoscale's own blog post: 'The Mentor Program is deprecated as of December 2021 pending a new version.'",
+      "recurring": null,
+      "cookie_days": null,
+      "network": "In-house. Application is by form on exoscale.com; no third-party affiliate network is named. https://www.exoscale.com/affiliate/ returned HTTP 404 on 2026-08-18.",
+      "restrictions": "The Agent track is B2B in framing ('business partners'), requires a form-based application, Exoscale validation and completion of a certification process; no formal eligibility criteria for publishers are stated and comparison or review sites are not named as eligible. No commission percentage, payout mechanism, attribution window, coupon-site clause or brand-bidding clause is published at the URLs checked on 2026-08-18. The only concrete referral figure Exoscale has published (CHF 50) belongs to the Mentor programme, which its own page marks deprecated since December 2021, so it is not recorded as a current payout.",
+      "source_url": "https://www.exoscale.com/partner-programs/agents/",
+      "urls_checked": [
+        "https://www.exoscale.com/partner-programs/agents/",
+        "https://www.exoscale.com/syslog/referral-announcement/",
+        "https://www.exoscale.com/affiliate/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "AWS",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no publisher affiliate or referral-link programme was found at the URLs checked on 2026-08-18. https://aws.amazon.com/affiliate/, https://aws.amazon.com/affiliates/ and https://aws.amazon.com/affiliate-program/ all returned HTTP 404. The AWS Partner Paths page lists Software, Hardware, Services, Training and Distribution paths and describes no affiliate scheme, tracking link, cookie or publisher commission. The AWS Partner Programs page lists reseller programmes (Resell with AWS Distributors, AWS Solution Provider Program, Channel Partner Private Offers), services, managed-services, technology-solutions, business-outcome and public-sector programmes; the nearest referral mechanism named is APN Customer Engagements (ACE), which is a business co-sell pipeline rather than a publisher commission, and no referral fee or commission figure appears. Amazon Associates (affiliate-program.amazon.com) is Amazon's retail programme; it was not found to cover AWS console signups and is not recorded here as an AWS programme. Numerous third-party pages asserting an 'AWS Affiliate Program' were seen in search results and are excluded as unverified against any AWS-owned page.",
+      "source_url": "https://aws.amazon.com/partners/paths/",
+      "urls_checked": [
+        "https://aws.amazon.com/partners/paths/",
+        "https://aws.amazon.com/partners/programs/",
+        "https://aws.amazon.com/affiliate/",
+        "https://aws.amazon.com/affiliates/",
+        "https://aws.amazon.com/affiliate-program/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Microsoft Azure",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no Azure affiliate or referral-link programme was found at the URLs checked on 2026-08-18. https://azure.microsoft.com/en-us/affiliate, https://azure.microsoft.com/en-us/affiliate-program and https://www.microsoft.com/en-us/affiliate-program returned HTTP 404, and https://partner.microsoft.com/en-us/affiliate resolves to a Microsoft page titled '404 - Page Not Found'. On Microsoft's own Q&A site a user asked (2024-07-24) 'does Microsoft Azure offer an affiliate or referral program where webmasters can sign up, obtain a referral link, and send business user referrals to Azure's AI products in exchange for commissions?'; the Microsoft moderator reply (AshokPeddakotla-MSFT, 2024-07-25) did not confirm one and pointed only to the Microsoft AI Cloud Partner Program, saying 'To join the program, go to the Membership sign-in page and select Become a partner.' Third-party directories describing a historical consumer 'Microsoft Affiliate Program' (Microsoft 365, Surface, Xbox, Store media, variously via Rakuten Advertising or Tradedoubler) relate to retail products, not Azure, and two networks were observed listing it as inactive; none of that is recorded as an Azure programme.",
+      "source_url": "https://learn.microsoft.com/en-us/answers/questions/1839916/does-microsoft-azure-offer-an-affiliate-referral-p",
+      "urls_checked": [
+        "https://learn.microsoft.com/en-us/answers/questions/1839916/does-microsoft-azure-offer-an-affiliate-referral-p",
+        "https://azure.microsoft.com/en-us/affiliate",
+        "https://azure.microsoft.com/en-us/affiliate-program",
+        "https://www.microsoft.com/en-us/affiliate-program",
+        "https://partner.microsoft.com/en-us/affiliate"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "Google Cloud",
+      "has_programme": true,
+      "url": "https://cloud.google.com/affiliate-program",
+      "payout": "Cash, but no rate published. 'Receive a cash reward for every new eligible user that you refer to Google Cloud.' 'The more you refer, the more you can earn - with no annual earnings cap.' 'Earn more with tiered commissions and customized payouts as you drive performance.' The amounts, tiers and thresholds are withheld until acceptance: 'Our full program terms and conditions will be shared following application acceptance.' The affiliate-specific customer incentive is a '$350 free trial credit offer ... an extra $50 of credits, on top of the standard $300 free trial credits.'",
+      "recurring": null,
+      "cookie_days": null,
+      "network": "CJ Affiliate. 'Become a member at no charge via CJ Affiliate.' 'CJ Affiliate is the trusted third-party affiliate network that provides resources, support, and payments to our affiliates.' Applications go through a CJ Affiliate Publisher Sign Up page.",
+      "restrictions": "Two hard restrictions are published and both bite a comparison site. Geography: 'The program is currently available for affiliates operating in the US. and Canada.' Channel: in answer to its own FAQ 'What promotional channels are not approved for affiliates?', Google states 'No social media or email promotion is permitted.' Acceptance is discretionary and judged on 'Performance potential: Consistent traffic and an audience actively seeking engagement with cloud solutions', 'Quality', 'Relevance' and 'Aesthetics: A visually pleasing design aligned to Google's brand values.' No coupon-site clause and no paid-search brand-bidding clause is public, because the full terms are disclosed only after acceptance; both are therefore recorded as unknown, not absent. Cookie window is likewise not published on the programme page and is recorded as null.",
+      "source_url": "https://cloud.google.com/affiliate-program",
+      "urls_checked": [
+        "https://cloud.google.com/affiliate-program"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "DigitalOcean",
+      "has_programme": true,
+      "url": "https://www.digitalocean.com/affiliates",
+      "payout": "The affiliate page states 'Earn 10% for every user you refer to DigitalOcean', elaborated as '10% commission each month, for an entire year, on their monthly spend', plus 'Top affiliate partners get additional commissions and payouts' with no thresholds published. CONFLICT within DigitalOcean's own material: the Affiliate Program Agreement states 'you will receive a Commission payment for that Customer Transaction only, regardless of any additional purchases made by that customer', and that the rate itself is defined in the Affiliate Tool rather than the agreement, with DigitalOcean reserving the right to alter it. Both are DigitalOcean-owned pages; the marketing page is the more specific and is recorded in the payout figure, with the agreement's contrary wording recorded here. No minimum payout is stated in the agreement. A separate and distinct customer Referral Program pays account credit, not cash: '$25 after they spend their first $25'.",
+      "recurring": "recurring",
+      "cookie_days": null,
+      "network": "CJ Affiliate per DigitalOcean's own wording: 'Simply sign up with the link below to join the program via the CJ (Commission Junction) affiliate network.' CONFLICT: the sign-up link on that same page resolves to ui.awin.com/merchant-profile/123996, an AWIN URL. Both observations are from the same DigitalOcean page on 2026-08-18. Third-party directories variously claim Impact or CJ; those are excluded.",
+      "restrictions": "Brand bidding banned: 'you will not purchase ads that direct to your site(s) or through an Affiliate Link that could be considered as competing with DigitalOcean's own advertising, including, but not limited to, our branded keywords'. Also banned: 'cookie stuffing or pop-ups, false or misleading links are strictly prohibited' and 'using fake redirects or other tools or automation devices to generate leads (including but not limited to robots, lframes, or hidden frames)'. Cookie duration is acknowledged but not quantified: 'COOKIES USED AS PART OF ANY AFFILIATE TOOL HAVE A SET DURATION', with the number left to the Affiliate Tool, so cookie_days is null. No commission where the customer already pays the affiliate referral fees directly, where the customer participates in another DigitalOcean partner programme, or on fraudulent transactions; holding periods may be extended without prior notice and paid commissions may be clawed back. No coupon-site or comparison-site clause was found in the agreement read on 2026-08-18. Eligibility is open: 'Anyone can join the DigitalOcean affiliate program.'",
+      "source_url": "https://www.digitalocean.com/affiliates",
+      "urls_checked": [
+        "https://www.digitalocean.com/affiliates",
+        "https://www.digitalocean.com/legal/affiliate-program-agreement",
+        "https://www.digitalocean.com/referral-program"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "Vultr",
+      "has_programme": true,
+      "url": "https://www.vultr.com/company/referral-program/",
+      "payout": "'Refer new customers and earn up to $100!' 'Tell a friend about Vultr and earn money when they are active for 30+ days.' 'Each new unique customer you refer qualifies for a referral bonus!' 'Payouts are issued on the business day following the 1st and 15th of each month.' The per-referral amount, the qualifying spend and the full terms are not public: the page's 'See program details' and 'Read more' links both resolve to https://console.vultr.com/referral/, which requires a logged-in Vultr account. Recorded as null beyond the 'up to $100' cap.",
+      "recurring": "one_off",
+      "cookie_days": null,
+      "network": "In-house. The referral link is issued inside the Vultr customer portal at console.vultr.com/referral/. No third-party affiliate network is named on any public Vultr page checked.",
+      "restrictions": "No promotional restrictions are published on the public referral page, and the detailed terms are behind a customer login, so coupon-site, comparison-site and brand-bidding rules are all recorded as unknown rather than absent. The separate Vultr Partner Program Terms & Conditions (a reseller/project track for 'resellers, service providers, and innovators', governed by 'the laws of the state of Florida') require application and acceptance through the Partner Portal, 'good credit standing with Vultr', 'the completion of all required training at your own expense', and a designated Partner Account Administrator; those terms contain no commission rate, cookie window, coupon-site clause or brand-bidding clause. A third scheme, the Vultr Creator Program, pays for demo videos, Vultr Docs tutorials and code contributions rather than for referrals. Practical note for re-verification: www.vultr.com returns HTTP 403 to non-browser fetchers, including curl with a browser user-agent; these pages were read in a real browser on 2026-08-18.",
+      "source_url": "https://www.vultr.com/company/referral-program/",
+      "urls_checked": [
+        "https://www.vultr.com/company/referral-program/",
+        "https://www.vultr.com/legal/partner-program/",
+        "https://www.vultr.com/creator/",
+        "https://www.vultr.com/affiliate/",
+        "https://discover.vultr.com/partner",
+        "https://console.vultr.com/referral/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "Akamai/Linode",
+      "has_programme": true,
+      "url": "https://www.akamai.com/cloud/referral-program",
+      "payout": "Account credit only, no cash. The referred user receives 'a $100 60-day credit' after adding a valid payment method. The referrer receives 'a $25 non-expiring credit', applied once the new user has been 'active for 90-days and spends $25 or more on services, after their promotional credit has been used or has expired'. To activate a referral link at all, the referrer 'must spend at least $25 on Akamai Cloud services, not including any promotional credits'. No cash-paying affiliate programme is mentioned on any of the pages checked.",
+      "recurring": "one_off",
+      "cookie_days": null,
+      "network": "In-house. The referral link is issued in Cloud Manager under My Profile > Referrals; the same tab reports referrals made and credit earned. No third-party affiliate network is named.",
+      "restrictions": "The decisive restriction is the reward form: it is Akamai Cloud account credit, not cash, so it cannot be booked as revenue by a comparison site that is not itself a large Akamai customer. Referrer activation also requires USD 25 of the affiliate's own spend. https://www.linode.com/lp/affiliate-program/ serves referral-programme content rather than affiliate terms, and https://www.linode.com/referral-program/ 301-redirects to https://www.akamai.com/cloud/referral-program; no separate cash affiliate programme was found. Akamai reserves the right to modify or cancel any promotional credit at any time. No cookie window, coupon-site clause or brand-bidding clause is published at the URLs checked on 2026-08-18. The Akamai TechDocs referral page shows 'Last updated: 2026-07-03'.",
+      "source_url": "https://techdocs.akamai.com/cloud-computing/docs/referral-program",
+      "urls_checked": [
+        "https://techdocs.akamai.com/cloud-computing/docs/referral-program",
+        "https://www.akamai.com/cloud/referral-program",
+        "https://www.linode.com/referral-program/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "WP Engine",
+      "has_programme": true,
+      "url": "https://wpengine.com/affiliate-program/",
+      "payout": "'$200 minimum or equal to the first month's payment, whichever is higher' for all plans other than Lite; '$100' per new sign-up on the Lite plan. Worked examples printed on the page: Startup at $30/mo pays $200; Scale at $290/mo pays $290. For annual plans the total is divided by 12 and commission is based on that monthly equivalent. Volume bonuses exist ('rewards and bonus commissions throughout the year for sending us multiple referrals per month') but no thresholds are published. Payouts are made around the 20th of the month after the referral reaches 62 days of age and remains in good standing.",
+      "recurring": "one_off",
+      "cookie_days": 180,
+      "network": "Everflow (everflow.io). Applications go through 'Register Now', an Everflow account is required, and approved affiliates are emailed a tracking link. WP Engine's own 2013-era blog post 'WP Engine Launches Affiliate Program on Share-A-Sale' records a former ShareASale programme; ShareASale is not named on the current programme page.",
+      "restrictions": "'Direct linking is expressly forbidden in our program.' Affiliate links may be placed only on domains the affiliate owns; to refer from YouTube, Facebook and similar platforms the affiliate must link to their own landing page which then carries the affiliate link. Coupon and custom codes are restricted to top performers on a case-by-case basis; everyone else gets a generic promotional code. 'strict policy against self-submitted referrals', which can be triggered by a high volume of sign-ups. Plan upgrades and add-ons earn no commission; only new hosting plan sign-ups do. No paid-search or brand-keyword-bidding clause is published on the programme page and the full offer terms sit inside the Everflow portal behind signup, so that specific point is recorded as unknown rather than absent, checked 2026-08-18. Comparison and review sites are not restricted by any clause found.",
+      "source_url": "https://wpengine.com/affiliate-program/",
+      "urls_checked": [
+        "https://wpengine.com/affiliate-program/",
+        "https://wpengine.com/legal/",
+        "https://wpengine.com/blog/wp-engine-and-share-a-sale/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Kinsta",
+      "has_programme": true,
+      "url": "https://kinsta.com/affiliate-program/",
+      "payout": "Two components paid together. One-time: '$50 to $500 - One-time bonus', varying by the plan referred; the per-plan amounts are shown only in an on-page earnings calculator, not as a static table. Recurring: '10% - Monthly commissions', described on the page as 'lifetime recurring commissions of 10% for every referral'. The page's calculator assumes a stated '2% churn rate'. Minimum payout: 'Commissions shall only be paid when the balance of all Commissions due is greater than or equal to $50.00.' The affiliate terms confirm 'Affiliate is eligible for one-time and/or recurring referral payments from Kinsta' but do not restate the amounts.",
+      "recurring": "one_off_plus_recurring",
+      "cookie_days": 60,
+      "network": "In-house. A 'custom-built affiliate dashboard' at affiliate.kinsta.com. No third-party network is named.",
+      "restrictions": "Brand bidding banned: 'the Affiliate shall not bid...on any keywords or phrases containing Kinsta trademarks, service marks, registered trademarks, or registered URLs, or on any variations, abbreviations, or misspellings of the same.' Paid traffic generally banned: 'pay to click...PPC advertising, pop-up/under...or similar methods' are prohibited. Coupon sites banned: prohibited to 'Place links to Kinsta or refer to Kinsta in any way on coupon websites' and to 'Promote non-existing Kinsta discounts, or refer to any discount...as coupon codes, deals, seasonal discounts, or exclusive discounts.' Directly relevant to a comparison site: the programme page lists among the site types whose applications are rejected 'Websites that display lists of tools or services with no further information', 'Coupons and deals websites', 'Websites without an affiliate disclosure', 'Websites without their own domain name', 'Websites under construction or unfinished' and 'Social media profiles'. Placing an affiliate link directly on a third-party social network or content hosting platform is prohibited, with exceptions for video platforms and code repositories. 'kinsta' may not appear in an affiliate's domain, though 'kinsta' in the URL path 'is acceptable'. Attribution is last-touch. The recurring commission's duration is stated as lifetime on the programme page but is not specified in the legal terms, which defer to an external page.",
+      "source_url": "https://kinsta.com/affiliate-program/",
+      "urls_checked": [
+        "https://kinsta.com/affiliate-program/",
+        "https://kinsta.com/legal/affiliate-terms/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "SiteGround",
+      "has_programme": true,
+      "url": "https://www.siteground.com/affiliates",
+      "payout": "Tiered by sales completed in a calendar month: '1 to 5 sales - 50USD/50AUD/30GBP/40EUR'; '6 to 10 sales - 75USD/75AUD/50GBP/60EUR'; '11 to 20 sales - 100USD/100AUD/65GBP/75EUR'; '21+ sales - Custom Commission'. 'There is no limit on your earnings', qualified by sales having to be made legitimately. Separately, non-hosting products (Website Builder, Coderick AI, SiteGround AI Studio, Email Marketing) pay '60% of the first year revenue' and do not count toward the hosting sales tier. A 30-day holding period applies before commissions are released; payment is by PayPal, 'once per week or less often'. Minimum qualifying order value: shared hosting plans longer than one month must exceed '40 USD, 40 EUR, 40 AUD, 30 GBP'.",
+      "recurring": "one_off",
+      "cookie_days": 60,
+      "network": "In-house. SiteGround's own Affiliate Area (my.siteground.com/affiliate/). No third-party network is named in the terms.",
+      "restrictions": "Brand bidding banned without prior approval: 'Bidding on keywords and phrases containing the \"SiteGround\" trademark, or variations or misspellings of the trademarked term on Pay per Click or Pay per Impression campaigns on the search engines (Google, Yahoo, MSN, Ask, Bing or others) without our prior approval.' Using SiteGround's site as a PPC display URL, and direct-linking or redirecting to it, are likewise barred. Coupons banned without prior approval: 'Offering price savings methods, including coupon(s), voucher(s), discount codes, or added value offers without our prior approval.' Cashback banned without prior approval: 'Providing cash backs, rewards or any other kind of incentives to obtain the sale without our prior approval.' The affiliate KB adds 'You are allowed to advertise only this hosting offer' in respect of the predefined offer behind the affiliate URL. Also banned: 'Using link cloaking or masking techniques or technology with the goal to promote SiteGround on websites and/or networks not explicitly listed in your affiliate profile'; 'Using iframes or any other techniques or technology that places your affiliate tracking cookie by any means other than an actual click-through'; traffic from 'pay to read, pay to click, banner exchanges, click exchanges, PPV advertising, pop-up/under, or similar methods'; domain names containing the SiteGround trademark; completing a customer's order on their behalf. Attribution is last-click and the cookie overwrites earlier affiliate cookies. No clause specific to comparison or review sites was found. The terms document is marked 'Last Revised: July 2016'. Note: siteground.com/affiliates 302-redirects to eu.siteground.com/affiliates from an EU IP; the euro figures on that page match the KB tier table, so no conflict.",
+      "source_url": "https://eu.siteground.com/term/8.htm",
+      "urls_checked": [
+        "https://www.siteground.com/affiliates",
+        "https://eu.siteground.com/affiliates",
+        "https://eu.siteground.com/term/8.htm",
+        "https://www.siteground.com/kb/affiliate_program_tos/",
+        "https://www.siteground.com/kb/affiliate_program_earnings/",
+        "https://www.siteground.com/kb/affiliate_cookie_tracking_information/",
+        "https://www.siteground.com/kb/bid_for_keywords_on_google/",
+        "https://www.siteground.com/kb/advertise_discounted_offers/",
+        "https://www.siteground.com/kb/category/affiliates/compliance-policies/",
+        "https://www.siteground.com/pdf/AffiliateProgram.pdf"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Hostinger",
+      "has_programme": true,
+      "url": "https://www.hostinger.com/affiliates",
+      "payout": "Programme page: 'It starts at 40%' and 'grows depending on sales volume'; 'The more sales you make, the bigger your commission.' The affiliate programme agreement instead states 'up to 40% (forty percent) Commission' on Shared, Cloud, VPS, domains and email for yearly plans and special offers, and 'Commission up to 60% (sixty percent)' on Hostinger Horizons via specific offers only. Both are Hostinger-owned pages and the two phrasings conflict; both are recorded. Hard cap: 'maximum Commission for one sale is $300'. Minimum payout '$100' by PayPal and '$500' by wire transfer. Commissions unwithdrawn for two years are removed from the balance, and affiliate accounts inactive for two years are deleted 'without obligation to pay out any commissions older than two (2) years'.",
+      "recurring": "one_off",
+      "cookie_days": 30,
+      "network": "In-house. Dashboard at affiliates.hostinger.com, with an 'Affiliate Area' and 'Affiliate Assets' referenced in the agreement. No third-party network is named.",
+      "restrictions": "Strictly first-purchase only: 'Commission is paid only for the initial purchase' and 'No Commission will be granted for...renewal or upgrade of services.' Brand bidding banned without approval: no 'bidding on keywords and phrases containing the \"Hostinger\" trademark, or variations or misspellings...on Pay per Click or Pay per Impression campaigns on...Google, Yahoo, MSN, Ask, Bing or others without our prior approval'; 'You are not allowed to use the Hostinger Website(s) as display URL in Paid media ads and to direct-link or redirect to the Hostinger Website(s)'. Coupons and cashback banned without prior approval: 'Offering price savings methods, including coupon(s), voucher(s), discount codes, or added value offers without our prior approval' and 'Providing cash backs, rewards or any other kind of incentives to obtain the sale without our prior approval'. Coupon-led content specifically targeted: prohibited to create 'video content where the primary purpose is to promote price-saving methods...rather than promoting Hostinger services' or to use 'video titles, descriptions, or metadata primarily focused on keywords related to coupons'. Affiliates may not use coupon codes issued to other affiliates. Affiliate domain names may not contain the Hostinger trademark or confusingly similar variants without prior approval. Cookie is stored 'for up to 30 days'. No clause specific to comparison or review sites was found; the nearest general clauses are a content-standards clause and a clause that the affiliate 'should not misuse its confidence and shall not damage Hostinger reputation'.",
+      "source_url": "https://www.hostinger.com/legal/affiliate-program-agreement",
+      "urls_checked": [
+        "https://www.hostinger.com/affiliates",
+        "https://www.hostinger.com/legal/affiliate-program-agreement"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Vercel",
+      "has_programme": true,
+      "url": "https://vercel.com/legal/affiliate-marketing-terms",
+      "payout": "No rate published. Fees are described only as 'commission income for qualifying purchases completed via an Affiliate Link or credits toward use of Vercel's products and services'; the actual rates live in Program Guidelines that are not public. 'All Fees earned shall be one-time payments unless expressly stated otherwise in the Program Guidelines.' No minimum payout is stated. Payouts flow through payment methods supported by the Dub platform, and accepting Dub's platform terms is a precondition to earning fees.",
+      "recurring": "one_off",
+      "cookie_days": null,
+      "network": "Dub. 'Vercel's Affiliate Link program is administered by Dub Technologies, Inc. (\"Dub\").'",
+      "restrictions": "Brand bidding banned, and paid promotion of the affiliate link is banned outright: prohibited to 'purchase ads...that could be considered as competing with our own advertising, including but not limited to, our branded keywords', and the terms also bar paying to advertise the affiliate link on Google, Facebook, Twitter and similar platforms. Coupon sites banned: affiliate links may not be used 'on any coupon deal websites and/or coupon aggregator websites'. No domains or handles containing 'Vercel' or 'v0'. No fee is due where the prospect does not complete the purchase, where the customer 'was already a pre-existing customer or was actively involved in the sales process', where the purchase completes through a Vercel account executive or other sales-assisted process, or where the affiliate's participation has expired or been terminated; only one participant can earn a fee for a single customer and Vercel has 'full discretion' over attribution disputes. Misrepresentation of the Vercel relationship, fake accounts, spam and bots are prohibited. A Vercel account in good standing is required at payout time, and deactivated accounts forfeit fees. No clause specific to comparison or review sites was found. Terms 'Last Updated: July 8, 2025'. https://vercel.com/affiliate returns HTTP 200 but requires login, so no rate could be read there.",
+      "source_url": "https://vercel.com/legal/affiliate-marketing-terms",
+      "urls_checked": [
+        "https://vercel.com/legal/affiliate-marketing-terms",
+        "https://vercel.com/affiliate",
+        "https://vercel.com/partners"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    },
+    {
+      "provider": "Netlify",
+      "has_programme": true,
+      "url": "https://www.netlify.com/partners/",
+      "payout": "'20% revenue share for up to 12 months on eligible self-serve new business' for Ecosystem Partners, and '20% revenue share for up to 24 months on new business, renewals, and expansion' for Certified Partners, covering both self-serve and enterprise. The Partner Program Agreement itself prints no figures and states that 'Commission rates, structures, and payment terms are set forth in the Partner Portal'. No minimum payout threshold is stated; marketplace transactions are paid 'within sixty (60) days of Netlify's receipt of funds from the marketplace operator'.",
+      "recurring": "recurring",
+      "cookie_days": null,
+      "network": "PartnerStack. 'Netlify uses PartnerStack to support tracking, attribution, and reporting across different partner models', and the agreement says the programme is 'currently powered by PartnerStack'.",
+      "restrictions": "Brand bidding banned: prohibited to 'purchase ads that compete with Netlify's own advertising, including bidding on Netlify's branded keywords'. Also banned: 'cookie stuffing, pop-ups, false or misleading links, or any other deceptive means to generate referrals'. Partners must not 'position themselves as Netlify or imply ownership of the Netlify brand'. Attribution has no published day count: a referral must convert 'within the time period specified in the Partner Portal or the applicable Program Policies', and Netlify describes attribution as covering 'referral, recommendation, and influence', including 'partner-assisted conversions rather than simple link-based clicks'. The programme is explicitly open to 'creators, publishers, educators, freelancers, AI builders, and agencies', which is unusually favourable for a comparison site. Certified tier requires existing Ecosystem standing plus 3 or more new Pro customers per year or 1 or more Enterprise customer per year, plus completed training; Certified Partners must be active Netlify customers. No exclusivity is required. Acceptance is discretionary and an application with no notification within 30 days is deemed rejected. No coupon-site or comparison-site clause was found. Agreement 'Last updated: March 20, 2026'.",
+      "source_url": "https://www.netlify.com/partners/",
+      "urls_checked": [
+        "https://www.netlify.com/partners/",
+        "https://www.netlify.com/partners/program-agreement/",
+        "https://www.netlify.com/affiliates/"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Fly.io",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no affiliate or referral programme was found at the URLs checked on 2026-08-18. On Fly.io's own community forum a user asked (gcv, 2024-03-20) 'Do you have an affiliate program like Digital Ocean?' and Fly.io staff member DAlperin replied 'We do not'. https://fly.io/affiliate and https://fly.io/affiliates returned HTTP 404. The Fly.io Extensions Program is a service-provider partnership for 'managed databases, exception handlers, CI runners or log aggregators' in which 'Fly.io should ultimately be the one that charges a customer' and the partner is paid after a revenue-share deduction; it describes no publisher referral commission, tracking link or cookie. The Fly.io support docs page mentions no affiliate or referral scheme.",
+      "source_url": "https://community.fly.io/t/fly-io-affiliate-program/18859",
+      "urls_checked": [
+        "https://community.fly.io/t/fly-io-affiliate-program/18859",
+        "https://fly.io/docs/about/extensions/",
+        "https://fly.io/docs/about/support/",
+        "https://fly.io/affiliate",
+        "https://fly.io/affiliates"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Render",
+      "has_programme": false,
+      "url": null,
+      "payout": null,
+      "recurring": null,
+      "cookie_days": null,
+      "network": null,
+      "restrictions": "Not applicable: no affiliate or referral programme was found at the URLs checked on 2026-08-18. Render's own feature-request board carries 'Referral Program', requesting 'an easy way to refer friends and colleagues to Render and to receive billing credits for doing so' (October 2020), which was marked planned in October 2020 and then closed by Render's Meagan Gamache on 8 October 2024 with the note 'We're taking this idea under consideration but closing it here because it isn't a product roadmap item.' https://render.com/affiliates and https://render.com/affiliate-program returned HTTP 404. Render for Startups is a credits programme for accelerators and VCs whose credits are 'valid for one year from the time of approval', not a commission programme.",
+      "source_url": "https://feedback.render.com/features/p/referral-program",
+      "urls_checked": [
+        "https://feedback.render.com/features/p/referral-program",
+        "https://render.com/affiliates",
+        "https://render.com/affiliate-program",
+        "https://render.com/startups"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "high"
+    },
+    {
+      "provider": "Railway",
+      "has_programme": true,
+      "url": "https://railway.com/affiliate-program",
+      "payout": "'15% commission on every invoice your referrals pay, for the first 12 months after they sign up'; the docs phrase the same term as '15% commission on the first 12 months of invoices from the new customer'. The referred user receives '$20 in Railway credits, equivalent to a free month on the Pro tier'. Payout is in 'cash or Railway credits'; cash is paid via 'Stripe Connect, paid out monthly' in '$100-$10,000 increments'. Credits 'don't expire - they roll over month to month'. CONFLICT between Railway's own pages: docs.railway.com describes withdrawals through GitHub Sponsors or Buy Me a Coffee, while railway.com/affiliate-program describes Stripe Connect; both were read on 2026-08-18.",
+      "recurring": "recurring",
+      "cookie_days": null,
+      "network": "In-house. The referral link is generated from the 'Refer' button in the Railway dashboard or the workspace referrals page; earnings are viewed under workspace settings. Stripe Connect is used only as the cash disbursement rail, not as an affiliate network.",
+      "restrictions": "Requires a valid Railway account and compliance with the Terms of Service and Fair Use Policy. 'Use your unique referral link in all promotions', and only referrals signing up through that link are credited. No coupon-site clause, no comparison-site clause and no paid-search brand-bidding clause was found on either Railway page checked on 2026-08-18; the docs page actively encourages promotion through YouTube, Medium, LinkedIn and similar content channels. No minimum payout threshold is stated in the docs; the programme page states cash is paid in $100-$10,000 increments, which functions as a de facto $100 floor.",
+      "source_url": "https://railway.com/affiliate-program",
+      "urls_checked": [
+        "https://railway.com/affiliate-program",
+        "https://docs.railway.com/community/affiliate-program"
+      ],
+      "retrieved_on": "2026-08-18",
+      "confidence": "medium"
+    }
+  ]
+}
