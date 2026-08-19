@@ -1210,3 +1210,22 @@ details[open].compare-caveats summary::before { content: '- '; }
   section, .ranked-item, tr { break-inside: avoid; }
   h2, h3 { break-after: avoid; }
 }
+
+/* Page shell and lede, introduced with the tabbed layout. */
+.page {
+  margin: 0;
+}
+.page-lede {
+  max-width: var(--measure);
+  margin: 0 0 var(--space-6);
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+}
+.footer-note {
+  max-width: var(--measure);
+  margin: var(--space-3) 0 0;
+  color: var(--ink-faint);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+.footer-note a { color: var(--ink-muted); }
