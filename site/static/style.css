@@ -1327,31 +1327,6 @@ details[open].compare-caveats summary::before { content: '- '; }
   white-space: nowrap;
 }
 
-/* One prose column against six short ones. Without explicit sizing the payout
-   text takes the whole width and the global word-break shatters the narrow
-   columns a character at a time, turning "yes" into three stacked letters.
-   The short columns refuse to wrap; only the quoted payout does. */
-.affiliate-table th,
-.affiliate-table td {
-  white-space: nowrap;
-  vertical-align: top;
-  word-break: normal;
-}
-.affiliate-table .cell-provider {
-  white-space: normal;
-  min-width: 8rem;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-.affiliate-table .cell-payout {
-  white-space: normal;
-  min-width: 24rem;
-  word-break: normal;
-  overflow-wrap: break-word;
-  font-size: var(--text-sm);
-  line-height: var(--leading-snug);
-}
-
 /* Says what the site is, on every page, for the visitor who arrived on tab
    four from a search result and has no idea what they are looking at. */
 .tagline {

@@ -35,7 +35,7 @@ jobs:
         run: |
           count=$(find site/dist -name '*.html' | wc -l)
           echo "built $count pages"
-          test "$count" -ge 6
+          test "$count" -ge 5
           # A crawler that cannot enumerate the pages indexes whichever one it
           # happened to find, so treat these as build products, not extras.
           test -s site/dist/sitemap.xml

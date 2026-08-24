@@ -1879,41 +1879,6 @@ def write(relative: str, content: str) -> None:
     written.append(path)
 
 
-def build_who_pays_rows(affiliate_doc: dict) -> list:
-    """Tab 6: what each provider would pay this site to recommend it.
-
-    A comparison site that ranks providers and can be paid by them owes the
-    reader the second half of that sentence. The research already held it and
-    nothing rendered it. Providers with a programme sort first, because they
-    are the ones the reader needs to weigh; within each group, alphabetical.
-    """
-    rows = []
-    for rec in affiliate_doc.get("programmes", []):
-        has = bool(rec.get("has_programme"))
-        recurring = rec.get("recurring")
-        cookie = rec.get("cookie_days")
-        rows.append({
-            "provider": rec.get("provider", "?"),
-            "has_programme": has,
-            # A checked negative is a finding, not a blank. "none found" says
-            # what was done without asserting that none exists anywhere.
-            "programme_label": "yes" if has else "none found",
-            "payout": rec.get("payout") or NULL_DISPLAY,
-            "recurring": (
-                "recurring" if recurring == "recurring"
-                else "one-off" if recurring == "one_off"
-                else NULL_DISPLAY
-            ),
-            "cookie_days": f"{cookie} days" if cookie else NULL_DISPLAY,
-            "network": rec.get("network") or NULL_DISPLAY,
-            "confidence": rec.get("confidence") or NULL_DISPLAY,
-            "retrieved_on": rec.get("retrieved_on"),
-            "source_url": rec.get("source_url") or "",
-        })
-    rows.sort(key=lambda r: (0 if r["has_programme"] else 1, r["provider"].lower()))
-    return rows
-
-
 def build_takeaway(nav: str, rows: list) -> str | None:
     """The one sentence a reader repeats to someone else.
 
@@ -2005,16 +1970,6 @@ def build_takeaway(nav: str, rows: list) -> str | None:
             f"providers in the ranking. The cheapest plan is not the cheapest bill."
         )
 
-    if nav == "who-pays":
-        if not rows:
-            return None
-        with_prog = sum(1 for r in rows if r["has_programme"])
-        return (
-            f"{with_prog} of the {len(rows)} providers ranked on this site would "
-            f"pay it to recommend them. It currently takes money from none of them, "
-            f"and no link here is a paid link."
-        )
-
     if nav == "jurisdiction":
         if not rows:
             return None
@@ -2089,10 +2044,6 @@ def main() -> int:
     allin_rows = build_allin_tab_rows(costs_doc, capture_date)
     juris_rows = build_jurisdiction_tab_rows(costs_doc, capture_date)
 
-    affiliate_doc = load("affiliate-terms.json")
-    affiliate_date = affiliate_doc.get("_meta", {}).get("retrieved_on", capture_date)
-    who_pays_rows = build_who_pays_rows(affiliate_doc)
-
     env = Environment(
         loader=FileSystemLoader(TEMPLATES),
         autoescape=True,
@@ -2110,7 +2061,6 @@ def main() -> int:
         "dataset_date": capture_date,
         "generated_on": today.isoformat(),
         "has_paid_links": False,
-        "affiliate_date": affiliate_date,
     }
 
     if DIST.exists():
@@ -2170,11 +2120,6 @@ def main() -> int:
             "Jurisdiction: cloud exposure and disclosure",
             "US cloud-jurisdiction exposure and sovereignty disclosure for 21 providers.",
         ),
-        "who-pays": (
-            "Who pays us",
-            "The affiliate terms of all 21 providers ranked here, including the "
-            "15 that would pay this site for a referral.",
-        ),
     }
 
     # Total cost leads, because it is the question someone choosing a host
@@ -2186,7 +2131,6 @@ def main() -> int:
         ("egress.html",       "tab_egress.html",       "egress",       egress_tab_rows, egress_chart),
         ("year-two.html",     "tab_year_two.html",     "year-two",     year_two_rows,  year_two_chart),
         ("jurisdiction.html", "tab_jurisdiction.html", "jurisdiction", juris_rows,     None),
-        ("who-pays-us.html",  "tab_who_pays.html",     "who-pays",     who_pays_rows,  None),
     ]
 
     # The landing page carries each other page's own computed takeaway, so the
@@ -2200,8 +2144,6 @@ def main() -> int:
          "takeaway": build_takeaway("year-two", year_two_rows)},
         {"href": "/jurisdiction.html", "label": "Which law a provider answers to",
          "takeaway": build_takeaway("jurisdiction", juris_rows)},
-        {"href": "/who-pays-us.html", "label": "Who pays us",
-         "takeaway": build_takeaway("who-pays", who_pays_rows)},
     ]
 
     for filename, tmpl_name, nav, rows, chart in tabs:
