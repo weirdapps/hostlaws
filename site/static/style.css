@@ -1221,6 +1221,77 @@ details[open].compare-caveats summary::before { content: '- '; }
   color: var(--ink-muted);
   font-size: var(--text-base);
 }
+
+/* The sentence a reader repeats to someone else. It carries the finding the
+   chart below it shows, so it is set at reading size in full-strength ink,
+   above the chart rather than captioning it. The rule is structural, not the
+   age colour: nothing here is a warning about a provider. */
+.takeaway {
+  max-width: var(--measure);
+  margin: 0 0 var(--space-6);
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--rule-strong);
+  color: var(--ink);
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  text-wrap: pretty;
+}
+
+/* Short columns must not break mid-token. The tables already scroll inside
+   .table-wrap, so shattering "PROVIDER" into three stacked fragments buys no
+   layout safety and costs legibility badly at narrow widths. Prose body cells
+   keep wrapping as before. */
+.data-table th,
+.data-table td {
+  /* break-word here split short tokens a character at a time: "CX23" became
+     "CX2 / 3". Wrap at spaces and hyphens, and only break inside a word when
+     it genuinely cannot fit. */
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.data-table th[scope="col"],
+.data-table td.num,
+.data-table time {
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+/* One prose column against six short ones. Without explicit sizing the payout
+   text takes the whole width and the global word-break shatters the narrow
+   columns a character at a time, turning "yes" into three stacked letters.
+   The short columns refuse to wrap; only the quoted payout does. */
+.affiliate-table th,
+.affiliate-table td {
+  white-space: nowrap;
+  vertical-align: top;
+  word-break: normal;
+}
+.affiliate-table .cell-provider {
+  white-space: normal;
+  min-width: 8rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.affiliate-table .cell-payout {
+  white-space: normal;
+  min-width: 24rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* Says what the site is, on every page, for the visitor who arrived on tab
+   four from a search result and has no idea what they are looking at. */
+.tagline {
+  flex-basis: 100%;
+  order: 3;
+  max-width: var(--measure);
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+}
 .footer-note {
   max-width: var(--measure);
   margin: var(--space-3) 0 0;

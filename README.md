@@ -38,6 +38,9 @@ uv run python site/build.py        # writes site/dist
 uv run python pricing/fetch_live.py # refreshes research/live-prices.json
 ```
 
+Set `HOSTLAWS_GOATCOUNTER` to emit the counting markup; leave it unset and the
+build produces no analytics at all, which is what you want locally.
+
 The build needs Python 3.12 and Jinja2. No JavaScript, no framework, no build
 toolchain. The site is complete and readable with JavaScript disabled.
 

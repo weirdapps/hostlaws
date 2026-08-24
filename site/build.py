@@ -45,6 +45,13 @@ DIST = HERE / "dist"
 # --------------------------------------------------------------------------
 SITE = {
     "name": "hostlaws.com",
+    # Absolute origin, needed for canonical links, the sitemap and social card
+    # images, all of which a relative path cannot express.
+    "base_url": (os.environ.get("HOSTLAWS_BASE_URL") or "https://hostlaws.com").rstrip("/"),
+    # GoatCounter subdomain code, for example "hostlaws" for
+    # hostlaws.goatcounter.com. Absent means no analytics markup is emitted at
+    # all, so a local build stays clean and never counts its own author.
+    "goatcounter": os.environ.get("HOSTLAWS_GOATCOUNTER") or None,
     # No invented default. An address that does not resolve is worse than no
     # address: it advertises accountability and provides none. Set this to a
     # route that demonstrably works, an issues URL or a mailbox that receives.
@@ -1558,7 +1565,9 @@ def build_vps_tab_rows(costs: dict, capture_date: str,
             "ram_gb": ram,
             "vcpu": vcpu,
             "eur_per_gb_ram": eur_per_gb,
-            "eur_per_gb_fmt": (f"{eur_per_gb:.4f}" if eur_per_gb is not None
+            # Two places, matching the chart labels. Four implied a precision
+            # the source pages do not carry and made the column hard to scan.
+            "eur_per_gb_fmt": (f"{eur_per_gb:.2f}" if eur_per_gb is not None
                                else NULL_DISPLAY),
             "url": url,
             "capture_date": capture_date,
@@ -1864,6 +1873,187 @@ def write(relative: str, content: str) -> None:
     written.append(path)
 
 
+def build_who_pays_rows(affiliate_doc: dict) -> list:
+    """Tab 6: what each provider would pay this site to recommend it.
+
+    A comparison site that ranks providers and can be paid by them owes the
+    reader the second half of that sentence. The research already held it and
+    nothing rendered it. Providers with a programme sort first, because they
+    are the ones the reader needs to weigh; within each group, alphabetical.
+    """
+    rows = []
+    for rec in affiliate_doc.get("programmes", []):
+        has = bool(rec.get("has_programme"))
+        recurring = rec.get("recurring")
+        cookie = rec.get("cookie_days")
+        rows.append({
+            "provider": rec.get("provider", "?"),
+            "has_programme": has,
+            # A checked negative is a finding, not a blank. "none found" says
+            # what was done without asserting that none exists anywhere.
+            "programme_label": "yes" if has else "none found",
+            "payout": rec.get("payout") or NULL_DISPLAY,
+            "recurring": (
+                "recurring" if recurring == "recurring"
+                else "one-off" if recurring == "one_off"
+                else NULL_DISPLAY
+            ),
+            "cookie_days": f"{cookie} days" if cookie else NULL_DISPLAY,
+            "network": rec.get("network") or NULL_DISPLAY,
+            "confidence": rec.get("confidence") or NULL_DISPLAY,
+            "retrieved_on": rec.get("retrieved_on"),
+            "source_url": rec.get("source_url") or "",
+        })
+    rows.sort(key=lambda r: (0 if r["has_programme"] else 1, r["provider"].lower()))
+    return rows
+
+
+def build_takeaway(nav: str, rows: list) -> str | None:
+    """The one sentence a reader repeats to someone else.
+
+    Every number here is read back off the rows that built the chart, so the
+    sentence cannot drift from the figure above it and cannot go stale when
+    the daily refresh moves a price. Returns None when the underlying rows
+    cannot support the claim, and the page then simply omits it: a takeaway
+    that is guessed is worse than no takeaway at all.
+    """
+    if nav == "vps":
+        priced = [r for r in rows if r.get("eur_per_gb_ram") is not None]
+        if len(priced) < 2:
+            return None
+        low = min(priced, key=lambda r: r["eur_per_gb_ram"])
+        high = max(priced, key=lambda r: r["eur_per_gb_ram"])
+        if not low["eur_per_gb_ram"]:
+            return None
+        ratio = high["eur_per_gb_ram"] / low["eur_per_gb_ram"]
+        return (
+            f"The same gigabyte of RAM costs {ratio:.1f} times more at "
+            f"{high['short']} than at {low['short']}: EUR "
+            f"{high['eur_per_gb_ram']:.2f} against EUR "
+            f"{low['eur_per_gb_ram']:.2f} a month."
+        )
+
+    if nav == "egress":
+        priced = [r for r in rows if r.get("_sort") is not None]
+        if not priced:
+            return None
+        free = [r for r in priced if r["_sort"] == 0]
+        billed = [r for r in priced if r["_sort"] != 0]
+        if not billed:
+            return (
+                f"All {len(priced)} providers here carry 1 TB of outbound "
+                f"traffic at no extra charge."
+            )
+        # The stored costs are not converted to a common currency, so naming a
+        # dearest across two of them would be a comparison of unlike numbers.
+        # Only claim a maximum when every billed row is quoted in one currency.
+        one_currency = len({r.get("currency") for r in billed}) == 1
+        if not one_currency:
+            return (
+                f"{len(free)} of {len(priced)} providers carry 1 TB of outbound "
+                f"traffic at no extra charge. The other {len(billed)} bill for it."
+            )
+        dearest = max(billed, key=lambda r: r["_sort"])
+        if not free:
+            return (
+                f"Every provider here bills for outbound traffic. The dearest "
+                f"terabyte costs {dearest['cost_display']} at {dearest['short']}."
+            )
+        return (
+            f"{len(free)} of {len(priced)} providers carry 1 TB of outbound "
+            f"traffic at no extra charge. The same terabyte costs "
+            f"{dearest['cost_display']} at {dearest['short']}."
+        )
+
+    if nav == "year-two":
+        # Already sorted worst first by the numeric _sort. "multiple" is a
+        # display string such as "3.50x", so the number comes off _sort.
+        worst = next(
+            (r for r in rows if r.get("_sort") and r.get("year_two_known")), None
+        )
+        if not worst:
+            return None
+        return (
+            f"The steepest renewal here multiplies the bill by "
+            f"{worst['_sort']:.1f} once the introductory rate ends: "
+            f"{worst['provider']}, {worst['plan']}."
+        )
+
+    if nav == "all-in":
+        priced = [
+            r for r in rows
+            if r.get("instance_eur") is not None and r.get("total_eur") is not None
+        ]
+        if len(priced) < 2:
+            return None
+        by_base = [r["provider"] for r in sorted(priced, key=lambda r: r["instance_eur"])]
+        by_total = [r["provider"] for r in sorted(priced, key=lambda r: r["total_eur"])]
+        moved = sum(1 for a, b in zip(by_base, by_total) if a != b)
+        if not moved:
+            return (
+                "Adding a terabyte of traffic changes no provider's position "
+                "in the ranking."
+            )
+        return (
+            f"Adding a terabyte of traffic moves {moved} of the {len(priced)} "
+            f"providers in the ranking. The cheapest plan is not the cheapest bill."
+        )
+
+    if nav == "who-pays":
+        if not rows:
+            return None
+        with_prog = sum(1 for r in rows if r["has_programme"])
+        return (
+            f"{with_prog} of the {len(rows)} providers ranked on this site would "
+            f"pay it to recommend them. It currently takes money from none of them, "
+            f"and no link here is a paid link."
+        )
+
+    if nav == "jurisdiction":
+        if not rows:
+            return None
+        exposed = sum(1 for r in rows if r.get("us_exposure") == "direct")
+        disclosed = sum(1 for r in rows if r.get("disclosure_url"))
+        return (
+            f"{exposed} of the {len(rows)} providers checked have a US entity "
+            f"in the contracting or ownership chain. {disclosed} have published "
+            f"a sovereignty disclosure we could locate."
+        )
+
+    return None
+
+
+def write_robots_and_sitemap(filenames: list[str], today: date) -> None:
+    """A crawler that cannot enumerate the pages indexes whichever one it
+    stumbled on. Both files are derived from the same tab list the pages are
+    built from, so a new tab cannot be left out of the sitemap by hand."""
+    base = SITE["base_url"]
+
+    write(
+        "robots.txt",
+        "User-agent: *\n"
+        "Allow: /\n"
+        f"\nSitemap: {base}/sitemap.xml\n",
+    )
+
+    urls = []
+    for filename in filenames:
+        path = "" if filename == "index.html" else filename
+        urls.append(
+            "  <url>\n"
+            f"    <loc>{base}/{path}</loc>\n"
+            f"    <lastmod>{today.isoformat()}</lastmod>\n"
+            "  </url>\n"
+        )
+    write(
+        "sitemap.xml",
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(urls)
+        + "</urlset>\n",
+    )
+
+
 def check_output() -> None:
     """No em-dash may reach a generated file, and no provider without a
     programme may carry a paid-link marker."""
@@ -1893,6 +2083,10 @@ def main() -> int:
     allin_rows = build_allin_tab_rows(costs_doc, capture_date)
     juris_rows = build_jurisdiction_tab_rows(costs_doc, capture_date)
 
+    affiliate_doc = load("affiliate-terms.json")
+    affiliate_date = affiliate_doc.get("_meta", {}).get("retrieved_on", capture_date)
+    who_pays_rows = build_who_pays_rows(affiliate_doc)
+
     env = Environment(
         loader=FileSystemLoader(TEMPLATES),
         autoescape=True,
@@ -1910,6 +2104,7 @@ def main() -> int:
         "dataset_date": capture_date,
         "generated_on": today.isoformat(),
         "has_paid_links": False,
+        "affiliate_date": affiliate_date,
     }
 
     if DIST.exists():
@@ -1921,6 +2116,17 @@ def main() -> int:
     cname = STATIC / "CNAME"
     if cname.exists():
         write("CNAME", cname.read_text(encoding="utf-8").strip() + "\n")
+
+    # Icons and the social card. Copied rather than written, because they are
+    # binary and the em-dash output check reads every written file as text.
+    # og.png and favicon.ico are committed build products of og.svg and
+    # favicon.svg; regenerate them with the command in CLAUDE.md when the
+    # figures on the card change. og.svg itself is a source, so it is not
+    # shipped.
+    for asset in ("favicon.svg", "favicon.ico", "apple-touch-icon.png", "og.png"):
+        src = STATIC / asset
+        if src.exists():
+            shutil.copy2(src, DIST / asset)
 
     fonts_src = STATIC / "fonts"
     if fonts_src.exists():
@@ -1934,26 +2140,33 @@ def main() -> int:
     year_two_chart = svg_renewal_cliff_chart(year_two_rows)
     allin_chart = svg_allin_tab_chart(allin_rows)
 
+    # The brand belongs in <title> only, which base.html appends. Putting it
+    # here too printed it inside the visible <h1> on every page.
     _titles = {
         "vps": (
-            "VPS cost per GB of RAM | hostlaws",
+            "VPS cost per GB of RAM",
             "Cost per GB of RAM per month for nine popular cloud providers, ascending.",
         ),
         "egress": (
-            "Egress: 1 TB monthly outbound cost | hostlaws",
+            "Egress: 1 TB monthly outbound cost",
             "What 1 TB of monthly outbound traffic costs from nine providers, descending.",
         ),
         "year-two": (
-            "Year-two renewal cliffs | hostlaws",
+            "Year-two renewal cliffs",
             "Advertised price against renewal price: the eight worst promotional-to-renewal gaps.",
         ),
         "all-in": (
-            "All-in: base plan plus 1 TB egress | hostlaws",
+            "All-in: base plan plus 1 TB egress",
             "Base plan plus 1 TB egress, stacked, for nine providers.",
         ),
         "jurisdiction": (
-            "Jurisdiction: cloud exposure and disclosure | hostlaws",
+            "Jurisdiction: cloud exposure and disclosure",
             "US cloud-jurisdiction exposure and sovereignty disclosure for 21 providers.",
+        ),
+        "who-pays": (
+            "Who pays us",
+            "The affiliate terms of all 21 providers ranked here, including the "
+            "15 that would pay this site for a referral.",
         ),
     }
 
@@ -1963,10 +2176,14 @@ def main() -> int:
         ("year-two.html",     "tab_year_two.html",     "year-two",     year_two_rows,  year_two_chart),
         ("all-in.html",       "tab_all_in.html",       "all-in",       allin_rows,     allin_chart),
         ("jurisdiction.html", "tab_jurisdiction.html", "jurisdiction", juris_rows,     None),
+        ("who-pays-us.html",  "tab_who_pays.html",     "who-pays",     who_pays_rows,  None),
     ]
 
     for filename, tmpl_name, nav, rows, chart in tabs:
         page_title, page_description = _titles[nav]
+        # The canonical URL and the counting pixel both need a path, and the
+        # index is addressed as the bare origin, not as /index.html.
+        page_path = "" if filename == "index.html" else filename
         write(
             filename,
             env.get_template(tmpl_name).render(
@@ -1977,9 +2194,13 @@ def main() -> int:
                 chart_svg=chart,
                 page_title=page_title,
                 page_description=page_description,
+                page_path=page_path,
+                takeaway=build_takeaway(nav, rows),
                 capture_date=capture_date,
             ),
         )
+
+    write_robots_and_sitemap([f for f, *_ in tabs], today)
 
     check_output()
 
