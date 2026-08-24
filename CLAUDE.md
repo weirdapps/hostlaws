@@ -6,11 +6,14 @@ terabyte of traffic, because that is the question someone choosing a host
 actually has. Cost per GB of RAM is a normalisation for comparing unlike
 plans, not an answer, so it lives at `/vps.html`.
 
-**Two widths, and only two.** `--measure` (40rem) for anything read as prose,
-`--measure-data` (64rem) for charts and tables. A chart and the table beneath
-it must share a right edge. Before this rule there were five different edges on
-one page. `.page p/ul/ol/h2/h3` default to `--measure` so an unclassed
-paragraph cannot silently run to full width; do not add a third value.
+**One width for the whole page, on every page.** Prose, charts and tables all
+span the same column, so nothing ends at a different place from the thing above
+it. `--measure` and `--measure-data` both resolve to `none` on purpose, which
+makes every `max-width: var(--measure)` rule fill the page column. Do not give
+either token a length, and do not introduce a new one. A wide table scrolls
+inside `.table-wrap` rather than adding a second measure. The page column is
+set once, by `--page-width`. Verify by measuring, not by eye: every element on
+a page must report the same left and right edge.
 
 Build: `uv run python site/build.py` (writes `site/dist`). Jinja2 and the standard
 library only. No JavaScript dependency: the site must be complete with JS off.
