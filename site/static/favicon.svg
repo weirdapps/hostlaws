@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="hostlaws">
+  <rect width="64" height="64" rx="10" fill="#0D0F12"/>
+  <rect x="12" y="18" width="14" height="8" rx="2" fill="#3987E5"/>
+  <rect x="12" y="30" width="26" height="8" rx="2" fill="#3987E5"/>
+  <rect x="12" y="42" width="40" height="8" rx="2" fill="#3987E5"/>
+</svg>

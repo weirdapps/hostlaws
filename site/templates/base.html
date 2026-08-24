@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page_title }} · {{ site.name }}</title>
 <meta name="description" content="{{ page_description }}">
+<link rel="canonical" href="{{ site.base_url }}/{{ page_path }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:url" content="{{ site.base_url }}/{{ page_path }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:image" content="{{ site.base_url }}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="hostlaws.com: what hosting actually costs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:image" content="{{ site.base_url }}/og.png">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0D0F12">
+
 <link rel="preload" href="/fonts/PublicSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
@@ -14,6 +35,7 @@
 
 <header class="site-header">
   <p class="wordmark"><a href="/">{{ site.name }}</a></p>
+  <p class="tagline">What hosting actually costs, as opposed to what it is advertised at.</p>
   <nav aria-label="Comparisons">
     <ul>
       <li><a href="/"{% if nav == 'vps' %} aria-current="page"{% endif %}>VPS cost</a></li>
@@ -21,6 +43,7 @@
       <li><a href="/year-two.html"{% if nav == 'year-two' %} aria-current="page"{% endif %}>Year two</a></li>
       <li><a href="/all-in.html"{% if nav == 'all-in' %} aria-current="page"{% endif %}>All-in</a></li>
       <li><a href="/jurisdiction.html"{% if nav == 'jurisdiction' %} aria-current="page"{% endif %}>Jurisdiction</a></li>
+      <li><a href="/who-pays-us.html"{% if nav == 'who-pays' %} aria-current="page"{% endif %}>Who pays us</a></li>
     </ul>
   </nav>
 </header>
@@ -28,6 +51,9 @@
 <main id="main">
   <h1 class="headline">{{ page_title }}</h1>
   <p class="page-lede">{{ page_description }}</p>
+  {% if takeaway %}
+  <p class="takeaway">{{ takeaway }}</p>
+  {% endif %}
   {% block content %}{% endblock %}
 </main>
 
@@ -47,5 +73,24 @@
   <p class="footer-note">Published by {{ site.publisher_entity }}{% if site.publisher_country %}, {{ site.publisher_country }}{% endif %}.</p>
   {% endif %}
 </footer>
+{% if site.goatcounter %}
+{# Counting only, and it is the last thing on the page. The script is async and
+   carries no content, so the site remains complete with JavaScript off. The
+   noscript pixel counts the visitors the script cannot see, which on a site
+   written for people who block scripts is most of the point. Only one of the
+   two ever fires, so a visit is never counted twice. GoatCounter sets no
+   cookie and stores no personal data, so no consent banner is required. #}
+{# Pinned to v5 with the vendor's published SRI hash, verified byte for byte
+   against the served file. The unversioned count.js updates in place, which
+   cannot be hashed without the counter silently dying on their next release. #}
+<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.v5.js"
+        integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"
+        crossorigin="anonymous"></script>
+<noscript>
+  <img src="https://{{ site.goatcounter }}.goatcounter.com/count?p=/{{ page_path }}"
+       alt="" width="1" height="1" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+</noscript>
+{% endif %}
 </body>
 </html>

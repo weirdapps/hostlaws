@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="hostlaws.com: what hosting actually costs">
+  <rect width="1200" height="630" fill="#0D0F12"/>
+
+  <g font-family="JetBrains Mono, ui-monospace, monospace">
+    <text x="80" y="96" fill="#8A93A0" font-size="26" font-weight="500">hostlaws.com</text>
+
+    <text x="80" y="216" fill="#E6E9EE" font-size="62" font-weight="700">What hosting</text>
+    <text x="80" y="288" fill="#E6E9EE" font-size="62" font-weight="700">actually costs</text>
+    <text x="80" y="348" fill="#8A93A0" font-size="26" font-weight="400">as opposed to what it is advertised at</text>
+
+    <line x1="80" y1="404" x2="1120" y2="404" stroke="#2E3540" stroke-width="1"/>
+
+    <text x="80" y="452" fill="#636D7A" font-size="20" font-weight="400">EUR per GB of RAM, per month</text>
+    <text x="1120" y="452" fill="#636D7A" font-size="20" font-weight="400" text-anchor="end">captured 2026-08-18</text>
+
+    <text x="80" y="516" fill="#E6E9EE" font-size="22" font-weight="500">OVHcloud</text>
+    <rect x="320" y="498" width="89" height="24" fill="#3987E5"/>
+    <text x="425" y="516" fill="#8A93A0" font-size="22" font-weight="400">0.95</text>
+
+    <text x="80" y="574" fill="#E6E9EE" font-size="22" font-weight="500">Azure</text>
+    <rect x="320" y="556" width="720" height="24" fill="#3987E5"/>
+    <text x="1056" y="574" fill="#8A93A0" font-size="22" font-weight="400">7.70</text>
+  </g>
+</svg>

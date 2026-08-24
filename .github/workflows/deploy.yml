@@ -27,11 +27,20 @@ jobs:
         env:
           HOSTLAWS_PUBLISHER_ENTITY: hostlaws
           HOSTLAWS_CONTACT: https://github.com/weirdapps/hostlaws/issues
+          # Repository variable, not a secret: the code is visible in the page
+          # source by design. Unset means no analytics markup is emitted, so
+          # the site keeps building before the account exists.
+          HOSTLAWS_GOATCOUNTER: ${{ vars.HOSTLAWS_GOATCOUNTER }}
       - name: Fail if the build produced nothing
         run: |
           count=$(find site/dist -name '*.html' | wc -l)
           echo "built $count pages"
-          test "$count" -ge 5
+          test "$count" -ge 6
+          # A crawler that cannot enumerate the pages indexes whichever one it
+          # happened to find, so treat these as build products, not extras.
+          test -s site/dist/sitemap.xml
+          test -s site/dist/robots.txt
+          test -s site/dist/og.png
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site/dist

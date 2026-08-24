@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <p>This site ranks providers, and fifteen of those providers run a programme that would pay it for a referral. That is a standing conflict of interest, and the only useful response to one is to publish it. The table below is what each provider offers, read from the provider's own programme page on the date shown.</p>
+  <p>No link anywhere on this site is a paid link, and no ranking on any page is influenced by the figures below. If that ever changes, this page changes with it and every affected link is marked at the point of use.</p>
+  <div class="table-wrap">
+    <table class="data-table affiliate-table">
+      <caption>Affiliate and referral terms, {{ rows|length }} providers, checked {{ affiliate_date }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Provider</th>
+          <th scope="col">Programme</th>
+          <th scope="col" class="cell-payout">What it pays</th>
+          <th scope="col">Basis</th>
+          <th scope="col">Cookie</th>
+          <th scope="col">Confidence</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <th scope="row" class="cell-provider">{{ row.provider }}</th>
+          <td>{{ row.programme_label }}</td>
+          <td class="cell-payout">{{ row.payout }}</td>
+          <td>{{ row.recurring }}</td>
+          <td class="num">{{ row.cookie_days }}</td>
+          <td>{{ row.confidence }}</td>
+          <td>{% if row.source_url %}<a href="{{ row.source_url }}">terms</a>{% else %}not linked{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">Checked {{ affiliate_date }}. Providers running a programme sort first, then alphabetically; the order carries no judgement. "none found" means no programme was located at the URLs checked on that date, not that none exists. Confidence records how directly the figure came from the provider: "high" is the provider's own programme page, "medium" is a secondary source named in the record. Payout text is quoted rather than summarised, because a rate stated as a range, a tier or a first-year-only figure means something different from a flat percentage.</p>
+</article>
+{% endblock %}

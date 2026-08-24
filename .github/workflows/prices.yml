@@ -39,6 +39,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to live-prices.json"
           else
-            git commit -m "chore: update live-prices.json [skip ci]"
+            # No [skip ci] here. The push is exactly what triggers deploy.yml,
+            # and suppressing it left the published pages frozen at the last
+            # human push while this job refreshed the data underneath them:
+            # the site promises daily prices and served week-old ones. There
+            # is no loop risk, because deploy.yml commits nothing.
+            git commit -m "chore: update live-prices.json"
             git push
           fi
