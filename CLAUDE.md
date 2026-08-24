@@ -1,7 +1,16 @@
 # hostlaws
 
-Static site: what hosting actually costs. Five pages, one chart each, built by
-`site/build.py` from JSON in `research/`.
+Static site: what hosting actually costs. Six pages built by `site/build.py`
+from JSON in `research/`. The landing page is total cost, base plan plus a
+terabyte of traffic, because that is the question someone choosing a host
+actually has. Cost per GB of RAM is a normalisation for comparing unlike
+plans, not an answer, so it lives at `/vps.html`.
+
+**Two widths, and only two.** `--measure` (40rem) for anything read as prose,
+`--measure-data` (64rem) for charts and tables. A chart and the table beneath
+it must share a right edge. Before this rule there were five different edges on
+one page. `.page p/ul/ol/h2/h3` default to `--measure` so an unclassed
+paragraph cannot silently run to full width; do not add a third value.
 
 Build: `uv run python site/build.py` (writes `site/dist`). Jinja2 and the standard
 library only. No JavaScript dependency: the site must be complete with JS off.

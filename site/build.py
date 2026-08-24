@@ -1764,6 +1764,12 @@ def build_allin_tab_rows(costs: dict, capture_date: str) -> list:
             if (total is not None and instance is not None)
             else None
         )
+        # Subtracting two equal prices leaves a tiny negative residue rather
+        # than exactly zero, which printed as "EUR -0.00" for every provider
+        # that includes its traffic. Round to cents, then add zero so IEEE
+        # negative zero becomes positive zero.
+        if egress_cost is not None:
+            egress_cost = round(egress_cost, 2) + 0.0
         rows.append({
             "provider": provider,
             "short": _short9(provider),
@@ -1979,7 +1985,7 @@ def build_takeaway(nav: str, rows: list) -> str | None:
             f"{worst['provider']}, {worst['plan']}."
         )
 
-    if nav == "all-in":
+    if nav in ("all-in", "home"):
         priced = [
             r for r in rows
             if r.get("instance_eur") is not None and r.get("total_eur") is not None
@@ -2143,6 +2149,11 @@ def main() -> int:
     # The brand belongs in <title> only, which base.html appends. Putting it
     # here too printed it inside the visible <h1> on every page.
     _titles = {
+        "home": (
+            "What hosting actually costs",
+            "Base plan plus a terabyte of traffic, for nine providers, with every "
+            "figure dated and linked to the provider's own page.",
+        ),
         "vps": (
             "VPS cost per GB of RAM",
             "Cost per GB of RAM per month for nine popular cloud providers, ascending.",
@@ -2155,10 +2166,6 @@ def main() -> int:
             "Year-two renewal cliffs",
             "Advertised price against renewal price: the eight worst promotional-to-renewal gaps.",
         ),
-        "all-in": (
-            "All-in: base plan plus 1 TB egress",
-            "Base plan plus 1 TB egress, stacked, for nine providers.",
-        ),
         "jurisdiction": (
             "Jurisdiction: cloud exposure and disclosure",
             "US cloud-jurisdiction exposure and sovereignty disclosure for 21 providers.",
@@ -2170,13 +2177,31 @@ def main() -> int:
         ),
     }
 
+    # Total cost leads, because it is the question someone choosing a host
+    # actually has. Cost per GB of RAM is a normalisation useful for comparing
+    # unlike plans, not an answer, so it moved off the landing page to /vps.html.
     tabs = [
-        ("index.html",        "tab_vps.html",         "vps",          vps_rows,       vps_chart),
+        ("index.html",        "tab_home.html",         "home",         allin_rows,     allin_chart),
+        ("vps.html",          "tab_vps.html",          "vps",          vps_rows,       vps_chart),
         ("egress.html",       "tab_egress.html",       "egress",       egress_tab_rows, egress_chart),
         ("year-two.html",     "tab_year_two.html",     "year-two",     year_two_rows,  year_two_chart),
-        ("all-in.html",       "tab_all_in.html",       "all-in",       allin_rows,     allin_chart),
         ("jurisdiction.html", "tab_jurisdiction.html", "jurisdiction", juris_rows,     None),
         ("who-pays-us.html",  "tab_who_pays.html",     "who-pays",     who_pays_rows,  None),
+    ]
+
+    # The landing page carries each other page's own computed takeaway, so the
+    # summary cannot drift from the page it points at.
+    findings = [
+        {"href": "/vps.html", "label": "Cost per GB of RAM",
+         "takeaway": build_takeaway("vps", vps_rows)},
+        {"href": "/egress.html", "label": "What outbound traffic costs",
+         "takeaway": build_takeaway("egress", egress_tab_rows)},
+        {"href": "/year-two.html", "label": "What happens in year two",
+         "takeaway": build_takeaway("year-two", year_two_rows)},
+        {"href": "/jurisdiction.html", "label": "Which law a provider answers to",
+         "takeaway": build_takeaway("jurisdiction", juris_rows)},
+        {"href": "/who-pays-us.html", "label": "Who pays us",
+         "takeaway": build_takeaway("who-pays", who_pays_rows)},
     ]
 
     for filename, tmpl_name, nav, rows, chart in tabs:
@@ -2196,6 +2221,7 @@ def main() -> int:
                 page_description=page_description,
                 page_path=page_path,
                 takeaway=build_takeaway(nav, rows),
+                findings=findings,
                 capture_date=capture_date,
             ),
         )

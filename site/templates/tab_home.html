@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block masthead %}
+<div class="hero">
+  <h1 class="hero-title">What will hosting actually cost you?</h1>
+  <p class="hero-lede">Advertised prices leave things out. Traffic is billed separately, the introductory rate expires, and the cheapest plan is often not the cheapest bill. This is the total, for {{ rows|length }} providers, with every figure dated and linked to the page it came from.</p>
+</div>
+{% endblock %}
+{% block content %}
+<article class="page">
+  <section>
+    <h2 class="section-title">Base plan plus a terabyte of traffic, per month</h2>
+    {% if takeaway %}
+    <p class="takeaway">{{ takeaway }}</p>
+    {% endif %}
+    <div class="chart-block">
+      {{ chart_svg }}
+    </div>
+    <p class="chart-note">Cheapest plan with at least 4 GB RAM per provider, plus the cost of 1 TB of outbound traffic per month, stacked. This reorders the ranking against base price alone, which is the point: a plan that looks cheap can carry the dearer bill.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <caption>Base plan plus 1 TB egress, {{ rows|length }} providers, captured {{ capture_date }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Provider</th>
+            <th scope="col">Plan</th>
+            <th scope="col" class="num">Base</th>
+            <th scope="col" class="num">1 TB egress</th>
+            <th scope="col" class="num">Total / mo</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <th scope="row">{{ row.provider }}</th>
+            <td>{{ row.plan }}</td>
+            <td class="num">{{ row.instance_fmt }}</td>
+            <td class="num">{{ row.egress_fmt }}</td>
+            <td class="num">{{ row.total_fmt }}</td>
+            <td>{% if row.url %}<a href="{{ row.url }}">pricing</a>{% else %}not linked{% endif %}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">The rest of the bill</h2>
+    <p>Total cost is the first question, not the only one. Each of these is a separate way the advertised number and the invoice come apart.</p>
+    <ul class="finding-list">
+      {% for f in findings %}
+      <li class="finding-item">
+        <a class="finding-link" href="{{ f.href }}">{{ f.label }}</a>
+        {% if f.takeaway %}<p class="finding-text">{{ f.takeaway }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">Where the numbers come from</h2>
+    <p>Every figure carries the date it was captured and links to the provider's own page. Prices for Akamai, Vultr, Scaleway and Microsoft Azure refresh daily from those providers' public pricing APIs; the rest are dated manual captures, and each figure says which it is. A failed refresh keeps the previous value and marks it stale rather than blanking it.</p>
+    <p>Where a value could not be established the page says so. A blank is never rendered as a zero, and a provider whose figures could not be obtained never ranks first by virtue of being undocumented. If something here is wrong, <a href="{{ site.contact_href }}">open an issue</a> with the provider, the figure, and a link to the page that contradicts it.</p>
+  </section>
+</article>
+{% endblock %}
