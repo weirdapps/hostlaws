@@ -114,14 +114,14 @@
   --radius-0: 0;
   --radius-1: 2px;
 
-  /* Two widths, and only two. Prose reads in the narrow column; charts and
-     tables share the wide one. Before this there were five different right
-     edges on a single page, the worst pair being a 640px chart sitting
-     directly above its own 1088px table. Anything that needs a width uses one
-     of these two tokens, so the difference reads as structure rather than
-     accident. */
-  --measure: 40rem;
-  --measure-data: 64rem;
+  /* ONE width for the whole page, on every page. Prose, charts and tables all
+     span the same column, so nothing ever ends at a different place from the
+     thing above it. Both tokens resolve to none on purpose: every rule that
+     says max-width: var(--measure) or var(--measure-data) therefore fills the
+     page column. A wide table scrolls inside .table-wrap rather than
+     introducing a second measure. Do not give either token a length. */
+  --measure: none;
+  --measure-data: none;
   --page-width: 1120px;
 }
 
