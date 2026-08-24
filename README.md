@@ -6,15 +6,16 @@ A static site comparing hosting providers on the numbers that decide a real bill
 cost per unit of RAM, what outbound traffic costs once you exceed the included
 allowance, and what the price becomes in year two when the promotional rate ends.
 
-Five pages, one chart each:
+Six pages:
 
 | Page | Question it answers |
 |---|---|
-| VPS cost | What does a gigabyte of RAM cost per month, across nine providers |
+| Total cost (landing) | What is the actual monthly bill: base plan plus a terabyte of traffic |
+| Cost per GB | What does a gigabyte of RAM cost per month, across nine providers |
 | Egress | What does 1 TB of monthly outbound traffic cost, from zero to EUR 149 |
 | Year two | How much does the bill multiply when the introductory rate ends |
-| All-in | Base plan plus traffic, which reorders the ranking |
 | Jurisdiction | Which legal system can compel each provider, and who has published a statement about it |
+| Who pays us | What each provider would pay this site for a referral |
 
 ## How the numbers are sourced
 
