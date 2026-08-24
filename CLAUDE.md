@@ -1,10 +1,14 @@
 # hostlaws
 
-Static site: what hosting actually costs. Six pages built by `site/build.py`
+Static site: what hosting actually costs. Five pages built by `site/build.py`
 from JSON in `research/`. The landing page is total cost, base plan plus a
 terabyte of traffic, because that is the question someone choosing a host
 actually has. Cost per GB of RAM is a normalisation for comparing unlike
 plans, not an answer, so it lives at `/vps.html`.
+
+`research/affiliate-terms.json` is deliberately unrendered. A "Who pays us"
+page was built from it and removed at the owner's request; do not propose it
+again without being asked.
 
 **One width for the whole page, on every page.** Prose, charts and tables all
 span the same column, so nothing ends at a different place from the thing above

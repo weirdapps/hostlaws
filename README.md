@@ -6,7 +6,7 @@ A static site comparing hosting providers on the numbers that decide a real bill
 cost per unit of RAM, what outbound traffic costs once you exceed the included
 allowance, and what the price becomes in year two when the promotional rate ends.
 
-Six pages:
+Five pages:
 
 | Page | Question it answers |
 |---|---|
@@ -15,7 +15,6 @@ Six pages:
 | Egress | What does 1 TB of monthly outbound traffic cost, from zero to EUR 149 |
 | Year two | How much does the bill multiply when the introductory rate ends |
 | Jurisdiction | Which legal system can compel each provider, and who has published a statement about it |
-| Who pays us | What each provider would pay this site for a referral |
 
 ## How the numbers are sourced
 
