@@ -38,10 +38,10 @@
   <p class="tagline">What hosting actually costs, as opposed to what it is advertised at.</p>
   <nav aria-label="Comparisons">
     <ul>
-      <li><a href="/"{% if nav == 'vps' %} aria-current="page"{% endif %}>VPS cost</a></li>
+      <li><a href="/"{% if nav == 'home' %} aria-current="page"{% endif %}>Total cost</a></li>
+      <li><a href="/vps.html"{% if nav == 'vps' %} aria-current="page"{% endif %}>Cost per GB</a></li>
       <li><a href="/egress.html"{% if nav == 'egress' %} aria-current="page"{% endif %}>Egress</a></li>
       <li><a href="/year-two.html"{% if nav == 'year-two' %} aria-current="page"{% endif %}>Year two</a></li>
-      <li><a href="/all-in.html"{% if nav == 'all-in' %} aria-current="page"{% endif %}>All-in</a></li>
       <li><a href="/jurisdiction.html"{% if nav == 'jurisdiction' %} aria-current="page"{% endif %}>Jurisdiction</a></li>
       <li><a href="/who-pays-us.html"{% if nav == 'who-pays' %} aria-current="page"{% endif %}>Who pays us</a></li>
     </ul>
@@ -49,11 +49,13 @@
 </header>
 
 <main id="main">
+  {% block masthead %}
   <h1 class="headline">{{ page_title }}</h1>
   <p class="page-lede">{{ page_description }}</p>
   {% if takeaway %}
   <p class="takeaway">{{ takeaway }}</p>
   {% endif %}
+  {% endblock %}
   {% block content %}{% endblock %}
 </main>
 

@@ -114,7 +114,14 @@
   --radius-0: 0;
   --radius-1: 2px;
 
+  /* Two widths, and only two. Prose reads in the narrow column; charts and
+     tables share the wide one. Before this there were five different right
+     edges on a single page, the worst pair being a 640px chart sitting
+     directly above its own 1088px table. Anything that needs a width uses one
+     of these two tokens, so the difference reads as structure rather than
+     accident. */
   --measure: 40rem;
+  --measure-data: 64rem;
   --page-width: 1120px;
 }
 
@@ -357,7 +364,7 @@ main { padding-top: var(--space-8); padding-bottom: var(--space-12); }
   color: var(--ink-muted);
 }
 
-.crosstab-table { max-width: 44rem; }
+.crosstab-table { max-width: var(--measure-data); }
 .crosstab-table td.num {
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);
@@ -419,7 +426,7 @@ th, td { overflow-wrap: break-word; word-break: break-word; }
 
 /* Only .register stacks below 719px. Everything else degrades to a scrollable
    region rather than widening the page. */
-.table-wrap { margin-bottom: var(--space-4); overflow-x: auto; }
+.table-wrap { margin-bottom: var(--space-4); overflow-x: auto; max-width: var(--measure-data); }
 
 .data-table {
   width: 100%;
@@ -493,9 +500,9 @@ td.num, th.num { text-align: right; }
 
 /* Tables written in a prose field, so they sit near the prose measure rather
    than running the full page width away from their row labels. */
-.prose-table { max-width: 44rem; }
+.prose-table { max-width: var(--measure-data); }
 
-.facts-table { max-width: 46rem; }
+.facts-table { max-width: var(--measure-data); }
 /* No fixed width: two single-digit columns reserving 8rem each cannot compress
    inside a 343px viewport. */
 .facts-table td.num { text-align: right; min-width: 3rem; }
@@ -908,7 +915,8 @@ td.bar-cell {
   height: auto;
   display: block;
   overflow: visible;
-  max-width: 640px;
+  /* Same track as the table it sits above, so the two share a right edge. */
+  max-width: var(--measure-data);
 }
 
 .chart-legend {
@@ -1233,6 +1241,68 @@ details[open].compare-caveats summary::before { content: '- '; }
   border-left: 3px solid var(--rule-strong);
   color: var(--ink);
   font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  text-wrap: pretty;
+}
+
+/* Everything read as prose sits in the narrow column by default, so a
+   paragraph nobody remembered to give a class cannot silently run to the full
+   1088px. Data blocks opt out by being charts and tables, never by being
+   wider text. This is what kept producing a third right edge. */
+.page p,
+.page ul,
+.page ol,
+.page h2,
+.page h3 {
+  max-width: var(--measure);
+}
+
+/* ---- landing page --------------------------------------------------- */
+
+.hero {
+  max-width: var(--measure);
+  margin-bottom: var(--space-12);
+}
+.hero-title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+}
+.hero-lede {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  text-wrap: pretty;
+}
+
+.section-title {
+  max-width: var(--measure);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+
+/* Each of the other pages, fronted by its own computed takeaway rather than a
+   label. The reader should be able to decide whether to click from the finding
+   itself, not from a title that promises one. */
+.finding-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+.finding-item {
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--rule);
+}
+.finding-item:last-child { border-bottom: 1px solid var(--rule); }
+.finding-link {
+  display: inline-block;
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-1);
+}
+.finding-text {
+  margin: 0;
+  color: var(--ink-muted);
   line-height: var(--leading-snug);
   text-wrap: pretty;
 }
