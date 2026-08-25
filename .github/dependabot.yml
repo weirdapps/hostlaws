@@ -1,0 +1,26 @@
+# hostlaws had no Dependabot configuration and its vulnerability alerts were
+# switched off entirely: the only repository in the estate with alerts, version
+# updates and a CI test gate all absent, while being public and deployed.
+#
+# It also carried the only floating third-party action refs in the estate, in a
+# job that holds Hetzner and DigitalOcean tokens and pushes back to this repo.
+# Those are pinned by SHA now, which means they never update on their own --
+# hence the github-actions ecosystem below, which is what makes a SHA pin
+# maintainable rather than merely frozen.
+version: 2
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      all-dependencies:
+        patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns: ["*"]
