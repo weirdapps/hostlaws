@@ -34,7 +34,7 @@ import os
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -67,7 +67,7 @@ def fetch_linode() -> dict:
     """
     endpoint = "https://api.linode.com/v4/linode/types"
     provider = "Akamai Connected Cloud (Linode)"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     try:
         data = _get(endpoint)
         plans = []
@@ -116,7 +116,7 @@ def fetch_vultr() -> dict:
     """
     endpoint = "https://api.vultr.com/v2/plans"
     provider = "Vultr"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     try:
         all_plans: list = []
         url: str | None = endpoint
@@ -172,7 +172,7 @@ def fetch_azure() -> dict:
     """
     base = "https://prices.azure.com/api/retail/prices"
     provider = "Microsoft Azure"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     odata = (
         "serviceName eq 'Virtual Machines'"
         " and armRegionName eq 'westeurope'"
@@ -242,7 +242,7 @@ def fetch_scaleway() -> dict:
     zone = "fr-par-1"
     endpoint = f"https://api.scaleway.com/instance/v1/zones/{zone}/products/servers"
     provider = "Scaleway"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     try:
         data = _get(endpoint)
         servers = data.get("servers") or {}
@@ -315,7 +315,7 @@ def fetch_hetzner(token: str) -> dict:
     pricing_endpoint = "https://api.hetzner.cloud/v1/pricing"
     types_endpoint = "https://api.hetzner.cloud/v1/server_types"
     provider = "Hetzner"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     try:
         pricing_data = _get(pricing_endpoint, token=token)
         types_data = _get(types_endpoint, token=token)
@@ -394,7 +394,7 @@ def fetch_digitalocean(token: str) -> dict:
     """
     endpoint = "https://api.digitalocean.com/v2/sizes"
     provider = "DigitalOcean"
-    ts = datetime.now(timezone.utc).isoformat()
+    ts = datetime.now(UTC).isoformat()
     try:
         all_sizes: list = []
         url: str | None = endpoint
@@ -497,7 +497,7 @@ def main(argv: list[str] | None = None) -> int:
         except Exception as exc:
             print(f"  warning: could not read existing file: {exc}")
 
-    fetched_at = datetime.now(timezone.utc).isoformat()
+    fetched_at = datetime.now(UTC).isoformat()
     providers: list[dict] = []
 
     # --- Public APIs: no token needed ---

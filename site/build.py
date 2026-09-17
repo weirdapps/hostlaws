@@ -84,14 +84,16 @@ AFFILIATE_ALIASES = {
 # costs.json and plans-*.json use shorter provider names than providers-merged.json.
 COSTS_ALIAS: dict[str, str] = {
     "Akamai Connected Cloud (formerly Linode)": "Akamai Connected Cloud (Linode)",
-    "Amazon Web Services (AWS), including the AWS European Sovereign Cloud": "Amazon Web Services (AWS)",
+    "Amazon Web Services (AWS), including the AWS European Sovereign Cloud":
+        "Amazon Web Services (AWS)",
     "Google Cloud, including Google Sovereign Cloud / Sovereign Controls": "Google Cloud",
     "Microsoft Azure, including the EU Data Boundary": "Microsoft Azure",
 }
 
 # service-levels.json uses shorter names for three providers.
 SERVICE_LEVEL_ALIAS: dict[str, str] = {
-    "Amazon Web Services (AWS), including the AWS European Sovereign Cloud": "Amazon Web Services (AWS)",
+    "Amazon Web Services (AWS), including the AWS European Sovereign Cloud":
+        "Amazon Web Services (AWS)",
     "Google Cloud, including Google Sovereign Cloud / Sovereign Controls": "Google Cloud",
     "Microsoft Azure, including the EU Data Boundary": "Microsoft Azure",
 }
@@ -905,7 +907,9 @@ def _build_renewal_cliff_rows(costs: dict, capture_date: str) -> list:
             "year_two": f"{currency} {_fmt_num(y2)}" if y2 is not None else NULL_DISPLAY,
             "year_two_known": year_two_known and y2 is not None,
             "multiple": f"{mult:.2f}x" if mult is not None else NULL_DISPLAY,
-            "when_it_bites": str(cliff) if cliff is not None else (r.get("cliff_note") or NULL_DISPLAY),
+            "when_it_bites": (
+                str(cliff) if cliff is not None else (r.get("cliff_note") or NULL_DISPLAY)
+            ),
             "caveat": r.get("jump_formula"),
             # Monthly rates for the dumbbell chart
             "promo_monthly": r.get("promotional_monthly"),
@@ -995,7 +999,9 @@ def _build_paas_rows(costs: dict, plans_by_id: dict, costs_1tb_by_id: dict,
                 if fee_amount is not None else NULL_DISPLAY
             ),
             "plan_fee_raw": fee_amount,
-            "always_on_floor": "none" if aom_is_none else (str(aom_text)[:200] if aom_text else NULL_DISPLAY),
+            "always_on_floor": (
+                "none" if aom_is_none else (str(aom_text)[:200] if aom_text else NULL_DISPLAY)
+            ),
             "always_on_floor_sort": aom_sort,
             "egress_per_gb": (
                 f"USD {_fmt_num(overage_per_gb, 4)}"
@@ -1235,7 +1241,6 @@ def svg_hyperscaler_chart(hyper_rows: list) -> Markup:
         cy = TOP + i * ROW_H
         inst = row["instance_eur_raw"]
         total = row["plus_1tb_eur_raw"]
-        egress = total - inst
 
         inst_w = max(2.0, (inst / MAX_V) * CHART_W)
         total_w = (total / MAX_V) * CHART_W
@@ -1410,7 +1415,9 @@ def build_compare_data(costs: dict, egress_doc: dict,
     hyper_rows = _build_hyperscaler_rows(costs, plans_by_id, costs_1tb_by_id, capture_date)
     cliff_rows = _build_renewal_cliff_rows(costs, capture_date)
     mw_rows = _build_managed_wp_rows(costs, plans_by_id, capture_date)
-    paas_rows = _build_paas_rows(costs, plans_by_id, costs_1tb_by_id, egress_by_provider, capture_date)
+    paas_rows = _build_paas_rows(
+        costs, plans_by_id, costs_1tb_by_id, egress_by_provider, capture_date
+    )
     egress_rows = _build_egress_rows(egress_doc, capture_date)
     juris_rows = _build_jurisdiction_rows(costs, {}, capture_date)
 
@@ -1515,15 +1522,15 @@ def _short9(provider: str) -> str:
 # VPS providers: cheapest plan with at least 4 GB RAM.
 # Hyperscalers: cheapest always-on paid Linux EU instance in this dataset.
 _VPS_PLAN: dict[str, str] = {
-    "Hetzner":                          "hetzner--cx23",
-    "DigitalOcean":                     "digitalocean--basic-droplet-regular-4-gib---2-vcpu",
-    "Vultr":                            "vultr--cloud-compute-regular-performance-2-vcpu---4-gb",
-    "Akamai Connected Cloud (Linode)":  "akamai--linode-4-gb",
-    "Scaleway":                         "scaleway--dev1-l",
-    "OVHcloud":                         "ovhcloud--vps-1-2027",
-    "Amazon Web Services (AWS)":        "amazon--amazon-ec2-t4g.small-linux-on-demand-europe-",
-    "Google Cloud":                     "google--compute-engine-e2-small-on-demand-belgium-eur",
-    "Microsoft Azure":                  "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2",
+    "Hetzner":                         "hetzner--cx23",
+    "DigitalOcean":                    "digitalocean--basic-droplet-regular-4-gib---2-vcpu",
+    "Vultr":                           "vultr--cloud-compute-regular-performance-2-vcpu---4-gb",
+    "Akamai Connected Cloud (Linode)": "akamai--linode-4-gb",
+    "Scaleway":                        "scaleway--dev1-l",
+    "OVHcloud":                        "ovhcloud--vps-1-2027",
+    "Amazon Web Services (AWS)":       "amazon--amazon-ec2-t4g.small-linux-on-demand-europe-",
+    "Google Cloud":                    "google--compute-engine-e2-small-on-demand-belgium-eur",
+    "Microsoft Azure":                 "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2",
 }
 
 
@@ -1959,7 +1966,7 @@ def build_takeaway(nav: str, rows: list) -> str | None:
             return None
         by_base = [r["provider"] for r in sorted(priced, key=lambda r: r["instance_eur"])]
         by_total = [r["provider"] for r in sorted(priced, key=lambda r: r["total_eur"])]
-        moved = sum(1 for a, b in zip(by_base, by_total) if a != b)
+        moved = sum(1 for a, b in zip(by_base, by_total, strict=True) if a != b)
         if not moved:
             return (
                 "Adding a terabyte of traffic changes no provider's position "
@@ -2126,11 +2133,11 @@ def main() -> int:
     # actually has. Cost per GB of RAM is a normalisation useful for comparing
     # unlike plans, not an answer, so it moved off the landing page to /vps.html.
     tabs = [
-        ("index.html",        "tab_home.html",         "home",         allin_rows,     allin_chart),
-        ("vps.html",          "tab_vps.html",          "vps",          vps_rows,       vps_chart),
-        ("egress.html",       "tab_egress.html",       "egress",       egress_tab_rows, egress_chart),
-        ("year-two.html",     "tab_year_two.html",     "year-two",     year_two_rows,  year_two_chart),
-        ("jurisdiction.html", "tab_jurisdiction.html", "jurisdiction", juris_rows,     None),
+        ("index.html", "tab_home.html", "home", allin_rows, allin_chart),
+        ("vps.html", "tab_vps.html", "vps", vps_rows, vps_chart),
+        ("egress.html", "tab_egress.html", "egress", egress_tab_rows, egress_chart),
+        ("year-two.html", "tab_year_two.html", "year-two", year_two_rows, year_two_chart),
+        ("jurisdiction.html", "tab_jurisdiction.html", "jurisdiction", juris_rows, None),
     ]
 
     # The landing page carries each other page's own computed takeaway, so the

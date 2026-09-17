@@ -3,15 +3,29 @@ name: deploy
 on:
   push:
     branches: [main]
+  # Until this line existed, no workflow in this repo had a pull_request trigger,
+  # so every PR against a PUBLIC production site reported zero checks and could
+  # merge without anything ever having built it. That included the dependabot
+  # runs that bump the action SHAs in this very file: the first evidence that a
+  # bump worked was the deploy it broke. A PR now runs the build half; the deploy
+  # job below is gated off pull_request, so nothing a PR does can publish.
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
+# Only the deploy job needs to write Pages, so the write scopes moved down to it.
+# With PRs now triggering this workflow, granting them at workflow level would
+# hand pages:write and id-token:write to every PR build that has no use for them.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  # Per ref, not one shared "pages" group. cancel-in-progress across a single
+  # group was safe while only main could trigger this; now that a PR can, a
+  # shared group would let opening a PR cancel an in-flight deploy of main.
+  # Pushes to main all land in pages-refs/heads/main, so their serialisation
+  # is unchanged.
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -46,8 +60,15 @@ jobs:
           path: site/dist
 
   deploy:
+    # A PR proves the site still builds and stops there. Publishing stays on
+    # push and workflow_dispatch, exactly as before this workflow saw PRs.
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

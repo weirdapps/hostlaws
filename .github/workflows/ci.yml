@@ -1,0 +1,46 @@
+name: ci
+
+# `ruff check .` was red with 17 errors and no workflow in this repo ran it, so
+# the drift had no ceiling: every new error was invisible until someone ran the
+# linter by hand.
+#
+# No paths filter on pull_request, deliberately. The point of the trigger is that
+# a PR can never sit at zero checks, so a PR that touches no Python still has to
+# produce one. The push filter is narrow for the opposite reason: prices.yml
+# commits research/live-prices.json to main every single day, and a data-only
+# commit must not pay for a lint run. GitHub bills per job rounded up to a whole
+# minute, so an unfiltered push trigger would buy 365 billed minutes a year to
+# lint Python that did not change.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - "**/*.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d  # v10
+        with:
+          enable-cache: true
+      # Version-pinned, and kept out of the project dependencies on purpose.
+      # Unpinned, every upstream ruff release that adds a rule turns into a red
+      # build on code nobody touched; as a dependency it would churn uv.lock.
+      # The rule selection itself lives in pyproject.toml [tool.ruff.lint].
+      - name: ruff
+        run: uvx ruff@0.16.7 check .
