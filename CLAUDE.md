@@ -34,9 +34,12 @@ library only. No JavaScript dependency: the site must be complete with JS off.
 - No em-dashes anywhere, including generated HTML.
 - Live prices come from `research/live-prices.json`. A failed refresh keeps the
   previous value and marks it stale; it never blanks a figure.
-- The daily price commit must NOT carry `[skip ci]`. That push is what triggers
-  `deploy.yml`, and suppressing it publishes nothing: the data refreshes in the
-  repository while the served pages stay frozen at the last human push.
+- The daily price job publishes by dispatching `deploy.yml` itself (`gh workflow
+  run`, hence `actions: write` in `prices.yml`). Its push cannot: GitHub starts
+  no workflow for a push made with `GITHUB_TOKEN`, so whether that commit carries
+  `[skip ci]` changes nothing. Dropping `[skip ci]` on 2026-08-24 was believed to
+  fix the frozen site and did not. Verify in the run list, not the YAML: each
+  `prices` run that commits must be followed by a `workflow_dispatch` deploy.
 - Per-page takeaway sentences are computed in `build_takeaway`, never written by
   hand, so the sentence cannot contradict the chart above it. It returns None
   rather than guess, and it refuses a superlative across two currencies.

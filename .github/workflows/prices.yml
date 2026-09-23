@@ -2,14 +2,20 @@ name: prices
 
 on:
   schedule:
-    # Daily at 06:00 UTC. Public APIs (Linode, Vultr, Azure, Scaleway)
+    # Daily at 05:43 UTC. Public APIs (Linode, Vultr, Azure, Scaleway)
     # need no credentials. Hetzner and DigitalOcean are skipped when their
     # secrets are absent; the run still succeeds and commits what it fetched.
-    - cron: "0 6 * * *"
+    # Off the hour on purpose: GitHub delays schedules that fire on the hour,
+    # and "0 6" was starting between 10:37 and 12:27 UTC. The minute also
+    # avoids the daily Dependabot merges (about 05:20 UTC in summer, 06:20 UTC
+    # in winter), which would move main under this job and reject its push.
+    - cron: "43 5 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  # For `gh workflow run deploy.yml` in the last step, and nothing else.
+  actions: write
 
 jobs:
   fetch:
@@ -31,7 +37,9 @@ jobs:
           DIGITALOCEAN_API_TOKEN: ${{ secrets.DIGITALOCEAN_API_TOKEN }}
         run: uv run python pricing/fetch_live.py
 
-      - name: Commit if changed
+      - name: Commit and publish if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -39,11 +47,17 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to live-prices.json"
           else
-            # No [skip ci] here. The push is exactly what triggers deploy.yml,
-            # and suppressing it left the published pages frozen at the last
-            # human push while this job refreshed the data underneath them:
-            # the site promises daily prices and served week-old ones. There
-            # is no loop risk, because deploy.yml commits nothing.
+            # The push publishes nothing by itself. It is authenticated with
+            # GITHUB_TOKEN, and GitHub starts no workflow for a GITHUB_TOKEN
+            # push, so deploy.yml's push trigger never fires for it; leaving
+            # [skip ci] off the message (2026-08-24) could not change that.
+            # workflow_dispatch is one of the two events GITHUB_TOKEN may
+            # trigger, hence the explicit dispatch after the push. Without it
+            # the site stayed frozen at the last human or Dependabot merge
+            # while this job refreshed the data underneath it: the site
+            # promises daily prices and served days-old ones. No loop risk,
+            # because deploy.yml commits nothing.
             git commit -m "chore: update live-prices.json"
             git push
+            gh workflow run deploy.yml --ref main
           fi
