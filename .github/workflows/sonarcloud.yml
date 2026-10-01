@@ -1,0 +1,85 @@
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+# Minimal token scope. pull-requests: write lets the SonarCloud action decorate
+# the pull request; contents stays read.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    # Dependabot PRs run without repository secrets, so SONAR_TOKEN is empty
+    # there; skip them instead of failing auth. Fork PRs are covered by the
+    # token check below.
+    if: >-
+      github.actor != 'dependabot[bot]' &&
+      github.event.pull_request.user.login != 'dependabot[bot]'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          fetch-depth: 0  # Full history for SonarCloud blame
+
+      - name: Check for SonarCloud token
+        id: check-sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          if [ -n "$SONAR_TOKEN" ]; then
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::SONAR_TOKEN not available, skipping SonarCloud"
+          fi
+
+      - name: SonarCloud Scan
+        if: steps.check-sonar.outputs.has_token == 'true'
+        uses: SonarSource/sonarcloud-github-action@ffc3010689be73b8e5ae0c57ce35968afd7909e8  # v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Fail if the server-side analysis failed
+        # The scanner exits 0 once the report is uploaded; a rejection happens
+        # afterwards in SonarCloud's Compute Engine. Poll the task so a rejected
+        # analysis turns this job red instead of passing silently.
+        if: steps.check-sonar.outputs.has_token == 'true'
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          set -euo pipefail
+          report=.scannerwork/report-task.txt
+          if [ ! -f "$report" ]; then
+            echo "::error::$report is missing, so the analysis cannot be confirmed"
+            exit 1
+          fi
+          task_url=$(sed -n 's/^ceTaskUrl=//p' "$report")
+          get() { python3 -c "import json,sys;print(json.load(sys.stdin)['task']$1)"; }
+          for _ in $(seq 1 60); do
+            body=$(curl -sS -u "${SONAR_TOKEN}:" "$task_url" || true)
+            status=$(printf '%s' "$body" | get "['status']" 2>/dev/null || echo RETRY)
+            case "$status" in
+              SUCCESS)
+                echo "Analysis completed server-side."
+                exit 0
+                ;;
+              FAILED|CANCELED)
+                msg=$(printf '%s' "$body" | get ".get('errorMessage','no message')")
+                echo "::error::SonarCloud analysis $status: $msg"
+                exit 1
+                ;;
+            esac
+            sleep 5
+          done
+          echo "::error::Timed out after 5 minutes waiting for the SonarCloud analysis task"
+          exit 1
