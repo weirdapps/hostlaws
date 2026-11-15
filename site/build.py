@@ -1035,7 +1035,7 @@ def _build_egress_rows(egress_doc: dict, capture_date: str) -> list:
         rows.append({
             "provider": r["name"],
             "url": r.get("url") or "",
-            "capture_date": r.get("retrieved_on", capture_date),
+            "capture_date": r.get("verified_on") or r.get("retrieved_on", capture_date),
             "cost_1tb": (
                 f"{currency} {_fmt_num(cost)}" if cost is not None else NULL_DISPLAY
             ),
@@ -1673,7 +1673,7 @@ def build_egress_tab_rows(egress_doc: dict, capture_date: str) -> list:
             "currency": currency,
             "included": incl_short,
             "url": rec.get("url") or "",
-            "capture_date": rec.get("retrieved_on", capture_date),
+            "capture_date": rec.get("verified_on") or rec.get("retrieved_on", capture_date),
             "_sort": cost,
         })
 
@@ -2081,6 +2081,8 @@ def main() -> int:
         "site": SITE,
         "dataset_date": capture_date,
         "prices_checked": prices_checked,
+        # Bandwidth prices are reviewed weekly too, in egress.json.
+        "egress_checked": egress_doc.get("last_review") or egress_doc.get("retrieved_on"),
         "generated_on": today.isoformat(),
         "has_paid_links": False,
     }
