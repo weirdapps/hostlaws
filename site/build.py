@@ -112,10 +112,10 @@ PERIOD_CAVEAT = {
 # taken from, and the build fails if the note stops carrying it.
 RATE_CAVEAT = {
     "IONOS": (
-        "promotional for 3 months, EUR 9.00 per month after that, plus a EUR 10 setup fee; "
+        "promotional for 3 months, EUR 12.00 per month after that, setup fee waived; "
         "the only VAT-inclusive figure in this column",
-        "EUR 3.00/month for the first 3 months, EUR 9.00/month thereafter, "
-        "with a EUR 10 setup fee",
+        "EUR 4.00/month for the first 3 months, EUR 12.00/month thereafter, "
+        "with the EUR 10 setup fee waived",
     ),
     "SiteGround": (
         "promotional rate; the page states it renews at EUR 15.99 per month, prepaid 12 months",
@@ -742,6 +742,16 @@ def _egress_name(provider: str) -> str:
     return EGRESS_ALIAS.get(provider, provider)
 
 
+def _verified_on(plan: dict, capture_date: str) -> str:
+    """The last date a person re-read this row on the provider's page.
+
+    Set by the weekly price review in costs.json as verified_on, for unchanged
+    rows as well as changed ones. Falls back to the row's own capture date and
+    then to the file's.
+    """
+    return plan.get("verified_on") or plan.get("captured_on") or capture_date
+
+
 def _build_vps_rows(costs: dict, plans_by_id: dict, egress_by_provider: dict,
                     capture_date: str, live_index: dict | None = None) -> list:
     ranking = costs["normalised"]["vps_eur_per_gb_ram_ranking"]
@@ -764,7 +774,7 @@ def _build_vps_rows(costs: dict, plans_by_id: dict, egress_by_provider: dict,
         live_plan = _live_for_plan(live_index or {}, plan)
         last_verified = (
             (live_plan.get("fetched_at") or "")[:10]
-            if live_plan else capture_date
+            if live_plan else _verified_on(plan, capture_date)
         )
         live_source = live_plan is not None
 
@@ -816,10 +826,10 @@ def _build_vps_rows(costs: dict, plans_by_id: dict, egress_by_provider: dict,
             "jurisdiction": plan.get("jurisdiction_of_seller", "CH"),
             "url": plan.get("url") or "",
             "capture_date": capture_date,
-            "last_verified": capture_date,
+            "last_verified": _verified_on(plan, capture_date),
             "live_source": False,
-            "days_since_verified": days_since(capture_date, today),
-            "stale": days_since(capture_date, today) > STALE_AFTER_DAYS,
+            "days_since_verified": days_since(_verified_on(plan, capture_date), today),
+            "stale": days_since(_verified_on(plan, capture_date), today) > STALE_AFTER_DAYS,
             # EUR column is not computable
             "eur_per_gb_ram": None,
             "eur_per_gb_ram_raw": None,
@@ -1562,7 +1572,8 @@ def build_vps_tab_rows(costs: dict, capture_date: str,
 
         live_plan = _live_for_plan(live_index, plan)
         last_verified = (
-            (live_plan.get("fetched_at") or "")[:10] if live_plan else capture_date
+            (live_plan.get("fetched_at") or "")[:10] if live_plan
+            else _verified_on(plan, capture_date)
         )
         age = days_since(last_verified, today)
         rows.append({
