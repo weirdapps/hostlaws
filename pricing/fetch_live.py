@@ -243,6 +243,34 @@ def fetch_azure() -> dict:
         }
 
 
+def _scaleway_plan(item: dict, zone: str, endpoint: str, ts: str) -> dict | None:
+    """One catalog product as a live plan record, or None if it carries no EUR price."""
+    if (item.get("locality") or {}).get("zone") != zone:
+        return None
+    retail = (item.get("price") or {}).get("retail_price") or {}
+    if retail.get("currency_code") != "EUR":
+        return None
+    hourly_eur = (retail.get("units") or 0) + (retail.get("nanos") or 0) / 1e9
+    if hourly_eur <= 0:
+        # A zero is not a price: never publish it as one.
+        return None
+    hardware = (item.get("properties") or {}).get("hardware") or {}
+    cpu = hardware.get("cpu") or {}
+    ram_bytes = (hardware.get("ram") or {}).get("size")
+    return {
+        "id": item.get("product"),
+        "vcpu": (cpu.get("virtual") or {}).get("count"),
+        "ram_gb": round(ram_bytes / (1024 ** 3), 2) if ram_bytes else None,
+        "arch": cpu.get("arch"),
+        "hourly_eur": round(hourly_eur, 6),
+        "monthly_eur": round(hourly_eur * 730, 2),
+        "currency": "EUR",
+        "source": "api",
+        "endpoint": endpoint,
+        "fetched_at": ts,
+    }
+
+
 def fetch_scaleway() -> dict:
     """Scaleway: public product catalog API, no auth needed.
 
@@ -268,31 +296,10 @@ def fetch_scaleway() -> dict:
     ts = datetime.now(UTC).isoformat()
     try:
         data = _get(endpoint)
-        plans = []
-        for item in data.get("products") or []:
-            if (item.get("locality") or {}).get("zone") != zone:
-                continue
-            retail = (item.get("price") or {}).get("retail_price") or {}
-            if retail.get("currency_code") != "EUR":
-                continue
-            hourly_eur = (retail.get("units") or 0) + (retail.get("nanos") or 0) / 1e9
-            if hourly_eur <= 0:
-                # A zero is not a price: never publish it as one.
-                continue
-            hardware = (item.get("properties") or {}).get("hardware") or {}
-            ram_bytes = (hardware.get("ram") or {}).get("size") or 0
-            plans.append({
-                "id": item.get("product"),
-                "vcpu": ((hardware.get("cpu") or {}).get("virtual") or {}).get("count"),
-                "ram_gb": round(ram_bytes / (1024 ** 3), 2) if ram_bytes else None,
-                "arch": (hardware.get("cpu") or {}).get("arch"),
-                "hourly_eur": round(hourly_eur, 6),
-                "monthly_eur": round(hourly_eur * 730, 2),
-                "currency": "EUR",
-                "source": "api",
-                "endpoint": endpoint,
-                "fetched_at": ts,
-            })
+        plans = [
+            plan for item in data.get("products") or []
+            if (plan := _scaleway_plan(item, zone, endpoint, ts)) is not None
+        ]
         if not plans:
             raise ValueError("no priced instance products in the catalog response")
         return {
