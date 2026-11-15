@@ -3,8 +3,8 @@ name: prices
 on:
   schedule:
     # Daily at 05:43 UTC. Public APIs (Linode, Vultr, Azure, Scaleway)
-    # need no credentials. Hetzner and DigitalOcean are skipped when their
-    # secrets are absent; the run still succeeds and commits what it fetched.
+    # need no credentials. Hetzner and DigitalOcean use their APIs when their
+    # secrets are set, and their public pricing pages when they are not.
     # Off the hour on purpose: GitHub delays schedules that fire on the hour,
     # and "0 6" was starting between 10:37 and 12:27 UTC. The minute also
     # avoids the daily Dependabot merges (about 05:20 UTC in summer, 06:20 UTC
