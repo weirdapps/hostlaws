@@ -728,10 +728,15 @@ def main(argv: list[str] | None = None) -> int:
     providers: list[dict] = []
 
     # --- Public APIs: no token needed ---
-    providers.append(_run("Linode", fetch_linode))
-    providers.append(_run("Vultr", fetch_vultr))
-    providers.append(_run("Azure", fetch_azure))
-    providers.append(_run("Scaleway", fetch_scaleway))
+    providers.extend(
+        _run(label, fetch)
+        for label, fetch in (
+            ("Linode", fetch_linode),
+            ("Vultr", fetch_vultr),
+            ("Azure", fetch_azure),
+            ("Scaleway", fetch_scaleway),
+        )
+    )
 
     # --- Official API with a token, public pricing page without one ---
     hetzner_token = os.environ.get("HETZNER_API_TOKEN", "").strip()
