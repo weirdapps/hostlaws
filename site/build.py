@@ -2074,9 +2074,13 @@ def main() -> int:
     env.filters["host"] = host_of
     env.filters["recurring_phrase"] = recurring_phrase
 
+    # The date every price row was last re-read, set by the weekly review.
+    # capture_date stays the date the dataset was first captured.
+    prices_checked = costs_doc.get("last_price_review") or capture_date
     common = {
         "site": SITE,
         "dataset_date": capture_date,
+        "prices_checked": prices_checked,
         "generated_on": today.isoformat(),
         "has_paid_links": False,
     }
@@ -2194,7 +2198,8 @@ def main() -> int:
     print(f"\n{len(pages)} pages built:")
     for p in sorted(pages, key=lambda x: x.name):
         print(f"  site/dist/{p.name}")
-    print(f"\n  Data captured {capture_date}, built {today.isoformat()}")
+    print(f"\n  Data captured {capture_date}, prices checked {prices_checked}, "
+          f"built {today.isoformat()}")
     blockers = []
     if not SITE["publisher_entity"]:
         blockers.append("HOSTLAWS_PUBLISHER_ENTITY: who publishes this")
