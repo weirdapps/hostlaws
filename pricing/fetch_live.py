@@ -34,6 +34,7 @@ the kind of unsourced number this site exists to avoid.
 from __future__ import annotations
 
 import argparse
+import gzip
 import html
 import json
 import os
@@ -58,13 +59,20 @@ def _get(url: str, token: str | None = None, timeout: int = 30) -> dict | list:
         headers["Authorization"] = f"Bearer {token}"
     req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode())
+        return json.loads(_body(resp.read()))
 
 
 def _get_text(url: str, timeout: int = 30) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": _USER_AGENT})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read().decode("utf-8")
+        return _body(resp.read())
+
+
+def _body(raw: bytes) -> str:
+    """Some CDNs (AWS's price files) gzip the body even when it was not asked for."""
+    if raw[:2] == b"\x1f\x8b":
+        raw = gzip.decompress(raw)
+    return raw.decode("utf-8")
 
 
 # --------------------------------------------------------------------------
@@ -709,6 +717,119 @@ def _run(label: str, fetch) -> dict:
     return r
 
 
+# --------------------------------------------------------------------------
+# AWS: the public price file the EC2 On-Demand pricing page loads
+# --------------------------------------------------------------------------
+
+AWS_EC2_FRANKFURT_LINUX = (
+    "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/"
+    "ec2-ondemand-without-sec-sel/EU%20(Frankfurt)/Linux/index.json"
+)
+
+
+def fetch_aws_ec2() -> dict:
+    """AWS EC2 On-Demand Linux prices in eu-central-1 (Frankfurt), USD per hour.
+
+    The file is what https://aws.amazon.com/ec2/pricing/on-demand/ renders its
+    table from. Shape: regions{"EU (Frankfurt)": {label: {"Instance Type",
+    "price" (USD per hour as a string), "Memory", "vCPU"}}}.
+    """
+    provider = "Amazon Web Services (AWS)"
+    ts = datetime.now(UTC).isoformat()
+    try:
+        data = _get(AWS_EC2_FRANKFURT_LINUX)
+        rows = (data.get("regions") or {}).get("EU (Frankfurt)") or {}
+        plans = []
+        for row in rows.values():
+            hourly = float(row.get("price") or 0)
+            if hourly <= 0 or not row.get("Instance Type"):
+                continue
+            plans.append({
+                "id": row["Instance Type"],
+                "region": "eu-central-1",
+                "hourly_usd": hourly,
+                "monthly_usd": round(hourly * 730, 4),
+                "memory": row.get("Memory"),
+                "vcpu": row.get("vCPU"),
+                "currency": "USD",
+                "source": "website",
+                "endpoint": AWS_EC2_FRANKFURT_LINUX,
+                "fetched_at": ts,
+            })
+        if not plans:
+            raise ValueError("no priced Frankfurt Linux rows")
+        published = (data.get("manifest") or {}).get("hawkFilePublicationDate")
+        return {"provider": provider, "status": "ok", "fetched_at": ts,
+                "endpoint": AWS_EC2_FRANKFURT_LINUX,
+                "note": f"AWS price file published {published}. monthly_usd is hourly x 730.",
+                "plans": plans}
+    except Exception as exc:
+        return {"provider": provider, "status": "error", "fetched_at": ts,
+                "endpoint": AWS_EC2_FRANKFURT_LINUX, "error": str(exc)}
+
+
+# --------------------------------------------------------------------------
+# Google Cloud: the general-purpose pricing page's embedded tables
+# --------------------------------------------------------------------------
+
+GCP_GENERAL_PURPOSE = "https://cloud.google.com/products/compute/pricing/general-purpose"
+_GCP_ROW = re.compile(
+    r'(e2-[a-z0-9-]+)\\u003c/p\\u003e"\]\]\],(?:\[1,1,null,\[null,\[null,'
+    r'"\\u003cp\\u003e[^"]*\\u003c/p\\u003e"\]\]\],){2}\[1,1,null,\[null,\[null,'
+    r'"\$([\d.]+) / 1 (hour|month)"'
+)
+_GCP_LABEL = re.compile(r'"[A-Z][A-Za-z .]+ \(([a-z]+-[a-z]+\d)\)"')
+
+
+def parse_gcp_e2_prices(page: str) -> dict[tuple[str, str], dict[str, set]]:
+    """(machine, region) -> {"hour": {...}, "month": {...}} USD figures.
+
+    The page renders one table per region and pricing model from embedded
+    data, and the region label is not inside the table, so each price is
+    tied to the nearest region label before it. That places some figures
+    of other pricing models (spot, committed use) under a region too, which
+    is why this returns candidate sets: a captured figure that is in the
+    set is confirmed, one that is not is a drift for a person to look at.
+    """
+    labels = [(m.start(), m.group(1)) for m in _GCP_LABEL.finditer(page)]
+    out: dict[tuple[str, str], dict[str, set]] = {}
+    li = -1
+    for m in _GCP_ROW.finditer(page):
+        while li + 1 < len(labels) and labels[li + 1][0] < m.start():
+            li += 1
+        if li < 0:
+            continue
+        key = (m.group(1), labels[li][1])
+        out.setdefault(key, {"hour": set(), "month": set()})[m.group(3)].add(float(m.group(2)))
+    return out
+
+
+def fetch_gcp_e2() -> dict:
+    provider = "Google Cloud"
+    ts = datetime.now(UTC).isoformat()
+    try:
+        prices = parse_gcp_e2_prices(_get_text(GCP_GENERAL_PURPOSE, timeout=90))
+        plans = [
+            {"id": machine, "region": region,
+             "candidate_hourly_usd": sorted(v["hour"]),
+             "candidate_monthly_usd": sorted(v["month"]),
+             "currency": "USD", "source": "website",
+             "endpoint": GCP_GENERAL_PURPOSE, "fetched_at": ts}
+            for (machine, region), v in sorted(prices.items())
+            if region.startswith("europe-")
+        ]
+        if not plans:
+            raise ValueError("no e2 rows tied to a European region label")
+        return {"provider": provider, "status": "ok", "fetched_at": ts,
+                "endpoint": GCP_GENERAL_PURPOSE,
+                "note": ("Candidate sets, not single prices: see parse_gcp_e2_prices. "
+                         "European regions only."),
+                "plans": plans}
+    except Exception as exc:
+        return {"provider": provider, "status": "error", "fetched_at": ts,
+                "endpoint": GCP_GENERAL_PURPOSE, "error": str(exc)}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch live provider pricing")
     parser.add_argument(
@@ -739,6 +860,8 @@ def main(argv: list[str] | None = None) -> int:
             ("Vultr", fetch_vultr),
             ("Azure", fetch_azure),
             ("Scaleway", fetch_scaleway),
+            ("AWS EC2 (public price file)", fetch_aws_ec2),
+            ("Google Cloud (public pricing page)", fetch_gcp_e2),
         )
     )
 

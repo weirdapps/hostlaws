@@ -38,6 +38,9 @@ LINODE = "Akamai Connected Cloud (Linode)"
 AZURE = "Microsoft Azure"
 SCALEWAY_MONTHLY = "hourly_eur*730"
 AZURE_MONTHLY = "retail_price_eur*730"
+# Google's page yields a candidate set per machine and region (see
+# fetch_live.parse_gcp_e2_prices): a captured figure in the set is confirmed.
+GCP_CANDIDATES = "candidate_monthly_usd"
 
 # costs.json id -> (live provider name, live id field, live id, price field).
 # price field "hourly_eur*730" means the live hourly figure times 730.
@@ -67,6 +70,10 @@ MATCHES: dict[str, tuple[str, str, str, str]] = {
     "scaleway--dev1-s": ("Scaleway", "id", "DEV1-S", SCALEWAY_MONTHLY),
     "scaleway--dev1-l": ("Scaleway", "id", "DEV1-L", SCALEWAY_MONTHLY),
     "scaleway--pro2-s": ("Scaleway", "id", "PRO2-S", SCALEWAY_MONTHLY),
+    "amazon--amazon-ec2-t4g.small-linux-on-demand-europe-": (
+        "Amazon Web Services (AWS)", "id", "t4g.small", "monthly_usd"),
+    "google--compute-engine-e2-small-on-demand-belgium-eur": (
+        "Google Cloud", "id", "e2-small@europe-west1", GCP_CANDIDATES),
     "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2": (
         AZURE, "sku_name", "B2ls v2", AZURE_MONTHLY),
     "microsoft--azure-virtual-machines-b2ts-v2-standard_b2ts_v2": (
@@ -88,14 +95,24 @@ def _azure_vm_row(plan: dict) -> bool:
 
 
 def _find_live(providers: dict, provider: str, field: str, value: str) -> dict | None:
-    rows = [p for p in providers.get(provider, []) if p.get(field) == value]
+    value, _, region = value.partition("@")
+    rows = [p for p in providers.get(provider, []) if p.get(field) == value
+            and (not region or p.get("region") == region)]
     if provider == AZURE:
         rows = [p for p in rows if _azure_vm_row(p)]
     # Ambiguity is a miss, never a guess.
     return rows[0] if len(rows) == 1 else None
 
 
-def _live_monthly(plan: dict, price_field: str) -> float | None:
+def _live_monthly(plan: dict, price_field: str, captured=None) -> float | None:
+    if price_field == GCP_CANDIDATES:
+        candidates = plan.get(GCP_CANDIDATES) or []
+        hit = [c for c in candidates if captured is not None and abs(c - captured) < 1e-6]
+        # The captured figure when confirmed; otherwise the nearest candidate,
+        # so the report shows something to compare against.
+        if hit:
+            return hit[0]
+        return min(candidates, key=lambda c: abs(c - (captured or 0))) if candidates else None
     if price_field.endswith("*730"):
         hourly = plan.get(price_field.removesuffix("*730"))
         return None if hourly is None else round(hourly * HOURS_PER_MONTH, 4)
@@ -117,7 +134,8 @@ def _check_row(plan: dict, providers: dict) -> dict:
         return {**row, "status": "not_automated"}
     provider, field, value, price_field = match
     live_plan = _find_live(providers, provider, field, value)
-    live_amount = None if live_plan is None else _live_monthly(live_plan, price_field)
+    live_amount = (None if live_plan is None
+                   else _live_monthly(live_plan, price_field, price.get("amount")))
     if live_plan is None or live_amount is None:
         return {**row, "status": "missing", "live_id": value}
     tolerance = TOLERANCE_HOURLY if price_field.endswith("*730") else TOLERANCE
