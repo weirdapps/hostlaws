@@ -15363,6 +15363,12 @@
      "why": "Infomaniak now sells this VPS Lite size only with a 12-month commitment paid upfront; price unchanged."
     }
    ]
+  },
+  {
+   "reviewed_on": "2026-11-15",
+   "method": "Weekly review: pricing/check_drift.py for rows with an exact live match, the provider pages read by hand for the rest.",
+   "verified": 73,
+   "of": 73
   }
  ]
 }
