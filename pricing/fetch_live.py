@@ -600,22 +600,24 @@ def parse_digitalocean_pricing_page(page_html: str) -> list[dict]:
 
     sizes: list[dict] = []
     seen: set[str] = set()
-
-    def walk(node, family: str) -> None:
-        if isinstance(node, dict):
-            if "slug" in node and "price" in node:
-                if node["slug"] not in seen:
-                    seen.add(node["slug"])
-                    sizes.append({"family": family, **node})
-                return
-            for k, v in node.items():
-                walk(v, f"{family}/{k}" if family else k)
-        elif isinstance(node, list):
-            for v in node:
-                walk(v, family)
-
-    walk(data, "")
+    for family, node in _iter_size_objects(data, ""):
+        if node["slug"] not in seen:
+            seen.add(node["slug"])
+            sizes.append({"family": family, **node})
     return sizes
+
+
+def _iter_size_objects(node, family: str):
+    """Yield (family path, size object) for every dict with a slug and a price."""
+    if isinstance(node, list):
+        for v in node:
+            yield from _iter_size_objects(v, family)
+    elif isinstance(node, dict):
+        if "slug" in node and "price" in node:
+            yield family, node
+            return
+        for k, v in node.items():
+            yield from _iter_size_objects(v, f"{family}/{k}" if family else k)
 
 
 def fetch_digitalocean_public() -> dict:
@@ -694,6 +696,15 @@ def _preserve_previous(previous: dict, current: list[dict]) -> list[dict]:
 # --------------------------------------------------------------------------
 
 
+def _run(label: str, fetch) -> dict:
+    """Call one provider fetcher and print a one-line progress report."""
+    print(f"  fetching {label}...", end=" ", flush=True)
+    r = fetch()
+    n = len(r.get("plans", []))
+    print(f"{r['status']} ({n} plans)" if r["status"] == "ok" and n else r["status"])
+    return r
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch live provider pricing")
     parser.add_argument(
@@ -717,55 +728,25 @@ def main(argv: list[str] | None = None) -> int:
     providers: list[dict] = []
 
     # --- Public APIs: no token needed ---
-    print("  fetching Linode...", end=" ", flush=True)
-    r = fetch_linode()
-    n = len(r.get("plans", []))
-    print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
-    providers.append(r)
+    providers.append(_run("Linode", fetch_linode))
+    providers.append(_run("Vultr", fetch_vultr))
+    providers.append(_run("Azure", fetch_azure))
+    providers.append(_run("Scaleway", fetch_scaleway))
 
-    print("  fetching Vultr...", end=" ", flush=True)
-    r = fetch_vultr()
-    n = len(r.get("plans", []))
-    print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
-    providers.append(r)
-
-    print("  fetching Azure...", end=" ", flush=True)
-    r = fetch_azure()
-    n = len(r.get("plans", []))
-    print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
-    providers.append(r)
-
-    print("  fetching Scaleway...", end=" ", flush=True)
-    r = fetch_scaleway()
-    print(r["status"])
-    providers.append(r)
-
-    # --- Token-gated APIs ---
+    # --- Official API with a token, public pricing page without one ---
     hetzner_token = os.environ.get("HETZNER_API_TOKEN", "").strip()
     if hetzner_token:
-        print("  fetching Hetzner...", end=" ", flush=True)
-        r = fetch_hetzner(hetzner_token)
-        n = len(r.get("plans", []))
-        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
+        providers.append(_run("Hetzner", lambda: fetch_hetzner(hetzner_token)))
     else:
-        print("  fetching Hetzner (public pages, no token)...", end=" ", flush=True)
-        r = fetch_hetzner_public()
-        n = len(r.get("plans", []))
-        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
-    providers.append(r)
+        providers.append(_run("Hetzner (public pages, no token)", fetch_hetzner_public))
 
     do_token = os.environ.get("DIGITALOCEAN_API_TOKEN", "").strip()
     if do_token:
-        print("  fetching DigitalOcean...", end=" ", flush=True)
-        r = fetch_digitalocean(do_token)
-        n = len(r.get("plans", []))
-        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
+        providers.append(_run("DigitalOcean", lambda: fetch_digitalocean(do_token)))
     else:
-        print("  fetching DigitalOcean (public page, no token)...", end=" ", flush=True)
-        r = fetch_digitalocean_public()
-        n = len(r.get("plans", []))
-        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
-    providers.append(r)
+        providers.append(
+            _run("DigitalOcean (public page, no token)", fetch_digitalocean_public)
+        )
 
     # Preserve previous ok values for any failed fetches
     merged_providers = _preserve_previous(previous, providers)
