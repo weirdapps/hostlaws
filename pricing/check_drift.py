@@ -11,7 +11,7 @@ Linode label, Scaleway product, Azure SKU). Nothing is matched by spec or by
 price, so a live figure can never land on the wrong row. Rows not in the table
 are listed as not automated; the weekly review checks those by hand.
 
-Usage: uv run python pricing/check_drift.py [--json PATH]
+Usage: uv run python pricing/check_drift.py [--json]
 Exit code: 0 when every automated row matches, 1 when any row drifted or its
 live record is missing, 2 when the input files cannot be read.
 """
@@ -34,6 +34,11 @@ TOLERANCE = 0.01
 # (Azure's page does). Real price moves are far larger than this.
 TOLERANCE_HOURLY = 0.00005 * HOURS_PER_MONTH + TOLERANCE
 
+LINODE = "Akamai Connected Cloud (Linode)"
+AZURE = "Microsoft Azure"
+SCALEWAY_MONTHLY = "hourly_eur*730"
+AZURE_MONTHLY = "retail_price_eur*730"
+
 # costs.json id -> (live provider name, live id field, live id, price field).
 # price field "hourly_eur*730" means the live hourly figure times 730.
 MATCHES: dict[str, tuple[str, str, str, str]] = {
@@ -54,20 +59,20 @@ MATCHES: dict[str, tuple[str, str, str, str]] = {
     "vultr--cloud-compute-regular-performance-4-vcpu---8-gb": (
         "Vultr", "id", "vc2-4c-8gb", "monthly_usd"),
     "akamai--nanode-1-gb": (
-        "Akamai Connected Cloud (Linode)", "label", "Nanode 1GB", "monthly_usd"),
+        LINODE, "label", "Nanode 1GB", "monthly_usd"),
     "akamai--linode-4-gb": (
-        "Akamai Connected Cloud (Linode)", "label", "Linode 4GB", "monthly_usd"),
+        LINODE, "label", "Linode 4GB", "monthly_usd"),
     "akamai--linode-8-gb": (
-        "Akamai Connected Cloud (Linode)", "label", "Linode 8GB", "monthly_usd"),
-    "scaleway--dev1-s": ("Scaleway", "id", "DEV1-S", "hourly_eur*730"),
-    "scaleway--dev1-l": ("Scaleway", "id", "DEV1-L", "hourly_eur*730"),
-    "scaleway--pro2-s": ("Scaleway", "id", "PRO2-S", "hourly_eur*730"),
+        LINODE, "label", "Linode 8GB", "monthly_usd"),
+    "scaleway--dev1-s": ("Scaleway", "id", "DEV1-S", SCALEWAY_MONTHLY),
+    "scaleway--dev1-l": ("Scaleway", "id", "DEV1-L", SCALEWAY_MONTHLY),
+    "scaleway--pro2-s": ("Scaleway", "id", "PRO2-S", SCALEWAY_MONTHLY),
     "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2": (
-        "Microsoft Azure", "sku_name", "B2ls v2", "retail_price_eur*730"),
+        AZURE, "sku_name", "B2ls v2", AZURE_MONTHLY),
     "microsoft--azure-virtual-machines-b2ts-v2-standard_b2ts_v2": (
-        "Microsoft Azure", "sku_name", "B2ts v2", "retail_price_eur*730"),
+        AZURE, "sku_name", "B2ts v2", AZURE_MONTHLY),
     "microsoft--azure-virtual-machines-b2s-standard_b2s-previo": (
-        "Microsoft Azure", "sku_name", "B2s", "retail_price_eur*730"),
+        AZURE, "sku_name", "B2s", AZURE_MONTHLY),
 }
 
 
@@ -84,7 +89,7 @@ def _azure_vm_row(plan: dict) -> bool:
 
 def _find_live(providers: dict, provider: str, field: str, value: str) -> dict | None:
     rows = [p for p in providers.get(provider, []) if p.get(field) == value]
-    if provider == "Microsoft Azure":
+    if provider == AZURE:
         rows = [p for p in rows if _azure_vm_row(p)]
     # Ambiguity is a miss, never a guess.
     return rows[0] if len(rows) == 1 else None
@@ -98,47 +103,49 @@ def _live_monthly(plan: dict, price_field: str) -> float | None:
     return None if value is None else float(value)
 
 
+def _check_row(plan: dict, providers: dict) -> dict:
+    price = plan.get("price") or {}
+    row = {
+        "id": plan["id"],
+        "provider": plan["provider"],
+        "captured_amount": price.get("amount"),
+        "currency": price.get("currency"),
+        "captured_on": plan.get("captured_on"),
+    }
+    match = MATCHES.get(plan["id"])
+    if match is None:
+        return {**row, "status": "not_automated"}
+    provider, field, value, price_field = match
+    live_plan = _find_live(providers, provider, field, value)
+    live_amount = None if live_plan is None else _live_monthly(live_plan, price_field)
+    if live_plan is None or live_amount is None:
+        return {**row, "status": "missing", "live_id": value}
+    tolerance = TOLERANCE_HOURLY if price_field.endswith("*730") else TOLERANCE
+    captured = row["captured_amount"]
+    same = captured is not None and abs(live_amount - captured) <= tolerance
+    return {
+        **row,
+        "status": "match" if same else "drift",
+        "live_id": value,
+        "live_amount": live_amount,
+        "live_fetched_at": live_plan.get("fetched_at"),
+    }
+
+
 def check(costs: dict, live: dict) -> list[dict]:
     providers = {
         p["provider"]: p.get("plans") or []
         for p in live.get("providers", [])
         if p.get("status") == "ok"
     }
-    results = []
-    for plan in costs["plans"]:
-        row = {
-            "id": plan["id"],
-            "provider": plan["provider"],
-            "captured_amount": (plan.get("price") or {}).get("amount"),
-            "currency": (plan.get("price") or {}).get("currency"),
-            "captured_on": plan.get("captured_on"),
-        }
-        match = MATCHES.get(plan["id"])
-        if match is None:
-            results.append({**row, "status": "not_automated"})
-            continue
-        provider, field, value, price_field = match
-        live_plan = _find_live(providers, provider, field, value)
-        live_amount = None if live_plan is None else _live_monthly(live_plan, price_field)
-        if live_plan is None or live_amount is None:
-            results.append({**row, "status": "missing", "live_id": value})
-            continue
-        captured = row["captured_amount"]
-        tolerance = TOLERANCE_HOURLY if price_field.endswith("*730") else TOLERANCE
-        same = captured is not None and abs(live_amount - captured) <= tolerance
-        results.append({
-            **row,
-            "status": "match" if same else "drift",
-            "live_id": value,
-            "live_amount": live_amount,
-            "live_fetched_at": live_plan.get("fetched_at"),
-        })
-    return results
+    return [_check_row(plan, providers) for plan in costs["plans"]]
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=(__doc__ or "").splitlines()[0])
-    parser.add_argument("--json", help="also write the full report to this path")
+    parser.add_argument(
+        "--json", action="store_true", help="print the full report as JSON instead of a summary"
+    )
     args = parser.parse_args()
     try:
         costs = json.loads(COSTS.read_text())
@@ -147,17 +154,19 @@ def main() -> int:
         print(f"cannot read inputs: {exc}", file=sys.stderr)
         return 2
     results = check(costs, live)
-    if args.json:
-        Path(args.json).write_text(json.dumps(results, indent=2) + "\n")
     counts: dict[str, int] = {}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
-        if r["status"] in ("drift", "missing"):
-            print(
-                f"{r['status'].upper()}: {r['id']} captured {r['captured_amount']} "
-                f"{r['currency']} on {r['captured_on']}, live {r.get('live_amount')}"
-            )
-    print(" ".join(f"{k}={v}" for k, v in sorted(counts.items())))
+    if args.json:
+        print(json.dumps(results, indent=2))
+    else:
+        for r in results:
+            if r["status"] in ("drift", "missing"):
+                print(
+                    f"{r['status'].upper()}: {r['id']} captured {r['captured_amount']} "
+                    f"{r['currency']} on {r['captured_on']}, live {r.get('live_amount')}"
+                )
+        print(" ".join(f"{k}={v}" for k, v in sorted(counts.items())))
     return 1 if counts.get("drift") or counts.get("missing") else 0
 
 
