@@ -830,6 +830,77 @@ def fetch_gcp_e2() -> dict:
                 "endpoint": GCP_GENERAL_PURPOSE, "error": str(exc)}
 
 
+# --------------------------------------------------------------------------
+# Bandwidth (egress) rates with a machine-readable public source
+# --------------------------------------------------------------------------
+
+AWS_DATA_TRANSFER = ("https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/"
+                     "datatransfer/USD/current/datatransfer.json")
+LINODE_TRANSFER = "https://api.linode.com/v4/network-transfer/prices"
+GCP_NETWORK = "https://cloud.google.com/vpc/network-pricing"
+VULTR_OVERAGE_DOC = ("https://docs.vultr.com/support/platform/billing/"
+                     "what-is-the-bandwidth-overage-rate")
+_GCP_GIB = re.compile(r"\$([\d.]+) / 1 gibibyte")
+
+
+def _egress_aws() -> list[dict]:
+    rows = (_get(AWS_DATA_TRANSFER).get("regions") or {}).get("EU (Frankfurt)") or {}
+    row = rows.get("DataTransfer External Outbound Next 10 TB") or {}
+    return [{"id": "aws-eu-central-1-internet-next-10tb",
+             "usd_per_gb": float(row["price"]), "endpoint": AWS_DATA_TRANSFER}]
+
+
+def _egress_linode() -> list[dict]:
+    data = _get(LINODE_TRANSFER).get("data") or []
+    row = next(r for r in data if r.get("id") == "network_transfer")
+    # The API names the field "hourly"; for network transfer it is per GB.
+    return [{"id": "linode-network-transfer",
+             "usd_per_gb": float(row["price"]["hourly"]), "endpoint": LINODE_TRANSFER}]
+
+
+def _egress_gcp() -> list[dict]:
+    page = _get_text(GCP_NETWORK, timeout=90)
+    labels = [(m.start(), m.group(1)) for m in _GCP_LABEL.finditer(page)]
+    cands: set[float] = set()
+    li = -1
+    for m in _GCP_GIB.finditer(page):
+        while li + 1 < len(labels) and labels[li + 1][0] < m.start():
+            li += 1
+        if li >= 0 and labels[li][1] == "europe-west1":
+            cands.add(float(m.group(1)))
+    if not cands:
+        raise ValueError("no per-GiB figure tied to europe-west1")
+    return [{"id": "gcp-europe-west1-internet", "candidate_usd_per_gb": sorted(cands),
+             "endpoint": GCP_NETWORK}]
+
+
+def _egress_vultr() -> list[dict]:
+    m = re.search(r"\$([\d.]+) per GB", _get_text(VULTR_OVERAGE_DOC))
+    if not m:
+        raise ValueError("overage sentence not found")
+    return [{"id": "vultr-bandwidth-overage", "usd_per_gb": float(m.group(1)),
+             "endpoint": VULTR_OVERAGE_DOC}]
+
+
+def fetch_egress() -> dict:
+    """Bandwidth overage rates for the providers that publish them machine-readably.
+
+    One failure does not sink the others: each source is tried on its own and
+    a failed one is reported under "errors".
+    """
+    ts = datetime.now(UTC).isoformat()
+    plans, errors = [], {}
+    for name, fn in (("aws", _egress_aws), ("linode", _egress_linode),
+                     ("gcp", _egress_gcp), ("vultr", _egress_vultr)):
+        try:
+            plans += [{**row, "currency": "USD", "fetched_at": ts} for row in fn()]
+        except Exception as exc:
+            errors[name] = str(exc)
+    status = "ok" if plans else "error"
+    return {"provider": "Egress", "status": status, "fetched_at": ts,
+            "note": "Per-GB bandwidth rates, USD.", "errors": errors, "plans": plans}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch live provider pricing")
     parser.add_argument(
@@ -862,6 +933,7 @@ def main(argv: list[str] | None = None) -> int:
             ("Scaleway", fetch_scaleway),
             ("AWS EC2 (public price file)", fetch_aws_ec2),
             ("Google Cloud (public pricing page)", fetch_gcp_e2),
+            ("Egress rates", fetch_egress),
         )
     )
 
