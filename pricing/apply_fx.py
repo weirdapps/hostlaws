@@ -103,7 +103,7 @@ def _rescale_normalised(node, rs: Rescaler, ids: set[str], providers: set[str]):
             v.get("id") in ids or ("id" not in v and v.get("provider") in providers))
 
     items = node.items() if isinstance(node, dict) else enumerate(node)
-    for k, v in list(items):
+    for k, v in items:
         if owned(v):
             node[k] = rs.obj(v)
         elif isinstance(v, dict | list):
@@ -123,22 +123,36 @@ def _exact_usd_row(plan: dict, rate: float) -> None:
     specs = plan.get("specs") or {}
     for block_name in ("normalised_on_renewal", "normalised_on_current_price"):
         block = plan.get(block_name) or {}
-        ref = plan.get("price_ex_vat_eur")
-        renewal_eur = renewal.get("ex_vat_eur")
-        if block_name == "normalised_on_renewal" and isinstance(renewal_eur, int | float):
-            ref = renewal["ex_vat_eur"]
-        base = block.get("basis_price_eur_month")
-        both = isinstance(base, int | float) and isinstance(ref, int | float)
-        if both and abs(base - ref) < 0.01:
-            block["basis_price_eur_month"] = base = ref
+        base = _align_basis(block, _basis_ref(plan, block_name))
         _exact_units(block, base, specs)
         for mr in block.get("machine_rates") or []:
-            if "usd_per_month" in mr and mr.get("ram_gb"):
-                eur = round(mr["usd_per_month"] * rate + 1e-12, 4)
-                per = round(eur / mr["ram_gb"] + 1e-12, 4)
-                mr.update(eur_per_month=eur, eur_per_gb_ram_month=per, eur_per_gb_ram_formula=(
-                    f"USD {mr['usd_per_month']} x {rate!r} = EUR {eur:.4f}; "
-                    f"/ {mr['ram_gb']} GB = EUR {per:.4f} per GB per month"))
+            _exact_machine_rate(mr, rate)
+
+
+def _basis_ref(plan: dict, block_name: str):
+    renewal_eur = (plan.get("renewal") or {}).get("ex_vat_eur")
+    if block_name == "normalised_on_renewal" and isinstance(renewal_eur, int | float):
+        return renewal_eur
+    return plan.get("price_ex_vat_eur")
+
+
+def _align_basis(block: dict, ref):
+    """Snap the block's basis to the exact EUR price when it is that price, rounded."""
+    base = block.get("basis_price_eur_month")
+    both = isinstance(base, int | float) and isinstance(ref, int | float)
+    if both and abs(base - ref) < 0.01:
+        block["basis_price_eur_month"] = base = ref
+    return base
+
+
+def _exact_machine_rate(mr: dict, rate: float) -> None:
+    if "usd_per_month" not in mr or not mr.get("ram_gb"):
+        return
+    eur = round(mr["usd_per_month"] * rate + 1e-12, 4)
+    per = round(eur / mr["ram_gb"] + 1e-12, 4)
+    mr.update(eur_per_month=eur, eur_per_gb_ram_month=per, eur_per_gb_ram_formula=(
+        f"USD {mr['usd_per_month']} x {rate!r} = EUR {eur:.4f}; "
+        f"/ {mr['ram_gb']} GB = EUR {per:.4f} per GB per month"))
 
 
 def _exact_units(block: dict, base, specs: dict) -> None:
@@ -285,8 +299,7 @@ def _usd_parts_of_eur_rows(doc: dict, rate: float) -> None:
                 f"EUR {now:.4f} per 1,000 visits = {cap['eur'] / now:.2f}x")
 
 
-def _refresh_normalised(doc: dict) -> None:
-    n, plans = doc["normalised"], {p["id"]: p for p in doc["plans"]}
+def _refresh_rankings(n: dict, plans: dict) -> None:
     for name, metric in RANKINGS:
         for entry in n[name]:
             renewal = plans[entry["id"]]["normalised_on_renewal"]
@@ -299,19 +312,27 @@ def _refresh_normalised(doc: dict) -> None:
         if rows:
             best = min(rows, key=lambda r: r["value_eur"])
             entry["cheapest_plan"], entry["eur_per_gb_ram_month"] = best["plan"], best["value_eur"]
-    for entry in n["cost_with_1tb_egress"]:
-        egress = plans[entry["id"]].get("with_1tb_egress") or {}
-        for k in ("added_cost_eur", "added_cost_eur_range", "plan_plus_1tb_eur_month",
-                  "egress_share_of_total_pct", "egress_multiple_of_instance",
-                  "arithmetic", "caveat"):
-            if k in entry and k in egress:
-                entry[k] = egress[k]
-    for entry in n["managed_wordpress_eur_per_1k_visits"]:
-        visits = plans[entry["id"]].get("per_1k_visits") or {}
-        for k in ("eur_per_1k_visits_now", "formula_now", "eur_per_1k_visits_renewal",
-                  "formula_renewal", "marginal_rate_above_the_cap"):
-            if k in visits and k in entry:
-                entry[k] = visits[k]
+
+
+def _copy_keys(entries: list, source, keys: tuple) -> None:
+    for entry in entries:
+        src = source(entry["id"])
+        for k in keys:
+            if k in entry and k in src:
+                entry[k] = src[k]
+
+
+def _refresh_normalised(doc: dict) -> None:
+    n, plans = doc["normalised"], {p["id"]: p for p in doc["plans"]}
+    _refresh_rankings(n, plans)
+    _copy_keys(n["cost_with_1tb_egress"], lambda i: plans[i].get("with_1tb_egress") or {},
+               ("added_cost_eur", "added_cost_eur_range", "plan_plus_1tb_eur_month",
+                "egress_share_of_total_pct", "egress_multiple_of_instance",
+                "arithmetic", "caveat"))
+    _copy_keys(n["managed_wordpress_eur_per_1k_visits"],
+               lambda i: plans[i].get("per_1k_visits") or {},
+               ("eur_per_1k_visits_now", "formula_now", "eur_per_1k_visits_renewal",
+                "formula_renewal", "marginal_rate_above_the_cap"))
     n["managed_wordpress_eur_per_1k_visits"].sort(
         key=lambda e: (e["eur_per_1k_visits_now"] is None, e["eur_per_1k_visits_now"] or 0))
 
