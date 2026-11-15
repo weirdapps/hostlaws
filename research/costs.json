@@ -7384,7 +7384,7 @@
      "The plan fee is USD 0, so any per-GB figure derived from it would be zero and would misrepresent a bill that is entirely metered usage."
     ]
    },
-   "always_on_minimum": "CORRECTED. USD 1.94 per month for one shared-cpu-1x machine with 256MB RAM left running, from the iad (Ashburn, Virginia) matrix, which is the only matrix served without the 'hidden' class and therefore the default-visible one. Per-second USD 0.00000075, per hour USD 0.0027. The same machine is USD 2.24 in fra (Frankfurt). The previously recorded USD 2.02 / 0.00000078 / 0.0028 was the ams (Amsterdam) matrix, which is first in DOM order and hidden; the page's own regionMarkups object gives iad = 1 and ams = 1.038461538, and 1.94 x 1.038461538 = 2.01. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
+   "always_on_minimum": "UPDATED 2026-11-15. USD 2.19 per month, as printed on the pricing page for a started shared-cpu-1x machine with 256MB RAM in iad (Ashburn, Virginia) and ewr (Secaucus, NJ), the lowest-priced regions. The page states that monthly Machine prices assume 30 days of continuous runtime. The page price was lower when first captured on 2026-08-18. The same machine in fra (Frankfurt) is USD 2.53, derived as 2.19 x the page's regionMarkups value of 1.153846154 for fra. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
    "year_one": {
     "amount": 0.0,
     "currency": "USD",
@@ -7411,7 +7411,7 @@
     },
     "added_cost_eur": 17.43,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/",
     "note": "The egress figure is recorded at the provider's reference plan named in egress.json, not necessarily at this plan. See arithmetic."
    },
@@ -7431,7 +7431,7 @@
    "plan_name": "Pay As You Go (no platform fee)",
    "jurisdiction_of_seller": "US",
    "url": "https://fly.io/docs/about/pricing/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
     "amount": 0,
     "currency": "USD",
@@ -7441,7 +7441,7 @@
     "basis": null,
     "note": "There is no plan fee and no seat fee. Fly bills provisioned resources only. USD 0 here means 'no subscription', not 'free hosting': the first running machine starts billing immediately. See always_on_minimum for the cheapest machine that stays up.",
     "url": "https://fly.io/docs/about/pricing/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "price_ex_vat_eur": 0.0,
    "price_ex_vat_basis": "converted from USD at the indicative rate",
@@ -7488,67 +7488,67 @@
      {
       "preset": "shared-cpu-1x 256MB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 1.94,
-      "eur_per_month": 1.6911,
+      "usd_per_month": 2.19,
+      "eur_per_month": 1.909,
       "ram_gb": 0.25,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 6.7643,
-      "eur_per_gb_ram_formula": "USD 1.94 x 0.871688 = EUR 1.6911; / 0.25 GB = EUR 6.7643 per GB per month",
-      "correction": "corrections_applied entry 5, was 2.02 (the ams row)"
+      "eur_per_gb_ram_month": 7.636,
+      "eur_per_gb_ram_formula": "USD 2.19 x 0.871688 = EUR 1.9090; / 0.25 GB = EUR 7.6360 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "shared-cpu-1x 256MB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 2.24,
-      "eur_per_month": 1.9526,
+      "usd_per_month": 2.53,
+      "eur_per_month": 2.2054,
       "ram_gb": 0.25,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 7.8103,
-      "eur_per_gb_ram_formula": "USD 2.24 x 0.871688 = EUR 1.9526; / 0.25 GB = EUR 7.8103 per GB per month",
+      "eur_per_gb_ram_month": 8.8215,
+      "eur_per_gb_ram_formula": "USD 2.53 x 0.871688 = EUR 2.2054; / 0.25 GB = EUR 8.8215 per GB per month",
       "correction": null
      },
      {
       "preset": "shared-cpu-1x 1GB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 5.7,
-      "eur_per_month": 4.9686,
+      "usd_per_month": 6.7,
+      "eur_per_month": 5.8403,
       "ram_gb": 1.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 4.9686,
-      "eur_per_gb_ram_formula": "USD 5.7 x 0.871688 = EUR 4.9686; / 1.0 GB = EUR 4.9686 per GB per month",
-      "correction": "corrections_applied entry 6, was 5.92 (the ams row)"
+      "eur_per_gb_ram_month": 5.8403,
+      "eur_per_gb_ram_formula": "USD 6.7 x 0.871688 = EUR 5.8403; / 1.0 GB = EUR 5.8403 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "shared-cpu-1x 1GB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 6.57,
-      "eur_per_month": 5.727,
+      "usd_per_month": 7.73,
+      "eur_per_month": 6.7381,
       "ram_gb": 1.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 5.727,
-      "eur_per_gb_ram_formula": "USD 6.57 x 0.871688 = EUR 5.7270; / 1.0 GB = EUR 5.7270 per GB per month",
+      "eur_per_gb_ram_month": 6.7381,
+      "eur_per_gb_ram_formula": "USD 7.73 x 0.871688 = EUR 6.7381; / 1.0 GB = EUR 6.7381 per GB per month",
       "correction": null
      },
      {
       "preset": "performance-1x 2GB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 31.0,
-      "eur_per_month": 27.0223,
+      "usd_per_month": 33.0,
+      "eur_per_month": 28.7657,
       "ram_gb": 2.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 13.5112,
-      "eur_per_gb_ram_formula": "USD 31.0 x 0.871688 = EUR 27.0223; / 2.0 GB = EUR 13.5112 per GB per month",
-      "correction": "corrections_applied entry 7, was 32.19 (the ams row)"
+      "eur_per_gb_ram_month": 14.3829,
+      "eur_per_gb_ram_formula": "USD 33.0 x 0.871688 = EUR 28.7657; / 2.0 GB = EUR 14.3829 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "performance-1x 2GB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 35.77,
-      "eur_per_month": 31.1803,
+      "usd_per_month": 38.08,
+      "eur_per_month": 33.1929,
       "ram_gb": 2.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 15.5901,
-      "eur_per_gb_ram_formula": "USD 35.77 x 0.871688 = EUR 31.1803; / 2.0 GB = EUR 15.5901 per GB per month",
+      "eur_per_gb_ram_month": 16.5964,
+      "eur_per_gb_ram_formula": "USD 38.08 x 0.871688 = EUR 33.1929; / 2.0 GB = EUR 16.5964 per GB per month",
       "correction": null
      }
     ]
@@ -7571,72 +7571,72 @@
      {
       "preset": "shared-cpu-1x 256MB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 1.94,
-      "eur_per_month": 1.6911,
+      "usd_per_month": 2.19,
+      "eur_per_month": 1.909,
       "ram_gb": 0.25,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 6.7643,
-      "eur_per_gb_ram_formula": "USD 1.94 x 0.871688 = EUR 1.6911; / 0.25 GB = EUR 6.7643 per GB per month",
-      "correction": "corrections_applied entry 5, was 2.02 (the ams row)"
+      "eur_per_gb_ram_month": 7.636,
+      "eur_per_gb_ram_formula": "USD 2.19 x 0.871688 = EUR 1.9090; / 0.25 GB = EUR 7.6360 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "shared-cpu-1x 256MB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 2.24,
-      "eur_per_month": 1.9526,
+      "usd_per_month": 2.53,
+      "eur_per_month": 2.2054,
       "ram_gb": 0.25,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 7.8103,
-      "eur_per_gb_ram_formula": "USD 2.24 x 0.871688 = EUR 1.9526; / 0.25 GB = EUR 7.8103 per GB per month",
+      "eur_per_gb_ram_month": 8.8215,
+      "eur_per_gb_ram_formula": "USD 2.53 x 0.871688 = EUR 2.2054; / 0.25 GB = EUR 8.8215 per GB per month",
       "correction": null
      },
      {
       "preset": "shared-cpu-1x 1GB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 5.7,
-      "eur_per_month": 4.9686,
+      "usd_per_month": 6.7,
+      "eur_per_month": 5.8403,
       "ram_gb": 1.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 4.9686,
-      "eur_per_gb_ram_formula": "USD 5.7 x 0.871688 = EUR 4.9686; / 1.0 GB = EUR 4.9686 per GB per month",
-      "correction": "corrections_applied entry 6, was 5.92 (the ams row)"
+      "eur_per_gb_ram_month": 5.8403,
+      "eur_per_gb_ram_formula": "USD 6.7 x 0.871688 = EUR 5.8403; / 1.0 GB = EUR 5.8403 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "shared-cpu-1x 1GB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 6.57,
-      "eur_per_month": 5.727,
+      "usd_per_month": 7.73,
+      "eur_per_month": 6.7381,
       "ram_gb": 1.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 5.727,
-      "eur_per_gb_ram_formula": "USD 6.57 x 0.871688 = EUR 5.7270; / 1.0 GB = EUR 5.7270 per GB per month",
+      "eur_per_gb_ram_month": 6.7381,
+      "eur_per_gb_ram_formula": "USD 7.73 x 0.871688 = EUR 6.7381; / 1.0 GB = EUR 6.7381 per GB per month",
       "correction": null
      },
      {
       "preset": "performance-1x 2GB",
       "region": "iad Ashburn, Virginia, US",
-      "usd_per_month": 31.0,
-      "eur_per_month": 27.0223,
+      "usd_per_month": 33.0,
+      "eur_per_month": 28.7657,
       "ram_gb": 2.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 13.5112,
-      "eur_per_gb_ram_formula": "USD 31.0 x 0.871688 = EUR 27.0223; / 2.0 GB = EUR 13.5112 per GB per month",
-      "correction": "corrections_applied entry 7, was 32.19 (the ams row)"
+      "eur_per_gb_ram_month": 14.3829,
+      "eur_per_gb_ram_formula": "USD 33.0 x 0.871688 = EUR 28.7657; / 2.0 GB = EUR 14.3829 per GB per month",
+      "correction": "2026-11-15 price review: the provider page price changed since the 2026-08-18 capture"
      },
      {
       "preset": "performance-1x 2GB",
       "region": "fra Frankfurt, Germany",
-      "usd_per_month": 35.77,
-      "eur_per_month": 31.1803,
+      "usd_per_month": 38.08,
+      "eur_per_month": 33.1929,
       "ram_gb": 2.0,
       "vcpu": 1,
-      "eur_per_gb_ram_month": 15.5901,
-      "eur_per_gb_ram_formula": "USD 35.77 x 0.871688 = EUR 31.1803; / 2.0 GB = EUR 15.5901 per GB per month",
+      "eur_per_gb_ram_month": 16.5964,
+      "eur_per_gb_ram_formula": "USD 38.08 x 0.871688 = EUR 33.1929; / 2.0 GB = EUR 16.5964 per GB per month",
       "correction": null
      }
     ]
    },
-   "always_on_minimum": "CORRECTED. USD 1.94 per month for one shared-cpu-1x machine with 256MB RAM left running, from the iad (Ashburn, Virginia) matrix, which is the only matrix served without the 'hidden' class and therefore the default-visible one. Per-second USD 0.00000075, per hour USD 0.0027. The same machine is USD 2.24 in fra (Frankfurt). The previously recorded USD 2.02 / 0.00000078 / 0.0028 was the ams (Amsterdam) matrix, which is first in DOM order and hidden; the page's own regionMarkups object gives iad = 1 and ams = 1.038461538, and 1.94 x 1.038461538 = 2.01. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
+   "always_on_minimum": "UPDATED 2026-11-15. USD 2.19 per month, as printed on the pricing page for a started shared-cpu-1x machine with 256MB RAM in iad (Ashburn, Virginia) and ewr (Secaucus, NJ), the lowest-priced regions. The page states that monthly Machine prices assume 30 days of continuous runtime. The page price was lower when first captured on 2026-08-18. The same machine in fra (Frankfurt) is USD 2.53, derived as 2.19 x the page's regionMarkups value of 1.153846154 for fra. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
    "year_one": {
     "amount": 0.0,
     "currency": "USD",
@@ -7663,7 +7663,7 @@
     },
     "added_cost_eur": 17.43,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/",
     "note": "The egress figure is recorded at the provider's reference plan named in egress.json, not necessarily at this plan. See arithmetic."
    },
@@ -7758,7 +7758,7 @@
      "ram_gb is null: this provider does not sell a fixed RAM allocation, it meters execution. A blank is not a zero."
     ]
    },
-   "always_on_minimum": "CORRECTED. USD 1.94 per month for one shared-cpu-1x machine with 256MB RAM left running, from the iad (Ashburn, Virginia) matrix, which is the only matrix served without the 'hidden' class and therefore the default-visible one. Per-second USD 0.00000075, per hour USD 0.0027. The same machine is USD 2.24 in fra (Frankfurt). The previously recorded USD 2.02 / 0.00000078 / 0.0028 was the ams (Amsterdam) matrix, which is first in DOM order and hidden; the page's own regionMarkups object gives iad = 1 and ams = 1.038461538, and 1.94 x 1.038461538 = 2.01. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
+   "always_on_minimum": "UPDATED 2026-11-15. USD 2.19 per month, as printed on the pricing page for a started shared-cpu-1x machine with 256MB RAM in iad (Ashburn, Virginia) and ewr (Secaucus, NJ), the lowest-priced regions. The page states that monthly Machine prices assume 30 days of continuous runtime. The page price was lower when first captured on 2026-08-18. The same machine in fra (Frankfurt) is USD 2.53, derived as 2.19 x the page's regionMarkups value of 1.153846154 for fra. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
    "year_one": {
     "amount": 348.0,
     "currency": "USD",
@@ -7785,7 +7785,7 @@
     },
     "added_cost_eur": 17.43,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/",
     "note": "The egress figure is recorded at the provider's reference plan named in egress.json, not necessarily at this plan. See arithmetic."
    },
@@ -7876,7 +7876,7 @@
      "ram_gb is null: this provider does not sell a fixed RAM allocation, it meters execution. A blank is not a zero."
     ]
    },
-   "always_on_minimum": "CORRECTED. USD 1.94 per month for one shared-cpu-1x machine with 256MB RAM left running, from the iad (Ashburn, Virginia) matrix, which is the only matrix served without the 'hidden' class and therefore the default-visible one. Per-second USD 0.00000075, per hour USD 0.0027. The same machine is USD 2.24 in fra (Frankfurt). The previously recorded USD 2.02 / 0.00000078 / 0.0028 was the ams (Amsterdam) matrix, which is first in DOM order and hidden; the page's own regionMarkups object gives iad = 1 and ams = 1.038461538, and 1.94 x 1.038461538 = 2.01. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
+   "always_on_minimum": "UPDATED 2026-11-15. USD 2.19 per month, as printed on the pricing page for a started shared-cpu-1x machine with 256MB RAM in iad (Ashburn, Virginia) and ewr (Secaucus, NJ), the lowest-priced regions. The page states that monthly Machine prices assume 30 days of continuous runtime. The page price was lower when first captured on 2026-08-18. The same machine in fra (Frankfurt) is USD 2.53, derived as 2.19 x the page's regionMarkups value of 1.153846154 for fra. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
    "year_one": {
     "amount": 2388.0,
     "currency": "USD",
@@ -7903,7 +7903,7 @@
     },
     "added_cost_eur": 17.43,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/",
     "note": "The egress figure is recorded at the provider's reference plan named in egress.json, not necessarily at this plan. See arithmetic."
    },
@@ -7994,7 +7994,7 @@
      "ram_gb is null: this provider does not sell a fixed RAM allocation, it meters execution. A blank is not a zero."
     ]
    },
-   "always_on_minimum": "CORRECTED. USD 1.94 per month for one shared-cpu-1x machine with 256MB RAM left running, from the iad (Ashburn, Virginia) matrix, which is the only matrix served without the 'hidden' class and therefore the default-visible one. Per-second USD 0.00000075, per hour USD 0.0027. The same machine is USD 2.24 in fra (Frankfurt). The previously recorded USD 2.02 / 0.00000078 / 0.0028 was the ams (Amsterdam) matrix, which is first in DOM order and hidden; the page's own regionMarkups object gives iad = 1 and ams = 1.038461538, and 1.94 x 1.038461538 = 2.01. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
+   "always_on_minimum": "UPDATED 2026-11-15. USD 2.19 per month, as printed on the pricing page for a started shared-cpu-1x machine with 256MB RAM in iad (Ashburn, Virginia) and ewr (Secaucus, NJ), the lowest-priced regions. The page states that monthly Machine prices assume 30 days of continuous runtime. The page price was lower when first captured on 2026-08-18. The same machine in fra (Frankfurt) is USD 2.53, derived as 2.19 x the page's regionMarkups value of 1.153846154 for fra. Add egress at USD 0.02/GB in Europe or North America, plus USD 0.15/GB/month for any volume, plus USD 2/month if a dedicated IPv4 is needed.",
    "year_one": {
     "amount": 30000.0,
     "currency": "USD",
@@ -8021,7 +8021,7 @@
     },
     "added_cost_eur": 17.43,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/",
     "note": "The egress figure is recorded at the provider's reference plan named in egress.json, not necessarily at this plan. See arithmetic."
    },
@@ -12551,7 +12551,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/"
    },
    {
@@ -12569,7 +12569,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/"
    },
    {
@@ -12587,7 +12587,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/"
    },
    {
@@ -12605,7 +12605,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/"
    },
    {
@@ -12623,7 +12623,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No allowance at any tier, so the whole volume prices at the region-group rate: 1,000 GB x USD 0.02 = USD 20.00 for a machine in the North America or Europe group.",
-    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly ten times the USD 1.94 per month it costs to keep the smallest machine running.",
+    "caveat": "Region groups swing this six-fold on identical traffic: Asia Pacific, Oceania and South America are USD 0.04 per GB (USD 40.00), Africa and India USD 0.12 (USD 120.00). For scale, USD 20.00 of egress is roughly nine times the USD 2.19 per month it costs to keep the smallest machine running.",
     "url": "https://fly.io/docs/about/pricing/"
    },
    {
@@ -15258,6 +15258,70 @@
     }
    ],
    "verified_on_note": "All 70 rows were re-read on 2026-11-15 and carry verified_on 2026-11-15. verified_on moves on every weekly review that re-reads the row; captured_on moves only when the figure changes."
+  },
+  {
+   "reviewed_on": "2026-11-15",
+   "method": "Weekly review: pricing/check_drift.py for rows with an exact live match, the provider pages read by hand for the rest.",
+   "verified": 67,
+   "of": 73,
+   "changes": [
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "always_on_minimum / machine_rates shared-cpu-1x 256MB iad usd_per_month",
+     "old": 1.94,
+     "new": 2.19,
+     "currency": "USD",
+     "why": "The Fly pricing page now lists the smallest started Machine at $2.19/month. EUR 1.6911 became 1.9090 and EUR per GB RAM 6.7643 became 7.6360. The same figure is updated in the matching text of the other Fly rows."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "machine_rates shared-cpu-1x 256MB fra usd_per_month",
+     "old": 2.24,
+     "new": 2.53,
+     "currency": "USD",
+     "why": "Derived as 2.19 times the page's fra markup of 1.153846154. EUR 1.9526 became 2.2054."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "machine_rates shared-cpu-1x 1GB iad usd_per_month",
+     "old": 5.7,
+     "new": 6.7,
+     "currency": "USD",
+     "why": "The page lists $6.70/month. EUR 4.9686 became 5.8403."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "machine_rates shared-cpu-1x 1GB fra usd_per_month",
+     "old": 6.57,
+     "new": 7.73,
+     "currency": "USD",
+     "why": "The page's three-region example lists $7.73. EUR 5.7270 became 6.7381."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "machine_rates performance-1x 2GB iad usd_per_month",
+     "old": 31.0,
+     "new": 33.0,
+     "currency": "USD",
+     "why": "The page lists $33.00/month. EUR 27.0223 became 28.7657 and EUR per GB RAM 13.5112 became 14.3829."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "machine_rates performance-1x 2GB fra usd_per_month",
+     "old": 35.77,
+     "new": 38.08,
+     "currency": "USD",
+     "why": "Derived as 33 times the page's fra markup. EUR 31.1803 became 33.1929."
+    },
+    {
+     "id": "flyio--pay-as-you-go-no-platform-fee",
+     "field": "captured_on and price.captured_on",
+     "old": "2026-08-18",
+     "new": "2026-11-15",
+     "currency": "USD",
+     "why": "The row's captured Fly machine figures changed, so the capture date moves to today."
+    }
+   ]
   }
  ]
 }
