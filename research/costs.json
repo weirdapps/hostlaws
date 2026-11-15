@@ -1699,15 +1699,15 @@
    "jurisdiction_note": "Country of the contracting legal entity, from providers-merged.json. Not the location of the servers. Switzerland (Infomaniak, Exoscale) is not in the EU.",
    "legal_entity": "Infomaniak Network SA",
    "url": "https://www.infomaniak.com/en/hosting/vps-lite",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
     "amount": 2.7,
     "currency": "CHF",
     "period": "month",
     "vat": "ex",
-    "commitment": "monthly",
+    "commitment": "annual",
     "url": "https://www.infomaniak.com/en/hosting/vps-lite",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "price_ex_vat_eur": null,
    "price_ex_vat_basis": null,
@@ -1817,7 +1817,8 @@
     "price_note": "First card in the \"Choose your VPS package\" grid, Linux tab, Monthly tab: CHF 2.70 monthly. The card also carries a \"10% annual\" tag and the grid has a Monthly / Annual toggle, so paying annually reduces this by 10 percent; the annual figure is computed client-side and was not read, so it is not recorded.",
     "currency_note": "Recorded in CHF, not EUR, because the page renders CHF server-side in every locale tested (en, de, fr) and no currency parameter or selector changed it. The same page's HTML title reads \"Linux & Windows VPS Lite from EUR 2.70 / month | Infomaniak\", using a euro sign for the same numeral that the price card renders as CHF; the discrepancy is noted rather than resolved. Infomaniak's checkout does switch: the shop shell at shop.infomaniak.com sets CONST_CURRENCY {\"label\":\"EUR\"} and TAX_MODE {\"incl_vat\":false} for a visitor detected in an EU country, but the configurator is a JavaScript application and its EUR figures were not readable without operating it, so no EUR amount is recorded.",
     "vat_note": "The page footer states \"Prices do not include VAT\".",
-    "transfer_note": "No volume allowance. The page states \"Unlimited traffic with 500 Mb/s bandwidth\"."
+    "transfer_note": "No volume allowance. The page states \"Unlimited traffic with 500 Mb/s bandwidth\".",
+    "commitment_note": "Checked 2026-11-15: the VPS Lite grid now reads 'Monthly price with an annual commitment, payable in a single payment for 12 months. The 6- and 8-vCPU offers are also available with a monthly commitment.' The price is unchanged, but this plan is no longer sold month to month: on 2026-08-18 the grid had a Monthly tab at this price and a '10% annual' discount."
    },
    "verified_on": "2026-11-15"
   },
@@ -1833,15 +1834,15 @@
    "jurisdiction_note": "Country of the contracting legal entity, from providers-merged.json. Not the location of the servers. Switzerland (Infomaniak, Exoscale) is not in the EU.",
    "legal_entity": "Infomaniak Network SA",
    "url": "https://www.infomaniak.com/en/hosting/vps-lite",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
     "amount": 18.0,
     "currency": "CHF",
     "period": "month",
     "vat": "ex",
-    "commitment": "monthly",
+    "commitment": "annual",
     "url": "https://www.infomaniak.com/en/hosting/vps-lite",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "price_ex_vat_eur": null,
    "price_ex_vat_basis": null,
@@ -1951,7 +1952,8 @@
     "price_note": "Fifth and largest card in the VPS Lite grid, Linux tab, Monthly tab: CHF 18.00 monthly. \"10% annual\" tag applies as on the other cards.",
     "currency_note": "CHF for the reason given on the 1 vCPU plan. No EUR figure could be pinned from the public pages.",
     "vat_note": "\"Prices do not include VAT\".",
-    "transfer_note": "No volume allowance. \"Unlimited traffic with 500 Mb/s bandwidth\"."
+    "transfer_note": "No volume allowance. \"Unlimited traffic with 500 Mb/s bandwidth\".",
+    "commitment_note": "Checked 2026-11-15: the VPS Lite grid now reads 'Monthly price with an annual commitment, payable in a single payment for 12 months. The 6- and 8-vCPU offers are also available with a monthly commitment.' The price is unchanged, but this plan is no longer sold month to month: on 2026-08-18 the grid had a Monthly tab at this price and a '10% annual' discount."
    },
    "verified_on": "2026-11-15"
   },
@@ -15338,6 +15340,27 @@
      "new": 0.90715,
      "currency": "USD to EUR",
      "why": "Kinsta's currencyRates object, the dataset's FX source, reads 0.90715 today. Every EUR figure derived from a USD price was recomputed."
+    }
+   ]
+  },
+  {
+   "reviewed_on": "2026-11-15",
+   "changes": [
+    {
+     "id": "infomaniak--vps-lite-1-vcpu",
+     "field": "price.commitment",
+     "old": "monthly",
+     "new": "annual",
+     "currency": "CHF",
+     "why": "Infomaniak now sells this VPS Lite size only with a 12-month commitment paid upfront; price unchanged."
+    },
+    {
+     "id": "infomaniak--vps-lite-4-vcpu---8-gb",
+     "field": "price.commitment",
+     "old": "monthly",
+     "new": "annual",
+     "currency": "CHF",
+     "why": "Infomaniak now sells this VPS Lite size only with a 12-month commitment paid upfront; price unchanged."
     }
    ]
   }

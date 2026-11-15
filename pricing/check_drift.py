@@ -23,6 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 COSTS = ROOT / "research" / "costs.json"
+EGRESS = ROOT / "research" / "egress.json"
 LIVE = ROOT / "research" / "live-prices.json"
 
 # Hours per month used by the captured Azure and Scaleway rows.
@@ -81,6 +82,45 @@ MATCHES: dict[str, tuple[str, str, str, str]] = {
     "microsoft--azure-virtual-machines-b2s-standard_b2s-previo": (
         AZURE, "sku_name", "B2s", AZURE_MONTHLY),
 }
+
+
+# egress.json provider name -> live "Egress" row id. Compared on overage_rate
+# (USD per GB for all four). Google's figure is a candidate set from a page
+# whose per-region tables list several tiers and destinations, so its check
+# only proves the captured rate is still among the europe-west1 figures.
+EGRESS_MATCHES: dict[str, str] = {
+    "Amazon Web Services": "aws-eu-central-1-internet-next-10tb",
+    "Akamai (Linode)": "linode-network-transfer",
+    "Google Cloud": "gcp-europe-west1-internet",
+    "Vultr": "vultr-bandwidth-overage",
+}
+
+
+def _check_egress(egress: dict, live_rows: list[dict]) -> list[dict]:
+    by_id = {r.get("id"): r for r in live_rows}
+    out = []
+    for r in egress["providers"]:
+        row = {"id": "egress:" + r["name"], "provider": r["name"],
+               "captured_amount": r.get("overage_rate"), "currency": r.get("currency"),
+               "captured_on": r.get("verified_on") or r.get("retrieved_on")}
+        live_id = EGRESS_MATCHES.get(r["name"])
+        live = by_id.get(live_id) if live_id else None
+        if live_id is None:
+            out.append({**row, "status": "not_automated"})
+            continue
+        captured = r.get("overage_rate")
+        if live is None or captured is None:
+            out.append({**row, "status": "missing", "live_id": live_id})
+            continue
+        if "candidate_usd_per_gb" in live:
+            same = any(abs(c - captured) < 1e-9 for c in live["candidate_usd_per_gb"])
+            amount = captured if same else live["candidate_usd_per_gb"]
+        else:
+            amount = live["usd_per_gb"]
+            same = abs(amount - captured) < 1e-9
+        out.append({**row, "status": "match" if same else "drift", "live_id": live_id,
+                    "live_amount": amount, "live_fetched_at": live.get("fetched_at")})
+    return out
 
 
 def _azure_vm_row(plan: dict) -> bool:
@@ -150,13 +190,16 @@ def _check_row(plan: dict, providers: dict) -> dict:
     }
 
 
-def check(costs: dict, live: dict) -> list[dict]:
+def check(costs: dict, live: dict, egress: dict | None = None) -> list[dict]:
     providers = {
         p["provider"]: p.get("plans") or []
         for p in live.get("providers", [])
         if p.get("status") == "ok"
     }
-    return [_check_row(plan, providers) for plan in costs["plans"]]
+    results = [_check_row(plan, providers) for plan in costs["plans"]]
+    if egress is not None:
+        results += _check_egress(egress, providers.get("Egress", []))
+    return results
 
 
 def main() -> int:
@@ -168,10 +211,11 @@ def main() -> int:
     try:
         costs = json.loads(COSTS.read_text())
         live = json.loads(LIVE.read_text())
+        egress = json.loads(EGRESS.read_text())
     except (OSError, ValueError) as exc:
         print(f"cannot read inputs: {exc}", file=sys.stderr)
         return 2
-    results = check(costs, live)
+    results = check(costs, live, egress)
     counts: dict[str, int] = {}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
