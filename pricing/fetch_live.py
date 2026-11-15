@@ -244,68 +244,65 @@ def fetch_azure() -> dict:
 
 
 def fetch_scaleway() -> dict:
-    """Scaleway: public instance products API, no auth needed.
+    """Scaleway: public product catalog API, no auth needed.
 
-    Endpoint: https://api.scaleway.com/instance/v1/zones/fr-par-1/products/servers
-    Shape: servers{NAME: {arch, ncpus, ram (bytes), gpu, ...}}.
+    Endpoint: https://api.scaleway.com/product-catalog/v2alpha1/public-catalog/products
+    filtered to instances in fr-par-1, the zone the captured rows quote (PAR-1).
+    Shape: products[{product, variant, locality.zone, price.retail_price
+    {currency_code, units, nanos}, properties.hardware{cpu.virtual.count,
+    ram.size}}]. retail_price is per hour.
 
-    The instance products endpoint was probed and returns specs only; no price
-    field was found in the response. A separate public price endpoint was
-    searched but not confirmed. Recorded as unavailable with specs preserved.
+    The instance products endpoint this used before (instance/v1/.../products/
+    servers) began returning hourly_price and monthly_price as 0 for every
+    server, so it recorded EUR 0 for every plan. The catalog API carries the
+    real figures: DEV1-S 0.008976 EUR per hour matches the captured 0.00898.
+    Monthly here is hourly x 730, the same multiplier the pricing page uses for
+    its "Approx. per month" column.
     """
     zone = "fr-par-1"
-    endpoint = f"https://api.scaleway.com/instance/v1/zones/{zone}/products/servers"
+    endpoint = (
+        "https://api.scaleway.com/product-catalog/v2alpha1/public-catalog/products"
+        f"?page_size=500&product_types=instance&zone={zone}"
+    )
     provider = "Scaleway"
     ts = datetime.now(UTC).isoformat()
     try:
         data = _get(endpoint)
-        servers = data.get("servers") or {}
         plans = []
-        has_price = False
-        for name, spec in servers.items():
-            ram_bytes = spec.get("ram") or 0
-            # The response carries 'hourly_price' and 'monthly_price' fields
-            # in EUR. Verified: DEV1-S hourly_price * 730 = 6.55 EUR/month,
-            # matching the manually captured figure.
-            hourly_eur = spec.get("hourly_price")
-            if hourly_eur is not None:
-                has_price = True
+        for item in data.get("products") or []:
+            if (item.get("locality") or {}).get("zone") != zone:
+                continue
+            retail = (item.get("price") or {}).get("retail_price") or {}
+            if retail.get("currency_code") != "EUR":
+                continue
+            hourly_eur = (retail.get("units") or 0) + (retail.get("nanos") or 0) / 1e9
+            if hourly_eur <= 0:
+                # A zero is not a price: never publish it as one.
+                continue
+            hardware = (item.get("properties") or {}).get("hardware") or {}
+            ram_bytes = (hardware.get("ram") or {}).get("size") or 0
             plans.append({
-                "id": name,
-                "vcpu": spec.get("ncpus"),
+                "id": item.get("product"),
+                "vcpu": ((hardware.get("cpu") or {}).get("virtual") or {}).get("count"),
                 "ram_gb": round(ram_bytes / (1024 ** 3), 2) if ram_bytes else None,
-                "arch": spec.get("arch"),
-                "gpu": spec.get("gpu"),
-                "hourly_eur": hourly_eur,
-                "monthly_eur": spec.get("monthly_price"),
+                "arch": (hardware.get("cpu") or {}).get("arch"),
+                "hourly_eur": round(hourly_eur, 6),
+                "monthly_eur": round(hourly_eur * 730, 2),
                 "currency": "EUR",
                 "source": "api",
                 "endpoint": endpoint,
                 "fetched_at": ts,
             })
-        if not has_price:
-            return {
-                "provider": provider,
-                "status": "unavailable",
-                "fetched_at": ts,
-                "endpoint": endpoint,
-                "note": (
-                    "The instance products endpoint returns specs only. "
-                    "No price field was found in the response (checked "
-                    "hourly_price, monthly_price, price). "
-                    "A separate public price endpoint was not found. "
-                    "Spec records are preserved below."
-                ),
-                "specs_only": plans,
-            }
+        if not plans:
+            raise ValueError("no priced instance products in the catalog response")
         return {
             "provider": provider,
             "status": "ok",
             "fetched_at": ts,
             "endpoint": endpoint,
             "note": (
-                "hourly_price and monthly_price are native EUR fields from the API. "
-                "Confirmed: DEV1-S monthly_price 6.55 EUR matches manual capture."
+                "hourly_eur is the catalog retail_price for fr-par-1, ex VAT. "
+                "monthly_eur is hourly x 730, as on the pricing page."
             ),
             "plans": plans,
         }

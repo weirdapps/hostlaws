@@ -340,11 +340,11 @@
       "cloud_act_reasoning": "IONOS SE is a German SE (Amtsgericht Montabaur HRB 24498) under IONOS Group SE, whose largest shareholder is the German company United Internet AG at 63.8%; the former US private-equity holder Warburg Pincus exited fully in March 2025 and no US entity controls the group, although IONOS Inc. is a US subsidiary serving the US market and IONOS leases at least one German datacentre from Equinix, Inc.",
       "entry_pricing": {
         "plan_name": "VPS M+",
-        "amount": 3.0,
+        "amount": 4.0,
         "currency": "EUR",
         "period": "month",
         "url": "https://www.ionos.de/server/vps",
-        "note": "PROMOTIONAL. The page shows 'VPS M+ ... 9 EUR / 3 EUR /Monat fuer 3 Monate' plus 'Einrichtung 10 EUR', i.e. EUR 3.00/month for the first 3 months, EUR 9.00/month thereafter, with a EUR 10 setup fee. The footer states 'Preise inkl. MwSt.' so the German consumer storefront figures include VAT, unlike the ex-VAT figures elsewhere in this file. The page title on 2026-08-18 was 'vServer Guenstig Mieten - VPS ab 3 EUR / M. | IONOS'. Regular (non-promotional) monthly price: 9.00 EUR. Other IONOS storefronts show different currencies and offers for the same product."
+        "note": "PROMOTIONAL. Checked 2026-11-15: the page shows 'VPS M+ ... 12 EUR / 4 EUR /Monat fuer 3 Monate' with 'Einrichtung 10 EUR' struck through, i.e. EUR 4.00/month for the first 3 months, EUR 12.00/month thereafter, with the EUR 10 setup fee waived. The footer states 'Preise inkl. MwSt.' so the German consumer storefront figures include VAT, unlike the ex-VAT figures elsewhere in this file. On 2026-08-18 the same card read EUR 3.00 for 3 months, EUR 9.00 thereafter. Regular (non-promotional) monthly price: 12.00 EUR. Other IONOS storefronts show different currencies and offers for the same product."
       },
       "categories": [
         "vps",

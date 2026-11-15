@@ -252,7 +252,8 @@
     "vat_note": "The site applies VAT client-side from a \"Country (VAT)\" selector in the navigation. The English site default is code \"ot\" (all others) at tax 0, so the figure above is the net, ex-VAT price. Selecting Germany applies 19 percent on top. Source: the site script https://www.hetzner.com/_resources/themes/hetzner/dist/app.js, which contains s={code:\"ot\",tax:0} and r={code:\"de\",tax:19}.",
     "transfer_note": "Included traffic is not stated on this page, on /cloud/, on /cloud/regular-performance/, on /cloud/general-purpose/ or on /cloud/pricing/. No TB figure appears in the text of any of those five pages. Hetzner's billing FAQ (https://docs.hetzner.com/cloud/billing/faq/) confirms traffic is included and metered, that only outgoing traffic is billed, and that over-usage is billed in 100 MB blocks, but the 20 TB it mentions is inside a worked example (\"Example: Your server has 20TB included traffic\") and is not presented as this plan's allowance. Recorded null rather than carried over from the example.",
     "availability_note": "At capture the row carried the label \"not available\" (CSS class product-highlight-label-NotAvailable). The page explains the Cost-Optimized range runs on older hardware and that \"this resource-saving use means that the number of available servers is limited\". The price endpoint still returns active=true for all three EU datacenters."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hetzner--cx33",
@@ -369,7 +370,8 @@
     "vat_note": "Same VAT mechanism as CX23: net figure, English site default country \"all others\" at 0 percent.",
     "transfer_note": "Not stated on any Hetzner page read. See the CX23 transfer note.",
     "availability_note": "Row labelled \"not available\" at capture, as with the rest of the Cost-Optimized range."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hetzner--cpx32",
@@ -486,7 +488,8 @@
     "vat_note": "Net figure, English site default country \"all others\" at 0 percent.",
     "transfer_note": "Not stated on this page. See the CX23 transfer note.",
     "availability_note": "No availability label on the Regular Performance rows at capture."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hetzner--ccx33",
@@ -602,7 +605,8 @@
     "price_note": "Product key CLOUD_117+CLOUD_21 read from the CCX33 row markup. Endpoint https://website-price-api.hetzner.com/api/v1/products/CLOUD_117%2BCLOUD_21 returns monthly EUR 138.99, hourly EUR 0.222700, USD 163.59 per month for FSN1, NBG1 and HEL1; EUR 141.49 for the two US sites and EUR 174.99 for Singapore. Includes one primary IPv4. vCPUs are dedicated AMD.",
     "vat_note": "Net figure, English site default country \"all others\" at 0 percent.",
     "transfer_note": "Not stated on this page. See the CX23 transfer note."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ovhcloud--vps-1-2027",
@@ -726,7 +730,8 @@
     "renewal_note": "Not promotional. In the same catalog the upfront12 pricing carries capacities: [\"renew\"] and commitment: 12, meaning EUR 3.81 per month is also the renewal rate on the same 12-month commitment. A buyer on no commitment pays EUR 4.49 per month at signup and at renewal. No strikethrough, \"instead of\", \"save\" or \"first year\" wording appears anywhere on the product page.",
     "transfer_note": "The plan card states \"Unlimited traffic\" and \"500 Mbps public bandwidth\", so there is no monthly volume allowance to record for European locations. The page footnote limits this: \"Our VPS solutions in the Asia-Pacific region (Mumbai, Singapore, Sydney) come with a set monthly quota: 500 GB for VPS-1, 1 TB for VPS-2 and VPS-3, 3 TB for VPS-4. Beyond this, the bandwidth is capped at 10 Mbps.\"",
     "included_note": "Daily backup of the previous 24 hours and anti-DDoS protection are stated as included."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ovhcloud--vps-2-2027",
@@ -850,7 +855,8 @@
     "renewal_note": "Not promotional. upfront12 pricing carries capacities: [\"renew\"], so EUR 7.21 per month is also the renewal rate on a 12-month commitment.",
     "transfer_note": "\"Unlimited traffic\" with \"1 Gbps public bandwidth\" on the card. Asia-Pacific footnote caps VPS-2 at 1 TB per month, then 10 Mbps.",
     "included_note": "Daily backup of the previous 24 hours and anti-DDoS protection stated as included."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ovhcloud--vps-4-2027",
@@ -974,7 +980,8 @@
     "renewal_note": "Not promotional. upfront12 pricing carries capacities: [\"renew\"], so EUR 19.96 per month is also the renewal rate on a 12-month commitment.",
     "transfer_note": "\"Unlimited traffic\" with \"3 Gbps public bandwidth\" on the card. Asia-Pacific footnote caps VPS-4 at 3 TB per month, then 10 Mbps.",
     "included_note": "Daily backup of the previous 24 hours and anti-DDoS protection stated as included."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "scaleway--dev1-s",
@@ -1092,7 +1099,8 @@
     "price_note": "The Development Instances table for availability zone PAR-1 shows EUR 0.00898 per hour and, in its own \"Approx. per month\" column, ~EUR 6.55 per month. The monthly figure is the page's own approximation, labelled \"Approx.\", and equals hourly x 730. Billing is hourly with no commitment. The table's legal notice reads: \"Prices before tax. The price is different for DC PARIS 3: please check it in the console.\"",
     "storage_note": "No storage is included in the instance price. The pricing page states: \"List prices include egress and IPv6 addresses. Storage (local, block) and attached public IPv4 addresses are excluded.\" Scaleway's instances datasheet lists DEV1-S storage as \"Dynamic local: 1 x SSD, Block\" without a GB figure, so storage_gb and storage_type are null rather than guessed. A flexible public IPv4 is billed at EUR 0.004 per hour and unified snapshots at EUR 0.000044 per GB per hour.",
     "transfer_note": "No monthly transfer volume is expressed. The page states \"straightforward pricing without egress fees\" and \"List prices include egress and IPv6 addresses\". What is capped is throughput, not volume: the table gives DEV1-S 200 Mbps public bandwidth, and the datasheet gives \"Internal: 200 Mb/s, Public: 200 Mb/s\"."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "scaleway--dev1-l",
@@ -1210,7 +1218,8 @@
     "price_note": "PAR-1 Development Instances table: EUR 0.04284 per hour, \"Approx. per month\" ~EUR 31.27. Hourly billing, no commitment, prices before tax.",
     "storage_note": "Storage excluded from the list price, as for DEV1-S. Datasheet gives no GB figure for the included local volume, so null.",
     "transfer_note": "No volume allowance expressed; egress is included in the list price. Throughput is 400 Mbps public bandwidth."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "scaleway--pro2-s",
@@ -1328,7 +1337,8 @@
     "price_note": "PAR-1 General Purpose table: EUR 0.22338 per hour, \"Approx. per month\" ~EUR 163.06. Hourly billing, no commitment, prices before tax.",
     "storage_note": "PRO2 is Block Storage only. The datasheet lists PRO2-S storage simply as \"Block\", and the pricing page excludes storage from the list price, so there is no bundled disk to record.",
     "transfer_note": "No volume allowance expressed; egress is included in the list price. Throughput is 1.5 Gbps public bandwidth, matching the datasheet's \"Internal: 1.5 Gb/s, Public: 1.5 Gb/s\"."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ionos--vps-m+",
@@ -1336,35 +1346,35 @@
    "segment": "vps_eu",
    "category": "vps",
    "plan_name": "VPS M+ (Linux)",
-   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly.",
+   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.8400 per GB of RAM ex VAT; from month 4 it is EUR 2.5200. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed.",
    "alternative_commitment_pricing": null,
    "jurisdiction_of_seller": "DE",
    "jurisdiction_note": "Country of the contracting legal entity, from providers-merged.json. Not the location of the servers. Switzerland (Infomaniak, Exoscale) is not in the EU.",
    "legal_entity": "IONOS SE",
    "url": "https://www.ionos.de/server/vps",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 3.0,
+    "amount": 4.0,
     "currency": "EUR",
     "period": "month",
     "vat": "inc",
     "commitment": "annual",
     "url": "https://www.ionos.de/server/vps",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 2.52,
-   "price_ex_vat_basis": "provider-published ex-VAT (net) figure from the page payload",
-   "vat_note": "Quoted INC VAT at 19 percent: EUR 3.00 gross now, EUR 9.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 2.52 and EUR 7.56, are IONOS's own net figures from the page's Next.js payload, not a division performed here. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
+   "price_ex_vat_eur": 3.36,
+   "price_ex_vat_basis": "derived here: gross / 1.19 at the 19 percent rate the page states. The page no longer carries IONOS's own net figures (checked 2026-11-15).",
+   "vat_note": "Quoted INC VAT at 19 percent: EUR 4.00 gross now, EUR 12.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 3.36 and EUR 10.08, are gross / 1.19 computed here. Until 2026-08-18 the page's Next.js payload carried IONOS's own net figures; the rebuilt page checked on 2026-11-15 does not. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
    "is_promotional": true,
    "renewal": {
-    "amount": 9.0,
+    "amount": 12.0,
     "currency": "EUR",
     "period": "month",
     "url": "https://www.ionos.de/server/vps",
-    "ex_vat_eur": 7.56
+    "ex_vat_eur": 10.08
    },
    "specs": {
-    "vcpu": 4,
+    "vcpu": 2,
     "ram_gb": 4,
     "storage_gb": 120,
     "storage_type": "NVMe SSD",
@@ -1378,45 +1388,45 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 7.56,
+    "basis_price_eur_month": 10.08,
     "basis": "renewal price, ex VAT",
-    "eur_per_gb_ram_month": 1.89,
-    "eur_per_gb_ram_formula": "7.5600 EUR / 4 GB RAM = 1.8900 EUR per GB per month",
-    "eur_per_vcpu_month": 1.89,
-    "eur_per_vcpu_formula": "7.5600 EUR / 4 vCPU = 1.8900 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 2.52,
+    "eur_per_gb_ram_formula": "10.0800 EUR / 4 GB RAM = 2.5200 EUR per GB per month",
+    "eur_per_vcpu_month": 5.04,
+    "eur_per_vcpu_formula": "10.0800 EUR / 2 vCPU = 5.0400 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 2.52,
+    "basis_price_eur_month": 3.36,
     "basis": "current price as quoted, ex VAT",
-    "eur_per_gb_ram_month": 0.63,
-    "eur_per_gb_ram_formula": "2.5200 EUR / 4 GB RAM = 0.6300 EUR per GB per month",
-    "eur_per_vcpu_month": 0.63,
-    "eur_per_vcpu_formula": "2.5200 EUR / 4 vCPU = 0.6300 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 0.84,
+    "eur_per_gb_ram_formula": "3.3600 EUR / 4 GB RAM = 0.8400 EUR per GB per month",
+    "eur_per_vcpu_month": 1.68,
+    "eur_per_vcpu_formula": "3.3600 EUR / 2 vCPU = 1.6800 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "year_one": {
-    "amount_ex_vat_eur": 75.6,
-    "amount_inc_vat_eur": 90.0,
-    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 2.52 + 9 x 7.56 = 75.60 EUR. Inc VAT at 19 percent: 3 x 3.00 + 9 x 9.00 = 90.00 EUR.",
-    "setup_fee": "EUR 0.00. The card shows a struck-through EUR 10.00 setup fee and the page payload carries setup: null, so it is waived under the current offer.",
+    "amount_ex_vat_eur": 100.8,
+    "amount_inc_vat_eur": 120.0,
+    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 3.36 + 9 x 10.08 = 100.80 EUR. Inc VAT at 19 percent: 3 x 4.00 + 9 x 12.00 = 120.00 EUR.",
+    "setup_fee": "EUR 0.00. The card shows a struck-through 'Einrichtung 10 EUR', and the card's published saving only reconciles with the setup fee waived (see promo_to_renewal_jump).",
     "months_at_promo_rate": 3,
     "url": "https://www.ionos.de/server/vps"
    },
    "year_two": {
-    "amount_ex_vat_eur": 90.72,
-    "amount_inc_vat_eur": 108.0,
-    "formula": "12 months at the renewal rate. Ex VAT: 12 x 7.56 = 90.72 EUR. Inc VAT: 12 x 9.00 = 108.00 EUR.",
+    "amount_ex_vat_eur": 120.96,
+    "amount_inc_vat_eur": 144.0,
+    "formula": "12 months at the renewal rate. Ex VAT: 12 x 10.08 = 120.96 EUR. Inc VAT: 12 x 12.00 = 144.00 EUR.",
     "url": "https://www.ionos.de/server/vps"
    },
    "promo_to_renewal_jump": {
     "monthly_multiple": 3.0,
-    "monthly_delta_inc_vat_eur": 6.0,
+    "monthly_delta_inc_vat_eur": 8.0,
     "year_two_over_year_one": 1.2,
-    "formula": "Renewal 9.00 / promotional 3.00 = 3.00x per month. Year two 108.00 / year one 90.00 = 1.20x.",
-    "corroboration": "IONOS publishes a saving percentage on each card. The year-one arithmetic above reproduces it: this plan's published saving checks out against 12 x renewal + 10.00 setup as the regular-year baseline."
+    "formula": "Renewal 12.00 / promotional 4.00 = 3.00x per month. Year two 144.00 / year one 120.00 = 1.20x.",
+    "corroboration": "The card prints 'Sparen Sie 34 EUR'. 3 x (12.00 - 4.00) + 10.00 waived setup = 34.00 reproduces it, which confirms 12.00 as the regular monthly rate."
    },
    "with_1tb_egress": {
     "scenario": "1 TB (1,000 GB decimal) of outbound internet traffic per month, added to this plan",
@@ -1430,18 +1440,19 @@
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
     "caveat": "Do not carry the IONOS CLOUD ladder across. That is a different product: 2 TB per contract per month free, then USD 0.036 per GB. The VPS product recorded here is unmetered.",
     "url": "https://www.ionos.de/server/vps",
-    "plan_plus_1tb_eur_month": 7.56,
-    "plan_plus_1tb_formula": "7.56 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 7.56 EUR per month",
+    "plan_plus_1tb_eur_month": 10.08,
+    "plan_plus_1tb_formula": "10.08 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 10.08 EUR per month",
     "egress_share_of_total_pct": 0.0
    },
    "flags": [],
    "source_notes": {
-    "price_note": "Card shows a struck-through 9 EUR, a live price of 3 EUR /Monat, and the qualifier \"fuer 3 Monate\". The page's own data, embedded in its Next.js payload for article tariff-core-vps-linux-m-plus, gives price {net: 2.52, gross: 3}, strikePrice {net: 7.56, gross: 9}, strikeSetup {net: 8.4, gross: 10}, setup: null, offer {duration: 3, durationType: MONTHLY}, mct {duration: 1, durationType: YEARLY}, billingCycle MONTHLY, taxRate 19, currency EUR. So: 3.00 EUR inc VAT per month for the first 3 months, billed monthly, on a 12-month minimum contract term, with the 10 EUR setup fee struck through and waived. Ex-VAT equivalent 2.52 EUR.",
-    "renewal_note": "9.00 EUR inc VAT per month (7.56 ex VAT) is the regular price shown struck through on the card and carried in the page data as strikePrice. The page prints no explicit \"danach\" sentence, so this is the struck-through regular rate rather than a separately worded renewal line. It is corroborated arithmetically by IONOS's own published saving of 24 percent on this card: a first year at 3 x 3.00 + 9 x 9.00 + 0 setup = 90.00 against a regular year of 12 x 9.00 + 10.00 setup = 118.00 is a 23.7 percent saving. The same check reproduces the published 22, 21 and 20 percent figures on the L+, XL+ and XXL+ cards, which no other reading of the numbers does.",
+    "price_note": "Checked 2026-11-15. The page's embedded price data for article tariff-core-vps-linux-m-plus gives a struck-through 12 EUR, a live price of 4 EUR /Monat 'fuer 3 Monate', a struck-through 'Einrichtung 10 EUR' and 'Sparen Sie 34 EUR'. The card lists 2 vCores, 4 GB RAM. The page was rebuilt since 2026-08-18 and no longer carries net figures, the tax rate or the minimum term in its payload. On 2026-08-18 the figures were EUR 3.00 now and EUR 9.00 at renewal, with 4 vCPU.",
+    "renewal_note": "12.00 EUR inc VAT per month (10.08 ex VAT, computed) is the regular price shown struck through on the card. The page prints no explicit 'danach' sentence; the published euro saving reconciles only with this reading (see promo_to_renewal_jump.corroboration).",
     "vat_note": "Explicit on the page: \"Preise inkl. MwSt. Angebote sind nur fuer begrenzte Zeit gueltig und sind teils abhaengig von Mindestvertragslaufzeiten.\" The recorded amounts are gross at a 19 percent tax rate; net equivalents are given in the price note.",
     "transfer_note": "No volume allowance. The page states \"Unbegrenzt Traffic bis zu 1 Gbit/s\" on the plan block and, in the feature table, \"Unbegrenzter Traffic\" with \"Externe Anbindung des Servers mit bis zu 1 Gbit/s\".",
     "included_note": "One IPv4 address per server included, additional IPv4 at 5 EUR per month each; one IPv6 /80 network included; 2 mailboxes; SSL wildcard certificate; backup optional from 6 cents per GB per month; Plesk Obsidian 5 EUR per month. Datacentre choice is EU, USA or UK."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ionos--vps-l+",
@@ -1449,35 +1460,35 @@
    "segment": "vps_eu",
    "category": "vps",
    "plan_name": "VPS L+ (Linux)",
-   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5250 per GB of RAM ex VAT; from month 4 it is EUR 1.8913. Every card also sits on a 12-month minimum contract term, billed monthly.",
+   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.7350 per GB of RAM ex VAT; from month 4 it is EUR 2.3112. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed.",
    "alternative_commitment_pricing": null,
    "jurisdiction_of_seller": "DE",
    "jurisdiction_note": "Country of the contracting legal entity, from providers-merged.json. Not the location of the servers. Switzerland (Infomaniak, Exoscale) is not in the EU.",
    "legal_entity": "IONOS SE",
    "url": "https://www.ionos.de/server/vps",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 5.0,
+    "amount": 7.0,
     "currency": "EUR",
     "period": "month",
     "vat": "inc",
     "commitment": "annual",
     "url": "https://www.ionos.de/server/vps",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 4.2,
-   "price_ex_vat_basis": "provider-published ex-VAT (net) figure from the page payload",
-   "vat_note": "Quoted INC VAT at 19 percent: EUR 5.00 gross now, EUR 18.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 4.20 and EUR 15.13, are IONOS's own net figures from the page's Next.js payload, not a division performed here. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
+   "price_ex_vat_eur": 5.88,
+   "price_ex_vat_basis": "derived here: gross / 1.19 at the 19 percent rate the page states. The page no longer carries IONOS's own net figures (checked 2026-11-15).",
+   "vat_note": "Quoted INC VAT at 19 percent: EUR 7.00 gross now, EUR 22.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 5.88 and EUR 18.49, are gross / 1.19 computed here. Until 2026-08-18 the page's Next.js payload carried IONOS's own net figures; the rebuilt page checked on 2026-11-15 does not. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
    "is_promotional": true,
    "renewal": {
-    "amount": 18.0,
+    "amount": 22.0,
     "currency": "EUR",
     "period": "month",
     "url": "https://www.ionos.de/server/vps",
-    "ex_vat_eur": 15.13
+    "ex_vat_eur": 18.49
    },
    "specs": {
-    "vcpu": 6,
+    "vcpu": 4,
     "ram_gb": 8,
     "storage_gb": 240,
     "storage_type": "NVMe SSD",
@@ -1491,45 +1502,45 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 15.13,
+    "basis_price_eur_month": 18.49,
     "basis": "renewal price, ex VAT",
-    "eur_per_gb_ram_month": 1.8913,
-    "eur_per_gb_ram_formula": "15.1300 EUR / 8 GB RAM = 1.8913 EUR per GB per month",
-    "eur_per_vcpu_month": 2.5217,
-    "eur_per_vcpu_formula": "15.1300 EUR / 6 vCPU = 2.5217 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 2.3113,
+    "eur_per_gb_ram_formula": "18.4900 EUR / 8 GB RAM = 2.3112 EUR per GB per month",
+    "eur_per_vcpu_month": 4.6225,
+    "eur_per_vcpu_formula": "18.4900 EUR / 4 vCPU = 4.6225 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 4.2,
+    "basis_price_eur_month": 5.88,
     "basis": "current price as quoted, ex VAT",
-    "eur_per_gb_ram_month": 0.525,
-    "eur_per_gb_ram_formula": "4.2000 EUR / 8 GB RAM = 0.5250 EUR per GB per month",
-    "eur_per_vcpu_month": 0.7,
-    "eur_per_vcpu_formula": "4.2000 EUR / 6 vCPU = 0.7000 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 0.735,
+    "eur_per_gb_ram_formula": "5.8800 EUR / 8 GB RAM = 0.7350 EUR per GB per month",
+    "eur_per_vcpu_month": 1.47,
+    "eur_per_vcpu_formula": "5.8800 EUR / 4 vCPU = 1.4700 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "year_one": {
-    "amount_ex_vat_eur": 148.77,
-    "amount_inc_vat_eur": 177.0,
-    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 4.20 + 9 x 15.13 = 148.77 EUR. Inc VAT at 19 percent: 3 x 5.00 + 9 x 18.00 = 177.00 EUR.",
-    "setup_fee": "EUR 0.00. The card shows a struck-through EUR 10.00 setup fee and the page payload carries setup: null, so it is waived under the current offer.",
+    "amount_ex_vat_eur": 184.05,
+    "amount_inc_vat_eur": 219.0,
+    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 5.88 + 9 x 18.49 = 184.05 EUR. Inc VAT at 19 percent: 3 x 7.00 + 9 x 22.00 = 219.00 EUR.",
+    "setup_fee": "EUR 0.00. The card shows a struck-through 'Einrichtung 10 EUR', and the card's published saving only reconciles with the setup fee waived (see promo_to_renewal_jump).",
     "months_at_promo_rate": 3,
     "url": "https://www.ionos.de/server/vps"
    },
    "year_two": {
-    "amount_ex_vat_eur": 181.56,
-    "amount_inc_vat_eur": 216.0,
-    "formula": "12 months at the renewal rate. Ex VAT: 12 x 15.13 = 181.56 EUR. Inc VAT: 12 x 18.00 = 216.00 EUR.",
+    "amount_ex_vat_eur": 221.88,
+    "amount_inc_vat_eur": 264.0,
+    "formula": "12 months at the renewal rate. Ex VAT: 12 x 18.49 = 221.88 EUR. Inc VAT: 12 x 22.00 = 264.00 EUR.",
     "url": "https://www.ionos.de/server/vps"
    },
    "promo_to_renewal_jump": {
-    "monthly_multiple": 3.6,
-    "monthly_delta_inc_vat_eur": 13.0,
-    "year_two_over_year_one": 1.22,
-    "formula": "Renewal 18.00 / promotional 5.00 = 3.60x per month. Year two 216.00 / year one 177.00 = 1.22x.",
-    "corroboration": "IONOS publishes a saving percentage on each card. The year-one arithmetic above reproduces it: this plan's published saving checks out against 12 x renewal + 10.00 setup as the regular-year baseline."
+    "monthly_multiple": 3.14,
+    "monthly_delta_inc_vat_eur": 15.0,
+    "year_two_over_year_one": 1.21,
+    "formula": "Renewal 22.00 / promotional 7.00 = 3.14x per month. Year two 264.00 / year one 219.00 = 1.21x.",
+    "corroboration": "The card prints 'Sparen Sie 55 EUR'. 3 x (22.00 - 7.00) + 10.00 waived setup = 55.00 reproduces it, which confirms 22.00 as the regular monthly rate."
    },
    "with_1tb_egress": {
     "scenario": "1 TB (1,000 GB decimal) of outbound internet traffic per month, added to this plan",
@@ -1543,18 +1554,19 @@
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
     "caveat": "Do not carry the IONOS CLOUD ladder across. That is a different product: 2 TB per contract per month free, then USD 0.036 per GB. The VPS product recorded here is unmetered.",
     "url": "https://www.ionos.de/server/vps",
-    "plan_plus_1tb_eur_month": 15.13,
-    "plan_plus_1tb_formula": "15.13 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 15.13 EUR per month",
+    "plan_plus_1tb_eur_month": 18.49,
+    "plan_plus_1tb_formula": "18.49 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 18.49 EUR per month",
     "egress_share_of_total_pct": 0.0
    },
    "flags": [],
    "source_notes": {
-    "price_note": "Card shows struck-through 18 EUR, live 5 EUR /Monat, \"fuer 3 Monate\". Page data for tariff-core-vps-linux-l-plus: price {net: 4.2, gross: 5}, strikePrice {net: 15.13, gross: 18}, strikeSetup {net: 8.4, gross: 10}, setup: null, offer 3 months, mct 1 year, taxRate 19.",
-    "renewal_note": "18.00 EUR inc VAT per month (15.13 ex VAT) from month 4, being the struck-through regular price. Consistent with the card's published 22 percent saving: 3 x 5.00 + 9 x 18.00 = 177.00 against 12 x 18.00 + 10.00 = 226.00, a 21.7 percent saving.",
+    "price_note": "Checked 2026-11-15. The page's embedded price data for article tariff-core-vps-linux-l-plus gives a struck-through 22 EUR, a live price of 7 EUR /Monat 'fuer 3 Monate', a struck-through 'Einrichtung 10 EUR' and 'Sparen Sie 55 EUR'. The card lists 4 vCores, 8 GB RAM. The page was rebuilt since 2026-08-18 and no longer carries net figures, the tax rate or the minimum term in its payload. On 2026-08-18 the figures were EUR 5.00 now and EUR 18.00 at renewal, with 6 vCPU.",
+    "renewal_note": "22.00 EUR inc VAT per month (18.49 ex VAT, computed) is the regular price shown struck through on the card. The page prints no explicit 'danach' sentence; the published euro saving reconciles only with this reading (see promo_to_renewal_jump.corroboration).",
     "vat_note": "\"Preise inkl. MwSt.\" Gross figures at 19 percent; net equivalents in the price note.",
     "transfer_note": "\"Unbegrenzter Traffic\", external connection up to 1 Gbit/s. No volume allowance stated.",
     "included_note": "As VPS M+: one IPv4 included, extra IPv4 5 EUR per month, IPv6 /80 network, optional backup from 6 cents per GB per month."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "ionos--vps-xxl+",
@@ -1562,32 +1574,32 @@
    "segment": "vps_eu",
    "category": "vps",
    "plan_name": "VPS XXL+ (Linux)",
-   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5254 per GB of RAM ex VAT; from month 4 it is EUR 2.0308. Every card also sits on a 12-month minimum contract term, billed monthly.",
+   "ranking_caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed.",
    "alternative_commitment_pricing": null,
    "jurisdiction_of_seller": "DE",
    "jurisdiction_note": "Country of the contracting legal entity, from providers-merged.json. Not the location of the servers. Switzerland (Infomaniak, Exoscale) is not in the EU.",
    "legal_entity": "IONOS SE",
    "url": "https://www.ionos.de/server/vps",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 15.0,
+    "amount": 17.0,
     "currency": "EUR",
     "period": "month",
     "vat": "inc",
     "commitment": "annual",
     "url": "https://www.ionos.de/server/vps",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 12.61,
-   "price_ex_vat_basis": "provider-published ex-VAT (net) figure from the page payload",
-   "vat_note": "Quoted INC VAT at 19 percent: EUR 15.00 gross now, EUR 58.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 12.61 and EUR 48.74, are IONOS's own net figures from the page's Next.js payload, not a division performed here. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
+   "price_ex_vat_eur": 14.29,
+   "price_ex_vat_basis": "derived here: gross / 1.19 at the 19 percent rate the page states. The page no longer carries IONOS's own net figures (checked 2026-11-15).",
+   "vat_note": "Quoted INC VAT at 19 percent: EUR 17.00 gross now, EUR 59.00 gross at renewal. The ex-VAT equivalents used for every normalisation here, EUR 14.29 and EUR 49.58, are gross / 1.19 computed here. Until 2026-08-18 the page's Next.js payload carried IONOS's own net figures; the rebuilt page checked on 2026-11-15 does not. IONOS is the only provider in this file that quotes inc-VAT, and comparing its gross figure against an ex-VAT competitor overstates IONOS by 19 percent.",
    "is_promotional": true,
    "renewal": {
-    "amount": 58.0,
+    "amount": 59.0,
     "currency": "EUR",
     "period": "month",
     "url": "https://www.ionos.de/server/vps",
-    "ex_vat_eur": 48.74
+    "ex_vat_eur": 49.58
    },
    "specs": {
     "vcpu": 12,
@@ -1604,45 +1616,45 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 48.74,
+    "basis_price_eur_month": 49.58,
     "basis": "renewal price, ex VAT",
-    "eur_per_gb_ram_month": 2.0308,
-    "eur_per_gb_ram_formula": "48.7400 EUR / 24 GB RAM = 2.0308 EUR per GB per month",
-    "eur_per_vcpu_month": 4.0617,
-    "eur_per_vcpu_formula": "48.7400 EUR / 12 vCPU = 4.0617 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 2.0658,
+    "eur_per_gb_ram_formula": "49.5800 EUR / 24 GB RAM = 2.0658 EUR per GB per month",
+    "eur_per_vcpu_month": 4.1317,
+    "eur_per_vcpu_formula": "49.5800 EUR / 12 vCPU = 4.1317 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 12.61,
+    "basis_price_eur_month": 14.29,
     "basis": "current price as quoted, ex VAT",
-    "eur_per_gb_ram_month": 0.5254,
-    "eur_per_gb_ram_formula": "12.6100 EUR / 24 GB RAM = 0.5254 EUR per GB per month",
-    "eur_per_vcpu_month": 1.0508,
-    "eur_per_vcpu_formula": "12.6100 EUR / 12 vCPU = 1.0508 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 0.5954,
+    "eur_per_gb_ram_formula": "14.2900 EUR / 24 GB RAM = 0.5954 EUR per GB per month",
+    "eur_per_vcpu_month": 1.1908,
+    "eur_per_vcpu_formula": "14.2900 EUR / 12 vCPU = 1.1908 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": []
    },
    "year_one": {
-    "amount_ex_vat_eur": 476.49,
-    "amount_inc_vat_eur": 567.0,
-    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 12.61 + 9 x 48.74 = 476.49 EUR. Inc VAT at 19 percent: 3 x 15.00 + 9 x 58.00 = 567.00 EUR.",
-    "setup_fee": "EUR 0.00. The card shows a struck-through EUR 10.00 setup fee and the page payload carries setup: null, so it is waived under the current offer.",
+    "amount_ex_vat_eur": 489.09,
+    "amount_inc_vat_eur": 582.0,
+    "formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 14.29 + 9 x 49.58 = 489.09 EUR. Inc VAT at 19 percent: 3 x 17.00 + 9 x 59.00 = 582.00 EUR.",
+    "setup_fee": "EUR 0.00. The card shows a struck-through 'Einrichtung 10 EUR', and the card's published saving only reconciles with the setup fee waived (see promo_to_renewal_jump).",
     "months_at_promo_rate": 3,
     "url": "https://www.ionos.de/server/vps"
    },
    "year_two": {
-    "amount_ex_vat_eur": 584.88,
-    "amount_inc_vat_eur": 696.0,
-    "formula": "12 months at the renewal rate. Ex VAT: 12 x 48.74 = 584.88 EUR. Inc VAT: 12 x 58.00 = 696.00 EUR.",
+    "amount_ex_vat_eur": 594.96,
+    "amount_inc_vat_eur": 708.0,
+    "formula": "12 months at the renewal rate. Ex VAT: 12 x 49.58 = 594.96 EUR. Inc VAT: 12 x 59.00 = 708.00 EUR.",
     "url": "https://www.ionos.de/server/vps"
    },
    "promo_to_renewal_jump": {
-    "monthly_multiple": 3.87,
-    "monthly_delta_inc_vat_eur": 43.0,
-    "year_two_over_year_one": 1.23,
-    "formula": "Renewal 58.00 / promotional 15.00 = 3.87x per month. Year two 696.00 / year one 567.00 = 1.23x.",
-    "corroboration": "IONOS publishes a saving percentage on each card. The year-one arithmetic above reproduces it: this plan's published saving checks out against 12 x renewal + 10.00 setup as the regular-year baseline."
+    "monthly_multiple": 3.47,
+    "monthly_delta_inc_vat_eur": 42.0,
+    "year_two_over_year_one": 1.22,
+    "formula": "Renewal 59.00 / promotional 17.00 = 3.47x per month. Year two 708.00 / year one 582.00 = 1.22x.",
+    "corroboration": "The card prints 'Sparen Sie 136 EUR'. 3 x (59.00 - 17.00) + 10.00 waived setup = 136.00 reproduces it, which confirms 59.00 as the regular monthly rate."
    },
    "with_1tb_egress": {
     "scenario": "1 TB (1,000 GB decimal) of outbound internet traffic per month, added to this plan",
@@ -1656,18 +1668,19 @@
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
     "caveat": "Do not carry the IONOS CLOUD ladder across. That is a different product: 2 TB per contract per month free, then USD 0.036 per GB. The VPS product recorded here is unmetered.",
     "url": "https://www.ionos.de/server/vps",
-    "plan_plus_1tb_eur_month": 48.74,
-    "plan_plus_1tb_formula": "48.74 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 48.74 EUR per month",
+    "plan_plus_1tb_eur_month": 49.58,
+    "plan_plus_1tb_formula": "49.58 EUR (renewal, ex VAT) + 0.00 EUR (1 TB egress) = 49.58 EUR per month",
     "egress_share_of_total_pct": 0.0
    },
    "flags": [],
    "source_notes": {
-    "price_note": "Card shows struck-through 58 EUR, live 15 EUR /Monat, \"fuer 3 Monate\". Page data for tariff-core-vps-linux-xxl-plus: price {net: 12.61, gross: 15}, strikePrice {net: 48.74, gross: 58}, strikeSetup {net: 8.4, gross: 10}, setup: null, offer 3 months, mct 1 year, taxRate 19.",
-    "renewal_note": "58.00 EUR inc VAT per month (48.74 ex VAT) from month 4, being the struck-through regular price. Consistent with the card's published 20 percent saving: 3 x 15.00 + 9 x 58.00 = 567.00 against 12 x 58.00 + 10.00 = 706.00, a 19.7 percent saving.",
+    "price_note": "Checked 2026-11-15. The page's embedded price data for article tariff-core-vps-linux-xxl-plus gives a struck-through 59 EUR, a live price of 17 EUR /Monat 'fuer 3 Monate', a struck-through 'Einrichtung 10 EUR' and 'Sparen Sie 136 EUR'. The card lists 12 vCores, 24 GB RAM. The page was rebuilt since 2026-08-18 and no longer carries net figures, the tax rate or the minimum term in its payload. On 2026-08-18 the figures were EUR 15.00 now and EUR 58.00 at renewal, with 12 vCPU.",
+    "renewal_note": "59.00 EUR inc VAT per month (49.58 ex VAT, computed) is the regular price shown struck through on the card. The page prints no explicit 'danach' sentence; the published euro saving reconciles only with this reading (see promo_to_renewal_jump.corroboration).",
     "vat_note": "\"Preise inkl. MwSt.\" Gross figures at 19 percent; net equivalents in the price note.",
     "transfer_note": "\"Unbegrenzter Traffic\", external connection up to 1 Gbit/s. No volume allowance stated.",
     "included_note": "As VPS M+: one IPv4 included, extra IPv4 5 EUR per month, IPv6 /80 network, optional backup from 6 cents per GB per month."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "infomaniak--vps-lite-1-vcpu",
@@ -1800,7 +1813,8 @@
     "currency_note": "Recorded in CHF, not EUR, because the page renders CHF server-side in every locale tested (en, de, fr) and no currency parameter or selector changed it. The same page's HTML title reads \"Linux & Windows VPS Lite from EUR 2.70 / month | Infomaniak\", using a euro sign for the same numeral that the price card renders as CHF; the discrepancy is noted rather than resolved. Infomaniak's checkout does switch: the shop shell at shop.infomaniak.com sets CONST_CURRENCY {\"label\":\"EUR\"} and TAX_MODE {\"incl_vat\":false} for a visitor detected in an EU country, but the configurator is a JavaScript application and its EUR figures were not readable without operating it, so no EUR amount is recorded.",
     "vat_note": "The page footer states \"Prices do not include VAT\".",
     "transfer_note": "No volume allowance. The page states \"Unlimited traffic with 500 Mb/s bandwidth\"."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "infomaniak--vps-lite-4-vcpu---8-gb",
@@ -1933,7 +1947,8 @@
     "currency_note": "CHF for the reason given on the 1 vCPU plan. No EUR figure could be pinned from the public pages.",
     "vat_note": "\"Prices do not include VAT\".",
     "transfer_note": "No volume allowance. \"Unlimited traffic with 500 Mb/s bandwidth\"."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "infomaniak--vps-cloud",
@@ -2067,7 +2082,8 @@
     "vat_note": "\"Prices do not include VAT\".",
     "transfer_note": "No volume allowance. The prices tab lists \"Monthly traffic: Unlimited\" with the gloss \"Infomaniak does not limit the traffic so as not to penalise your websites when they become more successful.\"",
     "included_note": "One dedicated IPv4 and IPv6 address included, one snapshot included, 99.99 percent availability commitment, 30-day money-back guarantee."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "exoscale--standard-micro",
@@ -2184,7 +2200,8 @@
     "price_note": "The Standard Instances table prints only a \"Price / Hour\" column. For Micro that value is EUR 0.00729 per hour ex tax, served to the page from Exoscale's own endpoint https://portal.exoscale.com/api/pricing/opencompute under key running_micro. The monthly figure recorded, 5.25, is 720 x hourly, the multiplier Exoscale's own pricing script applies (scope.monthly_price = function(price){return 720*price} in https://www.exoscale.com/static/js/pricing.ng.js). It is a derivation from the provider's hourly price using the provider's own multiplier, not a number printed on the page. There is no commitment: the page says \"no long-term commitments. Completely on-demand, you can start, stop and scale your usage with no penalties, paying only what you use.\"",
     "storage_note": "Storage is not included in the instance price. The table footnote reads: \"Local Storage is not included in the displayed Instances price, and has a cost of {volume price} EUR / GiB hour.\" That rate is EUR 0.00014 per GiB-hour, about EUR 0.10 per GiB per month. The row states a minimum local storage of 10 GB and a maximum of 200 GB, but since none of it is in the price, storage_gb and storage_type are null.",
     "transfer_note": "Recorded as 1 because Exoscale states it in monthly terms itself: \"Traffic is billed per GiB with a free tier of up to 1.42 GiB / hr granted per-Instance (equivalent to 1 TiB / mo per-Instance).\" Note the unit is TiB, not TB. The allowance pools: \"If an instance doesn't use its free tier, it is reported on other running instances of the same organization.\" Excess outbound is EUR 0.02 per GiB. Inbound, inter-zone and inter-instance traffic are all free."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "exoscale--standard-large",
@@ -2301,7 +2318,8 @@
     "price_note": "Hourly price EUR 0.09333 ex tax (key running_large on https://portal.exoscale.com/api/pricing/opencompute). Monthly 67.20 is 720 x hourly using Exoscale's own multiplier, as described on the Micro plan. On-demand, no commitment.",
     "storage_note": "Storage excluded from the instance price at EUR 0.00014 per GiB-hour. The row states minimum 10 GB and maximum 400 GB local storage, none of it included.",
     "transfer_note": "1 TiB per month per instance free outbound, pooled across the organisation's running instances; EUR 0.02 per GiB beyond it. See the Micro transfer note for the verbatim wording."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "exoscale--standard-huge",
@@ -2418,7 +2436,8 @@
     "price_note": "Hourly price EUR 0.37334 ex tax (key running_huge on https://portal.exoscale.com/api/pricing/opencompute). Monthly 268.80 is 720 x hourly using Exoscale's own multiplier, as described on the Micro plan. On-demand, no commitment.",
     "storage_note": "Storage excluded from the instance price at EUR 0.00014 per GiB-hour. The row states minimum 10 GB and maximum 800 GB local storage, none of it included.",
     "transfer_note": "1 TiB per month per instance free outbound, pooled across the organisation's running instances; EUR 0.02 per GiB beyond it."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "digitalocean--basic-droplet-regular-1-gib---1-vcpu",
@@ -2532,7 +2551,8 @@
     "note": "Transfer is stated by DigitalOcean as 1,000 GiB, not as 1 TB. GiB is binary, so 1,000 GiB is about 1.07 decimal TB. transfer_tb is recorded as 1.0 to keep the row comparable; the verbatim figure is in source_quote. Memory and disk are likewise stated in GiB, not GB.",
     "source_quote": "1 GiB | 1 vCPU | 1,000 GiB | 25 GiB | $0.00893 | $6.00",
     "renewal_note": "No renewal figure exists to capture. The page shows one recurring rate per plan with no introductory period, no first-term discount and no step-up language. Month thirteen is billed at the same USD 6.00 as month one. A separate USD 5 signup credit is described in the FAQ, but that is a credit against usage, not a discounted plan rate, so it does not create a renewal price."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "digitalocean--basic-droplet-regular-4-gib---2-vcpu",
@@ -2646,7 +2666,8 @@
     "note": "Transfer stated as 4,000 GiB. Memory and disk stated in GiB.",
     "source_quote": "4 GiB | 2 vCPUs | 4,000 GiB | 80 GiB | $0.03571 | $24.00",
     "renewal_note": "No renewal figure exists to capture. One flat recurring rate, no introductory period, no step-up at any point in the term."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "digitalocean--basic-droplet-regular-8-gib---4-vcpu",
@@ -2760,7 +2781,8 @@
     "note": "Transfer stated as 5,000 GiB. Memory and disk stated in GiB.",
     "source_quote": "8 GiB | 4 vCPUs | 5,000 GiB | 160 GiB | $0.07143 | $48.00",
     "renewal_note": "No renewal figure exists to capture. One flat recurring rate, no introductory period, no step-up at any point in the term."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vultr--cloud-compute-regular-performance-1-vcpu---1-gb",
@@ -2876,7 +2898,8 @@
     "note": "storage_type recorded as ssd on the strength of the tier description directly above the table: 'Regular Performance: Powered by previous generation Intel CPUs and regular SSD.' The table's own Storage column gives a size only, with no media type.",
     "source_quote": "1 vCPU | 1 GB | 1.00 TB | 25 GB | $5.00/mo | $0.007/hr",
     "renewal_note": "No renewal figure exists to capture. The plan tables show a single monthly rate per row with no introductory period, no first-term discount and no step-up language anywhere on the page. The page carries no signup credit or free trial offer."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vultr--cloud-compute-regular-performance-2-vcpu---4-gb",
@@ -2992,7 +3015,8 @@
     "note": "storage_type from the tier description 'previous generation Intel CPUs and regular SSD'. Included transfer at this size, 3 TB, is one quarter below the 4 TB that DigitalOcean and Akamai include at the same vCPU and RAM.",
     "source_quote": "2 vCPUs | 4 GB | 3.00 TB | 80 GB | $20.00/mo | $0.03/hr",
     "renewal_note": "No renewal figure exists to capture. Single flat monthly rate, no introductory period, no step-up language."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vultr--cloud-compute-regular-performance-4-vcpu---8-gb",
@@ -3108,7 +3132,8 @@
     "note": "storage_type from the tier description 'previous generation Intel CPUs and regular SSD'. Included transfer at this size, 4 TB, is 1 TB below Akamai and DigitalOcean at the same vCPU and RAM.",
     "source_quote": "4 vCPUs | 8 GB | 4.00 TB | 160 GB | $40.00/mo | $0.06/hr",
     "renewal_note": "No renewal figure exists to capture. Single flat monthly rate, no introductory period, no step-up language."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "akamai--nanode-1-gb",
@@ -3222,7 +3247,8 @@
     "note": "The pricing table's Storage column states a size only, with no media type. storage_type is recorded as ssd on the strength of Akamai's Shared CPU product documentation at https://techdocs.akamai.com/cloud-computing/docs/shared-cpu-compute-instances, which describes the plan as '1 vCPU core, 1 GB of memory, and 25 GB of SSD storage'. The CPUs column is labelled CPUs, not vCPUs, on this table.",
     "source_quote": "Nanode 1 GB | $5.00 | $0.0075 | 1 GB | 1 | 25 GB | 1 TB | 40/1 Gbps",
     "renewal_note": "No renewal figure exists to capture. The Shared CPU table lists one recurring monthly rate per plan with no introductory period and no step-up language. Akamai does advertise 'Try Akamai Cloud with US$100 in credits' on the pricing index, and the FAQ explains it as a credit that offsets usage for a fixed window: 'if you received a US$100 credit for 60 days, then that US$100 credit is automatically applied to your account ... Your credit card gets charged for any active services after the promotional credit window expires.' That is a credit against usage at the standard rate, not a discounted plan price, so there is no higher renewal rate to disclose. The plan rate is USD 5.00 in month one and USD 5.00 after the credit window closes."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "akamai--linode-4-gb",
@@ -3336,7 +3362,8 @@
     "note": "storage_type from the Shared CPU product documentation rather than the pricing table, which gives size only.",
     "source_quote": "Linode 4 GB | $24.00 | $0.0360 | 4 GB | 2 | 80 GB | 4 TB | 40/4 Gbps",
     "renewal_note": "No renewal figure exists to capture. One recurring rate, no introductory period. The US$100 signup credit is a usage credit at the standard rate, not a discounted plan price."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "akamai--linode-8-gb",
@@ -3450,7 +3477,8 @@
     "note": "storage_type from the Shared CPU product documentation rather than the pricing table, which gives size only.",
     "source_quote": "Linode 8 GB | $48.00 | $0.0720 | 8 GB | 4 | 160 GB | 5 TB | 40/5 Gbps",
     "renewal_note": "No renewal figure exists to capture. One recurring rate, no introductory period. The US$100 signup credit is a usage credit at the standard rate, not a discounted plan price."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "amazon--amazon-ec2-t4g.small-linux-on-demand-europe-",
@@ -3574,7 +3602,8 @@
     "spec_notes": "Burstable instance. Network performance listed as 'Up to 5 Gigabit'. AWS documents t4g.small at 24 CPU credits earned per hour, 576 maximum accrued credits, 2 vCPUs, and 20 percent baseline utilisation (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html). Sustained CPU use above the baseline in unlimited mode is charged separately: the EC2 On-Demand pricing page states T4g surplus credits cost $0.04 per vCPU-hour for Linux, RHEL and SLES.",
     "renewal_note": "Not applicable and not a defect. On-demand pricing has no introductory period and no term, so there is no second-year rate. The same USD 0.0192 per hour applies indefinitely until AWS changes its published price list. AWS gives no advance-notice commitment for price changes on this page.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "amazon--aws-free-tier-free-plan-new-aws-accounts",
@@ -3694,7 +3723,8 @@
     "spec_notes": null,
     "renewal_note": null,
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "amazon--aws-always-free-offers",
@@ -3807,7 +3837,8 @@
     "spec_notes": null,
     "renewal_note": "No renewal. The page states these offers apply 'as long as you are an AWS customer'.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2",
@@ -3820,27 +3851,27 @@
    "jurisdiction_of_seller": "US",
    "region": "West Europe (westeurope). Microsoft's regions list gives the physical location as Netherlands, geography Europe: https://learn.microsoft.com/azure/reliability/regions-list",
    "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 30.7868,
+    "amount": 31.4556,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": null,
     "commitment_meaning": "null here means no commitment is required, not that the plan fails to express one.",
-    "amount_source": "provider_published",
-    "derivation": "Read directly from the same table with Display pricing by set to Month. Equals the unrounded hourly rate times 730.",
+    "amount_source": "derived",
+    "derivation": "USD 0.048 per hour (unchanged since 2026-08-18, Azure Retail Prices API, westeurope, Consumption) x 730 hours x 0.897706, Microsoft's own USD to EUR conversion for this month, from https://azure.microsoft.com/api/v2/currencies/ (the currency table the pricing page loads), eur.modernConversion 0.8977063602495623681493783383, read 2026-11-15. The pricing page's EUR monthly is this same product: the 2026-08-18 figure equals USD 0.048 x 730 x 0.878619.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "hourly": {
-    "amount": 0.0422,
+    "amount": 0.0431,
     "currency": "EUR",
     "unit": "hour",
-    "amount_source": "provider_published",
-    "read_from": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/ with Region set to West Europe, Currency set to Euro Zone - Euro (EUR), Display pricing by set to Hour, column 'Pay as you go'"
+    "amount_source": "derived",
+    "read_from": "USD 0.048 x 0.897706, rounded to 4 decimals as the page displays it"
    },
-   "price_ex_vat_eur": 30.7868,
+   "price_ex_vat_eur": 31.4556,
    "price_ex_vat_basis": "as quoted, EUR, but the EUR figure is Microsoft's own monthly USD conversion, not a transacting rate",
    "vat_note": "Recorded null deliberately. The Azure Linux virtual machines pricing page carries no statement of VAT or tax treatment anywhere in its rendered text; the only price footnote concerns exchange rates, not tax. Microsoft's invoice documentation describes Tax as a line added on top of the Subtotal, which is 'Total before taxes' (https://learn.microsoft.com/partner-center/billing/understand-your-invoice), and that is consistent with list prices being ex-tax, but it is documentation about invoices rather than a statement on the price page. No Microsoft page located on 2026-08-18 states the VAT treatment of the listed price, so this is recorded as unknown rather than assumed.",
    "is_promotional": false,
@@ -3860,41 +3891,41 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 30.7868,
+    "basis_price_eur_month": 31.4556,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6967,
-    "eur_per_gb_ram_formula": "30.7868 EUR / 4 GB RAM = 7.6967 EUR per GB per month",
-    "eur_per_vcpu_month": 15.3934,
-    "eur_per_vcpu_formula": "30.7868 EUR / 2 vCPU = 15.3934 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8639,
+    "eur_per_gb_ram_formula": "31.4556 EUR / 4 GB RAM = 7.8639 EUR per GB per month",
+    "eur_per_vcpu_month": 15.7278,
+    "eur_per_vcpu_formula": "31.4556 EUR / 2 vCPU = 15.7278 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": [
      "storage_gb is 0 and that IS a zero, not a blank: these instance prices include no boot disk at all."
     ]
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 30.7868,
+    "basis_price_eur_month": 31.4556,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6967,
-    "eur_per_gb_ram_formula": "30.7868 EUR / 4 GB RAM = 7.6967 EUR per GB per month",
-    "eur_per_vcpu_month": 15.3934,
-    "eur_per_vcpu_formula": "30.7868 EUR / 2 vCPU = 15.3934 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8639,
+    "eur_per_gb_ram_formula": "31.4556 EUR / 4 GB RAM = 7.8639 EUR per GB per month",
+    "eur_per_vcpu_month": 15.7278,
+    "eur_per_vcpu_formula": "31.4556 EUR / 2 vCPU = 15.7278 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": [
      "storage_gb is 0 and that IS a zero, not a blank: these instance prices include no boot disk at all."
     ]
    },
    "year_one": {
-    "amount": 369.44,
+    "amount": 377.47,
     "currency": "EUR",
-    "amount_eur": 369.44,
-    "formula": "Not promotional. 12 x 30.7868 EUR = 369.44 EUR.",
+    "amount_eur": 377.47,
+    "formula": "Not promotional. 12 x 31.4556 EUR = 377.47 EUR.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
    },
    "year_two": {
-    "amount": 369.44,
+    "amount": 377.47,
     "currency": "EUR",
-    "amount_eur": 369.44,
-    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 30.7868 EUR = 369.44 EUR.",
+    "amount_eur": 377.47,
+    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 31.4556 EUR = 377.47 EUR.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
    },
    "promo_to_renewal_jump": {
@@ -3913,26 +3944,27 @@
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/",
-    "plan_plus_1tb_eur_month": 99.04,
-    "plan_plus_1tb_formula": "EUR 30.79 instance + EUR 68.25 egress = EUR 99.04 per month",
-    "egress_multiple_of_instance": 2.22,
-    "egress_multiple_formula": "EUR 68.25 egress / EUR 30.79 instance = 2.22x",
-    "egress_share_of_total_pct": 68.9
+    "plan_plus_1tb_eur_month": 99.71,
+    "plan_plus_1tb_formula": "EUR 31.46 instance + EUR 68.25 egress = EUR 99.71 per month",
+    "egress_multiple_of_instance": 2.17,
+    "egress_multiple_formula": "EUR 68.25 egress / EUR 31.46 instance = 2.17x",
+    "egress_share_of_total_pct": 68.4
    },
    "flags": [
     "COMPONENT, NOT A PRODUCT. This price buys compute and RAM only. It excludes the boot disk, outbound transfer, a public IPv4 address, load balancing, backups, snapshots and support above the free tier. Every one of those is a separate meter. Providers in the VPS and shared categories bundle most of them into the headline figure.",
     "VAT TREATMENT UNKNOWN: no Microsoft page located on the capture date states whether the listed price is inclusive or exclusive of VAT."
    ],
    "extra": {
-    "reconciliation_caveat": "Same rounding gap, disclosed in the source file: 0.0422 x 730 = 30.806 against a published 30.7868, 0.06 percent.",
-    "hourly_x_730": 30.806
+    "reconciliation_caveat": "The displayed hourly (0.0431) times 730 is 31.4630, against the monthly 31.4556: the monthly is computed from the unrounded rate. The gap is rounding.",
+    "hourly_x_730": 31.463
    },
    "source_notes": {
     "currency_note": "IMPORTANT. The EUR figure is a converted estimate, not a transacting rate. The page footnote states: 'Prices are calculated based on US dollars and converted using London closing spot rates that are captured in the two business days prior to the last business day of the previous month end... This rate applies to all transactions during the upcoming month.' Microsoft's Retail Prices API documentation is blunter: 'The currency that Microsoft uses to price all Azure services is USD. Prices shown in USD currency are Microsoft retail prices. Other non-USD prices returned by the API are for your reference to help you estimate budget expenses.' The EUR figure therefore moves monthly with the exchange rate even when the underlying USD price does not change.",
     "spec_notes": "Burstable. Microsoft documents Standard_B2ls_v2 at 30 percent base CPU performance, 60 initial credits, 36 credits banked per hour, 864 maximum banked credits (https://learn.microsoft.com/azure/virtual-machines/sizes/general-purpose/bsv2-series). Chosen as the primary Azure record because it is the currently listed small general-purpose burstable size and carries the same USD hourly rate as the previous-generation B2s the brief named.",
     "renewal_note": "Not applicable. Pay-as-you-go has no term and no introductory rate, so there is no second-year price. The same rate applies until Microsoft changes the price list or the EUR conversion rate resets at the start of a month.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-virtual-machines-b2ts-v2-standard_b2ts_v2",
@@ -3945,27 +3977,27 @@
    "jurisdiction_of_seller": "US",
    "region": "West Europe (westeurope), Netherlands",
    "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 7.6967,
+    "amount": 7.8639,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": null,
     "commitment_meaning": "null here means no commitment is required, not that the plan fails to express one.",
-    "amount_source": "provider_published",
-    "derivation": "Read directly from the same table with Display pricing by set to Month.",
+    "amount_source": "derived",
+    "derivation": "USD 0.012 per hour (unchanged since 2026-08-18, Azure Retail Prices API, westeurope, Consumption) x 730 hours x 0.897706, Microsoft's own USD to EUR conversion for this month, from https://azure.microsoft.com/api/v2/currencies/ (the currency table the pricing page loads), eur.modernConversion 0.8977063602495623681493783383, read 2026-11-15. The pricing page's EUR monthly is this same product: the 2026-08-18 figure equals USD 0.012 x 730 x 0.878619.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "hourly": {
-    "amount": 0.0105,
+    "amount": 0.0108,
     "currency": "EUR",
     "unit": "hour",
-    "amount_source": "provider_published",
-    "read_from": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/ with Region West Europe, Currency EUR, Display pricing by Hour, column 'Pay as you go'"
+    "amount_source": "derived",
+    "read_from": "USD 0.012 x 0.897706, rounded to 4 decimals as the page displays it"
    },
-   "price_ex_vat_eur": 7.6967,
+   "price_ex_vat_eur": 7.8639,
    "price_ex_vat_basis": "as quoted, EUR, but the EUR figure is Microsoft's own monthly USD conversion, not a transacting rate",
    "vat_note": "Recorded null for the same reason as the B2ls v2 record: the pricing page states no VAT treatment.",
    "is_promotional": false,
@@ -3985,41 +4017,41 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 7.6967,
+    "basis_price_eur_month": 7.8639,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6967,
-    "eur_per_gb_ram_formula": "7.6967 EUR / 1 GB RAM = 7.6967 EUR per GB per month",
-    "eur_per_vcpu_month": 3.8483,
-    "eur_per_vcpu_formula": "7.6967 EUR / 2 vCPU = 3.8483 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8639,
+    "eur_per_gb_ram_formula": "7.8639 EUR / 1 GB RAM = 7.8639 EUR per GB per month",
+    "eur_per_vcpu_month": 3.932,
+    "eur_per_vcpu_formula": "7.8639 EUR / 2 vCPU = 3.9320 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": [
      "storage_gb is 0 and that IS a zero, not a blank: these instance prices include no boot disk at all."
     ]
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 7.6967,
+    "basis_price_eur_month": 7.8639,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6967,
-    "eur_per_gb_ram_formula": "7.6967 EUR / 1 GB RAM = 7.6967 EUR per GB per month",
-    "eur_per_vcpu_month": 3.8483,
-    "eur_per_vcpu_formula": "7.6967 EUR / 2 vCPU = 3.8483 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8639,
+    "eur_per_gb_ram_formula": "7.8639 EUR / 1 GB RAM = 7.8639 EUR per GB per month",
+    "eur_per_vcpu_month": 3.932,
+    "eur_per_vcpu_formula": "7.8639 EUR / 2 vCPU = 3.9320 EUR per vCPU per month",
     "excluded_from": [],
     "exclusion_reasons": [
      "storage_gb is 0 and that IS a zero, not a blank: these instance prices include no boot disk at all."
     ]
    },
    "year_one": {
-    "amount": 92.36,
+    "amount": 94.37,
     "currency": "EUR",
-    "amount_eur": 92.36,
-    "formula": "Not promotional. 12 x 7.6967 EUR = 92.36 EUR.",
+    "amount_eur": 94.37,
+    "formula": "Not promotional. 12 x 7.8639 EUR = 94.37 EUR.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
    },
    "year_two": {
-    "amount": 92.36,
+    "amount": 94.37,
     "currency": "EUR",
-    "amount_eur": 92.36,
-    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 7.6967 EUR = 92.36 EUR.",
+    "amount_eur": 94.37,
+    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 7.8639 EUR = 94.37 EUR.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
    },
    "promo_to_renewal_jump": {
@@ -4038,26 +4070,27 @@
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/",
-    "plan_plus_1tb_eur_month": 75.95,
-    "plan_plus_1tb_formula": "EUR 7.70 instance + EUR 68.25 egress = EUR 75.95 per month",
-    "egress_multiple_of_instance": 8.87,
-    "egress_multiple_formula": "EUR 68.25 egress / EUR 7.70 instance = 8.87x",
-    "egress_share_of_total_pct": 89.9
+    "plan_plus_1tb_eur_month": 76.11,
+    "plan_plus_1tb_formula": "EUR 7.86 instance + EUR 68.25 egress = EUR 76.11 per month",
+    "egress_multiple_of_instance": 8.68,
+    "egress_multiple_formula": "EUR 68.25 egress / EUR 7.86 instance = 8.68x",
+    "egress_share_of_total_pct": 89.7
    },
    "flags": [
     "COMPONENT, NOT A PRODUCT. This price buys compute and RAM only. It excludes the boot disk, outbound transfer, a public IPv4 address, load balancing, backups, snapshots and support above the free tier. Every one of those is a separate meter. Providers in the VPS and shared categories bundle most of them into the headline figure.",
     "VAT TREATMENT UNKNOWN: no Microsoft page located on the capture date states whether the listed price is inclusive or exclusive of VAT."
    ],
    "extra": {
-    "reconciliation_caveat": "CORRECTION 8. The published hourly and the published monthly do not reconcile at the stated precision: 0.0105 EUR x 730 = 7.6650 EUR against a published 7.6967 EUR, a 0.41 percent gap. The monthly is 730 x the unrounded 0.01054342. Both figures are on the page; the gap is Microsoft's rounding, not an error here. The derived value is published alongside so a reader applying the file's own 730-hour rule can see why the arithmetic does not close.",
-    "hourly_x_730": 7.665
+    "reconciliation_caveat": "The displayed hourly (0.0108) times 730 is 7.8840, against the monthly 7.8639: the monthly is computed from the unrounded rate. The gap is rounding.",
+    "hourly_x_730": 7.884
    },
    "source_notes": {
     "currency_note": "Same converted-estimate caveat as the B2ls v2 record. Microsoft prices Azure in USD and converts to EUR monthly.",
     "spec_notes": "Included because it is the cheapest 2-vCPU size Azure currently lists in West Europe, but it carries 1 GiB of RAM against 2 GiB on the AWS t4g.small and the Google e2-small. Microsoft documents 20 percent base CPU performance, 24 credits banked per hour, 576 maximum banked credits. Azure lists no 2 vCPU / 2 GiB general-purpose size, so no exact like-for-like with the other two providers exists.",
     "renewal_note": "Not applicable. Pay-as-you-go, no term, no introductory rate.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-virtual-machines-b2s-standard_b2s-previo",
@@ -4070,27 +4103,27 @@
    "jurisdiction_of_seller": "US",
    "region": "West Europe (westeurope), Netherlands",
    "url": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName%20eq%20'Virtual%20Machines'%20and%20armRegionName%20eq%20'westeurope'%20and%20armSkuName%20eq%20'Standard_B2s'%20and%20priceType%20eq%20'Consumption'",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 30.733,
+    "amount": 31.463,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": null,
     "commitment_meaning": "null here means no commitment is required, not that the plan fails to express one.",
     "amount_source": "derived",
-    "derivation": "0.0421 EUR per hour x 730 hours",
+    "derivation": "0.0431 EUR per hour x 730 hours",
     "url": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName%20eq%20'Virtual%20Machines'%20and%20armRegionName%20eq%20'westeurope'%20and%20armSkuName%20eq%20'Standard_B2s'%20and%20priceType%20eq%20'Consumption'",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
    "hourly": {
-    "amount": 0.0421,
+    "amount": 0.0431,
     "currency": "EUR",
     "unit": "hour",
     "amount_source": "provider_published",
-    "read_from": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName eq 'Virtual Machines' and armRegionName eq 'westeurope' and armSkuName eq 'Standard_B2s' and priceType eq 'Consumption'. Response: retailPrice 0.0421, currencyCode EUR, unitOfMeasure '1 Hour', meterName 'B2s', productName 'Virtual Machines BS Series', effectiveStartDate 2025-10-01T00:00:00Z."
+    "read_from": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName eq 'Virtual Machines' and armRegionName eq 'westeurope' and armSkuName eq 'Standard_B2s' and priceType eq 'Consumption'. Response: retailPrice 0.0431 (0.0421 on 2026-08-18), currencyCode EUR, unitOfMeasure '1 Hour', meterName 'B2s', productName 'Virtual Machines BS Series', effectiveStartDate 2025-10-01T00:00:00Z."
    },
-   "price_ex_vat_eur": 30.733,
+   "price_ex_vat_eur": 31.463,
    "price_ex_vat_basis": "as quoted, EUR, but the EUR figure is Microsoft's own monthly USD conversion, not a transacting rate",
    "vat_note": "Recorded null. Neither the Retail Prices API nor its documentation states a VAT treatment for the returned rate.",
    "is_promotional": false,
@@ -4110,47 +4143,47 @@
     "monthly_visits"
    ],
    "normalised_on_renewal": {
-    "basis_price_eur_month": 30.733,
+    "basis_price_eur_month": 31.463,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6833,
-    "eur_per_gb_ram_formula": "30.7330 EUR / 4 GB RAM = 7.6833 EUR per GB per month",
-    "eur_per_vcpu_month": 15.3665,
-    "eur_per_vcpu_formula": "30.7330 EUR / 2 vCPU = 15.3665 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8658,
+    "eur_per_gb_ram_formula": "31.4630 EUR / 4 GB RAM = 7.8658 EUR per GB per month",
+    "eur_per_vcpu_month": 15.7315,
+    "eur_per_vcpu_formula": "31.4630 EUR / 2 vCPU = 15.7315 EUR per vCPU per month",
     "excluded_from": [
      "eur_per_gb_ram",
      "eur_per_vcpu"
     ],
     "exclusion_reasons": [
-     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 30.733 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 30.7868 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
+     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 31.463 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 31.4556 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
     ]
    },
    "normalised_on_current_price": {
-    "basis_price_eur_month": 30.733,
+    "basis_price_eur_month": 31.463,
     "basis": "current on-demand price (EUR)",
-    "eur_per_gb_ram_month": 7.6833,
-    "eur_per_gb_ram_formula": "30.7330 EUR / 4 GB RAM = 7.6833 EUR per GB per month",
-    "eur_per_vcpu_month": 15.3665,
-    "eur_per_vcpu_formula": "30.7330 EUR / 2 vCPU = 15.3665 EUR per vCPU per month",
+    "eur_per_gb_ram_month": 7.8658,
+    "eur_per_gb_ram_formula": "31.4630 EUR / 4 GB RAM = 7.8658 EUR per GB per month",
+    "eur_per_vcpu_month": 15.7315,
+    "eur_per_vcpu_formula": "31.4630 EUR / 2 vCPU = 15.7315 EUR per vCPU per month",
     "excluded_from": [
      "eur_per_gb_ram",
      "eur_per_vcpu"
     ],
     "exclusion_reasons": [
-     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 30.733 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 30.7868 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
+     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 31.463 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 31.4556 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
     ]
    },
    "year_one": {
-    "amount": 368.8,
+    "amount": 377.56,
     "currency": "EUR",
-    "amount_eur": 368.8,
-    "formula": "Not promotional. 12 x 30.733 EUR = 368.80 EUR.",
+    "amount_eur": 377.56,
+    "formula": "Not promotional. 12 x 31.463 EUR = 377.56 EUR.",
     "url": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName%20eq%20'Virtual%20Machines'%20and%20armRegionName%20eq%20'westeurope'%20and%20armSkuName%20eq%20'Standard_B2s'%20and%20priceType%20eq%20'Consumption'"
    },
    "year_two": {
-    "amount": 368.8,
+    "amount": 377.56,
     "currency": "EUR",
-    "amount_eur": 368.8,
-    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 30.733 EUR = 368.80 EUR.",
+    "amount_eur": 377.56,
+    "formula": "Not promotional, so year two equals year one. On-demand pricing has no term and no introductory period. 12 x 31.463 EUR = 377.56 EUR.",
     "url": "https://prices.azure.com/api/retail/prices?currencyCode='EUR'&$filter=serviceName%20eq%20'Virtual%20Machines'%20and%20armRegionName%20eq%20'westeurope'%20and%20armSkuName%20eq%20'Standard_B2s'%20and%20priceType%20eq%20'Consumption'"
    },
    "promo_to_renewal_jump": {
@@ -4169,25 +4202,26 @@
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/",
-    "plan_plus_1tb_eur_month": 98.98,
-    "plan_plus_1tb_formula": "EUR 30.73 instance + EUR 68.25 egress = EUR 98.98 per month",
-    "egress_multiple_of_instance": 2.22,
-    "egress_multiple_formula": "EUR 68.25 egress / EUR 30.73 instance = 2.22x",
-    "egress_share_of_total_pct": 69.0
+    "plan_plus_1tb_eur_month": 99.71,
+    "plan_plus_1tb_formula": "EUR 31.46 instance + EUR 68.25 egress = EUR 99.71 per month",
+    "egress_multiple_of_instance": 2.17,
+    "egress_multiple_formula": "EUR 68.25 egress / EUR 31.46 instance = 2.17x",
+    "egress_share_of_total_pct": 68.4
    },
    "flags": [
     "COMPONENT, NOT A PRODUCT. This price buys compute and RAM only. It excludes the boot disk, outbound transfer, a public IPv4 address, load balancing, backups, snapshots and support above the free tier. Every one of those is a separate meter. Providers in the VPS and shared categories bundle most of them into the headline figure.",
     "VAT TREATMENT UNKNOWN: no Microsoft page located on the capture date states whether the listed price is inclusive or exclusive of VAT."
    ],
    "extra": {
-    "comparability_flag": "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 30.733 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 30.7868 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
+    "comparability_flag": "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 31.463 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 31.4556 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
    },
    "source_notes": {
     "currency_note": "The EUR value is an API-supplied conversion. Microsoft's own documentation warns: 'Other non-USD prices returned by the API are for your reference to help you estimate budget expenses' and 'The API results don't match the invoice if you try to use the API to reconcile your invoice.'",
     "spec_notes": "Specs from Microsoft's Bv1 series documentation: Standard_B2s is 2 vCPUs, 4 GiB memory, 1 temp disk of 8 GiB, 20 percent base CPU performance, 60 initial credits, 24 credits banked per hour, 576 maximum banked credits.",
     "renewal_note": "Not applicable. Pay-as-you-go, no term, no introductory rate.",
     "page_availability_observation": "The B2s named in the research brief is no longer listed on the Azure Linux virtual machines pricing page. On 2026-08-18 the VM series selector on that page offered Basv2-series, Bpsv2-series and Bsv2-series but no Bv1 or Bs-series, and no B1s or B2s row appeared in any table. Microsoft classifies Bv1 as a previous generation series: 'These virtual machine sizes are a previous generation series. While older VM sizes are supported until further notice, we recommended using newer generations' (https://learn.microsoft.com/azure/virtual-machines/sizes/general-purpose/bv1-series). The SKU is still returned by the Retail Prices API with an effective date of 2025-10-01, so it remains priced and supported; it is simply not on the marketing page. This record is sourced from the API rather than the page for that reason, and the distinction is stated rather than papered over."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-free-account-usd-200-credit",
@@ -4219,11 +4253,11 @@
    "vat_note": null,
    "is_promotional": true,
    "renewal": {
-    "amount": 0.0422,
+    "amount": 0.0431,
     "currency": "EUR",
     "period": "hour",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
-    "note": "After 30 days or once the credit is spent, a B2ls v2 in West Europe reverts to the standard pay-as-you-go rate of EUR 0.0422 per hour, EUR 30.7868 per month. There is no separate renewal list: the renewal price is the standard price."
+    "note": "After 30 days or once the credit is spent, a B2ls v2 in West Europe reverts to the standard pay-as-you-go rate of EUR 0.0431 per hour, EUR 31.4556 per month (rate of 2026-11-15). There is no separate renewal list: the renewal price is the standard price."
    },
    "specs": {
     "vcpu": null,
@@ -4284,9 +4318,9 @@
     "url": "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account"
    },
    "year_two": {
-    "amount": 369.44,
+    "amount": 377.47,
     "currency": "EUR",
-    "formula": "12 x EUR 30.7868 = EUR 369.44 for a B2ls v2 in West Europe at the standard pay-as-you-go rate.",
+    "formula": "12 x EUR 31.4556 = EUR 377.47 for a B2ls v2 in West Europe at the standard pay-as-you-go rate.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
    },
    "promo_to_renewal_jump": {
@@ -4307,7 +4341,8 @@
     "spec_notes": null,
     "renewal_note": null,
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-free-services-for-the-first-12-months-750",
@@ -4419,7 +4454,8 @@
     "spec_notes": "Specs are for the B1s option, from Microsoft's Bv1 series documentation: 1 vCPU, 1 GiB memory, 1 temp disk of 4 GiB, 10 percent base CPU performance. The two alternatives, B2pts v2 (Arm) and B2ats v2 (AMD), are 2 vCPU and 1 GiB. The free services page itself gives no specs, only the size names and the hours.",
     "renewal_note": null,
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "microsoft--azure-always-free-services",
@@ -4533,7 +4569,8 @@
     "spec_notes": null,
     "renewal_note": "No renewal. The page states these are free 'for as long as you have an Azure account'.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "google--compute-engine-e2-small-on-demand-belgium-eur",
@@ -4654,7 +4691,8 @@
     "spec_notes": "Shared-core machine type. The pricing table lists 2 vCPUs and 2 GiB, but Google's machine documentation records e2-small as 2 vCPUs listed with 0.5 guaranteed vCPU, that is half a physical core guaranteed with burst above it (https://docs.cloud.google.com/compute/docs/general-purpose-machines). Of the three instances in this file, e2-small is the one whose headline vCPU count most overstates its guaranteed compute.",
     "renewal_note": "Not applicable. On-demand has no term and no introductory rate, so there is no second-year price. Committed use discount columns on the same table (1-year and 3-year, flexible and resource-based) are commitments a customer opts into, not a renewal cliff.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "google--google-cloud-free-trial-usd-300-credit",
@@ -4774,7 +4812,8 @@
     "spec_notes": null,
     "renewal_note": null,
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "google--google-cloud-free-tier-always-free-compute-engi",
@@ -4878,28 +4917,29 @@
     "spec_notes": "e2-micro is listed at 2 vCPUs and 1 GiB on the pricing page, with 0.25 guaranteed vCPU per Google's machine documentation. The transfer_tb value of 0.001 is 1 GB, and it applies to egress from North America only.",
     "renewal_note": "No renewal. This allowance does not expire, unlike the Azure 12-month equivalent and the AWS credits. It is the only genuinely always-free virtual machine found across the three providers on 2026-08-18.",
     "page_availability_observation": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "wp-engine--startup-(essential)",
    "provider": "WP Engine",
    "segment": "managed_wp_and_shared",
    "category": "managed_wordpress",
-   "plan_name": "Startup (Essential)",
+   "plan_name": "Essential, 1 site",
    "jurisdiction_of_seller": "US",
    "url": "https://wpengine.com/ie/plans/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 27,
+    "amount": 25.6,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": "annual",
     "commitment_stated": null,
     "url": "https://wpengine.com/ie/plans/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 27.0,
+   "price_ex_vat_eur": 25.6,
    "price_ex_vat_basis": "as quoted, EUR ex VAT",
    "vat_note": "NULL. The page never uses the words VAT, ex-VAT or inc-VAT.",
    "is_promotional": true,
@@ -4954,8 +4994,8 @@
    },
    "per_1k_visits": {
     "monthly_visits_stated": 25000,
-    "eur_per_1k_visits_now": 1.08,
-    "formula_now": "27.0000 EUR per month / (25,000 visits / 1,000) = 1.0800 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 1.024,
+    "formula_now": "25.6000 EUR per month / (25,000 visits / 1,000) = 1.0240 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -4964,21 +5004,21 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0800 per 1,000 visits = 1.61x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0240 per 1,000 visits = 1.70x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     }
    },
    "year_one": {
-    "amount": 324.0,
+    "amount": 307.2,
     "currency": "EUR",
-    "amount_actually_charged": 320.0,
-    "formula": "12 x EUR 27 displayed = EUR 324.00. The configurator states the real charge is 'Pay EUR 320 today', which is 10 x the EUR 32 monthly-term rate, i.e. two months free. 320 / 12 = 26.67, which the page rounds up and displays as 27, so the displayed monthly overstates the annual charge by EUR 4.",
+    "amount_actually_charged": 307.2,
+    "formula": "The configurator's annual option ('Save 20%') charges EUR 307.20 per year for '1 site', which is 12 x the EUR 32.00 monthly-term rate less 20 percent. 307.20 / 12 = 25.60, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 27.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "year_two": {
     "amount": null,
     "currency": "EUR",
-    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 307.20 up front for year one without a published year-two price.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "promo_to_renewal_jump": {
@@ -4997,7 +5037,7 @@
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    "flags": [
@@ -5005,29 +5045,31 @@
    ],
    "corrections": [],
    "source_notes": {
-    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Configurator detail read in a browser on this page with currency EUR and term annually, which are the defaults on the Ireland storefront: \"€27EUR/mo\" with \"Pay €320 today\". Switching the term selector to monthly changes the quote to \"€32EUR/mo\" with the line \"Get 2 months Free! Switch to annual\". 10 x 32 = 320, so the annual rate on the page is a two-months-free term discount; the page nevertheless labels the figure with the first-year footnote, which is why is_promotional is true. Note 320 / 12 = 26.67, displayed as 27. transfer_tb 0.075 is the stated 75 GB per month. Add-ons priced on the same card: additional site +€19, Automated Plugin Updates +€3. Storage type is not stated, only \"Local storage\", so storage_type is null. No vCPU or RAM figure is published."
-   }
+    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Configurator detail read in a browser on this page with currency EUR and term annually, which are the defaults on the Ireland storefront: \"€27EUR/mo\" with \"Pay €320 today\". Switching the term selector to monthly changes the quote to \"€32EUR/mo\" with the line \"Get 2 months Free! Switch to annual\". 10 x 32 = 320, so the annual rate on the page is a two-months-free term discount; the page nevertheless labels the figure with the first-year footnote, which is why is_promotional is true. Note 320 / 12 = 26.67, displayed as 27. transfer_tb 0.075 is the stated 75 GB per month. Add-ons priced on the same card: additional site +€19, Automated Plugin Updates +€3. Storage type is not stated, only \"Local storage\", so storage_type is null. No vCPU or RAM figure is published.",
+    "tier_note": "Checked 2026-11-15 in a browser (the page now sits behind a Cloudflare challenge). WP Engine no longer names the tier 'Startup': Essential is one card with a capacity picker, and this row is its '1 site' option (same sites, visits and storage as captured). The per-tier bandwidth recorded on 2026-08-18 is no longer published; the only figure on the page is 75 GB in the Essential column of the comparison table."
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "wp-engine--professional-(essential)",
    "provider": "WP Engine",
    "segment": "managed_wp_and_shared",
    "category": "managed_wordpress",
-   "plan_name": "Professional (Essential)",
+   "plan_name": "Essential, up to 3 sites",
    "jurisdiction_of_seller": "US",
    "url": "https://wpengine.com/ie/plans/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 50,
+    "amount": 48.0,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": "annual",
     "commitment_stated": null,
     "url": "https://wpengine.com/ie/plans/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 50.0,
+   "price_ex_vat_eur": 48.0,
    "price_ex_vat_basis": "as quoted, EUR ex VAT",
    "vat_note": "NULL. The page never uses the words VAT, ex-VAT or inc-VAT.",
    "is_promotional": true,
@@ -5082,8 +5124,8 @@
    },
    "per_1k_visits": {
     "monthly_visits_stated": 75000,
-    "eur_per_1k_visits_now": 0.6667,
-    "formula_now": "50.0000 EUR per month / (75,000 visits / 1,000) = 0.6667 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 0.64,
+    "formula_now": "48.0000 EUR per month / (75,000 visits / 1,000) = 0.6400 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -5092,21 +5134,21 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 0.6667 per 1,000 visits = 2.62x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 0.6400 per 1,000 visits = 2.72x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     }
    },
    "year_one": {
-    "amount": 600.0,
+    "amount": 576.0,
     "currency": "EUR",
-    "amount_actually_charged": null,
-    "formula": "12 x EUR 50 displayed = EUR 600.00. The annual charge was not read for this tier, only the rounded monthly. On Startup the two differ by EUR 4 because of that rounding, so treat this figure as the displayed-monthly reading and not as the amount that will appear on the card.",
+    "amount_actually_charged": 576.0,
+    "formula": "The configurator's annual option ('Save 20%') charges EUR 576.00 per year for 'Up to 3 sites', which is 12 x the EUR 60.00 monthly-term rate less 20 percent. 576.00 / 12 = 48.00, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 50.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "year_two": {
     "amount": null,
     "currency": "EUR",
-    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 576.00 up front for year one without a published year-two price.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "promo_to_renewal_jump": {
@@ -5125,7 +5167,7 @@
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    "flags": [
@@ -5133,29 +5175,31 @@
    ],
    "corrections": [],
    "source_notes": {
-    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Swimlane reads \"Starting at €50*/mo\". Specs from the comparison table on the same page: 3 sites, 75,000 visits, 15 GB local storage, 150 GB bandwidth. The visits row carries the caveat \"Numbers are estimates only. Get in touch for dynamic sites or traffic spikes\". Storage type not stated. No vCPU or RAM figure is published."
-   }
+    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Swimlane reads \"Starting at €50*/mo\". Specs from the comparison table on the same page: 3 sites, 75,000 visits, 15 GB local storage, 150 GB bandwidth. The visits row carries the caveat \"Numbers are estimates only. Get in touch for dynamic sites or traffic spikes\". Storage type not stated. No vCPU or RAM figure is published.",
+    "tier_note": "Checked 2026-11-15 in a browser (the page now sits behind a Cloudflare challenge). WP Engine no longer names the tier 'Professional': Essential is one card with a capacity picker, and this row is its 'Up to 3 sites' option (same sites, visits and storage as captured). The per-tier bandwidth recorded on 2026-08-18 is no longer published; the only figure on the page is 75 GB in the Essential column of the comparison table."
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "wp-engine--growth-(essential)",
    "provider": "WP Engine",
    "segment": "managed_wp_and_shared",
    "category": "managed_wordpress",
-   "plan_name": "Growth (Essential)",
+   "plan_name": "Essential, up to 10 sites",
    "jurisdiction_of_seller": "US",
    "url": "https://wpengine.com/ie/plans/",
-   "captured_on": "2026-08-18",
+   "captured_on": "2026-11-15",
    "price": {
-    "amount": 105,
+    "amount": 100.0,
     "currency": "EUR",
     "period": "month",
     "vat": null,
     "commitment": "annual",
     "commitment_stated": null,
     "url": "https://wpengine.com/ie/plans/",
-    "captured_on": "2026-08-18"
+    "captured_on": "2026-11-15"
    },
-   "price_ex_vat_eur": 105.0,
+   "price_ex_vat_eur": 100.0,
    "price_ex_vat_basis": "as quoted, EUR ex VAT",
    "vat_note": "NULL. The page never uses the words VAT, ex-VAT or inc-VAT.",
    "is_promotional": true,
@@ -5210,8 +5254,8 @@
    },
    "per_1k_visits": {
     "monthly_visits_stated": 100000,
-    "eur_per_1k_visits_now": 1.05,
-    "formula_now": "105.0000 EUR per month / (100,000 visits / 1,000) = 1.0500 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 1.0,
+    "formula_now": "100.0000 EUR per month / (100,000 visits / 1,000) = 1.0000 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -5220,21 +5264,21 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0500 per 1,000 visits = 1.66x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0000 per 1,000 visits = 1.74x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     }
    },
    "year_one": {
-    "amount": 1260.0,
+    "amount": 1200.0,
     "currency": "EUR",
-    "amount_actually_charged": null,
-    "formula": "12 x EUR 105 displayed = EUR 1260.00. The annual charge was not read for this tier, only the rounded monthly. On Startup the two differ by EUR 4 because of that rounding, so treat this figure as the displayed-monthly reading and not as the amount that will appear on the card.",
+    "amount_actually_charged": 1200.0,
+    "formula": "The configurator's annual option ('Save 20%') charges EUR 1,200.00 per year for 'Up to 10 sites', which is 12 x the EUR 125.00 monthly-term rate less 20 percent. 1,200.00 / 12 = 100.00, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 105.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "year_two": {
     "amount": null,
     "currency": "EUR",
-    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+    "formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 1,200.00 up front for year one without a published year-two price.",
     "url": "https://wpengine.com/ie/plans/"
    },
    "promo_to_renewal_jump": {
@@ -5253,7 +5297,7 @@
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    "flags": [
@@ -5261,8 +5305,10 @@
    ],
    "corrections": [],
    "source_notes": {
-    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Swimlane reads \"Starting at €105*/mo\". Specs from the comparison table on the same page: 10 sites, 100,000 visits, 20 GB local storage, 240 GB bandwidth. Storage type not stated. No vCPU or RAM figure is published."
-   }
+    "note": "null with reason: WP Engine publishes no renewal figure. Every headline price on the plans page carries an asterisk whose footnote reads, verbatim: \"* First year pricing and associated coupons are valid for new customers purchasing Essential plans only. Cannot be used with other offers and is not valid for upgrades, renewals or any other product purchase. Offer can only be redeemed once upon signup. Taxes and overages may apply during checkout. Product renewal pricing subject to change.\" The phrase \"Product renewal pricing subject to change\" is the only statement about renewal on the page. The interactive configurator was also driven in a browser and shows no struck-through regular rate and no renewal line. Swimlane reads \"Starting at €105*/mo\". Specs from the comparison table on the same page: 10 sites, 100,000 visits, 20 GB local storage, 240 GB bandwidth. Storage type not stated. No vCPU or RAM figure is published.",
+    "tier_note": "Checked 2026-11-15 in a browser (the page now sits behind a Cloudflare challenge). WP Engine no longer names the tier 'Growth': Essential is one card with a capacity picker, and this row is its 'Up to 10 sites' option (same sites, visits and storage as captured). The per-tier bandwidth recorded on 2026-08-18 is no longer published; the only figure on the page is 75 GB in the Essential column of the comparison table."
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "kinsta--single-20gb",
@@ -5402,7 +5448,8 @@
    ],
    "source_notes": {
     "note": "Page footer under the plan table states, verbatim: \"Prices exclude tax and are in USD.\" is_promotional false: the rate itself is not an introductory rate, it is the standing recurring rate. The one promotional element is a free first month, stated on the card as \"$0 ... USD for the first month\" and \"*Pay $0 today, $35 after the first month\". The post-promotion charge is therefore published, which is why renewal carries a figure rather than a null. Annual alternative on the same card: $350 billed annually, displayed as \"$30 USD month\", labelled \"1st month free + Save $70\", with \"*Pay $0 today, $350 after the first month\". Note 350 / 12 = 29.17, which the page rounds to 30. This tier is sold under two billing metrics at the same price: Single 20GB is metered on 20 GB server bandwidth with no visit cap, and Single 35k is metered on 35,000 monthly visits with no bandwidth cap. transfer_tb 0.02 and monthly_visits 35000 are therefore alternatives, not both at once. Also stated: 1 WordPress install, 10 GB storage, 125 GB CDN bandwidth, 14 days backup retention, no multisite support at this tier. Storage type, vCPU and RAM are not published."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "kinsta--wp-2",
@@ -5542,7 +5589,8 @@
    ],
    "source_notes": {
     "note": "Page footer under the plan table states, verbatim: \"Prices exclude tax and are in USD.\" is_promotional false for the same reason as the entry single-site tier. Free first month applies, stated as \"*Pay $0 today, $70 after the first month\", so the post-promotion charge is published and recorded as the renewal. Annual alternative: $700 billed annually, displayed as \"$59 USD month\", labelled \"1st month free + Save $140\". Note 700 / 12 = 58.33, rounded to 59 on the page. Two billing metrics at the same price: 40 GB server bandwidth, or 70,000 monthly visits. transfer_tb 0.04 and monthly_visits 70000 are alternatives, not both. Also stated: 2 WordPress installs, 20 GB storage, 250 GB CDN bandwidth, 14 days backup retention. Storage type, vCPU and RAM are not published."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "kinsta--wp-5",
@@ -5679,7 +5727,8 @@
    ],
    "source_notes": {
     "note": "Page footer under the plan table states, verbatim: \"Prices exclude tax and are in USD.\" is_promotional false and renewal null with reason: no introductory rate and no free first month apply to this tier. The \"First month free\" row of the provider's own comparison table reads No for this column, against Yes for the entry single-site tier and WP 2. The page publishes no separate renewal price anywhere, so there is no renewal figure to quote; the $115 monthly rate is presented as the standing recurring rate. Annual alternative: $1,150 billed annually, displayed as \"$96 USD month\", labelled \"Save $230\" with no first-month-free element. Two billing metrics at the same price: 65 GB server bandwidth, or 125,000 monthly visits. transfer_tb 0.065 and monthly_visits 125000 are alternatives, not both. Also stated: 5 WordPress installs, 30 GB storage, 500 GB CDN bandwidth, 14 days backup retention. Storage type, vCPU and RAM are not published."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "siteground--startup",
@@ -5799,7 +5848,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card reads \"15.99 € Save 81%\" then \"2.99 € /mo.\" then \"Renews at 15.99 € /mo. Prepaid for 12 months. Ex. VAT\". Traffic stated as \"Host 1 website with unlimited traffic\", so monthly_visits and transfer_tb are null: the plan expresses no numeric cap. No vCPU or RAM figure is published on this page. The identical plan at the identical price also appears on https://eu.siteground.com/web-hosting.htm."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "siteground--growbig",
@@ -5919,7 +5969,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card reads \"27.99 € Save 80%\" then \"5.49 € /mo.\" then \"Renews at 27.99 € /mo. Prepaid for 12 months. Ex. VAT\". Sites stated as \"Unlimited websites, unlimited traffic\", so sites_included is recorded as the string \"unlimited\" and monthly_visits and transfer_tb are null. Adds on-demand backups, 30% faster PHP and staging over StartUp. Same plan and price on https://eu.siteground.com/web-hosting.htm."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "siteground--gogeek",
@@ -6039,7 +6090,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card reads \"39.99 € Save 78%\" then \"8.49 € /mo.\" then \"Renews at 39.99 € /mo. Prepaid for 12 months. Ex. VAT\". Adds staging plus Git, private DNS, white-label access and priority support over GrowBig. Same plan and price on https://eu.siteground.com/web-hosting.htm."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hostinger--premium",
@@ -6169,7 +6221,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card small print verbatim: \"Erhalten Sie 48 Monate für 143,52 € (regulärer Preis 575,52 €). Verlängerungspreis: 9,99 €/Mon.\" commitment is null because the requested enum (monthly, annual, biennial) has no value for a 48-month term; commitment_stated carries the actual term. The term selector was opened in a browser and offers 1, 12, 24 and 48 months. At 12 months the same plan is quoted at 3.19 EUR/mo, 38.28 EUR for 12 months, regular price 143.88 EUR, with the same 9.99 EUR/mo renewal. The renewal figure does not change with the term. Note that the struck-through \"regular price\" of 11.99 EUR/mo is not the renewal price: the renewal is 9.99 EUR/mo. No visit cap or transfer figure appears on the plan card, so both are null. No vCPU or RAM figure is published. The identical plan and price appear on https://www.hostinger.com/de/wordpress-hosting."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hostinger--unlimited",
@@ -6299,7 +6352,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card small print verbatim: \"Erhalten Sie 48 Monate für 191,52 € (regulärer Preis 911,52 €). Verlängerungspreis: 16,99 €/Mon.\" At the 12-month term the same plan is quoted at 4.49 EUR/mo, 53.88 EUR for 12 months, regular price 227.88 EUR, same 16.99 EUR/mo renewal. sites_included recorded as the string \"unlimited\" because the card states \"Websites: Unbegrenzt\"; the page adds that unlimited features are subject to a Fair Use Policy. No visit cap, transfer, vCPU or RAM figure is published."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "hostinger--cloud-startup",
@@ -6429,7 +6483,8 @@
    "corrections": [],
    "source_notes": {
     "note": "Card small print verbatim: \"Erhalten Sie 48 Monate für 383,52 € (regulärer Preis 1.247,52 €). Verlängerungspreis: 23,99 €/Mon.\" At the 12-month term the same plan is quoted at 9.99 EUR/mo, 119.88 EUR for 12 months, regular price 311.88 EUR, same 23.99 EUR/mo renewal. Sold on the shared Web Hosting page but branded Cloud Startup by Hostinger; category is recorded as shared because that is the page it is sold from. No visit cap, transfer, vCPU or RAM figure is published."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vercel--hobby",
@@ -6548,7 +6603,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. Hobby is USD 0 indefinitely; there is no introductory rate and no step-up. Recorded from the plan card on https://vercel.com/pricing.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vercel--pro",
@@ -6666,7 +6722,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. https://vercel.com/docs/plans/pro-plan read 2026-08-18 states 'The Pro plan is billed monthly based on the number of deploying team seats' with a flat '$20/month Pro platform fee'. No introductory rate, no first-term discount and no different second-year rate were found on the pricing page or the plan doc, so month 13 is the same USD 20 as month 1. A free Pro trial exists but it is a trial, not a discounted rate.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "vercel--enterprise",
@@ -6780,7 +6837,8 @@
    "source_notes": {
     "renewal_note": "No renewal figure can be recorded because no initial figure is published. Enterprise terms are negotiated.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "netlify--free",
@@ -6900,7 +6958,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. The plan card reads '$0 forever'. No introductory period and no step-up rate.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "netlify--personal",
@@ -7018,7 +7077,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 9/month is the standing rate; no introductory price and no second-year uplift is published on the pricing page or the plans doc. Month 13 is USD 9.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "netlify--pro-3000-credit-tier",
@@ -7136,7 +7196,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 20/month is the standing entry rate for Pro; no introductory discount and no different renewal rate is published.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "netlify--enterprise",
@@ -7250,7 +7311,8 @@
    "source_notes": {
     "renewal_note": "No published figure, therefore no renewal figure.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "flyio--free-trial",
@@ -7358,7 +7420,8 @@
    "source_notes": {
     "renewal_note": "Not a renewable plan. The trial is exhausted by use and does not renew. When it ends, apps stop and the account moves to pay-as-you-go at list rates; there is no discounted post-trial rate. Recorded as null with that reason rather than as a price.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "flyio--pay-as-you-go-no-platform-fee",
@@ -7613,7 +7676,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. There is no term, no introductory rate and nothing to renew: https://fly.io/docs/about/pricing/ states 'Plans get complicated, so we just charge based on usage.'",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "flyio--standard-support",
@@ -7730,7 +7794,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 29/month is the standing rate quoted at https://fly.io/docs/about/pricing/ with no introductory period.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "flyio--premium-support",
@@ -7847,7 +7912,8 @@
    "source_notes": {
     "renewal_note": "Not promotional.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "flyio--enterprise-support",
@@ -7964,7 +8030,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. Published as a starting figure.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "render--hobby",
@@ -8201,7 +8268,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. No introductory period, no step-up.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "render--pro",
@@ -8317,7 +8385,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 25/month is the standing rate introduced on 23 April 2026 per https://render.com/changelog/updated-plans-for-render-workspaces. No introductory rate and no second-year uplift is published. One genuine reduction to note rather than a promotion: 'If a workspace on the Pro plan has no services (live or suspended) and no activity during a month, the workspace subscription fee for that month will be waived.'",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "render--scale",
@@ -8433,7 +8502,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. Note the Pro fee waiver does not extend here: 'The workspace subscription is always charged for Scale plan workspaces, regardless of usage.'",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "render--enterprise",
@@ -8545,7 +8615,8 @@
    "source_notes": {
     "renewal_note": "No published figure, therefore no renewal figure.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "railway--free-trial",
@@ -8668,7 +8739,8 @@
    "source_notes": {
     "renewal_note": "Not a renewable plan. The pricing page reads 'Start with a 30-day free trial with $5 credits, then $1 per month', that is, the account drops to the Free plan's USD 1/month of usage credits when the trial expires. No credit card required to start.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "railway--free",
@@ -8796,7 +8868,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 0 per month with USD 1 of monthly usage credits, indefinitely.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "railway--hobby",
@@ -8924,7 +8997,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 5/month is the standing rate; no introductory period and no second-year uplift is published.",
     "discrepancy_note": "CORRECTED (corrections_applied entry 10). https://railway.com/pricing states BOTH numbers on the same page: the Hobby plan card reads 'Up to 5 replicas, at 8 vCPU / 8 GB RAM per replica', and that same page's 'Compare features' table reads 'Replicas per service ... Hobby: Up to 6'. The docs table also reads 6. The contradiction is internal to the pricing page, not page-versus-docs as originally described."
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "railway--pro",
@@ -9052,7 +9126,8 @@
    "source_notes": {
     "renewal_note": "Not promotional. USD 20/month standing rate, no introductory discount published.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   },
   {
    "id": "railway--enterprise",
@@ -9176,14 +9251,15 @@
    "source_notes": {
     "renewal_note": "No published plan figure, therefore no renewal figure.",
     "discrepancy_note": null
-   }
+   },
+   "verified_on": "2026-11-15"
   }
  ],
  "normalised": {
   "method": {
    "cost_per_gb_ram": "eur_per_gb_ram_month = price_eur_ex_vat_per_month / ram_gb. Computed on the RENEWAL price where one exists, because the renewal is what the buyer lives with; the same figure on the current price is carried in normalised_on_current_price on every plan.",
    "cost_per_vcpu": "eur_per_vcpu_month = price_eur_ex_vat_per_month / vcpu. Same basis.",
-   "vat_axis": "Ex VAT. IONOS quotes inc-VAT at 19 percent and its net figures are taken from its own page payload (EUR 2.52 / 4.20 / 12.61 now, EUR 7.56 / 15.13 / 48.74 at renewal). Vultr, Azure and WP Engine state no VAT treatment at all; their figures are used as displayed and flagged.",
+   "vat_axis": "Ex VAT. IONOS quotes inc-VAT at 19 percent and its net figures are gross / 1.19, computed here since IONOS's page stopped carrying its own net figures (EUR 3.36 / 5.88 / 14.29 now, EUR 10.08 / 18.49 / 49.58 at renewal, checked 2026-11-15). Vultr, Azure and WP Engine state no VAT treatment at all; their figures are used as displayed and flagged.",
    "currency_axis": "EUR. USD converted once, at 0.871688, indicatively. CHF not converted at all.",
    "what_a_null_means": "A null in a normalised field always means the input spec is null or the price could not be placed on the EUR axis. It never means zero. Every such plan is listed in excluded_plans below with its reason.",
    "a_warning_about_vcpu": "The per-vCPU figures are published but are the weaker of the two metrics, because a vCPU is not a comparable unit across sellers. Google's own documentation records e2-small's 2 listed vCPUs as 0.5 guaranteed; Hetzner's CPX line is shared AMD and its CCX line is dedicated at roughly four times the price for the same count; Azure's B-series bank credits and throttle to a 20 or 30 percent baseline. Cost per GB of RAM has no equivalent ambiguity, which is why it leads the tables."
@@ -9207,11 +9283,11 @@
    },
    {
     "provider": "IONOS",
-    "cheapest_plan": "VPS M+ (Linux)",
-    "eur_per_gb_ram_month": 1.89,
+    "cheapest_plan": "VPS XXL+ (Linux)",
+    "eur_per_gb_ram_month": 2.0658,
     "formula": null,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "provider": "Scaleway",
@@ -9331,49 +9407,49 @@
     "caveat": "NOT ORDERABLE AT CAPTURE. The row carried the label 'not available' (CSS class product-highlight-label-NotAvailable) on 2026-08-18. The page explains the Cost-Optimized range runs on older hardware and that 'this resource-saving use means that the number of available servers is limited'. The price endpoint still returns active=true for all three EU datacentres. These two rows carry Hetzner's lowest cost per GB of RAM and a reader cannot necessarily buy either of them. The cheapest Hetzner row with no availability label at capture is CPX32 at EUR 4.4988 per GB of RAM, which is 4.0 times CX33."
    },
    {
-    "id": "ionos--vps-m+",
+    "id": "ionos--vps-xxl+",
     "provider": "IONOS",
-    "plan": "VPS M+ (Linux)",
+    "plan": "VPS XXL+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 1.89,
+    "value_eur": 2.0658,
     "formula": null,
-    "basis_price_eur_month": 7.56,
-    "ram_gb": 4,
-    "vcpu": 4,
+    "basis_price_eur_month": 49.58,
+    "ram_gb": 24,
+    "vcpu": 12,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "ionos--vps-l+",
     "provider": "IONOS",
     "plan": "VPS L+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 1.8913,
+    "value_eur": 2.3113,
     "formula": null,
-    "basis_price_eur_month": 15.13,
+    "basis_price_eur_month": 18.49,
     "ram_gb": 8,
-    "vcpu": 6,
+    "vcpu": 4,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5250 per GB of RAM ex VAT; from month 4 it is EUR 1.8913. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.7350 per GB of RAM ex VAT; from month 4 it is EUR 2.3112. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
-    "id": "ionos--vps-xxl+",
+    "id": "ionos--vps-m+",
     "provider": "IONOS",
-    "plan": "VPS XXL+ (Linux)",
+    "plan": "VPS M+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 2.0308,
+    "value_eur": 2.52,
     "formula": null,
-    "basis_price_eur_month": 48.74,
-    "ram_gb": 24,
-    "vcpu": 12,
+    "basis_price_eur_month": 10.08,
+    "ram_gb": 4,
+    "vcpu": 2,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5254 per GB of RAM ex VAT; from month 4 it is EUR 2.0308. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.8400 per GB of RAM ex VAT; from month 4 it is EUR 2.5200. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "scaleway--dev1-s",
@@ -9648,21 +9724,6 @@
     "caveat": "THE HEADLINE RATE REQUIRES A 12-MONTH PREPAYMENT. The page prints 'From EUR 7.21 ex. VAT/month'; 'From' is a commitment tier, not an introductory offer. The same catalog prices this plan at EUR 8.49 per month with no commitment and EUR 8.06 on 6 months. On the no-commitment rate the cost per GB of RAM is EUR 1.0613 rather than EUR 0.9012. Both are renewal rates: the upfront12 pricing carries capacities: ['renew'] and commitment: 12, so EUR 7.21 is also what you pay in year two on the same commitment."
    },
    {
-    "id": "ionos--vps-m+",
-    "provider": "IONOS",
-    "plan": "VPS M+ (Linux)",
-    "segment": "vps_eu",
-    "value_eur": 1.89,
-    "formula": null,
-    "basis_price_eur_month": 7.56,
-    "ram_gb": 4,
-    "vcpu": 4,
-    "price_currency": "EUR",
-    "converted": false,
-    "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly."
-   },
-   {
     "id": "ovhcloud--vps-1-2027",
     "provider": "OVHcloud",
     "plan": "VPS-1 2027",
@@ -9708,21 +9769,6 @@
     "caveat": "THE HEADLINE RATE REQUIRES A 12-MONTH PREPAYMENT. The page prints 'From EUR 19.96 ex. VAT/month'; 'From' is a commitment tier, not an introductory offer. The same catalog prices this plan at EUR 23.49 per month with no commitment and EUR 22.31 on 6 months. On the no-commitment rate the cost per GB of RAM is EUR 0.9787 rather than EUR 0.8317. Both are renewal rates: the upfront12 pricing carries capacities: ['renew'] and commitment: 12, so EUR 19.96 is also what you pay in year two on the same commitment."
    },
    {
-    "id": "ionos--vps-l+",
-    "provider": "IONOS",
-    "plan": "VPS L+ (Linux)",
-    "segment": "vps_eu",
-    "value_eur": 2.5217,
-    "formula": null,
-    "basis_price_eur_month": 15.13,
-    "ram_gb": 8,
-    "vcpu": 6,
-    "price_currency": "EUR",
-    "converted": false,
-    "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5250 per GB of RAM ex VAT; from month 4 it is EUR 1.8913. Every card also sits on a 12-month minimum contract term, billed monthly."
-   },
-   {
     "id": "hetzner--cx23",
     "provider": "Hetzner",
     "plan": "CX23 (Cost-Optimized)",
@@ -9757,15 +9803,15 @@
     "provider": "IONOS",
     "plan": "VPS XXL+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 4.0617,
+    "value_eur": 4.1317,
     "formula": null,
-    "basis_price_eur_month": 48.74,
+    "basis_price_eur_month": 49.58,
     "ram_gb": 24,
     "vcpu": 12,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5254 per GB of RAM ex VAT; from month 4 it is EUR 2.0308. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "vultr--cloud-compute-regular-performance-1-vcpu---1-gb",
@@ -9796,6 +9842,36 @@
     "converted": true,
     "commitment": "monthly",
     "caveat": "Akamai labels this tier 'Shared CPU on legacy hardware for cost-efficient development, testing, and variable workloads'. The Europe pricing page shows the identical USD figures, so there is no EU-versus-US split at these sizes and no EUR quotation anywhere."
+   },
+   {
+    "id": "ionos--vps-l+",
+    "provider": "IONOS",
+    "plan": "VPS L+ (Linux)",
+    "segment": "vps_eu",
+    "value_eur": 4.6225,
+    "formula": null,
+    "basis_price_eur_month": 18.49,
+    "ram_gb": 8,
+    "vcpu": 4,
+    "price_currency": "EUR",
+    "converted": false,
+    "commitment": "annual",
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.7350 per GB of RAM ex VAT; from month 4 it is EUR 2.3112. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
+   },
+   {
+    "id": "ionos--vps-m+",
+    "provider": "IONOS",
+    "plan": "VPS M+ (Linux)",
+    "segment": "vps_eu",
+    "value_eur": 5.04,
+    "formula": null,
+    "basis_price_eur_month": 10.08,
+    "ram_gb": 4,
+    "vcpu": 2,
+    "price_currency": "EUR",
+    "converted": false,
+    "commitment": "annual",
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.8400 per GB of RAM ex VAT; from month 4 it is EUR 2.5200. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "digitalocean--basic-droplet-regular-1-gib---1-vcpu",
@@ -10085,49 +10161,49 @@
     "caveat": "NOT ORDERABLE AT CAPTURE. The row carried the label 'not available' (CSS class product-highlight-label-NotAvailable) on 2026-08-18. The page explains the Cost-Optimized range runs on older hardware and that 'this resource-saving use means that the number of available servers is limited'. The price endpoint still returns active=true for all three EU datacentres. These two rows carry Hetzner's lowest cost per GB of RAM and a reader cannot necessarily buy either of them. The cheapest Hetzner row with no availability label at capture is CPX32 at EUR 4.4988 per GB of RAM, which is 4.0 times CX33."
    },
    {
-    "id": "ionos--vps-m+",
+    "id": "ionos--vps-xxl+",
     "provider": "IONOS",
-    "plan": "VPS M+ (Linux)",
+    "plan": "VPS XXL+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 1.89,
+    "value_eur": 2.0658,
     "formula": null,
-    "basis_price_eur_month": 7.56,
-    "ram_gb": 4,
-    "vcpu": 4,
+    "basis_price_eur_month": 49.58,
+    "ram_gb": 24,
+    "vcpu": 12,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "ionos--vps-l+",
     "provider": "IONOS",
     "plan": "VPS L+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 1.8913,
+    "value_eur": 2.3113,
     "formula": null,
-    "basis_price_eur_month": 15.13,
+    "basis_price_eur_month": 18.49,
     "ram_gb": 8,
-    "vcpu": 6,
+    "vcpu": 4,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5250 per GB of RAM ex VAT; from month 4 it is EUR 1.8913. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.7350 per GB of RAM ex VAT; from month 4 it is EUR 2.3112. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
-    "id": "ionos--vps-xxl+",
+    "id": "ionos--vps-m+",
     "provider": "IONOS",
-    "plan": "VPS XXL+ (Linux)",
+    "plan": "VPS M+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 2.0308,
+    "value_eur": 2.52,
     "formula": null,
-    "basis_price_eur_month": 48.74,
-    "ram_gb": 24,
-    "vcpu": 12,
+    "basis_price_eur_month": 10.08,
+    "ram_gb": 4,
+    "vcpu": 2,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5254 per GB of RAM ex VAT; from month 4 it is EUR 2.0308. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.8400 per GB of RAM ex VAT; from month 4 it is EUR 2.5200. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "scaleway--dev1-s",
@@ -10374,9 +10450,9 @@
     "provider": "Microsoft Azure",
     "plan": "Azure Virtual Machines B2ls v2 (Standard_B2ls_v2), Linux, pay-as-you-go, West Europe",
     "segment": "hyperscaler",
-    "value_eur": 7.6967,
+    "value_eur": 7.8639,
     "formula": null,
-    "basis_price_eur_month": 30.7868,
+    "basis_price_eur_month": 31.4556,
     "ram_gb": 4,
     "vcpu": 2,
     "price_currency": "EUR",
@@ -10389,9 +10465,9 @@
     "provider": "Microsoft Azure",
     "plan": "Azure Virtual Machines B2ts v2 (Standard_B2ts_v2), Linux, pay-as-you-go, West Europe",
     "segment": "hyperscaler",
-    "value_eur": 7.6967,
+    "value_eur": 7.8639,
     "formula": null,
-    "basis_price_eur_month": 7.6967,
+    "basis_price_eur_month": 7.8639,
     "ram_gb": 1,
     "vcpu": 2,
     "price_currency": "EUR",
@@ -10462,21 +10538,6 @@
     "caveat": "THE HEADLINE RATE REQUIRES A 12-MONTH PREPAYMENT. The page prints 'From EUR 7.21 ex. VAT/month'; 'From' is a commitment tier, not an introductory offer. The same catalog prices this plan at EUR 8.49 per month with no commitment and EUR 8.06 on 6 months. On the no-commitment rate the cost per GB of RAM is EUR 1.0613 rather than EUR 0.9012. Both are renewal rates: the upfront12 pricing carries capacities: ['renew'] and commitment: 12, so EUR 7.21 is also what you pay in year two on the same commitment."
    },
    {
-    "id": "ionos--vps-m+",
-    "provider": "IONOS",
-    "plan": "VPS M+ (Linux)",
-    "segment": "vps_eu",
-    "value_eur": 1.89,
-    "formula": null,
-    "basis_price_eur_month": 7.56,
-    "ram_gb": 4,
-    "vcpu": 4,
-    "price_currency": "EUR",
-    "converted": false,
-    "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.6300 per GB of RAM ex VAT; from month 4 it is EUR 1.8900. Every card also sits on a 12-month minimum contract term, billed monthly."
-   },
-   {
     "id": "ovhcloud--vps-1-2027",
     "provider": "OVHcloud",
     "plan": "VPS-1 2027",
@@ -10522,21 +10583,6 @@
     "caveat": "THE HEADLINE RATE REQUIRES A 12-MONTH PREPAYMENT. The page prints 'From EUR 19.96 ex. VAT/month'; 'From' is a commitment tier, not an introductory offer. The same catalog prices this plan at EUR 23.49 per month with no commitment and EUR 22.31 on 6 months. On the no-commitment rate the cost per GB of RAM is EUR 0.9787 rather than EUR 0.8317. Both are renewal rates: the upfront12 pricing carries capacities: ['renew'] and commitment: 12, so EUR 19.96 is also what you pay in year two on the same commitment."
    },
    {
-    "id": "ionos--vps-l+",
-    "provider": "IONOS",
-    "plan": "VPS L+ (Linux)",
-    "segment": "vps_eu",
-    "value_eur": 2.5217,
-    "formula": null,
-    "basis_price_eur_month": 15.13,
-    "ram_gb": 8,
-    "vcpu": 6,
-    "price_currency": "EUR",
-    "converted": false,
-    "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5250 per GB of RAM ex VAT; from month 4 it is EUR 1.8913. Every card also sits on a 12-month minimum contract term, billed monthly."
-   },
-   {
     "id": "hetzner--cx23",
     "provider": "Hetzner",
     "plan": "CX23 (Cost-Optimized)",
@@ -10571,9 +10617,9 @@
     "provider": "Microsoft Azure",
     "plan": "Azure Virtual Machines B2ts v2 (Standard_B2ts_v2), Linux, pay-as-you-go, West Europe",
     "segment": "hyperscaler",
-    "value_eur": 3.8483,
+    "value_eur": 3.932,
     "formula": null,
-    "basis_price_eur_month": 7.6967,
+    "basis_price_eur_month": 7.8639,
     "ram_gb": 1,
     "vcpu": 2,
     "price_currency": "EUR",
@@ -10586,15 +10632,15 @@
     "provider": "IONOS",
     "plan": "VPS XXL+ (Linux)",
     "segment": "vps_eu",
-    "value_eur": 4.0617,
+    "value_eur": 4.1317,
     "formula": null,
-    "basis_price_eur_month": 48.74,
+    "basis_price_eur_month": 49.58,
     "ram_gb": 24,
     "vcpu": 12,
     "price_currency": "EUR",
     "converted": false,
     "commitment": "annual",
-    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5254 per GB of RAM ex VAT; from month 4 it is EUR 2.0308. Every card also sits on a 12-month minimum contract term, billed monthly."
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.5954 per GB of RAM ex VAT; from month 4 it is EUR 2.0658. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "vultr--cloud-compute-regular-performance-1-vcpu---1-gb",
@@ -10625,6 +10671,36 @@
     "converted": true,
     "commitment": "monthly",
     "caveat": "Akamai labels this tier 'Shared CPU on legacy hardware for cost-efficient development, testing, and variable workloads'. The Europe pricing page shows the identical USD figures, so there is no EU-versus-US split at these sizes and no EUR quotation anywhere."
+   },
+   {
+    "id": "ionos--vps-l+",
+    "provider": "IONOS",
+    "plan": "VPS L+ (Linux)",
+    "segment": "vps_eu",
+    "value_eur": 4.6225,
+    "formula": null,
+    "basis_price_eur_month": 18.49,
+    "ram_gb": 8,
+    "vcpu": 4,
+    "price_currency": "EUR",
+    "converted": false,
+    "commitment": "annual",
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.7350 per GB of RAM ex VAT; from month 4 it is EUR 2.3112. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
+   },
+   {
+    "id": "ionos--vps-m+",
+    "provider": "IONOS",
+    "plan": "VPS M+ (Linux)",
+    "segment": "vps_eu",
+    "value_eur": 5.04,
+    "formula": null,
+    "basis_price_eur_month": 10.08,
+    "ram_gb": 4,
+    "vcpu": 2,
+    "price_currency": "EUR",
+    "converted": false,
+    "commitment": "annual",
+    "caveat": "THE RANKED FIGURE IS THE RENEWAL, NOT THE HEADLINE. IONOS is the only seller here quoting inc-VAT and the only EU VPS seller with a genuine introductory rate. On the 3-month promotional rate this plan is EUR 0.8400 per GB of RAM ex VAT; from month 4 it is EUR 2.5200. On 2026-08-18 every card sat on a 12-month minimum contract term, billed monthly; the page checked on 2026-11-15 says only that offers 'teils abhaengig von Mindestvertragslaufzeiten' are, so the term is carried forward unconfirmed."
    },
    {
     "id": "digitalocean--basic-droplet-regular-1-gib---1-vcpu",
@@ -10811,9 +10887,9 @@
     "provider": "Microsoft Azure",
     "plan": "Azure Virtual Machines B2ls v2 (Standard_B2ls_v2), Linux, pay-as-you-go, West Europe",
     "segment": "hyperscaler",
-    "value_eur": 15.3934,
+    "value_eur": 15.7278,
     "formula": null,
-    "basis_price_eur_month": 30.7868,
+    "basis_price_eur_month": 31.4556,
     "ram_gb": 4,
     "vcpu": 2,
     "price_currency": "EUR",
@@ -10887,10 +10963,10 @@
    {
     "id": "wp-engine--professional-(essential)",
     "provider": "WP Engine",
-    "plan": "Professional (Essential)",
+    "plan": "Essential, up to 3 sites",
     "monthly_visits": 75000,
-    "eur_per_1k_visits_now": 0.6667,
-    "formula_now": "50.0000 EUR per month / (75,000 visits / 1,000) = 0.6667 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 0.64,
+    "formula_now": "48.0000 EUR per month / (75,000 visits / 1,000) = 0.6400 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -10899,7 +10975,7 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 0.6667 per 1,000 visits = 2.62x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 0.6400 per 1,000 visits = 2.72x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     },
     "excluded": false,
@@ -10975,10 +11051,10 @@
    {
     "id": "wp-engine--growth-(essential)",
     "provider": "WP Engine",
-    "plan": "Growth (Essential)",
+    "plan": "Essential, up to 10 sites",
     "monthly_visits": 100000,
-    "eur_per_1k_visits_now": 1.05,
-    "formula_now": "105.0000 EUR per month / (100,000 visits / 1,000) = 1.0500 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 1.0,
+    "formula_now": "100.0000 EUR per month / (100,000 visits / 1,000) = 1.0000 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -10987,7 +11063,7 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0500 per 1,000 visits = 1.66x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0000 per 1,000 visits = 1.74x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     },
     "excluded": false,
@@ -10997,10 +11073,10 @@
    {
     "id": "wp-engine--startup-(essential)",
     "provider": "WP Engine",
-    "plan": "Startup (Essential)",
+    "plan": "Essential, 1 site",
     "monthly_visits": 25000,
-    "eur_per_1k_visits_now": 1.08,
-    "formula_now": "27.0000 EUR per month / (25,000 visits / 1,000) = 1.0800 EUR per 1,000 monthly visits",
+    "eur_per_1k_visits_now": 1.024,
+    "formula_now": "25.6000 EUR per month / (25,000 visits / 1,000) = 1.0240 EUR per 1,000 monthly visits",
     "eur_per_1k_visits_renewal": null,
     "formula_renewal": "NOT COMPUTABLE: no renewal price is published for this plan, so there is no year-two cost per 1,000 visits.",
     "marginal_rate_above_the_cap": {
@@ -11009,7 +11085,7 @@
      "unit": "per 1,000 extra monthly visitors",
      "eur": 1.7434,
      "url": "https://wpengine.com/overage-pricing/",
-     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0800 per 1,000 visits = 1.61x",
+     "comparison_formula": "Overage EUR 1.7434 per 1,000 visits / average included EUR 1.0240 per 1,000 visits = 1.70x",
      "observation": "The 1,001st thousand visits costs more than the average price of the first 25,000 to 100,000."
     },
     "excluded": false,
@@ -11129,71 +11205,71 @@
     {
      "id": "wp-engine--startup-(essential)",
      "provider": "WP Engine",
-     "plan": "Startup (Essential)",
+     "plan": "Essential, 1 site",
      "segment": "managed_wp_and_shared",
      "currency": "EUR",
-     "promotional_monthly": 27,
+     "promotional_monthly": 25.6,
      "renewal_monthly": null,
      "renewal_published": false,
      "monthly_multiple": null,
      "cliff_at_month": 13,
      "cliff_note": "First-year pricing per the asterisk footnote, so the change would fall at month 13. No figure is published for it.",
-     "year_one": 320.0,
+     "year_one": 307.2,
      "year_one_ex_vat_eur": null,
      "year_one_is_amount_actually_charged": true,
      "year_two": null,
      "year_two_ex_vat_eur": null,
      "year_two_over_year_one": null,
-     "year_one_formula": "12 x EUR 27 displayed = EUR 324.00. The configurator states the real charge is 'Pay EUR 320 today', which is 10 x the EUR 32 monthly-term rate, i.e. two months free. 320 / 12 = 26.67, which the page rounds up and displays as 27, so the displayed monthly overstates the annual charge by EUR 4.",
-     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+     "year_one_formula": "The configurator's annual option ('Save 20%') charges EUR 307.20 per year for '1 site', which is 12 x the EUR 32.00 monthly-term rate less 20 percent. 307.20 / 12 = 25.60, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 27.",
+     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 307.20 up front for year one without a published year-two price.",
      "jump_formula": "NOT COMPUTABLE: no renewal figure is published."
     },
     {
      "id": "wp-engine--professional-(essential)",
      "provider": "WP Engine",
-     "plan": "Professional (Essential)",
+     "plan": "Essential, up to 3 sites",
      "segment": "managed_wp_and_shared",
      "currency": "EUR",
-     "promotional_monthly": 50,
+     "promotional_monthly": 48.0,
      "renewal_monthly": null,
      "renewal_published": false,
      "monthly_multiple": null,
      "cliff_at_month": 13,
      "cliff_note": "First-year pricing per the asterisk footnote, so the change would fall at month 13. No figure is published for it.",
-     "year_one": 600.0,
+     "year_one": 576.0,
      "year_one_ex_vat_eur": null,
-     "year_one_is_amount_actually_charged": false,
+     "year_one_is_amount_actually_charged": true,
      "year_two": null,
      "year_two_ex_vat_eur": null,
      "year_two_over_year_one": null,
-     "year_one_formula": "12 x EUR 50 displayed = EUR 600.00. The annual charge was not read for this tier, only the rounded monthly. On Startup the two differ by EUR 4 because of that rounding, so treat this figure as the displayed-monthly reading and not as the amount that will appear on the card.",
-     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+     "year_one_formula": "The configurator's annual option ('Save 20%') charges EUR 576.00 per year for 'Up to 3 sites', which is 12 x the EUR 60.00 monthly-term rate less 20 percent. 576.00 / 12 = 48.00, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 50.",
+     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 576.00 up front for year one without a published year-two price.",
      "jump_formula": "NOT COMPUTABLE: no renewal figure is published."
     },
     {
      "id": "wp-engine--growth-(essential)",
      "provider": "WP Engine",
-     "plan": "Growth (Essential)",
+     "plan": "Essential, up to 10 sites",
      "segment": "managed_wp_and_shared",
      "currency": "EUR",
-     "promotional_monthly": 105,
+     "promotional_monthly": 100.0,
      "renewal_monthly": null,
      "renewal_published": false,
      "monthly_multiple": null,
      "cliff_at_month": 13,
      "cliff_note": "First-year pricing per the asterisk footnote, so the change would fall at month 13. No figure is published for it.",
-     "year_one": 1260.0,
+     "year_one": 1200.0,
      "year_one_ex_vat_eur": null,
-     "year_one_is_amount_actually_charged": false,
+     "year_one_is_amount_actually_charged": true,
      "year_two": null,
      "year_two_ex_vat_eur": null,
      "year_two_over_year_one": null,
-     "year_one_formula": "12 x EUR 105 displayed = EUR 1260.00. The annual charge was not read for this tier, only the rounded monthly. On Startup the two differ by EUR 4 because of that rounding, so treat this figure as the displayed-monthly reading and not as the amount that will appear on the card.",
-     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 320 up front for year one without a published year-two price.",
+     "year_one_formula": "The configurator's annual option ('Save 20%') charges EUR 1,200.00 per year for 'Up to 10 sites', which is 12 x the EUR 125.00 monthly-term rate less 20 percent. 1,200.00 / 12 = 100.00, the displayed monthly. Until 2026-08-18 the annual option was two months free and this tier showed EUR 105.",
+     "year_two_formula": "NULL, AND THIS IS THE SINGLE LARGEST GAP IN THE DATASET. WP Engine publishes no renewal figure anywhere. Every headline price carries an asterisk whose footnote reads: '* First year pricing and associated coupons are valid for new customers purchasing Essential plans only... Product renewal pricing subject to change.' That sentence is the only statement about renewal on the page. The static HTML, the JSON payload behind the configurator and the live configurator were all checked, and my.wpengine.com/signup redirects back to the plans page for an unauthenticated visitor. A buyer pays EUR 1,200.00 up front for year one without a published year-two price.",
      "jump_formula": "NOT COMPUTABLE: no renewal figure is published."
     }
    ],
-   "renewal_not_published_note": "These rows carry a promotional price and no published renewal anywhere on the provider's site. The site must render year two as 'not published', in the same weight as a number, never as a blank. Three of them are WP Engine plans, one of which takes EUR 320 up front.",
+   "renewal_not_published_note": "These rows carry a promotional price and no published renewal anywhere on the provider's site. The site must render year two as 'not published', in the same weight as a number, never as a blank. Three of them are WP Engine plans, one of which takes EUR 307.20 up front.",
    "with_published_renewal": [
     {
      "id": "siteground--startup",
@@ -11289,43 +11365,21 @@
      "plan": "VPS XXL+ (Linux)",
      "segment": "vps_eu",
      "currency": "EUR",
-     "promotional_monthly": 15.0,
-     "renewal_monthly": 58.0,
+     "promotional_monthly": 17.0,
+     "renewal_monthly": 59.0,
      "renewal_published": true,
-     "monthly_multiple": 3.87,
+     "monthly_multiple": 3.47,
      "cliff_at_month": 4,
      "cliff_note": "The promotional rate runs 3 months ('fuer 3 Monate' on the card), so the renewal rate first appears on the month-4 invoice, inside a 12-month minimum contract term.",
-     "year_one": 567.0,
-     "year_one_ex_vat_eur": 476.49,
+     "year_one": 582.0,
+     "year_one_ex_vat_eur": 489.09,
      "year_one_is_amount_actually_charged": false,
-     "year_two": 696.0,
-     "year_two_ex_vat_eur": 584.88,
-     "year_two_over_year_one": 1.23,
-     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 12.61 + 9 x 48.74 = 476.49 EUR. Inc VAT at 19 percent: 3 x 15.00 + 9 x 58.00 = 567.00 EUR.",
-     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 48.74 = 584.88 EUR. Inc VAT: 12 x 58.00 = 696.00 EUR.",
-     "jump_formula": "Renewal 58.00 / promotional 15.00 = 3.87x per month. Year two 696.00 / year one 567.00 = 1.23x."
-    },
-    {
-     "id": "ionos--vps-l+",
-     "provider": "IONOS",
-     "plan": "VPS L+ (Linux)",
-     "segment": "vps_eu",
-     "currency": "EUR",
-     "promotional_monthly": 5.0,
-     "renewal_monthly": 18.0,
-     "renewal_published": true,
-     "monthly_multiple": 3.6,
-     "cliff_at_month": 4,
-     "cliff_note": "The promotional rate runs 3 months ('fuer 3 Monate' on the card), so the renewal rate first appears on the month-4 invoice, inside a 12-month minimum contract term.",
-     "year_one": 177.0,
-     "year_one_ex_vat_eur": 148.77,
-     "year_one_is_amount_actually_charged": false,
-     "year_two": 216.0,
-     "year_two_ex_vat_eur": 181.56,
+     "year_two": 708.0,
+     "year_two_ex_vat_eur": 594.96,
      "year_two_over_year_one": 1.22,
-     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 4.20 + 9 x 15.13 = 148.77 EUR. Inc VAT at 19 percent: 3 x 5.00 + 9 x 18.00 = 177.00 EUR.",
-     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 15.13 = 181.56 EUR. Inc VAT: 12 x 18.00 = 216.00 EUR.",
-     "jump_formula": "Renewal 18.00 / promotional 5.00 = 3.60x per month. Year two 216.00 / year one 177.00 = 1.22x."
+     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 14.29 + 9 x 49.58 = 489.09 EUR. Inc VAT at 19 percent: 3 x 17.00 + 9 x 59.00 = 582.00 EUR.",
+     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 49.58 = 594.96 EUR. Inc VAT: 12 x 59.00 = 708.00 EUR.",
+     "jump_formula": "Renewal 59.00 / promotional 17.00 = 3.47x per month. Year two 708.00 / year one 582.00 = 1.22x."
     },
     {
      "id": "hostinger--premium",
@@ -11350,26 +11404,48 @@
      "jump_formula": "Renewal 9.99 / promotional 2.99 = 3.34x per month; year two 35.88 / year one 35.88 = 1.00x."
     },
     {
+     "id": "ionos--vps-l+",
+     "provider": "IONOS",
+     "plan": "VPS L+ (Linux)",
+     "segment": "vps_eu",
+     "currency": "EUR",
+     "promotional_monthly": 7.0,
+     "renewal_monthly": 22.0,
+     "renewal_published": true,
+     "monthly_multiple": 3.14,
+     "cliff_at_month": 4,
+     "cliff_note": "The promotional rate runs 3 months ('fuer 3 Monate' on the card), so the renewal rate first appears on the month-4 invoice, inside a 12-month minimum contract term.",
+     "year_one": 219.0,
+     "year_one_ex_vat_eur": 184.05,
+     "year_one_is_amount_actually_charged": false,
+     "year_two": 264.0,
+     "year_two_ex_vat_eur": 221.88,
+     "year_two_over_year_one": 1.21,
+     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 5.88 + 9 x 18.49 = 184.05 EUR. Inc VAT at 19 percent: 3 x 7.00 + 9 x 22.00 = 219.00 EUR.",
+     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 18.49 = 221.88 EUR. Inc VAT: 12 x 22.00 = 264.00 EUR.",
+     "jump_formula": "Renewal 22.00 / promotional 7.00 = 3.14x per month. Year two 264.00 / year one 219.00 = 1.21x."
+    },
+    {
      "id": "ionos--vps-m+",
      "provider": "IONOS",
      "plan": "VPS M+ (Linux)",
      "segment": "vps_eu",
      "currency": "EUR",
-     "promotional_monthly": 3.0,
-     "renewal_monthly": 9.0,
+     "promotional_monthly": 4.0,
+     "renewal_monthly": 12.0,
      "renewal_published": true,
      "monthly_multiple": 3.0,
      "cliff_at_month": 4,
      "cliff_note": "The promotional rate runs 3 months ('fuer 3 Monate' on the card), so the renewal rate first appears on the month-4 invoice, inside a 12-month minimum contract term.",
-     "year_one": 90.0,
-     "year_one_ex_vat_eur": 75.6,
+     "year_one": 120.0,
+     "year_one_ex_vat_eur": 100.8,
      "year_one_is_amount_actually_charged": false,
-     "year_two": 108.0,
-     "year_two_ex_vat_eur": 90.72,
+     "year_two": 144.0,
+     "year_two_ex_vat_eur": 120.96,
      "year_two_over_year_one": 1.2,
-     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 2.52 + 9 x 7.56 = 75.60 EUR. Inc VAT at 19 percent: 3 x 3.00 + 9 x 9.00 = 90.00 EUR.",
-     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 7.56 = 90.72 EUR. Inc VAT: 12 x 9.00 = 108.00 EUR.",
-     "jump_formula": "Renewal 9.00 / promotional 3.00 = 3.00x per month. Year two 108.00 / year one 90.00 = 1.20x."
+     "year_one_formula": "3 months at the promotional rate + 9 months at the renewal rate. Ex VAT: 3 x 3.36 + 9 x 10.08 = 100.80 EUR. Inc VAT at 19 percent: 3 x 4.00 + 9 x 12.00 = 120.00 EUR.",
+     "year_two_formula": "12 months at the renewal rate. Ex VAT: 12 x 10.08 = 120.96 EUR. Inc VAT: 12 x 12.00 = 144.00 EUR.",
+     "jump_formula": "Renewal 12.00 / promotional 4.00 = 3.00x per month. Year two 144.00 / year one 120.00 = 1.20x."
     },
     {
      "id": "hostinger--cloud-startup",
@@ -11466,7 +11542,7 @@
      "segment": "hyperscaler",
      "currency": "USD",
      "promotional_monthly": 0,
-     "renewal_monthly": 0.0422,
+     "renewal_monthly": 0.0431,
      "renewal_published": true,
      "monthly_multiple": null,
      "cliff_at_month": null,
@@ -11474,11 +11550,11 @@
      "year_one": null,
      "year_one_ex_vat_eur": null,
      "year_one_is_amount_actually_charged": false,
-     "year_two": 369.44,
+     "year_two": 377.47,
      "year_two_ex_vat_eur": null,
      "year_two_over_year_one": null,
      "year_one_formula": "NOT COMPUTABLE. A USD 200 credit valid 30 days is drawn down at standard rates against EUR-quoted prices, so its duration depends on consumption and its value crosses a currency boundary. No fixed year-one figure exists.",
-     "year_two_formula": "12 x EUR 30.7868 = EUR 369.44 for a B2ls v2 in West Europe at the standard pay-as-you-go rate.",
+     "year_two_formula": "12 x EUR 31.4556 = EUR 377.47 for a B2ls v2 in West Europe at the standard pay-as-you-go rate.",
      "jump_formula": "The renewal price is the standard published rate, so there is no cliff. The promotional element sits entirely in new-customer credits."
     },
     {
@@ -11697,7 +11773,7 @@
     },
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 7.56,
+    "plan_plus_1tb_eur_month": 10.08,
     "egress_share_of_total_pct": 0.0,
     "egress_multiple_of_instance": null,
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
@@ -11715,7 +11791,7 @@
     },
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 15.13,
+    "plan_plus_1tb_eur_month": 18.49,
     "egress_share_of_total_pct": 0.0,
     "egress_multiple_of_instance": null,
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
@@ -11733,7 +11809,7 @@
     },
     "added_cost_eur": 0.0,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 48.74,
+    "plan_plus_1tb_eur_month": 49.58,
     "egress_share_of_total_pct": 0.0,
     "egress_multiple_of_instance": null,
     "arithmetic": "The VPS card states 'Unbegrenzter Traffic' with an uplink of up to 1 Gbit/s and no volume figure, so 1,000 GB x EUR 0.00 = EUR 0.00.",
@@ -12039,9 +12115,9 @@
     },
     "added_cost_eur": 68.25,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 99.04,
-    "egress_share_of_total_pct": 68.9,
-    "egress_multiple_of_instance": 2.22,
+    "plan_plus_1tb_eur_month": 99.71,
+    "egress_share_of_total_pct": 68.4,
+    "egress_multiple_of_instance": 2.17,
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/"
@@ -12057,9 +12133,9 @@
     },
     "added_cost_eur": 68.25,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 75.95,
-    "egress_share_of_total_pct": 89.9,
-    "egress_multiple_of_instance": 8.87,
+    "plan_plus_1tb_eur_month": 76.11,
+    "egress_share_of_total_pct": 89.7,
+    "egress_multiple_of_instance": 8.68,
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/"
@@ -12075,9 +12151,9 @@
     },
     "added_cost_eur": 68.25,
     "added_cost_eur_range": null,
-    "plan_plus_1tb_eur_month": 98.98,
-    "egress_share_of_total_pct": 69.0,
-    "egress_multiple_of_instance": 2.22,
+    "plan_plus_1tb_eur_month": 99.71,
+    "egress_share_of_total_pct": 68.4,
+    "egress_multiple_of_instance": 2.17,
     "arithmetic": "The bandwidth page states 'Note: 1 TB = 1,000 GB', so no binary conversion. Free allowance 100 GB per account. Chargeable = 900 GB in the 'Next 10 TB/Month' band for a European source: 900 x USD 0.087 = USD 78.30.",
     "caveat": "Choosing 'Routing preference transit ISP network' instead of the Microsoft premium global network gives 900 x USD 0.080 = USD 72.00. Note the mismatch of units: the VM price is quoted in EUR and the egress rate in USD, so any combined figure crosses a currency boundary.",
     "url": "https://azure.microsoft.com/en-us/pricing/details/bandwidth/"
@@ -12103,7 +12179,7 @@
    {
     "id": "wp-engine--startup-(essential)",
     "provider": "WP Engine",
-    "plan": "Startup (Essential)",
+    "plan": "Essential, 1 site",
     "segment": "managed_wp_and_shared",
     "added_cost": {
      "amount": 0.0,
@@ -12115,13 +12191,13 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    {
     "id": "wp-engine--professional-(essential)",
     "provider": "WP Engine",
-    "plan": "Professional (Essential)",
+    "plan": "Essential, up to 3 sites",
     "segment": "managed_wp_and_shared",
     "added_cost": {
      "amount": 0.0,
@@ -12133,13 +12209,13 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    {
     "id": "wp-engine--growth-(essential)",
     "provider": "WP Engine",
-    "plan": "Growth (Essential)",
+    "plan": "Essential, up to 10 sites",
     "segment": "managed_wp_and_shared",
     "added_cost": {
      "amount": 0.0,
@@ -12151,7 +12227,7 @@
     "egress_share_of_total_pct": null,
     "egress_multiple_of_instance": null,
     "arithmetic": "No published per-GB bandwidth rate exists, so the metered add-on for 1 TB is USD 0.00. Read that narrowly: it means WP Engine will not invoice per gigabyte, not that 1 TB is within what the plan allows.",
-    "caveat": "1,000 GB is 13.3 times the Startup allowance of 75 GB, 6.7 times Professional at 150 GB and 4.2 times Growth at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors.",
+    "caveat": "1,000 GB is 13.3 times the 1-site allowance of 75 GB, 6.7 times 3-site at 150 GB and 4.2 times 10-site at 240 GB. Verbatim: 'If you exceed your bandwidth limit we may have someone reach out.' The remedy is contractual, not financial. The priced meter at WP Engine is visits, at USD 2 per 1,000 extra monthly visitors. The per-tier allowances are as recorded on 2026-08-18; WP Engine no longer publishes them per tier.",
     "url": "https://wpengine.com/support/bandwidth-cause-effects/"
    },
    {
@@ -12829,7 +12905,7 @@
      "eur_per_vcpu"
     ],
     "reasons": [
-     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 30.733 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 30.7868 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
+     "CORRECTION 9. EXCLUDED FROM THE EUR RANKING. B2s and B2ls v2 both return USD 0.048 per hour in westeurope, yet this file carries two different EUR monthlies for that identical dollar price: EUR 31.463 here, from the Retail Prices API's 4-decimal EUR rounding, and EUR 31.4556 on B2ls v2, from the pricing page's own FX conversion. The two are not comparable and counting both would rank one dollar price twice."
     ],
     "null_specs": [
      "transfer_tb",
@@ -12947,7 +13023,7 @@
    {
     "id": "wp-engine--startup-(essential)",
     "provider": "WP Engine",
-    "plan": "Startup (Essential)",
+    "plan": "Essential, 1 site",
     "segment": "managed_wp_and_shared",
     "excluded_from": [
      "eur_per_gb_ram",
@@ -12965,7 +13041,7 @@
    {
     "id": "wp-engine--professional-(essential)",
     "provider": "WP Engine",
-    "plan": "Professional (Essential)",
+    "plan": "Essential, up to 3 sites",
     "segment": "managed_wp_and_shared",
     "excluded_from": [
      "eur_per_gb_ram",
@@ -12983,7 +13059,7 @@
    {
     "id": "wp-engine--growth-(essential)",
     "provider": "WP Engine",
-    "plan": "Growth (Essential)",
+    "plan": "Essential, up to 10 sites",
     "segment": "managed_wp_and_shared",
     "excluded_from": [
      "eur_per_gb_ram",
@@ -15049,7 +15125,7 @@
   },
   {
    "claim": "Any year-two figure for WP Engine",
-   "why": "WP Engine publishes no renewal price at any URL. The static HTML, the configurator's JSON payload and the live configurator were all checked, and the signup flow redirects unauthenticated visitors back to the plans page. The only statement on the page is 'Product renewal pricing subject to change.' Three plans, EUR 320 charged up front on the smallest, and no published year two."
+   "why": "WP Engine publishes no renewal price at any URL. The static HTML, the configurator's JSON payload and the live configurator were all checked, and the signup flow redirects unauthenticated visitors back to the plans page. The only statement on the page is 'Product renewal pricing subject to change.' Three plans, EUR 307.20 charged up front on the smallest, and no published year two."
   },
   {
    "claim": "A price-per-GB-of-RAM figure for managed WordPress or shared hosting",
@@ -15061,7 +15137,7 @@
   },
   {
    "claim": "A definitive Azure EUR price",
-   "why": "Microsoft prices Azure in USD and converts to EUR once a month at a London closing spot rate, and says so on the page and in its API documentation: 'Other non-USD prices returned by the API are for your reference to help you estimate budget expenses.' This dataset also carries two different EUR monthlies for the same USD 0.048 per hour, EUR 30.7868 from the page and EUR 30.733 from the API, which is why the B2s row is excluded from the ranking."
+   "why": "Microsoft prices Azure in USD and converts to EUR once a month at a London closing spot rate, and says so on the page and in its API documentation: 'Other non-USD prices returned by the API are for your reference to help you estimate budget expenses.' This dataset also carries two different EUR monthlies for the same USD 0.048 per hour, EUR 31.4556 from the page and EUR 31.463 from the API, which is why the B2s row is excluded from the ranking."
   },
   {
    "claim": "Included transfer for Hetzner read off a Hetzner plan page",
@@ -15082,6 +15158,106 @@
   {
    "claim": "Any statement that a provider is cheapest overall",
    "why": "Cheapest per GB of RAM, cheapest with 1 TB of traffic and cheapest in year two are three different orderings in this dataset, and adding backups or support reorders them again. The tables give the reader the axis; the site does not pick one for them."
+  }
+ ],
+ "last_price_review": "2026-11-15",
+ "price_updates": [
+  {
+   "reviewed_on": "2026-11-15",
+   "method": "Every row re-read on its provider's page or API. Rows with an exact live API or page match are compared by pricing/check_drift.py; the rest were read by hand. Temporary event promotions (Black Friday at SiteGround, Hostinger and Kinsta, ending by early December) were seen and NOT applied: the renewal price, the primary field, did not change at any of them.",
+   "changes": [
+    {
+     "id": "microsoft--azure-virtual-machines-b2ls-v2-standard_b2ls_v2",
+     "field": "price.amount",
+     "old": 30.7868,
+     "new": 31.4556,
+     "currency": "EUR",
+     "why": "Microsoft's monthly USD to EUR conversion moved from 0.878619 to 0.897706. USD price unchanged."
+    },
+    {
+     "id": "microsoft--azure-virtual-machines-b2ts-v2-standard_b2ts_v2",
+     "field": "price.amount",
+     "old": 7.6967,
+     "new": 7.8639,
+     "currency": "EUR",
+     "why": "Microsoft's monthly USD to EUR conversion moved from 0.878619 to 0.897706. USD price unchanged."
+    },
+    {
+     "id": "microsoft--azure-virtual-machines-b2s-standard_b2s-previo",
+     "field": "price.amount",
+     "old": 30.733,
+     "new": 31.463,
+     "currency": "EUR",
+     "why": "Retail Prices API EUR rate 0.0421 to 0.0431 per hour, same monthly conversion change. USD unchanged at 0.048."
+    },
+    {
+     "id": "ionos--vps-m+",
+     "field": "price.amount / renewal.amount (inc VAT)",
+     "old": [
+      3.0,
+      9.0
+     ],
+     "new": [
+      4.0,
+      12.0
+     ],
+     "currency": "EUR",
+     "why": "IONOS raised the promotional and the regular rate. vCPU 4 to 2."
+    },
+    {
+     "id": "ionos--vps-l+",
+     "field": "price.amount / renewal.amount (inc VAT)",
+     "old": [
+      5.0,
+      18.0
+     ],
+     "new": [
+      7.0,
+      22.0
+     ],
+     "currency": "EUR",
+     "why": "IONOS raised the promotional and the regular rate. vCPU 6 to 4."
+    },
+    {
+     "id": "ionos--vps-xxl+",
+     "field": "price.amount / renewal.amount (inc VAT)",
+     "old": [
+      15.0,
+      58.0
+     ],
+     "new": [
+      17.0,
+      59.0
+     ],
+     "currency": "EUR",
+     "why": "IONOS raised the promotional and the regular rate."
+    },
+    {
+     "id": "wp-engine--startup-(essential)",
+     "field": "price.amount (annual commitment)",
+     "old": 27,
+     "new": 25.6,
+     "currency": "EUR",
+     "why": "Annual discount changed from two months free to 20 percent; year one EUR 324 to 307.2. Tier renamed from 'Startup' to '1 site'."
+    },
+    {
+     "id": "wp-engine--professional-(essential)",
+     "field": "price.amount (annual commitment)",
+     "old": 50,
+     "new": 48.0,
+     "currency": "EUR",
+     "why": "Annual discount changed from two months free to 20 percent; year one EUR 600 to 576. Tier renamed from 'Professional' to 'Up to 3 sites'."
+    },
+    {
+     "id": "wp-engine--growth-(essential)",
+     "field": "price.amount (annual commitment)",
+     "old": 105,
+     "new": 100.0,
+     "currency": "EUR",
+     "why": "Annual discount changed from two months free to 20 percent; year one EUR 1260 to 1200. Tier renamed from 'Growth' to 'Up to 10 sites'."
+    }
+   ],
+   "verified_on_note": "All 70 rows were re-read on 2026-11-15 and carry verified_on 2026-11-15. verified_on moves on every weekly review that re-reads the row; captured_on moves only when the figure changes."
   }
  ]
 }
