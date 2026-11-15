@@ -112,15 +112,17 @@ def _check_egress(egress: dict, live_rows: list[dict]) -> list[dict]:
         if live is None or captured is None:
             out.append({**row, "status": "missing", "live_id": live_id})
             continue
-        if "candidate_usd_per_gb" in live:
-            same = any(abs(c - captured) < 1e-9 for c in live["candidate_usd_per_gb"])
-            amount = captured if same else live["candidate_usd_per_gb"]
-        else:
-            amount = live["usd_per_gb"]
-            same = abs(amount - captured) < 1e-9
+        same, amount = _egress_compare(live, captured)
         out.append({**row, "status": "match" if same else "drift", "live_id": live_id,
                     "live_amount": amount, "live_fetched_at": live.get("fetched_at")})
     return out
+
+
+def _egress_compare(live: dict, captured: float):
+    if "candidate_usd_per_gb" in live:
+        same = any(abs(c - captured) < 1e-9 for c in live["candidate_usd_per_gb"])
+        return same, (captured if same else live["candidate_usd_per_gb"])
+    return abs(live["usd_per_gb"] - captured) < 1e-9, live["usd_per_gb"]
 
 
 def _azure_vm_row(plan: dict) -> bool:
