@@ -9,8 +9,13 @@ status, plans, and provenance. On any fetch failure the previous file's values
 are preserved and marked stale rather than blanked.
 
 Optional environment variables:
-    HETZNER_API_TOKEN      - if set, fetches Hetzner live prices
-    DIGITALOCEAN_API_TOKEN - if set, fetches DigitalOcean live prices
+    HETZNER_API_TOKEN      - if set, fetches Hetzner from its Cloud API
+    DIGITALOCEAN_API_TOKEN - if set, fetches DigitalOcean from its API
+
+Without a token, Hetzner and DigitalOcean are read from the providers' own
+public pricing pages instead (source='website'). Neither is a documented API,
+so a layout change makes the fetch fail, and a failed fetch keeps the previous
+values marked stale, as for every other provider.
 
 AWS is deliberately excluded: a single region's EC2 price file is 431 MB.
 
@@ -29,8 +34,11 @@ the kind of unsourced number this site exists to avoid.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
+import re
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -51,6 +59,12 @@ def _get(url: str, token: str | None = None, timeout: int = 30) -> dict | list:
     req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read().decode())
+
+
+def _get_text(url: str, timeout: int = 30) -> str:
+    req = urllib.request.Request(url, headers={"User-Agent": _USER_AGENT})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read().decode("utf-8")
 
 
 # --------------------------------------------------------------------------
@@ -448,6 +462,208 @@ def fetch_digitalocean(token: str) -> dict:
 
 
 # --------------------------------------------------------------------------
+# Public-page fetchers, used when no API token is set
+# --------------------------------------------------------------------------
+
+HETZNER_PLAN_PAGES = (
+    "https://www.hetzner.com/cloud/cost-optimized/",
+    "https://www.hetzner.com/cloud/regular-performance/",
+    "https://www.hetzner.com/cloud/general-purpose/",
+)
+# The price service hetzner.com's own plan pages call for every row.
+HETZNER_PRICE_API = "https://website-price-api.hetzner.com/api/v1/products/"
+# German datacenters first: the captured rows in costs.json quote the
+# Nuremberg/Falkenstein price, and Helsinki is cheaper for CPX and CCX.
+_HETZNER_EU_ORDER = ("FSN1", "NBG1", "HEL1")
+
+_HETZNER_ROW = re.compile(
+    r"\b(C(?:X|PX|AX|CX)\d{2,3})\b(.*?)\b(\d+) (?:Intel®/AMD|AMD|Ampere®|Intel®) "
+    r"(\d+) GB (\d+) GB"
+)
+
+
+def parse_hetzner_plan_page(page_html: str) -> list[dict]:
+    """Return one spec record per product key on a hetzner.com plan page.
+
+    Each table row ends in a price element carrying product-key; the row's
+    text before it holds the name, vCPU, RAM and disk.
+    """
+    page_html = re.sub(r"<svg.*?</svg>", " ", page_html, flags=re.S)
+    rows: list[dict] = []
+    seen: set[str] = set()
+    prev = 0
+    for m in re.finditer(r'product-key="(CLOUD_\d+\+CLOUD_\d+)"', page_html):
+        text = re.sub(r"<[^>]+>", " ", page_html[prev:m.start()])
+        text = re.sub(r"\s+", " ", html.unescape(text))
+        prev = m.end()
+        key = m.group(1)
+        specs = list(_HETZNER_ROW.finditer(text))
+        if key in seen or not specs:
+            continue
+        seen.add(key)
+        last = specs[-1]
+        rows.append({
+            "product_key": key,
+            "name": last.group(1),
+            "orderable": "not available" not in last.group(2).lower(),
+            "vcpu": int(last.group(3)),
+            "ram_gb": float(last.group(4)),
+            "disk_gb": float(last.group(5)),
+        })
+    return rows
+
+
+def hetzner_plan_from_price(spec: dict, price: dict, ts: str) -> dict:
+    """Merge a page spec record with its price-service response."""
+    locations = {}
+    for loc in price.get("locations", []):
+        p = loc.get("prices") or {}
+        locations[loc["datacenter"]] = {
+            "active": loc.get("active"),
+            "monthly_eur": float(p["monthly"]["EUR"]),
+            "hourly_eur": float(p["hourly"]["EUR"]),
+            "monthly_usd": float(p["monthly"]["USD"]),
+            "hourly_usd": float(p["hourly"]["USD"]),
+        }
+    eu = next((locations[dc] for dc in _HETZNER_EU_ORDER if dc in locations), None)
+    return {
+        "id": spec["product_key"],
+        "name": spec["name"],
+        "orderable": spec["orderable"],
+        "vcpu": spec["vcpu"],
+        "ram_gb": spec["ram_gb"],
+        "disk_gb": spec["disk_gb"],
+        "monthly_eur": eu["monthly_eur"] if eu else None,
+        "hourly_eur": eu["hourly_eur"] if eu else None,
+        "price_location": next((dc for dc in _HETZNER_EU_ORDER if dc in locations), None),
+        "locations": locations,
+        "currency": "EUR",
+        "includes": "primary IPv4 (the page prices server plus IPv4 as one product)",
+        "source": "website",
+        "endpoint": HETZNER_PRICE_API + urllib.parse.quote(spec["product_key"], safe=""),
+        "fetched_at": ts,
+    }
+
+
+def fetch_hetzner_public() -> dict:
+    """Hetzner Cloud without a token: plan pages for specs, the price
+    service those pages call for per-datacenter prices (EUR and USD, ex VAT)."""
+    provider = "Hetzner"
+    ts = datetime.now(UTC).isoformat()
+    try:
+        specs: dict[str, dict] = {}
+        for url in HETZNER_PLAN_PAGES:
+            for row in parse_hetzner_plan_page(_get_text(url)):
+                specs.setdefault(row["product_key"], row)
+        if not specs:
+            raise ValueError("no plan rows found on the Hetzner plan pages")
+        plans = []
+        for key, spec in specs.items():
+            price = _get(HETZNER_PRICE_API + urllib.parse.quote(key, safe=""))
+            plans.append(hetzner_plan_from_price(spec, price, ts))
+            time.sleep(0.2)
+        return {
+            "provider": provider,
+            "status": "ok",
+            "fetched_at": ts,
+            "endpoint": HETZNER_PLAN_PAGES[0],
+            "source": "website",
+            "plans": plans,
+        }
+    except Exception as exc:
+        return {
+            "provider": provider,
+            "status": "error",
+            "fetched_at": ts,
+            "endpoint": HETZNER_PLAN_PAGES[0],
+            "error": str(exc),
+        }
+
+
+DIGITALOCEAN_PRICING_PAGE = "https://www.digitalocean.com/pricing/droplets"
+
+
+def parse_digitalocean_pricing_page(page_html: str) -> list[dict]:
+    """Return the droplet sizes embedded in digitalocean.com/pricing/droplets.
+
+    The page carries its price table as escaped JSON ("data":{"basic":...});
+    every size object has a slug and a price. A slug listed under two
+    families is kept once, under the first.
+    """
+    marker = '\\"data\\":{\\"basic\\"'
+    i = page_html.find(marker)
+    if i < 0:
+        raise ValueError("droplet price data not found on the DigitalOcean page")
+    chunk = page_html[i + len('\\"data\\":'):]
+    chunk = chunk.replace('\\"', '"').replace("\\\\", "\\")
+    data, _ = json.JSONDecoder().raw_decode(chunk)
+
+    sizes: list[dict] = []
+    seen: set[str] = set()
+
+    def walk(node, family: str) -> None:
+        if isinstance(node, dict):
+            if "slug" in node and "price" in node:
+                if node["slug"] not in seen:
+                    seen.add(node["slug"])
+                    sizes.append({"family": family, **node})
+                return
+            for k, v in node.items():
+                walk(v, f"{family}/{k}" if family else k)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v, family)
+
+    walk(data, "")
+    return sizes
+
+
+def fetch_digitalocean_public() -> dict:
+    """DigitalOcean without a token: the droplet pricing page. Prices in USD."""
+    provider = "DigitalOcean"
+    ts = datetime.now(UTC).isoformat()
+    try:
+        sizes = parse_digitalocean_pricing_page(_get_text(DIGITALOCEAN_PRICING_PAGE))
+        if not sizes:
+            raise ValueError("no droplet sizes on the DigitalOcean page")
+        plans = []
+        for s in sizes:
+            price = s.get("price") or {}
+            quota_gb = price.get("transferQuota")
+            plans.append({
+                "slug": s["slug"],
+                "family": s["family"],
+                "vcpu": s.get("cpus"),
+                "ram_gb": s.get("memory"),
+                "disk_gb": (s.get("disk") or {}).get("boot"),
+                "transfer_tb": round(quota_gb / 1000, 4) if quota_gb else None,
+                "monthly_usd": price.get("monthly"),
+                "hourly_usd": price.get("hourly"),
+                "currency": "USD",
+                "source": "website",
+                "endpoint": DIGITALOCEAN_PRICING_PAGE,
+                "fetched_at": ts,
+            })
+        return {
+            "provider": provider,
+            "status": "ok",
+            "fetched_at": ts,
+            "endpoint": DIGITALOCEAN_PRICING_PAGE,
+            "source": "website",
+            "plans": plans,
+        }
+    except Exception as exc:
+        return {
+            "provider": provider,
+            "status": "error",
+            "fetched_at": ts,
+            "endpoint": DIGITALOCEAN_PRICING_PAGE,
+            "error": str(exc),
+        }
+
+
+
+# --------------------------------------------------------------------------
 # Merge helpers
 # --------------------------------------------------------------------------
 
@@ -532,14 +748,10 @@ def main(argv: list[str] | None = None) -> int:
         n = len(r.get("plans", []))
         print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
     else:
-        print("  skipping Hetzner (HETZNER_API_TOKEN not set)")
-        r = {
-            "provider": "Hetzner",
-            "status": "auth_required",
-            "fetched_at": fetched_at,
-            "endpoint": "https://api.hetzner.cloud/v1/pricing",
-            "note": "Set HETZNER_API_TOKEN to enable live fetch.",
-        }
+        print("  fetching Hetzner (public pages, no token)...", end=" ", flush=True)
+        r = fetch_hetzner_public()
+        n = len(r.get("plans", []))
+        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
     providers.append(r)
 
     do_token = os.environ.get("DIGITALOCEAN_API_TOKEN", "").strip()
@@ -549,14 +761,10 @@ def main(argv: list[str] | None = None) -> int:
         n = len(r.get("plans", []))
         print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
     else:
-        print("  skipping DigitalOcean (DIGITALOCEAN_API_TOKEN not set)")
-        r = {
-            "provider": "DigitalOcean",
-            "status": "auth_required",
-            "fetched_at": fetched_at,
-            "endpoint": "https://api.digitalocean.com/v2/sizes",
-            "note": "Set DIGITALOCEAN_API_TOKEN to enable live fetch.",
-        }
+        print("  fetching DigitalOcean (public page, no token)...", end=" ", flush=True)
+        r = fetch_digitalocean_public()
+        n = len(r.get("plans", []))
+        print(f"{r['status']} ({n} plans)" if r["status"] == "ok" else r["status"])
     providers.append(r)
 
     # Preserve previous ok values for any failed fetches
@@ -566,7 +774,10 @@ def main(argv: list[str] | None = None) -> int:
         "fetched_at": fetched_at,
         "note": (
             "source='api' records carry the endpoint URL and fetched_at timestamp "
-            "for provenance. status='stale' means the previous ok values are "
+            "for provenance. source='website' records were read from the "
+            "provider's public pricing page (Hetzner, DigitalOcean without a "
+            "token), with the same provenance fields. "
+            "status='stale' means the previous ok values are "
             "preserved after a failed fetch. status='auth_required' means a token "
             "is needed. status='unavailable' means the endpoint exists but does not "
             "carry the data (e.g. Scaleway specs-only endpoint)."
